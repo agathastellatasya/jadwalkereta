@@ -22,4 +22,4 @@ Kelompok 3:
 1. Masuk ke dalam folder **jadwalkereta**.
 2. Buka command prompt pada folder tersebut, kemudian ketikkan `mvn clean compile package`.
 3. Masuk ke folder **target**.
-4. Ketikkan `jar -jar jadwalkereta-1.0.jar` untuk menjalankan program.
+4. Ketikkan `java -jar jadwalkereta-1.0.jar` untuk menjalankan program.
