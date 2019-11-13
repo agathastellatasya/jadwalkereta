@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package jadwalkereta.controller;
 
-import View.ViewMain;
+import jadwalkereta.view.ViewMain;
 import java.text.ParseException;
 
 /**

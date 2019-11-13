@@ -1,0 +1,17 @@
+{
+    "users":
+    [
+        {  "password":"admin",
+            "role":1,
+            "email":"admin"
+        },
+        {
+            "nik":"1234567891234567",
+            "password":"test",
+            "role":2,
+            "nama":"hihi",
+            "nomor handphone":"085224808795",
+            "email":"hi@fa"
+        }
+    ]
+}

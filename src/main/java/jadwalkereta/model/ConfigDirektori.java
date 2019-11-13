@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package jadwalkereta.model;
 
 /**
  *
  * @author ASUS
  */
-public class Admin {
+public class ConfigDirektori {
+    //fiqri
+    public static final String direktoriAkun = "D:\\Kuliah Pasca\\Alpro\\Toebes\\jadwalkereta\\json\\user.json";
     
 }

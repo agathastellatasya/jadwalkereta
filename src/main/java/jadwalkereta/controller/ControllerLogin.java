@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package jadwalkereta.controller;
 
-import Model.Penumpang;
-import Model.User;
-import View.ViewLogin;
+import jadwalkereta.model.Penumpang;
+import jadwalkereta.model.User;
+import jadwalkereta.view.ViewLogin;
 
 /**
  *

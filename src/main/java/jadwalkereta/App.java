@@ -1,7 +1,7 @@
 package jadwalkereta;
 
 import java.util.Scanner;
-import Controller.ControllerMain;
+import jadwalkereta.controller.ControllerMain;
 
 /**
  * Hello world!
@@ -18,8 +18,7 @@ public final class App {
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
-        
-    ControllerMain ctrMain = new ControllerMain();
+        ControllerMain ctrMain = new ControllerMain();
 //        System.out.println("#Menu Utama#");
 //        System.out.println("1.  Register");
 //        System.out.println("2.  Login");
@@ -33,7 +32,7 @@ public final class App {
 //            
 //        }
 
-    ctrMain.run();
+        ctrMain.run();
     }
     
 }
