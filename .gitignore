@@ -26,3 +26,5 @@ buildNumber.properties
 .project
 .vscode/
 ./target
+
+./src/main/java/model/ConfigDirektori.java
