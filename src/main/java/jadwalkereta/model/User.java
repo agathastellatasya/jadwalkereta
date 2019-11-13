@@ -6,13 +6,15 @@
 package jadwalkereta.model;
 
 import java.io.File;
-import org.json.simple.JSONObject;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -54,7 +56,6 @@ public class User {
         this.email = email;
         this.password = password;
         this.role = role;
-           
     }
     
     public void setEmail(String email) {
@@ -130,7 +131,6 @@ public class User {
         }
         //Create JSONObject and JSONArray and store a class object on it
         JSONObject uo = new JSONObject();
-        
             uo.put("email", email);
             uo.put("password", password);
             uo.put("role", 2);
@@ -144,7 +144,7 @@ public class User {
             root.put("users",array);
         }
         else{
-             user.add(uo);
+            user.add(uo);
              // add the array to the root object
             root.put("users",user);
         }

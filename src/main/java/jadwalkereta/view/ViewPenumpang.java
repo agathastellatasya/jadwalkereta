@@ -13,8 +13,6 @@ import java.util.Scanner;
  */
 public class ViewPenumpang {
     private int pilihan;
-    private String email, password, nama, nik, hp;
-    private int role;
     Scanner input = new Scanner(System.in);
     
     public ViewPenumpang(){
@@ -34,29 +32,4 @@ public class ViewPenumpang {
     public int getPilihan() {
         return pilihan;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getNama() {
-        return nama;
-    }
-
-    public String getNik() {
-        return nik;
-    }
-
-    public String getHp() {
-        return hp;
-    }
-
-    public int getRole() {
-        return role;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-    
 }

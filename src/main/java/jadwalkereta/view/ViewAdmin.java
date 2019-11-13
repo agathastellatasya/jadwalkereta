@@ -12,11 +12,10 @@ import java.util.Scanner;
  */
 public class ViewAdmin {
     private String pilihan;
-    private String email, password;
     Scanner input = new Scanner(System.in);
     
     public void menuAdmin() {
-        System.out.println("#Menu Utama Admin#");
+        System.out.println("###### MENU ADMIN ######");
         System.out.println("1.  Kelola Akun");
         System.out.println("2.  Kelola Data Kota");
         System.out.println("3.  Generate Waktu");
@@ -29,7 +28,7 @@ public class ViewAdmin {
         System.out.println("10.  Lihat Pemasukan");
         System.out.println("11.  Lihat Pemasukan");
         System.out.println("0.  Logout");
-        
+        System.out.println();
         System.out.print("Pilih Menu : ");
         pilihan = input.next();
     }

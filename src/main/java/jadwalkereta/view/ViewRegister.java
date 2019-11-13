@@ -53,7 +53,7 @@ public class ViewRegister {
             nik = input.next();
 
             if (nik.length() != 16 || nik.matches("[0-9_]+")== false) {
-                System.out.println("nik tidak valid, harus angka dan = 16 digit, mis: 1234567891011121 ");
+                System.out.println("NIK tidak valid, harus berupa 16 digit angka, misal: 1234567891011121");
             }
 
             //return input=true;
@@ -63,7 +63,7 @@ public class ViewRegister {
             System.out.print("Nama Lengkap : ");
             nama = input.next();
             if (nama.matches("^[a-zA-Z\\\\s]*$")== false) {
-                System.out.println("nama harus huruf semua! ");
+                System.out.println("Nama harus terdiri dari huruf semua! ");
             }
         }while(nama.matches("^[a-zA-Z\\\\s]*$")== false);
         
@@ -71,18 +71,17 @@ public class ViewRegister {
             System.out.print("Nomor Handphone : ");
             hp = input.next();
 
-            if (hp.length()< 12 || hp.matches("[0-9_]+")== false) {
-                System.out.println("no hp tidak valid, harus angka, > 11 digit dan < 12 digit , mis: 085224224224 ");
+            if ((hp.length() <= 12 && hp.length() >= 11) || hp.matches("[0-9_]+")== false) {
+                System.out.println("No. hp tidak valid, harus angka dan terdiri dari 11 hingga 12 digit, misal: 085224224224");
             }
 
             //return input=true;
-        }while (hp.length() < 12 || hp.matches("[0-9_]+")== false);
+        } while (hp.length() < 12 || hp.matches("[0-9_]+")== false);
+        
         System.out.print("Email : ");
         email = input.next();
         System.out.print("Password : ");
         password = input.next();
-        
-        
     }
 }
 

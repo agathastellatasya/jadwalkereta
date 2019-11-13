@@ -5,27 +5,21 @@
  */
 package jadwalkereta.view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author ASUS
  */
 public class ViewMain {
-    private int pilihan;
-
-    Scanner input = new Scanner(System.in);
     public ViewMain(){
     }
     
     public void menuMain(){
-        System.out.println("#Menu Awal#");
-        System.out.println("1.  Register");
-        System.out.println("2.  Login");
+        System.out.println("###### MENU AWAL ######");
+        System.out.println();
+        System.out.println("1. \t Register");
+        System.out.println("2. \t Login");
+        System.out.println("0. \t Exit");
+        System.out.println();
         System.out.print("Pilih Menu : ");
-        pilihan = input.nextInt();
-    }
-    public int getPilihan() {
-        return pilihan;
     }
 }

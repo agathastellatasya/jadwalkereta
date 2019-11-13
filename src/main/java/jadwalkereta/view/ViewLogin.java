@@ -12,7 +12,6 @@ import java.util.Scanner;
  * @author ASUS
  */
 public class ViewLogin {
-    private int pilihan;
     private String email, password;
     Scanner input = new Scanner(System.in);
 
@@ -21,7 +20,7 @@ public class ViewLogin {
     }
     
     public void menuLogin(){
-        System.out.println("#Login#");
+        System.out.println("###### LOGIN ######");
         System.out.print("Email : ");
         email = input.nextLine();
         System.out.print("Password : ");

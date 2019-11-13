@@ -38,7 +38,7 @@ public class ControllerLogin {
         }
          
         else {
-            System.out.println("Username atau Password Salah!!");
+            System.out.println("Username atau Password Salah!");
             ControllerMain ctrMain = new ControllerMain();
             ctrMain.run();
         }

@@ -5,8 +5,10 @@
  */
 package jadwalkereta.controller;
 
-import jadwalkereta.view.ViewMain;
+import java.util.*;
 import java.text.ParseException;
+
+import jadwalkereta.view.ViewMain;
 
 /**
  *
@@ -14,35 +16,43 @@ import java.text.ParseException;
  */
 public class ControllerMain {
     ViewMain viewMain;
+    private int pilihan;
     
-
     public ControllerMain() {
         viewMain = new ViewMain();
-    
     }
     
-    
     public void run() {
+        // viewMain = new ViewMain();
+        Scanner in = new Scanner(System.in);
+        viewMain.menuMain();
+        // System.out.println(pilihan);
+
+        do {
+            pilihan = in.nextInt();
+
+            switch(pilihan){
+                case 0: break;
+                case 1: {
+                    ControllerRegis ctrRegis = new ControllerRegis();
+                    ctrRegis.ControlRegister();
+                    break;
+                }
+    
+                case 2: {
+                    ControllerLogin ctrLogin = new ControllerLogin();
+                    ctrLogin.ControlLogin();
+                    break;
+                }
+    
+                default: {
+                    System.out.println("Input salah!");
+                    System.out.println();
+                    viewMain.menuMain();
+                }
+            }
+        } while (pilihan != 0);
         
-    viewMain = new ViewMain();
-    viewMain.menuMain();
-    int pilihan = viewMain.getPilihan();
-        System.out.println(pilihan);
-        if(pilihan==1){
-            ControllerRegis ctrRegis = new ControllerRegis();
-            ctrRegis.ControlRegister();
-            
-        }
-        else if (pilihan==2){
-            ControllerLogin ctrLogin = new ControllerLogin();
-            ctrLogin.ControlLogin();
-            
-        }
-        else {
-            System.out.println("inputan salah!!");
-            ControllerMain ctrMain = new ControllerMain();
-            ctrMain.run();
-        }
     }
     
     public static void main(String[] args) throws ParseException {
