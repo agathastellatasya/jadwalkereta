@@ -11,7 +11,6 @@ import java.util.Scanner;
  * @author ASUS
  */
 public class ViewAdmin {
-    private String pilihan;
     Scanner input = new Scanner(System.in);
     
     public void menuAdmin() {
@@ -30,11 +29,5 @@ public class ViewAdmin {
         System.out.println("0.  Logout");
         System.out.println();
         System.out.print("Pilih Menu : ");
-        pilihan = input.next();
     }
-
-    public String getPilihan() {
-        return pilihan;
-    }
-    
 }

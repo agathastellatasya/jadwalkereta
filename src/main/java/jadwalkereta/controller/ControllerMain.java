@@ -27,10 +27,10 @@ public class ControllerMain {
         Scanner in = new Scanner(System.in);
         viewMain.menuMain();
         // System.out.println(pilihan);
-
+        
         do {
             pilihan = in.nextInt();
-
+            System.out.println();
             switch(pilihan){
                 case 0: break;
                 case 1: {
@@ -49,10 +49,13 @@ public class ControllerMain {
                     System.out.println("Input salah!");
                     System.out.println();
                     viewMain.menuMain();
+                    pilihan = in.nextInt();
+                    System.out.println();
                 }
             }
         } while (pilihan != 0);
         
+        System.out.println("BYE!");
     }
     
     public static void main(String[] args) throws ParseException {

@@ -23,6 +23,7 @@ public class ControllerLogin {
     }
     
     public void ControlLogin() {
+        viewLogin.menuLogin();
         User user = new User(viewLogin.getEmail(),viewLogin.getPassword());
         
         if(user.LoginFromJson(user.getEmail(), user.getPassword())==1){

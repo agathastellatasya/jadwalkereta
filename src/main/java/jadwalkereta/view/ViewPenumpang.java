@@ -12,7 +12,6 @@ import java.util.Scanner;
  * @author ASUS
  */
 public class ViewPenumpang {
-    private int pilihan;
     Scanner input = new Scanner(System.in);
     
     public ViewPenumpang(){
@@ -26,10 +25,5 @@ public class ViewPenumpang {
         System.out.println("3.  History Pembelian");
         System.out.println("0.  Logout");
         System.out.print("Pilih Menu : ");
-        pilihan = input.nextInt();
-    }
-
-    public int getPilihan() {
-        return pilihan;
     }
 }

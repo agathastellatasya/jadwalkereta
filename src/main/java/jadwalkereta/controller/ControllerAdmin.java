@@ -9,6 +9,9 @@ import jadwalkereta.model.Admin;
 import jadwalkereta.model.User;
 import jadwalkereta.view.ViewAdmin;
 
+
+import java.util.*;
+
 /**
  *
  * @author ASUS
@@ -17,7 +20,7 @@ public class ControllerAdmin {
     String email;
     User user;
     Admin admin;
-    ControllerMain ctrMain;
+    ControllerMain ctrMain = new ControllerMain();
     
     public ControllerAdmin(User user) {
         this.user = user;
@@ -28,52 +31,56 @@ public class ControllerAdmin {
     }
     
     public void ControlMenuAdmin() {
+        Scanner in = new Scanner(System.in);
         ViewAdmin viewAdmin = new ViewAdmin();
         viewAdmin.menuAdmin();
-        switch (viewAdmin.getPilihan()){
-            case "1":
-                
-                break;
-            case "2":
-                
-                ControlMenuAdmin();
-                break;
-            case "3":
-                
-                break;
-            case "4":
-                break;
-            case "5":
-                
-                break;
-            case "6":
-                
-                break;
-            case "7":
-                break;
-            case "8":
-                
-                break;
-            case "9":
-                
-                break;
-            case "10":
-                
-                break;
-            case "11":
-                
-                break;
-            case "0":
-                ctrMain = new ControllerMain();
-                ctrMain.run();
-                break;
-            default:
-                System.out.println("Inputan Salah!");
-                ControlMenuAdmin();
-                break;
-        }
-    
-//        
+        int pilihan;
+        do {
+            pilihan = in.nextInt();
+            System.out.println();
+            switch (pilihan){
+                case 1:
+                    
+                    break;
+                case 2:
+                    // ControlMenuAdmin();
+                    break;
+                case 3:
+                    
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    
+                    break;
+                case 6:
+                    
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    
+                    break;
+                case 9:
+                    
+                    break;
+                case 10:
+                    
+                    break;
+                case 11:
+                    
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Inputan Salah!");
+                    System.out.println();
+                    viewAdmin.menuAdmin();
+                    break;
+            }
+        } while (pilihan != 0);
+
+        ctrMain.run();
     }
     
 }
