@@ -32,10 +32,8 @@ public class ControllerAdmin {
         viewAdmin.menuAdmin();
         switch (viewAdmin.getPilihan()){
             case "1":
-                
                 break;
             case "2":
-                
                 ControlMenuAdmin();
                 break;
             case "3":
@@ -43,9 +41,13 @@ public class ControllerAdmin {
                 break;
             case "4":
                 break;
-            case "5":
-                
+            
+            case "5": {
+                ControllerStasiun ctrStasiun = new ControllerStasiun();
+                ctrStasiun.ControlMenuStasiun();
                 break;
+            }
+
             case "6":
                 
                 break;

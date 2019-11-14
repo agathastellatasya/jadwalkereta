@@ -11,5 +11,6 @@ package jadwalkereta.model;
  */
 public class ConfigDirektori {
     //fiqri
-    public static final String direktoriAkun = "D:\\Kuliah\\S2\\Algoritma Pemrograman\\Tubes\\jadwalkereta\\src\\main\\java\\jadwalkereta\\resource\\user.json";
+    public static final String direktoriAkun = "E:\\Tubes Alpro\\jadwalkereta\\src\\main\\java\\jadwalkereta\\resource\\user.json";
+    public static final String direktoriStasiun = "E:\\Tubes Alpro\\jadwalkereta\\src\\main\\java\\jadwalkereta\\resource\\stasiun.json";
 }
