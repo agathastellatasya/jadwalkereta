@@ -40,7 +40,7 @@ public class ControllerMain {
                 }
     
                 case 2: {
-                    ControllerLogin ctrLogin = new ControllerLogin();
+                    ControllerLogin ctrLogin = new ControllerLogin(this);
                     ctrLogin.ControlLogin();
                     break;
                 }
@@ -49,13 +49,11 @@ public class ControllerMain {
                     System.out.println("Input salah!");
                     System.out.println();
                     viewMain.menuMain();
-                    pilihan = in.nextInt();
-                    System.out.println();
                 }
             }
         } while (pilihan != 0);
         
-        System.out.println("BYE!");
+        // System.out.println("BYE!");
     }
     
     public static void main(String[] args) throws ParseException {

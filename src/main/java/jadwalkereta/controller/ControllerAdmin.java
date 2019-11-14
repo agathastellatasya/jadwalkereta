@@ -20,10 +20,11 @@ public class ControllerAdmin {
     String email;
     User user;
     Admin admin;
-    ControllerMain ctrMain = new ControllerMain();
+    ControllerMain ctrMain;
     
-    public ControllerAdmin(User user) {
+    public ControllerAdmin(User user, ControllerMain ctr) {
         this.user = user;
+        ctrMain = ctr;
     }
     
     ControllerAdmin(){

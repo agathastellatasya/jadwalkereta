@@ -17,9 +17,11 @@ public class ControllerLogin {
     ViewLogin viewLogin;
     User user;
     Penumpang penumpang;
+    ControllerMain ctrMain;
     
-    public ControllerLogin(){
+    public ControllerLogin(ControllerMain ctr){
         viewLogin = new ViewLogin();
+        ctrMain = ctr;
     }
     
     public void ControlLogin() {
@@ -27,7 +29,7 @@ public class ControllerLogin {
         User user = new User(viewLogin.getEmail(),viewLogin.getPassword());
         
         if(user.LoginFromJson(user.getEmail(), user.getPassword())==1){
-            ControllerAdmin ctrAdmin = new ControllerAdmin(user);
+            ControllerAdmin ctrAdmin = new ControllerAdmin(user, ctrMain);
             ctrAdmin.ControlMenuAdmin();
             
         }
