@@ -5,7 +5,9 @@
  */
 package jadwalkereta.view;
 
-import java.util.Scanner;
+import jadwalkereta.model.User;
+
+import java.util.*;
 import java.util.regex.Pattern;
 
 /**
@@ -13,75 +15,109 @@ import java.util.regex.Pattern;
  * @author ASUS
  */
 public class ViewRegister {
-    private String email, password, nik, hp, nama;
-    private int role;
+    private User user = new User();
+    private ArrayList<User> users;
     Pattern pattern = Pattern.compile("[A-Za-z0-9_]+");
     Scanner input = new Scanner(System.in);
 
-    public ViewRegister() {
+    public ViewRegister(ArrayList<User> u) {
+        users = u;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getNik() {
-        return nik;
-    }
-
-    public int getRole() {
-        return role;
-    }
-
-    public String getHp() {
-        return hp;
+    public User getUser(){
+        return user;
     }
     
-    public String getNama() {
-        return nama;
+    boolean emailFoundInUser(String email){
+        boolean found = false;
+        int i = 0;
+        while (!found && (i<users.size())){
+            if (users.get(i).getEmail().equals(email)){
+                found = true;
+            } else {
+                i++;
+            }
+        }
+        return found;
+    }
+
+    boolean nikFoundInUser(String nik){
+        boolean found = false;
+        int i = 0;
+        while (!found && (i<users.size())){
+            if (users.get(i).getNik().equals(nik)){
+                found = true;
+            } else {
+                i++;
+            }
+        }
+        return found;
     }
     
     public void Register(){
-        String repassword;
-        
+        String nik, nama, email, hp, password, repassword;
+
+        // VALIDASI NIK
         do {
             System.out.print("Nomor KTP : ");
             nik = input.next();
 
-            if (nik.length() != 16 || nik.matches("[0-9_]+")== false) {
+            if (nik.length() != 16 || !(nik.matches("[0-9_]+"))) {
                 System.out.println("NIK tidak valid, harus berupa 16 digit angka, misal: 1234567891011121");
             }
+            
+            if (nikFoundInUser(nik)){
+                System.out.println("NIK sudah terdaftar!");
+            }
 
-            //return input=true;
-        }while (nik.length() != 16 || nik.matches("[0-9_]+")== false);
+        } while (nikFoundInUser(nik) || nik.length() != 16 || !(nik.matches("[0-9_]+")));
+        user.setNik(nik);
         
-        do{
+        // VALIDASI NAMA
+        do {
             System.out.print("Nama Lengkap : ");
             nama = input.next();
-            if (nama.matches("^[a-zA-Z\\\\s]*$")== false) {
-                System.out.println("Nama harus terdiri dari huruf semua! ");
+            if (!nama.matches("^[a-zA-Z\\\\s]*$")){
+                System.out.println("Nama harus terdiri dari huruf semua!");
             }
-        }while(nama.matches("^[a-zA-Z\\\\s]*$")== false);
+        } while (!nama.matches("^[a-zA-Z\\\\s]*$"));
+        user.setNama(nama);
         
-        do{
+        // VALIDASI HP
+        do {
             System.out.print("Nomor Handphone : ");
             hp = input.next();
 
-            if ((hp.length() <= 12 && hp.length() >= 11) || hp.matches("[0-9_]+")== false) {
+            if ((hp.length() > 12 || hp.length() < 11) || !(hp.matches("[0-9_]+"))) {
                 System.out.println("No. hp tidak valid, harus angka dan terdiri dari 11 hingga 12 digit, misal: 085224224224");
             }
-
-            //return input=true;
-        } while (hp.length() < 12 || hp.matches("[0-9_]+")== false);
+        } while ((hp.length() > 12 || hp.length() < 11) || !(hp.matches("[0-9_]+")));
+        user.setHp(hp);
         
-        System.out.print("Email : ");
-        email = input.next();
-        System.out.print("Password : ");
-        password = input.next();
+        // VALIDASI EMAIL
+        do {
+            System.out.print("Email : ");
+            email = input.next();
+
+            if (emailFoundInUser(email)){
+                System.out.println("Email sudah terdaftar!");
+            }
+        } while (emailFoundInUser(email));
+        user.setEmail(email);
+
+        // VALIDASI PASSWORD
+        do {
+            System.out.print("Password : ");
+            password = input.next();
+            System.out.print("Re-Password : ");
+            repassword = input.next();
+
+            if (!password.equals(repassword)){
+                System.out.println("Password dan Re-Password tidak sama! Silakan coba kembali!");
+            }
+        } while (!password.equals(repassword));
+        user.setPassword(password);
+
+        users.add(user);
     }
 }
-

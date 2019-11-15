@@ -37,7 +37,7 @@ public class User {
         this.hp = " ";
         this.email = " ";
         this.password = " ";
-        this.role = 0;
+        this.role = 2;
     }
     
     // public User (String email, String password){

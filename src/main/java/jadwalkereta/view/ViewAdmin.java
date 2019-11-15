@@ -16,6 +16,8 @@ public class ViewAdmin {
     public void menuAdmin() {
         System.out.println();
         System.out.println("###### MENU ADMIN ######");
+        System.out.println("Welcome, Admin!");
+        System.out.println();
         System.out.println("1.  Kelola Akun");
         System.out.println("2.  Kelola Data Kota");
         System.out.println("3.  Generate Waktu");

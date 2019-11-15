@@ -5,6 +5,7 @@
  */
 package jadwalkereta.controller;
 
+import jadwalkereta.model.User;
 import jadwalkereta.view.ViewPenumpang;
 
 import java.util.*;
@@ -14,15 +15,17 @@ import java.util.*;
  * @author ASUS
  */
 public class ControllerPenumpang {
-    ControllerMain ctrMain;
+    private ControllerMain ctrMain;
+    private User user;
 
-    public ControllerPenumpang(ControllerMain ctr) {
+    public ControllerPenumpang(ControllerMain ctr, User u) {
         ctrMain = ctr;
+        user = u;
     }
     
     public void ControlMenuPenumpang(){
         Scanner in = new Scanner(System.in);
-        ViewPenumpang viewPenumpang = new ViewPenumpang();
+        ViewPenumpang viewPenumpang = new ViewPenumpang(user);
         viewPenumpang.menuPenumpang();
         int pilihan;
 

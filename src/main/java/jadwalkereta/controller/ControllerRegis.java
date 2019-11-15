@@ -16,30 +16,27 @@ import java.util.*;
  * @author ASUS
  */
 public class ControllerRegis {
-    User user;
+    User user = new User();
     ControllerMain ctrMain;
     ArrayList<User> users;
     
     public ControllerRegis(ControllerMain ctr, ArrayList<User> u){
         ctrMain = ctr;
         users = u;
-        // this.user = user;
     }
     
     public void ControlRegister() {
-        ViewRegister viewRegister = new ViewRegister();
+        ViewRegister viewRegister = new ViewRegister(users);
         viewRegister.Register();
+        System.out.println("Anda sudah berhasil didaftarkan!");
+        System.out.println();
         
-        regisUser(viewRegister.getNik(), viewRegister.getNama(), viewRegister.getHp(), viewRegister.getEmail(), viewRegister.getPassword(), viewRegister.getRole());
         ctrMain.run();
     }
 
-    private void regisUser(String nik, String nama, String hp, String email, String password, int role) {
-        user = new User(nik, nama, hp, email, password, role);
-        user.TulisUserToJson();
-        System.out.println("Anda berhasil Regis");
-    }
-
-    
-    
+    // private void regisUser(String nik, String nama, String hp, String email, String password, int role) {
+    //     user = new User(nik, nama, hp, email, password, role);
+    //     user.TulisUserToJson();
+    //     System.out.println("Anda berhasil Regis");
+    // }
 }

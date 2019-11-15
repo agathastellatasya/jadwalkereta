@@ -16,8 +16,8 @@ import java.util.*;
  */
 public class ControllerLogin {
     User user = new User();
-    ControllerMain ctrMain;
     ArrayList<User> users;
+    ControllerMain ctrMain;
     
     public ControllerLogin(ControllerMain ctr, ArrayList<User> us){
         ctrMain = ctr;
@@ -55,29 +55,14 @@ public class ControllerLogin {
                 }
 
                 case 2: {
-                    ControllerPenumpang ctrPenumpang = new ControllerPenumpang(ctrMain);
+                    ControllerPenumpang ctrPenumpang = new ControllerPenumpang(ctrMain,user);
                     ctrPenumpang.ControlMenuPenumpang();
                     break;
                 }
             }
-        }
-        
-        
-        // if(user.LoginFromJson(user.getEmail(), user.getPassword())==1){
-        //     ControllerAdmin ctrAdmin = new ControllerAdmin(user, ctrMain);
-        //     ctrAdmin.ControlMenuAdmin();
-            
-        // }
-        // else if (user.LoginFromJson(user.getEmail(), user.getPassword())==2){
-        //     //Dosen dsn = new Dosen(user.getUsername()); 
-        //     ControllerPenumpang ctrPenumpang = new ControllerPenumpang(user);
-        //     ctrPenumpang.ControlMenuPenumpang();
-            
-        // }
-         
-        else {
+        } else {
             System.out.println();
-            System.out.println("Username atau Password Salah!");
+            System.out.println("Username atau Password salah!");
             System.out.println();
             ctrMain.run();
         }
