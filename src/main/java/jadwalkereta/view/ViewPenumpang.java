@@ -19,11 +19,13 @@ public class ViewPenumpang {
     }
     
     public void menuPenumpang() {
-        System.out.println("#Menu Pengguna#");
-        System.out.println("1.  Booking Tiket");
-        System.out.println("2.  Kelola Profile");
-        System.out.println("3.  History Pembelian");
-        System.out.println("0.  Logout");
+        System.out.println();
+        System.out.println("###### Menu Pengguna ######");
+        System.out.println("1. \t Booking Tiket");
+        System.out.println("2. \t Kelola Profile");
+        System.out.println("3. \t History Pembelian");
+        System.out.println("0. \t Logout");
+        System.out.println();
         System.out.print("Pilih Menu : ");
     }
 }

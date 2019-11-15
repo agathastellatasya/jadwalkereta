@@ -14,6 +14,7 @@ public class ViewAdmin {
     Scanner input = new Scanner(System.in);
     
     public void menuAdmin() {
+        System.out.println();
         System.out.println("###### MENU ADMIN ######");
         System.out.println("1.  Kelola Akun");
         System.out.println("2.  Kelola Data Kota");

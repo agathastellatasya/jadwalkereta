@@ -5,44 +5,80 @@
  */
 package jadwalkereta.controller;
 
-import jadwalkereta.model.Penumpang;
 import jadwalkereta.model.User;
 import jadwalkereta.view.ViewLogin;
+
+import java.util.*;
 
 /**
  *
  * @author ASUS
  */
 public class ControllerLogin {
-    ViewLogin viewLogin;
-    User user;
-    Penumpang penumpang;
+    User user = new User();
     ControllerMain ctrMain;
+    ArrayList<User> users;
     
-    public ControllerLogin(ControllerMain ctr){
-        viewLogin = new ViewLogin();
+    public ControllerLogin(ControllerMain ctr, ArrayList<User> us){
         ctrMain = ctr;
+        users = us;
+    }
+
+    public int SuccessLogin(User u){
+        boolean found = false;
+        int i = 0;
+        int hasil = -99;
+        while (!found && (i<users.size())){
+            if (users.get(i).getEmail().equals(u.getEmail())){
+                if (users.get(i).getPassword().equals(u.getPassword())){
+                    found = true;
+                    hasil = i;
+                }
+            } else {
+                i++;
+            }
+        }
+
+        return hasil;
     }
     
     public void ControlLogin() {
+        ViewLogin viewLogin = new ViewLogin(user);
         viewLogin.menuLogin();
-        User user = new User(viewLogin.getEmail(),viewLogin.getPassword());
+        if (SuccessLogin(viewLogin.getUser()) != -99){
+            user = users.get(SuccessLogin(viewLogin.getUser()));
+            switch (user.getRole()){
+                case 1: {
+                    ControllerAdmin ctrAdmin = new ControllerAdmin(ctrMain);
+                    ctrAdmin.ControlMenuAdmin();
+                    break;
+                }
+
+                case 2: {
+                    ControllerPenumpang ctrPenumpang = new ControllerPenumpang(ctrMain);
+                    ctrPenumpang.ControlMenuPenumpang();
+                    break;
+                }
+            }
+        }
         
-        if(user.LoginFromJson(user.getEmail(), user.getPassword())==1){
-            ControllerAdmin ctrAdmin = new ControllerAdmin(user, ctrMain);
-            ctrAdmin.ControlMenuAdmin();
+        
+        // if(user.LoginFromJson(user.getEmail(), user.getPassword())==1){
+        //     ControllerAdmin ctrAdmin = new ControllerAdmin(user, ctrMain);
+        //     ctrAdmin.ControlMenuAdmin();
             
-        }
-        else if (user.LoginFromJson(user.getEmail(), user.getPassword())==2){
-            //Dosen dsn = new Dosen(user.getUsername()); 
-            ControllerPenumpang ctrPenumpang = new ControllerPenumpang(user);
-            ctrPenumpang.ControlMenuPenumpang();
+        // }
+        // else if (user.LoginFromJson(user.getEmail(), user.getPassword())==2){
+        //     //Dosen dsn = new Dosen(user.getUsername()); 
+        //     ControllerPenumpang ctrPenumpang = new ControllerPenumpang(user);
+        //     ctrPenumpang.ControlMenuPenumpang();
             
-        }
+        // }
          
         else {
+            System.out.println();
             System.out.println("Username atau Password Salah!");
-            ControllerMain ctrMain = new ControllerMain();
+            System.out.println();
             ctrMain.run();
         }
     }

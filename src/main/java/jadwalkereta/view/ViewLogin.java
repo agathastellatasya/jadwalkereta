@@ -7,15 +7,19 @@ package jadwalkereta.view;
 
 import java.util.Scanner;
 
+import jadwalkereta.model.User;
+
 /**
  *
  * @author ASUS
  */
 public class ViewLogin {
+    User user;
     private String email, password;   
 
-    public ViewLogin() {
+    public ViewLogin(User u) {
         // menuLogin();
+        user = u;
     }
     
     public void menuLogin(){
@@ -25,6 +29,8 @@ public class ViewLogin {
         email = input.nextLine();
         System.out.print("Password : ");
         password = input.nextLine();
+        user.setEmail(email);
+        user.setPassword(password);
     }
 
     public String getEmail() {
@@ -33,5 +39,9 @@ public class ViewLogin {
 
     public String getPassword() {
         return password;
+    }
+
+    public User getUser(){
+        return user;
     }
 }

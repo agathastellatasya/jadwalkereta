@@ -5,10 +5,12 @@
  */
 package jadwalkereta.controller;
 
+import jadwalkereta.view.ViewMain;
+import jadwalkereta.model.User;
+
 import java.util.*;
 import java.text.ParseException;
 
-import jadwalkereta.view.ViewMain;
 
 /**
  *
@@ -17,16 +19,17 @@ import jadwalkereta.view.ViewMain;
 public class ControllerMain {
     ViewMain viewMain;
     private int pilihan;
+    ArrayList<User> users;
     
-    public ControllerMain() {
+    public ControllerMain(ArrayList<User> u) {
         viewMain = new ViewMain();
+        users = u;
     }
     
     public void run() {
         // viewMain = new ViewMain();
         Scanner in = new Scanner(System.in);
         viewMain.menuMain();
-        // System.out.println(pilihan);
         
         do {
             pilihan = in.nextInt();
@@ -34,13 +37,13 @@ public class ControllerMain {
             switch(pilihan){
                 case 0: break;
                 case 1: {
-                    ControllerRegis ctrRegis = new ControllerRegis();
+                    ControllerRegis ctrRegis = new ControllerRegis(this, users);
                     ctrRegis.ControlRegister();
                     break;
                 }
     
                 case 2: {
-                    ControllerLogin ctrLogin = new ControllerLogin(this);
+                    ControllerLogin ctrLogin = new ControllerLogin(this, users);
                     ctrLogin.ControlLogin();
                     break;
                 }
@@ -52,14 +55,12 @@ public class ControllerMain {
                 }
             }
         } while (pilihan != 0);
-        
-        // System.out.println("BYE!");
     }
     
-    public static void main(String[] args) throws ParseException {
-        ControllerMain main = new ControllerMain();
-        main.run();
-    }
+    // public static void main(String[] args) throws ParseException {
+    //     ControllerMain main = new ControllerMain(users);
+    //     main.run();
+    // }
 
     private void elseif(boolean b) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -8,6 +8,7 @@ package jadwalkereta.controller;
 import jadwalkereta.model.User;
 import jadwalkereta.view.ViewRegister;
 
+import java.util.*;
 
 
 /**
@@ -15,16 +16,14 @@ import jadwalkereta.view.ViewRegister;
  * @author ASUS
  */
 public class ControllerRegis {
-    ControllerMain ctrMain;
     User user;
+    ControllerMain ctrMain;
+    ArrayList<User> users;
     
-    public ControllerRegis(User user){
-        ctrMain = new ControllerMain();
-        this.user = user;
-    }
-
-    ControllerRegis() {
-        
+    public ControllerRegis(ControllerMain ctr, ArrayList<User> u){
+        ctrMain = ctr;
+        users = u;
+        // this.user = user;
     }
     
     public void ControlRegister() {

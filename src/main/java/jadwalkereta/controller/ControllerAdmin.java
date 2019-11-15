@@ -5,10 +5,7 @@
  */
 package jadwalkereta.controller;
 
-import jadwalkereta.model.Admin;
-import jadwalkereta.model.User;
 import jadwalkereta.view.ViewAdmin;
-
 
 import java.util.*;
 
@@ -17,18 +14,10 @@ import java.util.*;
  * @author ASUS
  */
 public class ControllerAdmin {
-    String email;
-    User user;
-    Admin admin;
     ControllerMain ctrMain;
     
-    public ControllerAdmin(User user, ControllerMain ctr) {
-        this.user = user;
+    public ControllerAdmin(ControllerMain ctr) {
         ctrMain = ctr;
-    }
-    
-    ControllerAdmin(){
-        
     }
     
     public void ControlMenuAdmin() {
@@ -40,39 +29,74 @@ public class ControllerAdmin {
             pilihan = in.nextInt();
             System.out.println();
             switch (pilihan){
-                case 1:
-                    
+                case 0: break;
+                
+                case 1:{
+                    System.out.println("Pilihan 1");
+                    viewAdmin.menuAdmin();
                     break;
-                case 2:
-                    // ControlMenuAdmin();
+                }
+
+                case 2:{
+                    System.out.println("Pilihan 2");
+                    viewAdmin.menuAdmin();
                     break;
-                case 3:
-                    
+                }
+
+                case 3:{
+                    System.out.println("Pilihan 3");
+                    viewAdmin.menuAdmin();
                     break;
-                case 4:
+                }
+
+                case 4:{
+                    System.out.println("Pilihan 4");
+                    viewAdmin.menuAdmin();
                     break;
-                case 5:
-                    
+                }
+
+                case 5:{
+                    System.out.println("Pilihan 5");
+                    viewAdmin.menuAdmin();
                     break;
-                case 6:
-                    
+                }
+
+                case 6:{
+                    System.out.println("Pilihan 6");
+                    viewAdmin.menuAdmin();
                     break;
-                case 7:
+                }
+
+                case 7:{
+                    System.out.println("Pilihan 7");
+                    viewAdmin.menuAdmin();
                     break;
-                case 8:
-                    
+                }
+
+                case 8:{
+                    System.out.println("Pilihan 8");
+                    viewAdmin.menuAdmin();
                     break;
-                case 9:
-                    
+                }
+
+                case 9:{
+                    System.out.println("Pilihan 9");
+                    viewAdmin.menuAdmin();
                     break;
-                case 10:
-                    
+                }
+
+                case 10:{
+                    System.out.println("Pilihan 10");
+                    viewAdmin.menuAdmin();
                     break;
-                case 11:
-                    
+                }
+                
+                case 11:{
+                    System.out.println("Pilihan 11");
+                    viewAdmin.menuAdmin();
                     break;
-                case 0:
-                    break;
+                }
+
                 default:
                     System.out.println("Inputan Salah!");
                     System.out.println();

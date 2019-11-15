@@ -32,22 +32,28 @@ public class User {
     protected int role;
     
     public User() {
+        this.nik = " ";
+        this.nama = " ";
+        this.hp = " ";
+        this.email = " ";
+        this.password = " ";
+        this.role = 0;
     }
     
-    public User (String email, String password){
-        this.email = email;
-        this.password = password;
-    }
+    // public User (String email, String password){
+    //     this.email = email;
+    //     this.password = password;
+    // }
     
-    public User (String email){
-        this.email = email;
-    }
+    // public User (String email){
+    //     this.email = email;
+    // }
     
-    public User(String email, String password, int role) {
-        this.email = email;
-        this.password = password;
-        this.role = role;
-    }
+    // public User(String email, String password, int role) {
+    //     this.email = email;
+    //     this.password = password;
+    //     this.role = role;
+    // }
 
     public User(String nik, String nama, String hp, String email, String password, int role) {
         this.nik = nik;
@@ -209,6 +215,6 @@ public class User {
         }
         //System.out.println(role);
         return roles;
-}
+    }
  
 }

@@ -5,44 +5,60 @@
  */
 package jadwalkereta.controller;
 
-import jadwalkereta.model.Penumpang;
-import jadwalkereta.model.User;
 import jadwalkereta.view.ViewPenumpang;
+
+import java.util.*;
 
 /**
  *
  * @author ASUS
  */
 public class ControllerPenumpang {
-    String email;
-    User user;
-    Penumpang penumpang;
+    ControllerMain ctrMain;
 
-    public ControllerPenumpang(String email) {
-        this.email = email;
-    }
-
-    ControllerPenumpang(User user) {
-        this.user = user;
+    public ControllerPenumpang(ControllerMain ctr) {
+        ctrMain = ctr;
     }
     
-     public void ControlMenuPenumpang(){
+    public void ControlMenuPenumpang(){
+        Scanner in = new Scanner(System.in);
         ViewPenumpang viewPenumpang = new ViewPenumpang();
         viewPenumpang.menuPenumpang();
-        
-        if(viewPenumpang.getPilihan()==1){
-        }
-        else if(viewPenumpang.getPilihan()==2){
-            //System.out.println("wakwaw"
-        }
-        else if(viewPenumpang.getPilihan()==3){
-            //System.out.println("wakwaw");
-        }
-        
-        else if(viewPenumpang.getPilihan()==0){
-            System.exit(0);
-        }
-        
-    }
+        int pilihan;
 
+        do {
+            pilihan = in.nextInt();
+            System.out.println();
+            switch (pilihan){
+                case 0: break;
+                
+                case 1: {
+                    System.out.println("Pilihan 1");
+                    viewPenumpang.menuPenumpang();
+                    break;
+                }
+
+                case 2: {
+                    System.out.println("Pilihan 2");
+                    viewPenumpang.menuPenumpang();
+                    break;
+                }
+
+                case 3:{
+                    System.out.println("Pilihan 3");
+                    viewPenumpang.menuPenumpang();
+                    break;
+                }
+
+                default:{
+                    System.out.println("Inputan Salah!");
+                    System.out.println();
+                    viewPenumpang.menuPenumpang();
+                    break;
+                }
+            }    
+        } while (pilihan != 0);
+        
+        ctrMain.run();
+    }
 }
