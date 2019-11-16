@@ -9,7 +9,6 @@ import jadwalkereta.view.ViewMain;
 import jadwalkereta.model.User;
 
 import java.util.*;
-import java.text.ParseException;
 
 
 /**
@@ -37,14 +36,18 @@ public class ControllerMain {
             switch(pilihan){
                 case 0: break;
                 case 1: {
-                    ControllerRegis ctrRegis = new ControllerRegis(this, users);
-                    ctrRegis.ControlRegister();
+                    // ControllerRegis ctrRegis = new ControllerRegis(this, users);
+                    // ctrRegis.ControlRegister();
+                    ControllerUser ctrUser = new ControllerUser(this, users);
+                    ctrUser.register();
                     break;
                 }
     
                 case 2: {
-                    ControllerLogin ctrLogin = new ControllerLogin(this, users);
-                    ctrLogin.ControlLogin();
+                    // ControllerLogin ctrLogin = new ControllerLogin(this, users);
+                    // ctrLogin.ControlLogin();
+                    ControllerUser ctrUser = new ControllerUser(this, users);
+                    ctrUser.login();
                     break;
                 }
     
