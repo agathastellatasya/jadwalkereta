@@ -46,6 +46,12 @@ public class ControllerStation {
             ControlMenuStation();
             break;
         }
+
+        case 4: {
+            ViewDeleteStation();
+            ControlMenuStation();
+            break;
+        }
         case 99:
             ctrMain.run();
             break;
@@ -66,11 +72,8 @@ public class ControllerStation {
     }
 
     public void TambahStation(String kode, String nama){
-        boolean found = false;
-        for (int i = 0; i < stations.size() && !found; i++)
-            if (kode.equals(stations.get(i).getKode()))
-                found = true;
-        if (!found) {
+        int index = CheckStation(kode);
+        if (index<0) {
             stations.add(new Station(kode, nama));
             System.out.println("--------------------------------------------------------------");
             System.out.println("Stasiun Berhasil Ditambahkan");
@@ -82,23 +85,50 @@ public class ControllerStation {
         }
     }
 
-    public void ViewEditStation(){
-        System.out.println("#EDIT DATA STASIUN#");
-        System.out.print("Edit Stasiun : ");
-        String kode = input.next().split("_",2)[1];
+    public void ViewDeleteStation(){
+        System.out.println("#DELETE DATA STASIUN#");
+        System.out.print("Delete Stasiun : ");
+        String kode = input.next().split("_", 2)[1];
+        int index = CheckStation(kode);
+        if(index >= 0){
+            DeleteStation(index);
+            System.out.println("--------------------------------------------------------------");
+            System.out.println("Stasiun Berhasil Dihapus");
+            System.out.println("--------------------------------------------------------------");
+        }
+        else{
+            System.out.println("--------------------------------------------------------------");
+            System.out.println("Stasiun Gagal Dihapus");
+            System.out.println("--------------------------------------------------------------");
+        }
+    }
+
+    public void DeleteStation(int index)
+    {
+        stations.remove(index);
+    }
+
+    public int CheckStation(String kode){
         int i = 0;
         boolean found = false;
-        for(;i<stations.size()&&!found;++i){
-            System.out.println(i);
-            if (kode.equals(stations.get(i).getKode())){
+        for (; i < stations.size(); i++) {
+            if (kode.equals(stations.get(i).getKode())) {
                 found = true;
                 break;
             }
         }
+        if(found) return i;
+        else return -1;
+    }
+
+    public void ViewEditStation(){
+        System.out.println("#EDIT DATA STASIUN#");
+        System.out.print("Edit Stasiun : ");
+        String kode = input.next().split("_",2)[1];
+        int index = CheckStation(kode);
             
-        if(found){
-            System.out.println(i);
-            stations.remove(i);
+        if(index>=0){
+            DeleteStation(index);
             System.out.print("Kode Stasiun : ");
             kode = input.next();
             System.out.print("Nama Stasiun : ");
