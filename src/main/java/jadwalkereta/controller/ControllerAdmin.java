@@ -5,6 +5,7 @@
  */
 package jadwalkereta.controller;
 
+import jadwalkereta.model.User;
 import jadwalkereta.view.ViewAdmin;
 
 import java.util.*;
@@ -15,85 +16,25 @@ import java.util.*;
  */
 public class ControllerAdmin {
     ControllerMain ctrMain;
+    ArrayList<User> users;
+    ViewAdmin viewAdmin;
     
-    public ControllerAdmin(ControllerMain ctr) {
+    public ControllerAdmin(ControllerMain ctr, ViewAdmin vAdmin, ArrayList<User> u) {
         ctrMain = ctr;
+        users = u;
+        viewAdmin = vAdmin;
     }
     
     public void ControlMenuAdmin() {
         Scanner in = new Scanner(System.in);
-        ViewAdmin viewAdmin = new ViewAdmin();
-        viewAdmin.menuAdmin();
-        int pilihan;
         do {
-            pilihan = in.nextInt();
+            viewAdmin.menuAdmin();
             System.out.println();
-            switch (pilihan){
+            switch (viewAdmin.getPilihan()){
                 case 0: break;
                 
                 case 1:{
-                    System.out.println("Pilihan 1");
-                    viewAdmin.menuAdmin();
-                    break;
-                }
-
-                case 2:{
-                    System.out.println("Pilihan 2");
-                    viewAdmin.menuAdmin();
-                    break;
-                }
-
-                case 3:{
-                    System.out.println("Pilihan 3");
-                    viewAdmin.menuAdmin();
-                    break;
-                }
-
-                case 4:{
-                    System.out.println("Pilihan 4");
-                    viewAdmin.menuAdmin();
-                    break;
-                }
-
-                case 5:{
-                    System.out.println("Pilihan 5");
-                    viewAdmin.menuAdmin();
-                    break;
-                }
-
-                case 6:{
-                    System.out.println("Pilihan 6");
-                    viewAdmin.menuAdmin();
-                    break;
-                }
-
-                case 7:{
-                    System.out.println("Pilihan 7");
-                    viewAdmin.menuAdmin();
-                    break;
-                }
-
-                case 8:{
-                    System.out.println("Pilihan 8");
-                    viewAdmin.menuAdmin();
-                    break;
-                }
-
-                case 9:{
-                    System.out.println("Pilihan 9");
-                    viewAdmin.menuAdmin();
-                    break;
-                }
-
-                case 10:{
-                    System.out.println("Pilihan 10");
-                    viewAdmin.menuAdmin();
-                    break;
-                }
-                
-                case 11:{
-                    System.out.println("Pilihan 11");
-                    viewAdmin.menuAdmin();
+                    viewAdmin.menuKelolaAkun();
                     break;
                 }
 
@@ -103,9 +44,8 @@ public class ControllerAdmin {
                     viewAdmin.menuAdmin();
                     break;
             }
-        } while (pilihan != 0);
+        } while (viewAdmin.getPilihan() != 0);
 
         ctrMain.run();
     }
-    
 }

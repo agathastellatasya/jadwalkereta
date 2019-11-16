@@ -48,21 +48,18 @@ public class ViewUser{
             if (ctrUser.findNikInUsers(nik) != -99){
                 System.out.println("NIK sudah terdaftar!");
             }
-            // if (nikFoundInUser(nik)){
-            //     System.out.println("NIK sudah terdaftar!");
-            // }
-
         } while ((ctrUser.findNikInUsers(nik) != -99) || nik.length() != 16 || !(nik.matches("[0-9_]+")));
         user.setNik(nik);
         
         // VALIDASI NAMA
         do {
             System.out.print("Nama Lengkap : ");
-            nama = in.next();
-            if (!nama.matches("^[a-zA-Z\\\\s]*$")){
+            in.nextLine();
+            nama = in.nextLine();
+            if (!nama.matches("^[a-zA-Z\\\\s][a-zA-Z \\\\s]*$")){
                 System.out.println("Nama harus terdiri dari huruf semua!");
             }
-        } while (!nama.matches("^[a-zA-Z\\\\s]*$"));
+        } while (!nama.matches("^[a-zA-Z\\\\s][a-zA-Z \\\\s]*$"));
         user.setNama(nama);
         
         // VALIDASI HP

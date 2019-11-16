@@ -2,6 +2,7 @@ package jadwalkereta.controller;
 
 import jadwalkereta.model.User;
 import jadwalkereta.view.ViewUser;
+import jadwalkereta.view.ViewAdmin;
 
 import java.util.*;
 
@@ -76,7 +77,8 @@ public class ControllerUser{
             user = users.get(successLogin(viewUser.getUser()));
             switch (user.getRole()){
                 case 1: {
-                    ControllerAdmin ctrAdmin = new ControllerAdmin(ctrMain);
+                    ViewAdmin viewAdmin = new ViewAdmin(ctrMain,users);
+                    ControllerAdmin ctrAdmin = new ControllerAdmin(ctrMain,viewAdmin,users);
                     ctrAdmin.ControlMenuAdmin();
                     break;
                 }
