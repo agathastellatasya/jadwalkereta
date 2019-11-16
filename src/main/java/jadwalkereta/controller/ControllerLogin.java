@@ -5,6 +5,7 @@
  */
 package jadwalkereta.controller;
 
+import jadwalkereta.model.Station;
 import jadwalkereta.model.User;
 import jadwalkereta.view.ViewLogin;
 
@@ -17,11 +18,14 @@ import java.util.*;
 public class ControllerLogin {
     User user = new User();
     ArrayList<User> users;
+    ArrayList<Station> stations;
     ControllerMain ctrMain;
     
-    public ControllerLogin(ControllerMain ctr, ArrayList<User> us){
+    // Menambahkan parameter ArrayList<Station> s pada konstruktor
+    public ControllerLogin(ControllerMain ctr, ArrayList<User> us, ArrayList<Station> s){
         ctrMain = ctr;
         users = us;
+        stations =  s;
     }
 
     public int SuccessLogin(User u){
@@ -38,7 +42,6 @@ public class ControllerLogin {
                 i++;
             }
         }
-
         return hasil;
     }
     
@@ -49,7 +52,7 @@ public class ControllerLogin {
             user = users.get(SuccessLogin(viewLogin.getUser()));
             switch (user.getRole()){
                 case 1: {
-                    ControllerAdmin ctrAdmin = new ControllerAdmin(ctrMain);
+                    ControllerAdmin ctrAdmin = new ControllerAdmin(ctrMain, stations);
                     ctrAdmin.ControlMenuAdmin();
                     break;
                 }

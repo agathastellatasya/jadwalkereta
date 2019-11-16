@@ -26,14 +26,26 @@ public final class App {
 
         User admin = new User("1234567812345678", "Admin", "08986703456","admin", "admin", 1);
         User penumpang = new User("1234567812345679", "Test", "08986703450","test", "test", 2);
-        
 
         users.add(admin);
         users.add(penumpang);
 
-        // ------------------------------------------------
+        // Tambahan Adri
 
-        ControllerMain ctrMain = new ControllerMain(users);
+        ArrayList<Station> stations = new ArrayList<Station>();
+
+        Station jkt = new Station("SJK", "Jakarta");
+        Station bdg = new Station("SBD", "Bandung");
+
+        stations.add(jkt);
+        stations.add(bdg);
+
+        ///////////////////////////////////////////////////////////
+
+        // ------------------------------------------------
+        
+        // Tambah Parameter Station
+        ControllerMain ctrMain = new ControllerMain(users, stations);
         ctrMain.run();
     }
     

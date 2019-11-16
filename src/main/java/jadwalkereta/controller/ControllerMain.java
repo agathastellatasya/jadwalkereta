@@ -6,7 +6,7 @@
 package jadwalkereta.controller;
 
 import jadwalkereta.view.ViewMain;
-import jadwalkereta.model.User;
+import jadwalkereta.model.*;
 
 import java.util.*;
 import java.text.ParseException;
@@ -20,10 +20,13 @@ public class ControllerMain {
     ViewMain viewMain;
     private int pilihan;
     ArrayList<User> users;
-    
-    public ControllerMain(ArrayList<User> u) {
+    ArrayList<Station> stations;
+  
+    // Menambahkan parameter ArrayList<Station> s pada konstruktor
+    public ControllerMain(ArrayList<User> u, ArrayList<Station> s) {
         viewMain = new ViewMain();
         users = u;
+        stations = s;
     }
     
     public void run() {
@@ -43,7 +46,7 @@ public class ControllerMain {
                 }
     
                 case 2: {
-                    ControllerLogin ctrLogin = new ControllerLogin(this, users);
+                    ControllerLogin ctrLogin = new ControllerLogin(this, users, stations);
                     ctrLogin.ControlLogin();
                     break;
                 }

@@ -5,6 +5,7 @@
  */
 package jadwalkereta.controller;
 
+import jadwalkereta.model.Station;
 import jadwalkereta.view.ViewAdmin;
 
 import java.util.*;
@@ -15,9 +16,12 @@ import java.util.*;
  */
 public class ControllerAdmin {
     ControllerMain ctrMain;
+    ArrayList<Station> stations;
     
-    public ControllerAdmin(ControllerMain ctr) {
+    // Menambahkan parameter ArrayList<Station> s pada konstruktor
+    public ControllerAdmin(ControllerMain ctr, ArrayList<Station> s) {
         ctrMain = ctr;
+        stations =  s;
     }
     
     public void ControlMenuAdmin() {
@@ -56,8 +60,8 @@ public class ControllerAdmin {
                 }
 
                 case 5:{
-                    System.out.println("Pilihan 5");
-                    viewAdmin.menuAdmin();
+                    ControllerStation ctrStation = new ControllerStation(ctrMain, stations);
+                    ctrStation.ControlMenuStation();
                     break;
                 }
 
