@@ -84,7 +84,7 @@ public class ControllerUser{
                 }
 
                 case 2: {
-                    ControllerPenumpang ctrPenumpang = new ControllerPenumpang(ctrMain,user);
+                    ControllerPenumpang ctrPenumpang = new ControllerPenumpang(ctrMain,users,user);
                     ctrPenumpang.ControlMenuPenumpang();
                     break;
                 }

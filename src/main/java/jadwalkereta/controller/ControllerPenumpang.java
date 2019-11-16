@@ -17,50 +17,50 @@ import java.util.*;
 public class ControllerPenumpang {
     private ControllerMain ctrMain;
     private User user;
+    private ArrayList<User> users;
 
-    public ControllerPenumpang(ControllerMain ctr, User u) {
+    public ControllerPenumpang(ControllerMain ctr, ArrayList<User> us, User u) {
         ctrMain = ctr;
         user = u;
+        users = us;
     }
     
     public void ControlMenuPenumpang(){
         Scanner in = new Scanner(System.in);
-        ViewPenumpang viewPenumpang = new ViewPenumpang(user);
-        viewPenumpang.menuPenumpang();
-        int pilihan;
+        ViewPenumpang viewPenumpang = new ViewPenumpang(ctrMain,users,user);
 
         do {
-            pilihan = in.nextInt();
+            viewPenumpang.menuPenumpang();
             System.out.println();
-            switch (pilihan){
+            switch (viewPenumpang.getPilihan()){
                 case 0: break;
                 
                 case 1: {
                     System.out.println("Pilihan 1");
-                    viewPenumpang.menuPenumpang();
+                    // viewPenumpang.menuPenumpang();
                     break;
                 }
 
                 case 2: {
-                    System.out.println("Pilihan 2");
-                    viewPenumpang.menuPenumpang();
+                    viewPenumpang.kelolaProfile();
+                    // viewPenumpang.menuPenumpang();
                     break;
                 }
 
                 case 3:{
                     System.out.println("Pilihan 3");
-                    viewPenumpang.menuPenumpang();
+                    // viewPenumpang.menuPenumpang();
                     break;
                 }
 
                 default:{
                     System.out.println("Inputan Salah!");
                     System.out.println();
-                    viewPenumpang.menuPenumpang();
+                    // viewPenumpang.menuPenumpang();
                     break;
                 }
             }    
-        } while (pilihan != 0);
+        } while (viewPenumpang.getPilihan() != 0);
         
         ctrMain.run();
     }

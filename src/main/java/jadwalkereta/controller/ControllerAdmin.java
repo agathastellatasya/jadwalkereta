@@ -41,7 +41,6 @@ public class ControllerAdmin {
                 default:
                     System.out.println("Inputan Salah!");
                     System.out.println();
-                    viewAdmin.menuAdmin();
                     break;
             }
         } while (viewAdmin.getPilihan() != 0);
