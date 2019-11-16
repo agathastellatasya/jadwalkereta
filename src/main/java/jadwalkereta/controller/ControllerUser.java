@@ -3,20 +3,23 @@ package jadwalkereta.controller;
 import jadwalkereta.model.User;
 import jadwalkereta.view.ViewUser;
 import jadwalkereta.view.ViewAdmin;
+import jadwalkereta.model.Station;
 
 import java.util.*;
 
 public class ControllerUser{
     ControllerMain ctrMain;
     ArrayList<User> users;
+    ArrayList<Station> stations;
     User user = new User();
 
-    public ControllerUser(ControllerMain ctr, ArrayList<User> u){
+    public ControllerUser(final ControllerMain ctr, final ArrayList<User> u, final ArrayList<Station> s){
         users = u;
         ctrMain = ctr;
+        stations =  s;
     }
 
-    public int findNikInUsers(String nik){
+    public int findNikInUsers(final String nik){
         boolean found = false;
         int i = 0;
         int hasil = -99;
@@ -33,7 +36,7 @@ public class ControllerUser{
         return hasil;
     }
 
-    public int findEmailInUsers(String email){
+    public int findEmailInUsers(final String email){
         boolean found = false;
         int i = 0;
         int hasil = -99;
@@ -50,7 +53,7 @@ public class ControllerUser{
         return hasil;
     }
 
-    public int successLogin(User u){
+    public int successLogin(final User u){
         boolean found = false;
         int i = 0;
         int hasil = -99;
@@ -71,20 +74,20 @@ public class ControllerUser{
     }
 
     public void login(){
-        ViewUser viewUser = new ViewUser(ctrMain,users,user);
+        final ViewUser viewUser = new ViewUser(ctrMain,users,user,stations);
         viewUser.menuLogin();
         if (successLogin(viewUser.getUser()) != -99){
             user = users.get(successLogin(viewUser.getUser()));
             switch (user.getRole()){
                 case 1: {
-                    ViewAdmin viewAdmin = new ViewAdmin(ctrMain,users);
-                    ControllerAdmin ctrAdmin = new ControllerAdmin(ctrMain,viewAdmin,users);
+                    final ViewAdmin viewAdmin = new ViewAdmin(ctrMain,users,stations);
+                    final ControllerAdmin ctrAdmin = new ControllerAdmin(ctrMain,viewAdmin,users,stations);
                     ctrAdmin.ControlMenuAdmin();
                     break;
                 }
 
                 case 2: {
-                    ControllerPenumpang ctrPenumpang = new ControllerPenumpang(ctrMain,users,user);
+                    final ControllerPenumpang ctrPenumpang = new ControllerPenumpang(ctrMain,users,user);
                     ctrPenumpang.ControlMenuPenumpang();
                     break;
                 }
@@ -98,7 +101,7 @@ public class ControllerUser{
     }
 
     public void register(){
-        ViewUser viewUser = new ViewUser(ctrMain,users,user);
+        final ViewUser viewUser = new ViewUser(ctrMain,users,user,stations);
         viewUser.menuRegis();
         users.add(viewUser.getUser());
 
@@ -108,7 +111,7 @@ public class ControllerUser{
         ctrMain.run();
     }
 
-    public void editUser(String nik, String nama, String hp, String email, String pass){
+    public void editUser(final String nik, final String nama, final String hp, final String email, final String pass){
         users.get(findNikInUsers(nik)).setNama(nama);
         users.get(findNikInUsers(nik)).setHp(hp);
         users.get(findNikInUsers(nik)).setEmail(email);

@@ -3,18 +3,21 @@ package jadwalkereta.view;
 import jadwalkereta.model.User;
 import jadwalkereta.controller.ControllerUser;
 import jadwalkereta.controller.ControllerMain;
+import jadwalkereta.model.Station;
 
 import java.util.*;
 
 public class ViewUser{
     User user = new User();
     ArrayList<User> users;
+    ArrayList<Station> stations;
     ControllerMain ctrMain;
 
-    public ViewUser(ControllerMain ctr, ArrayList<User> users, User u){
+    public ViewUser(ControllerMain ctr, ArrayList<User> users, User u, final ArrayList<Station> s){
         user = u;
         this.users = users;
         ctrMain = ctr;
+        stations =  s;
     }
 
     public User getUser(){
@@ -34,7 +37,7 @@ public class ViewUser{
     public void menuRegis(){
         String nik, nama, email, hp, password, repassword;
         Scanner in = new Scanner(System.in);
-        ControllerUser ctrUser = new ControllerUser(ctrMain,users);
+        ControllerUser ctrUser = new ControllerUser(ctrMain,users,stations);
 
         // VALIDASI NIK
         do {

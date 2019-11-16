@@ -6,7 +6,7 @@
 package jadwalkereta.controller;
 
 import jadwalkereta.view.ViewMain;
-import jadwalkereta.model.User;
+import jadwalkereta.model.*;
 
 import java.util.*;
 
@@ -19,10 +19,13 @@ public class ControllerMain {
     ViewMain viewMain;
     private int pilihan;
     ArrayList<User> users;
-    
-    public ControllerMain(ArrayList<User> u) {
+    ArrayList<Station> stations;
+  
+    // Menambahkan parameter ArrayList<Station> s pada konstruktor
+    public ControllerMain(ArrayList<User> u, ArrayList<Station> s) {
         viewMain = new ViewMain();
         users = u;
+        stations = s;
     }
     
     public void run() {
@@ -38,16 +41,21 @@ public class ControllerMain {
                 case 1: {
                     // ControllerRegis ctrRegis = new ControllerRegis(this, users);
                     // ctrRegis.ControlRegister();
-                    ControllerUser ctrUser = new ControllerUser(this, users);
+                    ControllerUser ctrUser = new ControllerUser(this, users, stations);
                     ctrUser.register();
                     break;
                 }
     
                 case 2: {
+/*<<<<<<< HEAD*/
                     // ControllerLogin ctrLogin = new ControllerLogin(this, users);
                     // ctrLogin.ControlLogin();
-                    ControllerUser ctrUser = new ControllerUser(this, users);
+                    ControllerUser ctrUser = new ControllerUser(this, users, stations);
                     ctrUser.login();
+/*=======
+                    ControllerLogin ctrLogin = new ControllerLogin(this, users, stations);
+                    ctrLogin.ControlLogin();
+>>>>>>> 4143a1eeba3affa943ec957e334cd5b40c71acbf*/
                     break;
                 }
     

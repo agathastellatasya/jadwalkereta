@@ -7,7 +7,7 @@ package jadwalkereta.controller;
 
 import jadwalkereta.model.User;
 import jadwalkereta.view.ViewPenumpang;
-
+import jadwalkereta.model.Station;
 import java.util.*;
 
 /**
@@ -17,6 +17,7 @@ import java.util.*;
 public class ControllerPenumpang {
     private ControllerMain ctrMain;
     private User user;
+    ArrayList<Station> stations;
     private ArrayList<User> users;
 
     public ControllerPenumpang(ControllerMain ctr, ArrayList<User> us, User u) {
@@ -27,7 +28,7 @@ public class ControllerPenumpang {
     
     public void ControlMenuPenumpang(){
         Scanner in = new Scanner(System.in);
-        ViewPenumpang viewPenumpang = new ViewPenumpang(ctrMain,users,user);
+        ViewPenumpang viewPenumpang = new ViewPenumpang(ctrMain,users,user,stations);
 
         do {
             viewPenumpang.menuPenumpang();

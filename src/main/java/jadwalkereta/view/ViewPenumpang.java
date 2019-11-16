@@ -8,6 +8,7 @@ package jadwalkereta.view;
 import jadwalkereta.model.User;
 import jadwalkereta.controller.ControllerMain;
 import jadwalkereta.controller.ControllerUser;
+import jadwalkereta.model.Station;
 
 import java.util.*;
 
@@ -19,13 +20,15 @@ public class ViewPenumpang {
     private User user;
     ControllerMain ctrMain;
     ArrayList<User> users;
+    ArrayList<Station> stations;
     private int pilihan;
     Scanner input = new Scanner(System.in);
     
-    public ViewPenumpang(ControllerMain ctr, ArrayList<User> us, User u){
+    public ViewPenumpang(ControllerMain ctr, ArrayList<User> us, User u, final ArrayList<Station> s){
         user = u;
         ctrMain = ctr;
         users = us;
+        stations =  s;
     }
 
     public int getPilihan(){
@@ -48,7 +51,7 @@ public class ViewPenumpang {
 
     public void kelolaProfile(){
         String nama, hp, email, pass, repass;
-        ControllerUser ctrUser = new ControllerUser(ctrMain,users);
+        ControllerUser ctrUser = new ControllerUser(ctrMain,users,stations);
 
         System.out.println("###### KELOLA PROFILE BY PENUMPANG ######");
         System.out.println("------ DATA PENGGUNA ------");

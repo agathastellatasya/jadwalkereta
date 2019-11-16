@@ -8,6 +8,7 @@ package jadwalkereta.view;
 import jadwalkereta.model.User;
 import jadwalkereta.controller.ControllerUser;
 import jadwalkereta.controller.ControllerMain;
+import jadwalkereta.model.Station;
 
 import java.util.*;
 /**
@@ -20,10 +21,12 @@ public class ViewAdmin {
     ControllerMain ctrMain;
     ArrayList<User> users;
     int pilihan;
+    ArrayList<Station> stations;
 
-    public ViewAdmin(ControllerMain ctrM, ArrayList<User> u){
+    public ViewAdmin(ControllerMain ctrM, ArrayList<User> u, final ArrayList<Station> s){
         ctrMain = ctrM;
         users = u;
+        stations =  s;
     }
 
     public int getPilihan(){
@@ -43,7 +46,7 @@ public class ViewAdmin {
     }
 
     public void menuKelolaAkun(){
-        ControllerUser ctrUser = new ControllerUser(ctrMain,users);
+        ControllerUser ctrUser = new ControllerUser(ctrMain,users,stations);
         System.out.println("###### KELOLA AKUN BY ADMIN ######");
         System.out.println();
         System.out.print("Masukkan nomor KTP : ");
