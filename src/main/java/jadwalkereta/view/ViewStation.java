@@ -21,13 +21,13 @@ public class ViewStation {
         System.out.println("4.  Delete Data Stasiun");
         System.out.println("99. Menu Utama");
         System.out.print("Pilih Menu : ");
-        pilihan = input.nextInt();
+        pilihan = Integer.valueOf(input.nextLine());
     }
 
     public void menuTambah() {
         System.out.println("#TAMBAH DATA STASIUN#");
         System.out.print("Tambah Stasiun : ");
-        String request = input.next();
+        String request = input.nextLine();
         String kode = request.substring(0,request.indexOf(' '));
         String nama = request.substring(request.indexOf(' ')+1);
         ctrStation.TambahStation(kode, nama);
@@ -36,7 +36,7 @@ public class ViewStation {
     public void menuDelete() {
         System.out.println("#DELETE DATA STASIUN#");
         System.out.print("Delete Stasiun : ");
-        String kode = input.next().split("_", 2)[1];
+        String kode = input.nextLine().split("_", 2)[1];
         int index = ctrStation.CheckStation(kode);
         if (index >= 0) {
             ctrStation.DeleteStation(index);
@@ -62,15 +62,15 @@ public class ViewStation {
     public void menuEdit() {
         System.out.println("#EDIT DATA STASIUN#");
         System.out.print("Edit Stasiun : ");
-        String kode = input.next().split("_", 2)[1];
+        String kode = input.nextLine().split("_", 2)[1];
         int index = ctrStation.CheckStation(kode);
 
         if (index >= 0) {
             ctrStation.DeleteStation(index);
             System.out.print("Kode Stasiun : ");
-            kode = input.next();
+            kode = input.nextLine();
             System.out.print("Nama Stasiun : ");
-            String nama = input.next();
+            String nama = input.nextLine();
             ctrStation.TambahStation(kode, nama);
 
         } else {
