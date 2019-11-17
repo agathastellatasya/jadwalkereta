@@ -5,6 +5,8 @@
  */
 package jadwalkereta.controller;
 
+import jadwalkereta.model.City;
+import jadwalkereta.model.Rute;
 import jadwalkereta.model.User;
 import jadwalkereta.model.Station;
 import jadwalkereta.view.ViewAdmin;
@@ -22,6 +24,8 @@ public class ControllerAdmin {
     ViewAdmin viewAdmin;
     // Menambahkan parameter ArrayList<Station> s pada konstruktor
     ArrayList<Station> stations;
+    ArrayList<City> cities;
+    ArrayList<Rute> rute;
     
     public ControllerAdmin(ControllerMain ctr) {
         ctrMain = ctr;
@@ -40,6 +44,16 @@ public class ControllerAdmin {
                     break;
                 case 1:{
                     viewAdmin.menuKelolaAkun();
+                    break;
+                }
+		case 2:{
+                    ControllerCity ctrCity = new ControllerCity(this);
+                    ctrCity.ControlMenuCity();
+                    break;
+                }
+		case 4:{
+                    ControllerRute ctrRute = new ControllerRute(this);
+                    ctrRute.ControlMenuRute();
                     break;
                 }
                 case 5:{

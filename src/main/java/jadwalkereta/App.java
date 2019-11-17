@@ -38,13 +38,24 @@ public final class App {
 
         stations.add(jkt);
         stations.add(bdg);
+		
+	// Tambahan Husni #20191117
+		
+	ArrayList<City> cities = new ArrayList<City>();
+        ArrayList<Rute> rute = new ArrayList<Rute>();
+
+        City Jakarta = new City("JKT", "Jakarta");
+        City Bandung = new City("BDG", "Bandung");
+
+        cities.add(Jakarta);
+        cities.add(Bandung);
 
         ///////////////////////////////////////////////////////////
 
         // ------------------------------------------------
         
         // Tambah Parameter Station
-        ControllerMain ctrMain = new ControllerMain(users, stations);
+        ControllerMain ctrMain = new ControllerMain(users, stations, cities, rute);
         ctrMain.run();
     }
     
