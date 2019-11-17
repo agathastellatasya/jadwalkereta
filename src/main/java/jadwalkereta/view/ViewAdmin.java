@@ -52,7 +52,6 @@ public class ViewAdmin {
         System.out.print("Masukkan nomor KTP : ");
         input.nextLine();
         nik = input.nextLine();
-        System.out.println(nik);
         if (ctrUser.findNikInUsers(nik) != -99){
             User u = users.get(ctrUser.findNikInUsers(nik));
             String nama, hp, email, pass, repass;
