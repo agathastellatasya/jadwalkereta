@@ -31,13 +31,13 @@ public class ControllerAdmin {
     public ControllerMain getControllerMain(){ return ctrMain; }
     
     public void ControlMenuAdmin() {
-        Scanner in = new Scanner(System.in);
         do {
             viewAdmin.menuAdmin();
             System.out.println();
             switch (viewAdmin.getPilihan()){
-                case 0: break;
-                
+                case 0: 
+                    ctrMain.run();
+                    break;
                 case 1:{
                     viewAdmin.menuKelolaAkun();
                     break;
@@ -56,7 +56,5 @@ public class ControllerAdmin {
                     break;
             }
         } while (viewAdmin.getPilihan() != 0);
-
-        ctrMain.run();
     }
 }

@@ -5,11 +5,9 @@
  */
 package jadwalkereta.view;
 
-import jadwalkereta.model.User;
+import jadwalkereta.model.*;
 import jadwalkereta.controller.ControllerUser;
 import jadwalkereta.controller.ControllerMain;
-import jadwalkereta.controller.ControllerStation;
-import jadwalkereta.model.Station;
 
 import java.util.*;
 /**

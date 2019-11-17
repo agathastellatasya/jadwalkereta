@@ -29,7 +29,7 @@ public class ControllerMain {
     }
 
     public ArrayList<User> getUsers() { return users; }
-    public ArrayList<Station> getStation() { return stations; }
+    public ArrayList<Station> getStations() { return stations; }
     
     public void run() {
         Scanner in = new Scanner(System.in);
@@ -61,9 +61,9 @@ public class ControllerMain {
         } while (pilihan != 0);
     }
 
-    private void elseif(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    // private void elseif(boolean b) {
+    //     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    // }
 
     
 }
