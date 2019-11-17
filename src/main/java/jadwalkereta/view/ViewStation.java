@@ -27,7 +27,7 @@ public class ViewStation {
     public void menuTambah() {
         System.out.println("#TAMBAH DATA STASIUN#");
         System.out.print("Tambah Stasiun : ");
-        String request = input.nextLine();
+        String request = input.next();
         String kode = request.substring(0,request.indexOf(' '));
         String nama = request.substring(request.indexOf(' ')+1);
         ctrStation.TambahStation(kode, nama);
