@@ -19,15 +19,18 @@ public class ControllerStation {
 
     ArrayList<Station> stations;
     ControllerMain ctrMain;
+    ControllerAdmin ctrAdmin;
+    ViewStation viewStation;
     Scanner input = new Scanner(System.in);
 
-    public ControllerStation(ControllerMain main, ArrayList<Station> s) {
-        ctrMain = main;
-        stations = s;
+    public ControllerStation(ControllerAdmin admin) {
+        ctrAdmin = admin;
+        ctrMain = ctrAdmin.getControllerMain();
+        stations = ctrMain.getStation();
     }
 
     public void ControlMenuStation() {
-        ViewStation viewStation = new ViewStation();
+        if(viewStation == null) viewStation = new ViewStation();
         viewStation.menuStation();
 
         switch (viewStation.getPilihan()) {
@@ -53,7 +56,7 @@ public class ControllerStation {
             break;
         }
         case 99:
-            ctrMain.run();
+            ctrAdmin.ControlMenuAdmin();
             break;
         default:
             System.out.println("Inputan Salah!");
@@ -66,8 +69,10 @@ public class ControllerStation {
     public void ViewTambahStation(){
         System.out.println("#TAMBAH DATA STASIUN#");
         System.out.print("Tambah Stasiun : ");
-        String kode = input.next();
-        String nama = input.next();
+        String request = input.nextLine();
+        String kode = request.substring(0,request.indexOf(' '));
+        String nama = request.substring(request.indexOf(' ')+1);
+        
         TambahStation(kode, nama);
     }
 

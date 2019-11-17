@@ -17,21 +17,21 @@ import java.util.*;
  */
 public class ControllerAdmin {
     ControllerMain ctrMain;
+    ControllerStation ctrStation;
     ArrayList<User> users;
     ViewAdmin viewAdmin;
     // Menambahkan parameter ArrayList<Station> s pada konstruktor
     ArrayList<Station> stations;
     
-    public ControllerAdmin(final ControllerMain ctr, final ViewAdmin vAdmin, final ArrayList<User> u, final ArrayList<Station> s) {
+    public ControllerAdmin(ControllerMain ctr) {
         ctrMain = ctr;
-        users = u;
-        viewAdmin = vAdmin;
-        ctrMain = ctr;
-        stations =  s;
+        viewAdmin = new ViewAdmin(ctr);
     }
+
+    public ControllerMain getControllerMain(){ return ctrMain; }
     
     public void ControlMenuAdmin() {
-        final Scanner in = new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
         do {
             viewAdmin.menuAdmin();
             System.out.println();
@@ -43,7 +43,9 @@ public class ControllerAdmin {
                     break;
                 }
                 case 5:{
-                    final ControllerStation ctrStation = new ControllerStation(ctrMain, stations);
+                    if(ctrStation == null ){
+                        ctrStation = new ControllerStation(this);
+                    }
                     ctrStation.ControlMenuStation();
                     break;
                 }

@@ -20,15 +20,13 @@ public class ViewPenumpang {
     private User user;
     ControllerMain ctrMain;
     ArrayList<User> users;
-    ArrayList<Station> stations;
     private int pilihan;
     Scanner input = new Scanner(System.in);
     
-    public ViewPenumpang(ControllerMain ctr, ArrayList<User> us, User u, final ArrayList<Station> s){
+    public ViewPenumpang(ControllerMain ctr, User u){
         user = u;
         ctrMain = ctr;
-        users = us;
-        stations =  s;
+        users =ctrMain.getUsers();
     }
 
     public int getPilihan(){
@@ -51,7 +49,7 @@ public class ViewPenumpang {
 
     public void kelolaProfile(){
         String nama, hp, email, pass, repass;
-        ControllerUser ctrUser = new ControllerUser(ctrMain,users,stations);
+        ControllerUser ctrUser = new ControllerUser(ctrMain);
 
         System.out.println("###### KELOLA PROFILE BY PENUMPANG ######");
         System.out.println("------ DATA PENGGUNA ------");

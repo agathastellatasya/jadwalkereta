@@ -9,15 +9,11 @@ import java.util.*;
 
 public class ViewUser{
     User user = new User();
-    ArrayList<User> users;
-    ArrayList<Station> stations;
     ControllerMain ctrMain;
 
-    public ViewUser(ControllerMain ctr, ArrayList<User> users, User u, final ArrayList<Station> s){
-        user = u;
-        this.users = users;
+    public ViewUser(ControllerMain ctr, User u){
         ctrMain = ctr;
-        stations =  s;
+        user = u;
     }
 
     public User getUser(){
@@ -26,7 +22,6 @@ public class ViewUser{
 
     public void menuLogin(){
         Scanner input = new Scanner(System.in);
-
         System.out.println("###### LOGIN ######");
         System.out.print("Email : ");
         user.setEmail(input.nextLine());
@@ -37,7 +32,7 @@ public class ViewUser{
     public void menuRegis(){
         String nik, nama, email, hp, password, repassword;
         Scanner in = new Scanner(System.in);
-        ControllerUser ctrUser = new ControllerUser(ctrMain,users,stations);
+        ControllerUser ctrUser = new ControllerUser(ctrMain);
 
         // VALIDASI NIK
         do {

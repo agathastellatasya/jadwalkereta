@@ -10,16 +10,14 @@ import java.util.*;
 public class ControllerUser{
     ControllerMain ctrMain;
     ArrayList<User> users;
-    ArrayList<Station> stations;
     User user = new User();
 
-    public ControllerUser(final ControllerMain ctr, final ArrayList<User> u, final ArrayList<Station> s){
-        users = u;
+    public ControllerUser(ControllerMain ctr){
         ctrMain = ctr;
-        stations =  s;
+        users = ctrMain.getUsers();
     }
 
-    public int findNikInUsers(final String nik){
+    public int findNikInUsers(String nik){
         boolean found = false;
         int i = 0;
         int hasil = -99;
@@ -32,11 +30,10 @@ public class ControllerUser{
                 i++;
             }
         }
-
         return hasil;
     }
 
-    public int findEmailInUsers(final String email){
+    public int findEmailInUsers(String email){
         boolean found = false;
         int i = 0;
         int hasil = -99;
@@ -53,7 +50,7 @@ public class ControllerUser{
         return hasil;
     }
 
-    public int successLogin(final User u){
+    public int successLogin(User u){
         boolean found = false;
         int i = 0;
         int hasil = -99;
@@ -69,25 +66,23 @@ public class ControllerUser{
                 i++;
             }
         }
-    
         return hasil;
     }
 
     public void login(){
-        final ViewUser viewUser = new ViewUser(ctrMain,users,user,stations);
+        ViewUser viewUser = new ViewUser(ctrMain, user);
         viewUser.menuLogin();
         if (successLogin(viewUser.getUser()) != -99){
             user = users.get(successLogin(viewUser.getUser()));
             switch (user.getRole()){
                 case 1: {
-                    final ViewAdmin viewAdmin = new ViewAdmin(ctrMain,users,stations);
-                    final ControllerAdmin ctrAdmin = new ControllerAdmin(ctrMain,viewAdmin,users,stations);
+                    ControllerAdmin ctrAdmin = new ControllerAdmin(ctrMain);
                     ctrAdmin.ControlMenuAdmin();
                     break;
                 }
 
                 case 2: {
-                    final ControllerPenumpang ctrPenumpang = new ControllerPenumpang(ctrMain,users,user);
+                    ControllerPenumpang ctrPenumpang = new ControllerPenumpang(ctrMain, user);
                     ctrPenumpang.ControlMenuPenumpang();
                     break;
                 }
@@ -101,17 +96,15 @@ public class ControllerUser{
     }
 
     public void register(){
-        final ViewUser viewUser = new ViewUser(ctrMain,users,user,stations);
+        ViewUser viewUser = new ViewUser(ctrMain,user);
         viewUser.menuRegis();
         users.add(viewUser.getUser());
-
         System.out.println("Anda sudah berhasil didaftarkan!");
         System.out.println();
-        
         ctrMain.run();
     }
 
-    public void editUser(final String nik, final String nama, final String hp, final String email, final String pass){
+    public void editUser(String nik, String nama, String hp, String email, String pass){
         users.get(findNikInUsers(nik)).setNama(nama);
         users.get(findNikInUsers(nik)).setHp(hp);
         users.get(findNikInUsers(nik)).setEmail(email);
