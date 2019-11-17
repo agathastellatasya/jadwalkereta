@@ -3,6 +3,7 @@ package jadwalkereta.controller;
 import jadwalkereta.model.User;
 import jadwalkereta.view.ViewUser;
 import jadwalkereta.view.ViewAdmin;
+import jadwalkereta.model.Station;
 
 import java.util.*;
 
@@ -11,9 +12,9 @@ public class ControllerUser{
     ArrayList<User> users;
     User user = new User();
 
-    public ControllerUser(ControllerMain ctr, ArrayList<User> u){
-        users = u;
+    public ControllerUser(ControllerMain ctr){
         ctrMain = ctr;
+        users = ctrMain.getUsers();
     }
 
     public int findNikInUsers(String nik){
@@ -29,7 +30,6 @@ public class ControllerUser{
                 i++;
             }
         }
-
         return hasil;
     }
 
@@ -66,25 +66,23 @@ public class ControllerUser{
                 i++;
             }
         }
-    
         return hasil;
     }
 
     public void login(){
-        ViewUser viewUser = new ViewUser(ctrMain,users,user);
+        ViewUser viewUser = new ViewUser(ctrMain, user);
         viewUser.menuLogin();
         if (successLogin(viewUser.getUser()) != -99){
             user = users.get(successLogin(viewUser.getUser()));
             switch (user.getRole()){
                 case 1: {
-                    ViewAdmin viewAdmin = new ViewAdmin(ctrMain,users);
-                    ControllerAdmin ctrAdmin = new ControllerAdmin(ctrMain,viewAdmin,users);
+                    ControllerAdmin ctrAdmin = new ControllerAdmin(ctrMain);
                     ctrAdmin.ControlMenuAdmin();
                     break;
                 }
 
                 case 2: {
-                    ControllerPenumpang ctrPenumpang = new ControllerPenumpang(ctrMain,users,user);
+                    ControllerPenumpang ctrPenumpang = new ControllerPenumpang(ctrMain, user);
                     ctrPenumpang.ControlMenuPenumpang();
                     break;
                 }
@@ -98,13 +96,11 @@ public class ControllerUser{
     }
 
     public void register(){
-        ViewUser viewUser = new ViewUser(ctrMain,users,user);
+        ViewUser viewUser = new ViewUser(ctrMain,user);
         viewUser.menuRegis();
         users.add(viewUser.getUser());
-
         System.out.println("Anda sudah berhasil didaftarkan!");
         System.out.println();
-        
         ctrMain.run();
     }
 

@@ -6,6 +6,7 @@
 package jadwalkereta.controller;
 
 import jadwalkereta.model.User;
+import jadwalkereta.model.Station;
 import jadwalkereta.view.ViewAdmin;
 
 import java.util.*;
@@ -16,14 +17,18 @@ import java.util.*;
  */
 public class ControllerAdmin {
     ControllerMain ctrMain;
+    ControllerStation ctrStation;
     ArrayList<User> users;
     ViewAdmin viewAdmin;
+    // Menambahkan parameter ArrayList<Station> s pada konstruktor
+    ArrayList<Station> stations;
     
-    public ControllerAdmin(ControllerMain ctr, ViewAdmin vAdmin, ArrayList<User> u) {
+    public ControllerAdmin(ControllerMain ctr) {
         ctrMain = ctr;
-        users = u;
-        viewAdmin = vAdmin;
+        viewAdmin = new ViewAdmin(ctr);
     }
+
+    public ControllerMain getControllerMain(){ return ctrMain; }
     
     public void ControlMenuAdmin() {
         Scanner in = new Scanner(System.in);
@@ -35,6 +40,13 @@ public class ControllerAdmin {
                 
                 case 1:{
                     viewAdmin.menuKelolaAkun();
+                    break;
+                }
+                case 5:{
+                    if(ctrStation == null ){
+                        ctrStation = new ControllerStation(this);
+                    }
+                    ctrStation.ControlMenuStation();
                     break;
                 }
 
