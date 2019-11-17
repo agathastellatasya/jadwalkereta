@@ -57,12 +57,6 @@ public class ControllerStation {
         }
         case 99:
             ctrAdmin.ControlMenuAdmin();
-            try{
-                this.finalize();
-            }
-            catch(Throwable ex){
-                ex.printStackTrace();
-            }
             break;
         default:
             System.out.println("Inputan Salah!");

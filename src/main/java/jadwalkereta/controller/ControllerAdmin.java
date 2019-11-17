@@ -18,6 +18,7 @@ import java.util.*;
 public class ControllerAdmin {
     ControllerMain ctrMain;
     ControllerStation ctrStation;
+    ControllerTime ctrTime;
     ArrayList<User> users;
     ViewAdmin viewAdmin;
     // Menambahkan parameter ArrayList<Station> s pada konstruktor
@@ -42,6 +43,16 @@ public class ControllerAdmin {
                     viewAdmin.menuKelolaAkun();
                     break;
                 }
+
+                case 3:{
+                    if (ctrTime == null) {
+                        ctrTime = new ControllerTime(this);
+                    }
+                    ctrTime.ControlMenuTime();
+                break;
+
+                }
+
                 case 5:{
                     if(ctrStation == null ){
                         ctrStation = new ControllerStation(this);

@@ -36,6 +36,7 @@ public class ViewAdmin {
         System.out.println("Welcome, Admin!");
         System.out.println();
         System.out.println("1.  Kelola Akun");
+        System.out.println("3.  Generate Waktu");
         System.out.println("5.  Kelola Stasiun");
         System.out.println("0.  Logout");
         System.out.println();

@@ -20,16 +20,19 @@ public class ControllerMain {
     private int pilihan;
     ArrayList<User> users;
     ArrayList<Station> stations;
+    ArrayList<Time> times;
   
     // Menambahkan parameter ArrayList<Station> s pada konstruktor
-    public ControllerMain(ArrayList<User> u, ArrayList<Station> s) {
+    public ControllerMain(ArrayList<User> u, ArrayList<Station> s, ArrayList<Time> t) {
         viewMain = new ViewMain();
         users = u;
         stations = s;
+        times = t;
     }
 
     public ArrayList<User> getUsers() { return users; }
     public ArrayList<Station> getStations() { return stations; }
+    public ArrayList<Time> getTimes() { return times; }
     
     public void run() {
         Scanner in = new Scanner(System.in);
