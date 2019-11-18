@@ -48,6 +48,8 @@ public final class App {
 		
 	    ArrayList<City> cities = new ArrayList<City>();
         ArrayList<Rute> rute = new ArrayList<Rute>();
+		ArrayList<Kereta> kereta = new ArrayList<Kereta>();
+		ArrayList<TimeRute> timerute = new ArrayList<TimeRute>();
 
         rute.add(new Rute("JKT-BAL",1,2,"Jakarta","Bali"));
         
@@ -67,7 +69,7 @@ public final class App {
         
         // Tambah Parameter Station
 
-        ControllerMain ctrMain = new ControllerMain(users, stations, cities, rute, times);
+        ControllerMain ctrMain = new ControllerMain(users, stations, cities, rute, times, kereta, timerute);
         ctrMain.run();
     }
 }
