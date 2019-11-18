@@ -1,0 +1,125 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package jadwalkereta.controller;
+
+//import jadwalkereta.model.Kota;
+import jadwalkereta.model.City;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import jadwalkereta.model.Rute;
+import jadwalkereta.model.Station;
+import jadwalkereta.model.Jalur;
+import jadwalkereta.view.ViewJalur;
+
+public class ControllerJalur {
+    ArrayList<Rute> rute;
+    ControllerMain ctrMain;
+    ControllerAdmin ctrAdmin;
+    ControllerStation ctrStation;
+    ArrayList<Station> stations;
+    ViewJalur viewJalur;
+    Scanner input = new Scanner(System.in);
+
+    public ControllerJalur(ControllerAdmin admin) {
+        ctrAdmin = admin;
+        ctrStation = new ControllerStation(admin);
+        ctrMain = ctrAdmin.getControllerMain();
+        rute = ctrMain.getRute();
+        stations = ctrMain.getStations();
+    }
+
+    public void ControlMenuJalur() {
+        if (viewJalur == null) viewJalur = new ViewJalur(this);
+        viewJalur.menuJalur();
+
+        switch (viewJalur.getPilihan()) {
+        case 1: {
+            viewJalur.menuTambah();
+            ControlMenuJalur();
+            break;
+        }
+        case 2: {
+            viewJalur.menuLihat();
+            ControlMenuJalur();
+            break;
+        }
+        case 3: {
+            viewJalur.menuHapus();
+            ControlMenuJalur();
+            break;
+        }
+        case 4: {
+            ControlMenuJalur();
+            break;
+        }
+        case 99:
+            ctrAdmin.ControlMenuAdmin();
+            break;
+        default:
+            System.out.println("Inputan Salah!");
+            ControlMenuJalur();
+            break;
+        }
+    }
+
+    public int CheckRute(String kode)
+    {
+        for(int i=0;i<rute.size();i++){
+            if(rute.get(i).getKodeRute().equals(kode)) return i;
+        }
+        System.out.println("Rute Tidak Ditemukan");
+        return -1;
+    }
+
+    public boolean TambahJalur(String stasiunAwal, String stasiunAkhir, int menit, int index){
+        ArrayList<Jalur> jalur = rute.get(index).getJalur();
+        if(ctrStation.CheckStationByName(stasiunAwal) >= 0 && ctrStation.CheckStationByName(stasiunAkhir) >= 0)
+        {
+            int indexawal = ctrStation.CheckStationByName(stasiunAwal);
+            int indexakhir = ctrStation.CheckStationByName(stasiunAkhir);
+            if(jalur.size() == 0){
+                jalur.add(new Jalur(stations.get(indexawal), stations.get(indexakhir), menit));
+                return true;
+            }
+                
+            else if(stations.get(indexawal).equals(jalur.get(jalur.size() - 1).getStasiunAkhir())){
+                jalur.add(new Jalur(stations.get(indexawal), stations.get(indexakhir), menit));
+                return true;
+            }
+            else
+                System.out.println("Jalur Tidak Berhubungan");    
+        }
+        else 
+            System.out.println("Stasiun Salah");
+        return false;
+    }
+
+    public void LihatJalur() {
+        for(int i = 0; i<rute.size(); i++){
+            String sjalur = "";
+            int menit = 0;
+            for(int j = 0; j < rute.get(i).getJalur().size();j++){
+                Jalur temp_jalur = rute.get(i).getJalur().get(j);
+                menit += temp_jalur.getMenit();
+                sjalur = sjalur+temp_jalur.getStasiunAwal().getKode()+"-"+temp_jalur.getStasiunAkhir().getKode()+" ";
+            }
+            sjalur = "[ "+sjalur+"]";
+            System.out.println(i+1+"\t"+"JL"+String.format("%02d",i+1)+"\t\t"+rute.get(i).getKodeRute()+"\t\t"+sjalur+"\t\t"+menit+" menit");
+        }  
+    }
+
+    public void HapusJalur(int index){
+        rute.get(index).setJalur(new ArrayList<Jalur>());
+    }
+
+    public void LihatRute() {
+        for (int i = 0; i < rute.size(); i++)
+            System.out.println(i + 1 + "\t" + rute.get(i).getKotaBerangkat() + "\t\t\t" + rute.get(i).getKotaTujuan()
+                    + "\t" + rute.get(i).getKodeRute() + "\t\t" + rute.get(i).getHargaBisnis() + "\t\t"
+                    + rute.get(i).getHargaPremium());
+    }
+}

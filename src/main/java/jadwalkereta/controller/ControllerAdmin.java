@@ -5,6 +5,8 @@
  */
 package jadwalkereta.controller;
 
+import jadwalkereta.model.City;
+import jadwalkereta.model.Rute;
 import jadwalkereta.model.User;
 import jadwalkereta.model.Station;
 import jadwalkereta.view.ViewAdmin;
@@ -19,10 +21,12 @@ public class ControllerAdmin {
     ControllerMain ctrMain;
     ControllerStation ctrStation;
     ControllerTime ctrTime;
+    ControllerJalur ctrJalur;
     ArrayList<User> users;
     ViewAdmin viewAdmin;
-    // Menambahkan parameter ArrayList<Station> s pada konstruktor
     ArrayList<Station> stations;
+    ArrayList<City> cities;
+    ArrayList<Rute> rute;
     
     public ControllerAdmin(ControllerMain ctr) {
         ctrMain = ctr;
@@ -43,16 +47,23 @@ public class ControllerAdmin {
                     viewAdmin.menuKelolaAkun();
                     break;
                 }
-
+                case 2:{
+                    ControllerCity ctrCity = new ControllerCity(this);
+                    ctrCity.ControlMenuCity();
+                    break;
+                }
                 case 3:{
                     if (ctrTime == null) {
                         ctrTime = new ControllerTime(this);
                     }
                     ctrTime.ControlMenuTime();
-                break;
-
+                    break;
                 }
-
+		        case 4:{
+                    ControllerRute ctrRute = new ControllerRute(this);
+                    ctrRute.ControlMenuRute();
+                    break;
+                }
                 case 5:{
                     if(ctrStation == null ){
                         ctrStation = new ControllerStation(this);
@@ -60,7 +71,13 @@ public class ControllerAdmin {
                     ctrStation.ControlMenuStation();
                     break;
                 }
-
+                case 6: {
+                    if (ctrJalur == null) {
+                        ctrJalur = new ControllerJalur(this);
+                    }
+                    ctrJalur.ControlMenuJalur();
+                    break;
+                }
                 default:
                     System.out.println("Inputan Salah!");
                     System.out.println();

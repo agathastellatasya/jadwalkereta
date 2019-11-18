@@ -97,25 +97,19 @@ public class ControllerStation {
         else return -1;
     }
 
-    public void ViewEditStation(){
-        System.out.println("#EDIT DATA STASIUN#");
-        System.out.print("Edit Stasiun : ");
-        String kode = input.next().split("_",2)[1];
-        int index = CheckStation(kode);
-            
-        if(index>=0){
-            DeleteStation(index);
-            System.out.print("Kode Stasiun : ");
-            kode = input.next();
-            System.out.print("Nama Stasiun : ");
-            String nama = input.next();
-            TambahStation(kode, nama);
+    public int CheckStationByName(String nama) {
+        int i = 0;
+        boolean found = false;
+        for (; i < stations.size(); i++) {
+            if (nama.equals(stations.get(i).getNama())) {
+                found = true;
+                break;
+            }
         }
-        else{
-            System.out.println("--------------------------------------------------------------");
-            System.out.println("Stasiun Gagal Ditambahkan");
-            System.out.println("--------------------------------------------------------------");
-        }
+        if (found)
+            return i;
+        else
+            return -1;
     }
 
     public void LihatStation()
