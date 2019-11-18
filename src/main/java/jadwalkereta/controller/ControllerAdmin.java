@@ -6,10 +6,12 @@
 package jadwalkereta.controller;
 
 import jadwalkereta.model.City;
+import jadwalkereta.model.Kereta;
 import jadwalkereta.model.Rute;
 import jadwalkereta.model.User;
 import jadwalkereta.model.Station;
 import jadwalkereta.view.ViewAdmin;
+import jadwalkereta.model.KARute;
 
 import java.util.*;
 
@@ -27,6 +29,8 @@ public class ControllerAdmin {
     ArrayList<Station> stations;
     ArrayList<City> cities;
     ArrayList<Rute> rute;
+    ArrayList<Kereta> kereta;
+    ArrayList<KARute> karute;
     
     public ControllerAdmin(ControllerMain ctr) {
         ctrMain = ctr;
@@ -78,6 +82,21 @@ public class ControllerAdmin {
                     ctrJalur.ControlMenuJalur();
                     break;
                 }
+				case 7:{
+                    ControllerTimeRute ctrTimeRute = new ControllerTimeRute(this);
+                    ctrTimeRute.ControlMenuTimeRute();
+                    break;
+                }
+                case 8:{
+                    ControllerKARute ctrKARute = new ControllerKARute(this);
+                    ctrKARute.ControlMenuKARute();
+                    break;
+                    } 
+				case 12:{
+							ControllerKereta ctrKereta = new ControllerKereta(this);
+							ctrKereta.ControlMenuKereta();
+							break;
+						}
                 default:
                     System.out.println("Inputan Salah!");
                     System.out.println();

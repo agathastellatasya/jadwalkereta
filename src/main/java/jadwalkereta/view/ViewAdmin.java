@@ -41,6 +41,9 @@ public class ViewAdmin {
         System.out.println("4.  Kelola Rute");
         System.out.println("5.  Kelola Stasiun");
         System.out.println("6.  Kelola Jalur Stasiun Pada Rute");
+        System.out.println("7.  Kelola Waktu Pada Rute");
+        System.out.println("8.  Kelola Kereta Pada Rute");
+		System.out.println("12. Kelola Data Kereta Api");
         System.out.println("0.  Logout");
         System.out.println();
         System.out.print("Pilih Menu : ");
