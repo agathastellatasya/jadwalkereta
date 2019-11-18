@@ -26,32 +26,32 @@ public class ControllerStation {
     public ControllerStation(ControllerAdmin admin) {
         ctrAdmin = admin;
         ctrMain = ctrAdmin.getControllerMain();
-        stations = ctrMain.getStation();
+        stations = ctrMain.getStations();
     }
 
     public void ControlMenuStation() {
-        if(viewStation == null) viewStation = new ViewStation();
+        if(viewStation == null) viewStation = new ViewStation(this);
         viewStation.menuStation();
 
         switch (viewStation.getPilihan()) {
         case 1: {
-            ViewTambahStation();
+            viewStation.menuTambah();
             ControlMenuStation();
             break;
         }
         case 2: {
-            ViewLihatStation();
+            viewStation.menuLihat();
             ControlMenuStation();
             break;
         }
         case 3:{
-            ViewEditStation();
+            viewStation.menuEdit();
             ControlMenuStation();
             break;
         }
 
         case 4: {
-            ViewDeleteStation();
+            viewStation.menuDelete();
             ControlMenuStation();
             break;
         }
@@ -65,17 +65,6 @@ public class ControllerStation {
         }
     }
 
-
-    public void ViewTambahStation(){
-        System.out.println("#TAMBAH DATA STASIUN#");
-        System.out.print("Tambah Stasiun : ");
-        String request = input.nextLine();
-        String kode = request.substring(0,request.indexOf(' '));
-        String nama = request.substring(request.indexOf(' ')+1);
-        
-        TambahStation(kode, nama);
-    }
-
     public void TambahStation(String kode, String nama){
         int index = CheckStation(kode);
         if (index<0) {
@@ -86,24 +75,6 @@ public class ControllerStation {
         } else {
             System.out.println("--------------------------------------------------------------");
             System.out.println("Stasiun Gagal Ditambahkan");
-            System.out.println("--------------------------------------------------------------");
-        }
-    }
-
-    public void ViewDeleteStation(){
-        System.out.println("#DELETE DATA STASIUN#");
-        System.out.print("Delete Stasiun : ");
-        String kode = input.next().split("_", 2)[1];
-        int index = CheckStation(kode);
-        if(index >= 0){
-            DeleteStation(index);
-            System.out.println("--------------------------------------------------------------");
-            System.out.println("Stasiun Berhasil Dihapus");
-            System.out.println("--------------------------------------------------------------");
-        }
-        else{
-            System.out.println("--------------------------------------------------------------");
-            System.out.println("Stasiun Gagal Dihapus");
             System.out.println("--------------------------------------------------------------");
         }
     }
@@ -126,36 +97,25 @@ public class ControllerStation {
         else return -1;
     }
 
-    public void ViewEditStation(){
-        System.out.println("#EDIT DATA STASIUN#");
-        System.out.print("Edit Stasiun : ");
-        String kode = input.next().split("_",2)[1];
-        int index = CheckStation(kode);
-            
-        if(index>=0){
-            DeleteStation(index);
-            System.out.print("Kode Stasiun : ");
-            kode = input.next();
-            System.out.print("Nama Stasiun : ");
-            String nama = input.next();
-            TambahStation(kode, nama);
+    public int CheckStationByName(String nama) {
+        int i = 0;
+        boolean found = false;
+        for (; i < stations.size(); i++) {
+            if (nama.equals(stations.get(i).getNama())) {
+                found = true;
+                break;
+            }
         }
-        else{
-            System.out.println("--------------------------------------------------------------");
-            System.out.println("Stasiun Gagal Ditambahkan");
-            System.out.println("--------------------------------------------------------------");
-        }
+        if (found)
+            return i;
+        else
+            return -1;
     }
 
-    public void ViewLihatStation()
+    public void LihatStation()
     {
-        System.out.println("#LIHAT DATA STASIUN#");
-        System.out.println("Data Lengkap Stasiun");
-        System.out.println("--------------------------------------------------------------");
-        System.out.println("No\tKode\t\tNama");
         for(int i=0; i<stations.size();i++)
                 System.out.println(i+1+"\t"+stations.get(i).getKode()+"\t\t"+stations.get(i).getNama());
-        System.out.println("--------------------------------------------------------------");
     }
 
 

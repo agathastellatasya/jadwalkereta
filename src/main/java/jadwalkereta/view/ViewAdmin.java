@@ -5,11 +5,9 @@
  */
 package jadwalkereta.view;
 
-import jadwalkereta.model.User;
+import jadwalkereta.model.*;
 import jadwalkereta.controller.ControllerUser;
 import jadwalkereta.controller.ControllerMain;
-import jadwalkereta.controller.ControllerStation;
-import jadwalkereta.model.Station;
 
 import java.util.*;
 /**
@@ -38,7 +36,14 @@ public class ViewAdmin {
         System.out.println("Welcome, Admin!");
         System.out.println();
         System.out.println("1.  Kelola Akun");
+        System.out.println("2.  Kelola Data Kota");
+        System.out.println("3.  Generate Waktu");
+        System.out.println("4.  Kelola Rute");
         System.out.println("5.  Kelola Stasiun");
+        System.out.println("6.  Kelola Jalur Stasiun Pada Rute");
+        System.out.println("7.  Kelola Waktu Pada Rute");
+        System.out.println("8.  Kelola Kereta Pada Rute");
+		System.out.println("12. Kelola Data Kereta Api");
         System.out.println("0.  Logout");
         System.out.println();
         System.out.print("Pilih Menu : ");
@@ -52,7 +57,6 @@ public class ViewAdmin {
         System.out.print("Masukkan nomor KTP : ");
         input.nextLine();
         nik = input.nextLine();
-        System.out.println(nik);
         if (ctrUser.findNikInUsers(nik) != -99){
             User u = users.get(ctrUser.findNikInUsers(nik));
             String nama, hp, email, pass, repass;
