@@ -23,15 +23,19 @@ public class ControllerMain {
     ArrayList<Time> times;
     ArrayList<City> cities;
     ArrayList<Rute> rute;
+    ArrayList<Kereta> kereta;
+    ArrayList<TimeRute> timerute;
   
     // Menambahkan parameter ArrayList<Station> s pada konstruktor
-    public ControllerMain(ArrayList<User> u, ArrayList<Station> s, ArrayList<City> c, ArrayList<Rute> r, ArrayList<Time> t) {
+    public ControllerMain(ArrayList<User> u, ArrayList<Station> s, ArrayList<City> c, ArrayList<Rute> r, ArrayList<Time> t, ArrayList<Kereta> k, ArrayList<TimeRute> tr)  {
         viewMain = new ViewMain();
         users = u;
         stations = s;
 	    cities =c;
         rute = r;
         times = t;
+        timerute = tr;
+        kereta = k;
     }
 
     public ArrayList<User> getUsers() { return users; }
@@ -39,6 +43,8 @@ public class ControllerMain {
     public ArrayList<Time> getTimes() { return times; }
     public ArrayList<City> getCities(){ return cities; }
     public ArrayList<Rute> getRute(){ return rute; }
+    public ArrayList<Kereta> getKereta(){ return kereta; }
+    public ArrayList<TimeRute> getTimeRute(){ return timerute; }
     
     public void run() {
         Scanner in = new Scanner(System.in);
