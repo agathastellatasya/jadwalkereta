@@ -20,26 +20,25 @@ public class ControllerMain {
     private int pilihan;
     ArrayList<User> users;
     ArrayList<Station> stations;
+    ArrayList<Time> times;
     ArrayList<City> cities;
     ArrayList<Rute> rute;
   
     // Menambahkan parameter ArrayList<Station> s pada konstruktor
-    public ControllerMain(ArrayList<User> u, ArrayList<Station> s, ArrayList<City> c, ArrayList<Rute> r) {
+    public ControllerMain(ArrayList<User> u, ArrayList<Station> s, ArrayList<City> c, ArrayList<Rute> r, ArrayList<Time> t) {
         viewMain = new ViewMain();
         users = u;
         stations = s;
-	cities =c;
+	    cities =c;
         rute = r;
+        times = t;
     }
 
     public ArrayList<User> getUsers() { return users; }
     public ArrayList<Station> getStations() { return stations; }
-    public ArrayList<City> getCities(){ 
-        return cities; 
-    }
-    public ArrayList<Rute> getRute(){ 
-        return rute; 
-    }
+    public ArrayList<Time> getTimes() { return times; }
+    public ArrayList<City> getCities(){ return cities; }
+    public ArrayList<Rute> getRute(){ return rute; }
     
     public void run() {
         Scanner in = new Scanner(System.in);

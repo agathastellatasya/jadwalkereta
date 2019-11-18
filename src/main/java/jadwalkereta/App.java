@@ -32,6 +32,7 @@ public final class App {
         // Tambahan Adri
 
         ArrayList<Station> stations = new ArrayList<Station>();
+        ArrayList<Time> times = new ArrayList<Time>();
 
         Station jkt = new Station("SJK", "Jakarta");
         Station bdg = new Station("SBD", "Bandung");
@@ -55,8 +56,8 @@ public final class App {
         // ------------------------------------------------
         
         // Tambah Parameter Station
-        ControllerMain ctrMain = new ControllerMain(users, stations, cities, rute);
+
+        ControllerMain ctrMain = new ControllerMain(users, stations, cities, rute, times);
         ctrMain.run();
     }
-    
 }

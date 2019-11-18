@@ -20,6 +20,7 @@ import java.util.*;
 public class ControllerAdmin {
     ControllerMain ctrMain;
     ControllerStation ctrStation;
+ControllerTime ctrTime;
     ArrayList<User> users;
     ViewAdmin viewAdmin;
     // Menambahkan parameter ArrayList<Station> s pada konstruktor
@@ -50,6 +51,13 @@ public class ControllerAdmin {
                     ControllerCity ctrCity = new ControllerCity(this);
                     ctrCity.ControlMenuCity();
                     break;
+                }
+		case 3:{
+                    if (ctrTime == null) {
+                        ctrTime = new ControllerTime(this);
+                    }
+                    ctrTime.ControlMenuTime();
+	            break;
                 }
 		case 4:{
                     ControllerRute ctrRute = new ControllerRute(this);

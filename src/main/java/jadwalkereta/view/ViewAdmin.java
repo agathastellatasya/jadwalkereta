@@ -37,6 +37,7 @@ public class ViewAdmin {
         System.out.println();
         System.out.println("1.  Kelola Akun");
         System.out.println("2.  Kelola Data Kota");
+	System.out.println("3.  Generate Waktu");
         System.out.println("4.  Kelola Rute");
         System.out.println("5.  Kelola Stasiun");
         System.out.println("0.  Logout");
