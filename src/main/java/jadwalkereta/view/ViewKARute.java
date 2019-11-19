@@ -1,11 +1,14 @@
 package jadwalkereta.view;
 
 import jadwalkereta.controller.*;
+import jadwalkereta.model.KARute;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ViewKARute {
     private int pilihan;
+    ArrayList<KARute> karute;
     ControllerKARute ctrKARute;
     Scanner input = new Scanner(System.in);
 
@@ -24,8 +27,8 @@ public class ViewKARute {
     }
 
     public void menuTambah() {
+        int kode = ctrKARute.getKode();
         System.out.println("#TAMBAH KERETA PADA RUTE#");
-        //String KKARute = KR;
         System.out.print("Kode Rute : ");
         String kodeRute = input.nextLine();
         System.out.println("Tambah Kereta Api Untuk Rute");
@@ -33,27 +36,38 @@ public class ViewKARute {
         String kodeKA;
         if(indexkode>=0)
         {
-            int i = 1;
-            do
+            int isRuteSama = ctrKARute.checkRuteSama(kodeRute);
+            if(isRuteSama<0)
             {
-                System.out.print("Kereta "+ i +": ");
-                kodeKA = input.nextLine();
-                //pengecekan ada tidaknya di data kereta
-                int index = ctrKARute.CheckKA(kodeKA);
-                while(index<0 &&  !kodeKA.equals("99"))
+                int i = 1;
+                do
                 {
-                  kodeKA = input.nextLine();
-                  System.out.println(kodeKA);
-                }
-                //Kode_KARute = KKARute + j; 
-                System.out.println(kodeKA);
-                System.out.println(index);
-                ctrKARute.TambahKARute(kodeRute, kodeKA);
-                i++;
-            } while (!kodeKA.equals("99"));
-           // System.out.println("Selesai");
-
-         
+                    System.out.print("Kereta "+ i +": ");
+                    kodeKA = input.nextLine();
+                    //pengecekan ada tidaknya di data kereta
+                    int index = ctrKARute.CheckKA(kodeKA);
+                    if(index>=0) {
+                        int isKASama = ctrKARute.checkKAsama(kodeRute, kodeKA);
+                        if(isKASama<0)
+                        {
+                            ctrKARute.TambahKARute(kode, kodeRute, kodeKA);
+                            i++;
+                        }
+                        else
+                        {
+                            System.out.println("KA sudah diinputkan, Inputkan Kode KA yang Lain !!");
+                        }
+                        
+                    }
+                    
+                } while (!kodeKA.equals("99"));
+               System.out.println("Selesai Menambahkan");
+            }else{
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("Rute Sudah Ada");
+                System.out.println("--------------------------------------------------------------");
+            }
+           
             
         } else {
             System.out.println("--------------------------------------------------------------");
@@ -65,7 +79,7 @@ public class ViewKARute {
 
     public void menuDelete() {
         System.out.println("#DELETE KERETA PADA RUTE#");
-        System.out.print("Delete kereta pada rute : ");
+        System.out.print("Delete kereta pada rute [DELETE_kode Rute]: ");
         String kodeRute = input.nextLine().split("_", 2)[1];
         int index = ctrKARute.CheckRute(kodeRute);
         if (index >= 0) {
@@ -90,7 +104,7 @@ public class ViewKARute {
             System.out.println("Kereta Api berdasarkan Rute");
             System.out.println("--------------------------------------------------------------");
             System.out.println("No\tKode Kereta Rute\tKode Rute\tKereta Tersedia pada Rute");
-		    ctrKARute.LihatKARute();
+		    ctrKARute.LihatKARute(kodeRute);
             System.out.println("--------------------------------------------------------------");
         } else {
             System.out.println("--------------------------------------------------------------");

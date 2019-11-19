@@ -65,11 +65,12 @@ public class ControllerKARute {
         }
     }
 
-    public void TambahKARute(String kodeRute, String kodeKA){
-            karute.add(new KARute(kodeRute, kodeKA));
+    public void TambahKARute(int kode, String kodeRute, String kodeKA){
+            karute.add(new KARute(kode, kodeRute, kodeKA));
             System.out.println("--------------------------------------------------------------");
             System.out.println("KA berdasarkan Rute Berhasil Ditambahkan");
             System.out.println("--------------------------------------------------------------");
+        
     }
     
     public void DeleteKA(String kr){
@@ -82,6 +83,41 @@ public class ControllerKARute {
             }
             //System.out.println(i+kr);
         }
+    }
+
+    public int checkKAsama(String kodeRute, String kodeKA)
+    {
+        int i;
+        boolean found = false;
+        for (i=0; i < karute.size(); i++) {
+            if (kodeRute.equals(karute.get(i).getKodeRute()) && kodeKA.equals(karute.get(i).getKodeKA())) {
+                found = true;
+                break;
+            }
+        }
+        if(found) return i;
+        else return -1;
+    }
+
+    public int getKode()
+    {
+        int lastindex = karute.size() - 1;
+        int kode = karute.get(lastindex).getKode() + 1;
+        return kode;
+    }
+
+    public int checkRuteSama(String kodeRute)
+    {
+        int i;
+        boolean found = false;
+        for (i=0; i < karute.size(); i++) {
+            if (kodeRute.equals(karute.get(i).getKodeRute())) {
+                found = true;
+                break;
+            }
+        }
+        if(found) return i;
+        else return -1;
     }
 
     public int CheckRute(String kodeRute){
@@ -112,10 +148,25 @@ public class ControllerKARute {
         else return -1;
     }
 	
-	public void LihatKARute()
+	public void LihatKARute(String kodeRute)
     {
+        int j=0;
         for(int i=0; i<karute.size();i++)
-            System.out.println(i+1+"\t\t"+"KR"+"\t\t"+karute.get(i).getKodeRute()+"\t\t"+karute.get(i).getKodeKA());
+        {
+            if(kodeRute.equals(karute.get(i).getKodeRute()))
+            {
+                if(j==0)
+                {
+                    System.out.println("1"+"\t\t"+"KR"+String.format("%02d", karute.get(i).getKode())+"\t\t"+karute.get(i).getKodeRute()+"\t\t"+karute.get(i).getKodeKA());
+                    j++;
+                }else {
+                    System.out.println("\t\t\t\t\t\t"+karute.get(i).getKodeKA());
+                }
+            }
+        }
+           
     }
+
+	
 
 }
