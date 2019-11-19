@@ -9,6 +9,11 @@ package jadwalkereta.model;
  *
  * @author ASUS
  */
-public class Admin {
+public class Admin extends User {
     
+    public Admin(String email, String password, int role){
+        this.email  = email;
+        this.password = password;
+        this.role = role;
+    }
 }
