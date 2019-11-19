@@ -41,17 +41,24 @@ public class ViewRute {
 	public void menuDelete() {
         System.out.println("#DELETE DATA RUTE#");
         System.out.print("Delete Rute : ");
-        String kode = input.nextLine().split("_", 2)[1];
-		//input.nextLine();
-        int index = ctrRute.CheckRute(kode);
-        if (index >= 0) {
-            ctrRute.DeleteRute(index);
+        String kode2 []= input.nextLine().split("_", 2);
+        String kode;
+        if(kode2.length==2){
+            kode=kode2[1];	
+            int index = ctrRute.CheckRute(kode);
+            if (index >= 0) {
+                ctrRute.DeleteRute(index);
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("Rute Berhasil Dihapus");
+                System.out.println("--------------------------------------------------------------");
+            } else {
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("Rute Gagal Dihapus");
+                System.out.println("--------------------------------------------------------------");
+            }
+        }else {
             System.out.println("--------------------------------------------------------------");
-            System.out.println("Rute Berhasil Dihapus");
-            System.out.println("--------------------------------------------------------------");
-        } else {
-            System.out.println("--------------------------------------------------------------");
-            System.out.println("Rute Gagal Dihapus");
+            System.out.println("Format Salah, Format : DELETE_KODERUTE");
             System.out.println("--------------------------------------------------------------");
         }
     }
@@ -70,24 +77,31 @@ public class ViewRute {
     public void menuEdit() {
         System.out.println("#EDIT DATA RUTE#");
         System.out.print("Edit Rute : ");
-        String kode = input.nextLine().split("_", 2)[1];
-        int index = ctrRute.CheckRute(kode);
-
-        if (index >= 0) {
-            ctrRute.DeleteRute(index);
-			System.out.print("Kota Berangkat : ");
-            String kotaBerangkat = input.nextLine();
-            System.out.print("Kota Tujuan : ");
-            String kotaTujuan = input.nextLine();
-            System.out.print("Harga Tiket Bisnis : ");
-            long hargaBisnis = input.nextLong();
-            System.out.print("Harga Tiket Premium : ");
-            long hargaPremium = input.nextLong();
-			input.nextLine();
-            ctrRute.TambahRute(kotaBerangkat, kotaTujuan, hargaBisnis, hargaPremium);
-        } else {
+        String kode2 []= input.nextLine().split("_", 2);
+        String kode;
+        if(kode2.length==2){
+            kode=kode2[1];	
+            int index = ctrRute.CheckRute(kode);
+            if (index >= 0) {
+                ctrRute.DeleteRute(index);
+                System.out.print("Kota Berangkat : ");
+                String kotaBerangkat = input.nextLine();
+                System.out.print("Kota Tujuan : ");
+                String kotaTujuan = input.nextLine();
+                System.out.print("Harga Tiket Bisnis : ");
+                long hargaBisnis = input.nextLong();
+                System.out.print("Harga Tiket Premium : ");
+                long hargaPremium = input.nextLong();
+                input.nextLine();
+                ctrRute.TambahRute(kotaBerangkat, kotaTujuan, hargaBisnis, hargaPremium);
+            } else {
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("Rute Gagal Ditambahkan");
+                System.out.println("--------------------------------------------------------------");
+            }
+        }else {
             System.out.println("--------------------------------------------------------------");
-            System.out.println("Rute Gagal Ditambahkan");
+            System.out.println("Format Salah, Format : EDIT_KODERUTE");
             System.out.println("--------------------------------------------------------------");
         }
     }

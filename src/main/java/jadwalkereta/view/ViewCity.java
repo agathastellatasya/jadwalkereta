@@ -36,16 +36,24 @@ public class ViewCity {
     public void menuDelete() {
         System.out.println("#DELETE DATA KOTA#");
         System.out.print("Delete Kota : ");
-        String kode = input.nextLine().split("_", 2)[1];
-        int index = ctrCity.CheckCity(kode);
-        if (index >= 0) {
-            ctrCity.DeleteCity(index);
+        String kode2 []= input.nextLine().split("_", 2);
+        String kode;
+        if(kode2.length==2){
+            kode=kode2[1];	
+            int index = ctrCity.CheckCity(kode);
+            if (index >= 0) {
+                ctrCity.DeleteCity(index);
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("Kota Berhasil Dihapus");
+                System.out.println("--------------------------------------------------------------");
+            } else {
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("Kota Gagal Dihapus");
+                System.out.println("--------------------------------------------------------------");
+            }
+        }else{
             System.out.println("--------------------------------------------------------------");
-            System.out.println("Kota Berhasil Dihapus");
-            System.out.println("--------------------------------------------------------------");
-        } else {
-            System.out.println("--------------------------------------------------------------");
-            System.out.println("Kota Gagal Dihapus");
+            System.out.println("Format Salah, Format : DELETE_KODE KOTA");
             System.out.println("--------------------------------------------------------------");
         }
     }
@@ -62,20 +70,28 @@ public class ViewCity {
     public void menuEdit() {
         System.out.println("#EDIT DATA KOTA#");
         System.out.print("Edit Kota : ");
-        String kode = input.nextLine().split("_", 2)[1];
-        int index = ctrCity.CheckCity(kode);
+        String kode2 []= input.nextLine().split("_", 2);
+        String kode;
+        if(kode2.length==2){
+            kode=kode2[1];	
+            int index = ctrCity.CheckCity(kode);
 
-        if (index >= 0) {
-            ctrCity.DeleteCity(index);
-            System.out.print("Kode Kota : ");
-            kode = input.nextLine();
-            System.out.print("Nama Kota : ");
-            String nama = input.nextLine();
-            ctrCity.TambahCity(kode, nama);
+            if (index >= 0) {
+                ctrCity.DeleteCity(index);
+                System.out.print("Kode Kota : ");
+                kode = input.nextLine();
+                System.out.print("Nama Kota : ");
+                String nama = input.nextLine();
+                ctrCity.TambahCity(kode, nama);
 
-        } else {
+            } else {
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("Kota Gagal Ditambahkan");
+                System.out.println("--------------------------------------------------------------");
+            }
+        }else{
             System.out.println("--------------------------------------------------------------");
-            System.out.println("Kota Gagal Ditambahkan");
+            System.out.println("Format Salah, Format : EDIT_KODE KOTA");
             System.out.println("--------------------------------------------------------------");
         }
     }
