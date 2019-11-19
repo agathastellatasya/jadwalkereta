@@ -79,17 +79,25 @@ public class ViewKARute {
 
     public void menuDelete() {
         System.out.println("#DELETE KERETA PADA RUTE#");
-        System.out.print("Delete kereta pada rute [DELETE_kode Rute]: ");
-        String kodeRute = input.nextLine().split("_", 2)[1];
-        int index = ctrKARute.CheckRute(kodeRute);
-        if (index >= 0) {
-            ctrKARute.DeleteKA(kodeRute);
+        System.out.print("Delete kereta pada rute : ");
+        String kode [] = input.nextLine().split("_", 2);
+        String kodeRute;
+        if(kode.length==2){
+            kodeRute=kode[1];
+            int index = ctrKARute.checkRuteSama(kodeRute);
+            if (index >= 0) {
+                ctrKARute.DeleteKA(kodeRute);
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("KA pada Rute Berhasil Dihapus");
+                System.out.println("--------------------------------------------------------------");
+            } else {
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("KA pada Rute Tidak Ada / Gagal Dihapus");
+                System.out.println("--------------------------------------------------------------");
+            }
+        }else {
             System.out.println("--------------------------------------------------------------");
-            System.out.println("KA pada Rute Berhasil Dihapus");
-            System.out.println("--------------------------------------------------------------");
-        } else {
-            System.out.println("--------------------------------------------------------------");
-            System.out.println("KA pada Rute Gagal Dihapus");
+            System.out.println("Format Salah, Format : DELETE_KODERUTE");
             System.out.println("--------------------------------------------------------------");
         }
     }

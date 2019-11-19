@@ -75,7 +75,7 @@ public class ControllerKARute {
     
     public void DeleteKA(String kr){
         int i;
-        System.out.println(karute.size());
+        //System.out.println(karute.size());
         for (i=karute.size()-1; i>=0 ; i--) {
             if (kr.equals(karute.get(i).getKodeRute())) {
                 karute.remove(i);
