@@ -98,18 +98,48 @@ public class ControllerJalur {
         return false;
     }
 
-    public void LihatJalur() {
-        for(int i = 0; i<rute.size(); i++){
-            String sjalur = "";
+    // public void LihatJalur() {
+    //     for(int i = 0; i<rute.size(); i++){
+    //         String sjalur = "         ";
+    //         int menit = 0;
+    //         for(int j = 0; j < rute.get(i).getJalur().size();j++){
+    //             Jalur temp_jalur = rute.get(i).getJalur().get(j);
+    //             menit += temp_jalur.getMenit();
+    //             if(j==0) {
+    //                 sjalur = "";
+    //                 sjalur = sjalur+"- "+temp_jalur.getStasiunAwal().getKode()+"-"+temp_jalur.getStasiunAkhir().getKode()+"\n";
+    //             }
+    //             else sjalur = sjalur + "\t\t\t\t\t- " + temp_jalur.getStasiunAwal().getKode() + "-" + temp_jalur.getStasiunAkhir().getKode() + "\n";
+    //         }
+    //         sjalur = sjalur.substring(0,9) +"\t\t"+menit+" menit"+sjalur.substring(9);
+    //         System.out.println(i+1+"\t"+"JL"+String.format("%02d",i+1)+"\t\t"+rute.get(i).getKodeRute()+"\t\t"+sjalur);
+    //     }  
+    // }
+
+
+    public void LihatJalur(String kode) {
+        int i = CheckRute(kode);
+        if(i>=0)
+        {
+            String sjalur = "        -";
             int menit = 0;
-            for(int j = 0; j < rute.get(i).getJalur().size();j++){
+            for (int j = 0; j < rute.get(i).getJalur().size(); j++) {
                 Jalur temp_jalur = rute.get(i).getJalur().get(j);
                 menit += temp_jalur.getMenit();
-                sjalur = sjalur+temp_jalur.getStasiunAwal().getKode()+"-"+temp_jalur.getStasiunAkhir().getKode()+" ";
+                if (j == 0) {
+                    sjalur = "";
+                    sjalur = sjalur + "- " + temp_jalur.getStasiunAwal().getKode() + "-"
+                            + temp_jalur.getStasiunAkhir().getKode() + "\n";
+                } else
+                    sjalur = sjalur + "\t\t\t\t\t- " + temp_jalur.getStasiunAwal().getKode() + "-"
+                            + temp_jalur.getStasiunAkhir().getKode() + "\n";
             }
-            sjalur = "[ "+sjalur+"]";
-            System.out.println(i+1+"\t"+"JL"+String.format("%02d",i+1)+"\t\t"+rute.get(i).getKodeRute()+"\t\t"+sjalur+"\t\t"+menit+" menit");
-        }  
+            sjalur = sjalur.substring(0, 9) + "\t\t" + menit + " menit" + sjalur.substring(9);
+            System.out.println(i + 1 + "\t" + "JL" + String.format("%02d", i + 1) + "\t\t" + rute.get(i).getKodeRute()
+                    + "\t\t" + sjalur);
+        }
+
+        else System.out.println("Kode Rute Tidak Ditemukan");
     }
 
     public void HapusJalur(int index){

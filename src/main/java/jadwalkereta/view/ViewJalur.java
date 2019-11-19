@@ -69,8 +69,12 @@ public class ViewJalur {
 
     public void menuLihat() {
         System.out.println("#LIHAT STASIUN BERDASARKAN RUTE#");
-        System.out.println("No\tKode Jalur\tKode Rute\tJalur Yang Dilewati\t\t\tMenit");
-        ctrJalur.LihatJalur();
+        System.out.print("Kode Rute: ");
+        String kode = input.nextLine();
+        System.out.println("No\tKode Jalur\tKode Rute\tJalur Yang Dilewati\tMenit");
+        ctrJalur.LihatJalur(kode);
+        System.out.println("--------------------------------------------------------------------------");
+
     }
 
     public void menuHapus() {
