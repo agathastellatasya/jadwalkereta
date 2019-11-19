@@ -66,12 +66,26 @@ public class ControllerTimeRute {
     }
 
     public void TambahTimeRute(String kode, String kodeTime){
-            timerute.add(new TimeRute(kode,kodeTime));
-            System.out.println("--------------------------------------------------------------");
-            System.out.println("Rute Berhasil Ditambahkan");
-            System.out.println("--------------------------------------------------------------");
+        int i, wr;
+        int jam = 0;
+        int menit = 0;
+        ArrayList<Time> times = ctrMain.getTimes();
+        for (i=0; i < times.size(); i++) {
+            if (kodeTime.equals(times.get(i).getKode())) {
+                jam = times.get(i).getJam();
+                menit = times.get(i).getMenit();
+                break;
+            }
+        }
+        if(timerute.size()<=0) wr=0;
+        else wr=timerute.get(timerute.size()-1).getWaktuRute();
+        timerute.add(new TimeRute(kode,wr+1,jam,menit,kodeTime));
+        
+        System.out.println("--------------------------------------------------------------");
+        System.out.println("Kode Waktu Berhasil Ditambahkan");
+        System.out.println("--------------------------------------------------------------");
     }
-
+    
     public void DeleteTimeRute(String kode){
 		int i;
 		//System.out.println(timerute.size());
@@ -111,10 +125,32 @@ public class ControllerTimeRute {
         if(found) return i;
         else return -1;
     }
+    
+    public int CheckWaktuRute(String kode,String kdWaktu){
+        int i;
+        boolean found = false;
+        for (i=0; i < timerute.size(); i++) {
+            if (kode.equals(timerute.get(i).getKodeRute()) && kdWaktu.equals(timerute.get(i).getKdWaktu()) ) {
+                found = true;
+                break;
+            }
+        }
+        if(found) return i;
+        else return -1;
+    }
 	
-    public void LihatRute(){
-        for(int i=0; i<timerute.size();i++)
-            System.out.println(i+1+"\t"+timerute.get(i).getKodeRute()+"\t\t\t"+timerute.get(i).getKodeTime()+"\t");
+    public void LihatRute(String kode){
+        int j=0;
+        for(int i=0; i<timerute.size();i++){
+            if (kode.equals(timerute.get(i).getKodeRute())) {
+                if(j==0) {
+                    System.out.println("1\t"+"WR"+String.format("%03d",timerute.get(i).getWaktuRute())+"\t\t"+timerute.get(i).getKodeRute()+"\t\t -\t"+
+                    String.format("%02d",timerute.get(i).getJam())+":"+String.format("%02d",timerute.get(i).getMenit())+"\t");
+                    j++;
+                }
+                else System.out.println("\t\t\t\t\t -\t" + String.format("%02d",timerute.get(i).getJam())+":"+String.format("%02d",timerute.get(i).getMenit())+"\t");
+            }
+        }
     }
 
 }
