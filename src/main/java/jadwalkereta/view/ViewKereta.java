@@ -55,17 +55,24 @@ public class ViewKereta {
 	public void menuDelete() {
         System.out.println("#DELETE DATA KERETA API#");
         System.out.print("Delete Kereta : ");
-        String kode = input.nextLine().split("_", 2)[1];
-		//input.nextLine();
-        int index = ctrKereta.CheckKereta(kode);
-        if (index >= 0) {
-            ctrKereta.DeleteKereta(index);
+        String kode2 []= input.nextLine().split("_", 2);
+        String kode;
+        if(kode2.length==2){
+            kode=kode2[1];
+            int index = ctrKereta.CheckKereta(kode);
+            if (index >= 0) {
+                ctrKereta.DeleteKereta(index);
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("Kereta Berhasil Dihapus");
+                System.out.println("--------------------------------------------------------------");
+            } else {
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("Kode Kereta Tidak Ditemukan, Kereta Gagal Dihapus");
+                System.out.println("--------------------------------------------------------------");
+            }
+        }else{
             System.out.println("--------------------------------------------------------------");
-            System.out.println("Kereta Berhasil Dihapus");
-            System.out.println("--------------------------------------------------------------");
-        } else {
-            System.out.println("--------------------------------------------------------------");
-            System.out.println("Kode Kereta Tidak Ditemukan, Kereta Gagal Dihapus");
+            System.out.println("Format Salah, Format : DELETE_KODE KERETA");
             System.out.println("--------------------------------------------------------------");
         }
     }
@@ -84,29 +91,37 @@ public class ViewKereta {
     public void menuEdit() {
         System.out.println("#EDIT DATA KERETA API#");
         System.out.print("Edit Kereta : ");
-        String kode = input.nextLine().split("_", 2)[1];
-        int index = ctrKereta.CheckKereta(kode);
+        String kode2 []= input.nextLine().split("_", 2);
+        String kode;
+        if(kode2.length==2){
+            kode=kode2[1];
+            int index = ctrKereta.CheckKereta(kode);
 
-        if (index >= 0) {
-            ctrKereta.DeleteKereta(index);
-			System.out.print("Kode Kereta : ");
-            String kodeKereta = input.nextLine();
-            System.out.print("Nama Kereta : ");
-            String namaKereta = input.nextLine();
-            System.out.print("Jumlah Gerbong : ");
-            int jmlGerbong = input.nextInt();
-            System.out.print("Jumlah Gerbong Bisnis: ");
-            int jmlBisnis = input.nextInt();
-			System.out.print("Jumlah Gerbong Premium: ");
-            int jmlPremium = input.nextInt();
-			input.nextLine();
-			String jmlA="G"+jmlGerbong;
-			String jmlB="B"+jmlBisnis;
-			String jmlC="P"+jmlPremium;
-            ctrKereta.TambahKereta(kodeKereta, namaKereta, jmlA, jmlB, jmlC);
-        } else {
+            if (index >= 0) {
+                ctrKereta.DeleteKereta(index);
+                System.out.print("Kode Kereta : ");
+                String kodeKereta = input.nextLine();
+                System.out.print("Nama Kereta : ");
+                String namaKereta = input.nextLine();
+                System.out.print("Jumlah Gerbong : ");
+                int jmlGerbong = input.nextInt();
+                System.out.print("Jumlah Gerbong Bisnis: ");
+                int jmlBisnis = input.nextInt();
+                System.out.print("Jumlah Gerbong Premium: ");
+                int jmlPremium = input.nextInt();
+                input.nextLine();
+                String jmlA="G"+jmlGerbong;
+                String jmlB="B"+jmlBisnis;
+                String jmlC="P"+jmlPremium;
+                ctrKereta.TambahKereta(kodeKereta, namaKereta, jmlA, jmlB, jmlC);
+            } else {
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("Kereta Gagal Ditambahkan");
+                System.out.println("--------------------------------------------------------------");
+            }
+        }else{
             System.out.println("--------------------------------------------------------------");
-            System.out.println("Kereta Gagal Ditambahkan");
+            System.out.println("Format Salah, Format : EDIT_KODE KERETA");
             System.out.println("--------------------------------------------------------------");
         }
     }

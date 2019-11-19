@@ -36,16 +36,24 @@ public class ViewStation {
     public void menuDelete() {
         System.out.println("#DELETE DATA STASIUN#");
         System.out.print("Delete Stasiun : ");
-        String kode = input.nextLine().split("_", 2)[1];
-        int index = ctrStation.CheckStation(kode);
-        if (index >= 0) {
-            ctrStation.DeleteStation(index);
+        String kode2 []= input.nextLine().split("_", 2);
+        String kode;
+        if(kode2.length==2){
+            kode=kode2[1];
+            int index = ctrStation.CheckStation(kode);
+            if (index >= 0) {
+                ctrStation.DeleteStation(index);
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("Stasiun Berhasil Dihapus");
+                System.out.println("--------------------------------------------------------------");
+            } else {
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("Stasiun Gagal Dihapus");
+                System.out.println("--------------------------------------------------------------");
+            }
+        }else {
             System.out.println("--------------------------------------------------------------");
-            System.out.println("Stasiun Berhasil Dihapus");
-            System.out.println("--------------------------------------------------------------");
-        } else {
-            System.out.println("--------------------------------------------------------------");
-            System.out.println("Stasiun Gagal Dihapus");
+            System.out.println("Format Salah, Format : DELETE_KODE STASIUN");
             System.out.println("--------------------------------------------------------------");
         }
     }
@@ -62,22 +70,31 @@ public class ViewStation {
     public void menuEdit() {
         System.out.println("#EDIT DATA STASIUN#");
         System.out.print("Edit Stasiun : ");
-        String kode = input.nextLine().split("_", 2)[1];
-        int index = ctrStation.CheckStation(kode);
+        String kode2 []= input.nextLine().split("_", 2);
+        String kode;
+        if(kode2.length==2){
+            kode=kode2[1];	
+            int index = ctrStation.CheckStation(kode);
 
-        if (index >= 0) {
-            ctrStation.DeleteStation(index);
-            System.out.print("Kode Stasiun : ");
-            kode = input.nextLine();
-            System.out.print("Nama Stasiun : ");
-            String nama = input.nextLine();
-            ctrStation.TambahStation(kode, nama);
+            if (index >= 0) {
+                ctrStation.DeleteStation(index);
+                System.out.print("Kode Stasiun : ");
+                kode = input.nextLine();
+                System.out.print("Nama Stasiun : ");
+                String nama = input.nextLine();
+                ctrStation.TambahStation(kode, nama);
 
-        } else {
+            } else {
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("Stasiun Gagal Ditambahkan");
+                System.out.println("--------------------------------------------------------------");
+            }
+        }else {
             System.out.println("--------------------------------------------------------------");
-            System.out.println("Stasiun Gagal Ditambahkan");
+            System.out.println("Format Salah, Format : EDIT_KODE STASIUN");
             System.out.println("--------------------------------------------------------------");
         }
+
     }
 
     public int getPilihan() {
