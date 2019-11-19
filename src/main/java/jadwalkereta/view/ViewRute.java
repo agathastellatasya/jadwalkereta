@@ -60,10 +60,10 @@ public class ViewRute {
     {
         System.out.println("#LIHAT DATA KOTA#");
         System.out.println("Data Lengkap Rute");
-        System.out.println("--------------------------------------------------------------");
-        System.out.println("No\tKeberangkatan\t\tTujuan\t\tKode Rute\t\tBisnis\t\tPremium");
-		ctrRute.LihatRute();
-        System.out.println("--------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------");
+        System.out.println("No\tKeberangkatan\t\tTujuan\t\tKode Rute\tBisnis\tPremium");
+        ctrRute.LihatRute();
+        System.out.println("-------------------------------------------------------------------------------------");
     }
 	
 

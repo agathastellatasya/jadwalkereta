@@ -130,7 +130,7 @@ public class ControllerRute {
 	public void LihatRute()
     {
         for(int i=0; i<rute.size();i++)
-            System.out.println(i+1+"\t"+rute.get(i).getKotaBerangkat()+"\t\t\t"+rute.get(i).getKotaTujuan()+"\t"+rute.get(i).getKodeRute()+"\t\t"+rute.get(i).getHargaBisnis()+"\t\t"+rute.get(i).getHargaPremium());
+            System.out.println(i+1+"\t"+rute.get(i).getKotaBerangkat()+" "+"\t\t"+rute.get(i).getKotaTujuan()+" \t"+rute.get(i).getKodeRute()+"\t\t"+rute.get(i).getHargaBisnis()+"\t"+rute.get(i).getHargaPremium());
     }
 
 }
