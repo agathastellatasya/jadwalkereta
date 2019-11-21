@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import jadwalkereta.model.City;
+import jadwalkereta.model.Rute;
 import jadwalkereta.view.ViewCity;
 
 /**
@@ -129,6 +130,43 @@ public class ControllerCity {
                 System.out.println(i+1+"\t"+cities.get(i).getKode()+"\t\t"+cities.get(i).getNama());
     }
 
+    
 
 
+
+    public int CheckRute(String kode){
+        int j=0, i=0;
+        String nama = "";
+        boolean found = false;
+        int flag = 0;
+        ArrayList<Rute> rute = ctrMain.getRute();
+
+        while (i < cities.size() && flag==0)
+        {
+            if(kode.equals(cities.get(i).getKode()))
+            {
+                nama = cities.get(i).getNama();
+                flag=1;
+                break;
+            }
+            i++;
+        }
+
+        while(j<rute.size() && flag == 1)
+        {
+           // if(nama.equals(rute.get(j).getKotaBerangkat()))
+            if(nama.equals(rute.get(j).getKotaBerangkat()) || nama.equals(rute.get(j).getKotaTujuan()))
+            {
+                found = true;
+                break;
+            }
+           j++;
+
+        }
+
+        if(found) return j;
+        else return -1;
+    }
 }
+
+

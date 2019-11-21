@@ -50,10 +50,18 @@ public class ViewCity {
             kode=kode2[1];	
             int index = ctrCity.CheckCity(kode);
             if (index >= 0) {
-                ctrCity.DeleteCity(index);
-                System.out.println("--------------------------------------------------------------");
-                System.out.println("Kota Berhasil Dihapus");
-                System.out.println("--------------------------------------------------------------");
+                int CityRute = ctrCity.CheckRute(kode);
+                if(CityRute < 0)
+                {
+                    ctrCity.DeleteCity(index);
+                    System.out.println("--------------------------------------------------------------");
+                    System.out.println("Kota Berhasil Dihapus");
+                    System.out.println("--------------------------------------------------------------");
+                }else {
+                    System.out.println("----------------------------------------------------------------------");
+                    System.out.println("Tidak Bisa di Delete, Karena Kota Terhubung dengan Rute");
+                    System.out.println("----------------------------------------------------------------------");
+                }
             } else {
                 System.out.println("--------------------------------------------------------------");
                 System.out.println("Kota Gagal Dihapus");

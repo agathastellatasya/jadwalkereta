@@ -7,6 +7,8 @@ package jadwalkereta.controller;
 
 //import jadwalkereta.model.Kota;
 import jadwalkereta.model.City;
+import jadwalkereta.model.KARute;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -113,6 +115,20 @@ public class ControllerKereta {
         boolean found = false;
         for (i=0; i < kereta.size(); i++) {
             if (kodeKereta.equals(kereta.get(i).getKodeKereta())) {
+                found = true;
+                break;
+            }
+        }
+        if(found) return i;
+        else return -1;
+    }
+
+    public int CheckKARute(String kodeKA){
+        int i;
+        boolean found = false;
+        ArrayList<KARute> karute = ctrMain.getKARute();
+        for (i=0; i < karute.size(); i++) {
+            if (kodeKA.equals(karute.get(i).getKodeKA())) {
                 found = true;
                 break;
             }

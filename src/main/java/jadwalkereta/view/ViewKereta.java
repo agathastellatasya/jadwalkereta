@@ -61,10 +61,18 @@ public class ViewKereta {
             kode=kode2[1];
             int index = ctrKereta.CheckKereta(kode);
             if (index >= 0) {
-                ctrKereta.DeleteKereta(index);
-                System.out.println("--------------------------------------------------------------");
-                System.out.println("Kereta Berhasil Dihapus");
-                System.out.println("--------------------------------------------------------------");
+                int KAterhubung = ctrKereta.CheckKARute(kode);
+                if(KAterhubung < 0)
+                {
+                    ctrKereta.DeleteKereta(index);
+                    System.out.println("--------------------------------------------------------------");
+                    System.out.println("Kereta Berhasil Dihapus");
+                    System.out.println("--------------------------------------------------------------");
+                }else{
+                    System.out.println("----------------------------------------------------------------------");
+                    System.out.println("Tidak Bisa di Delete, Karena KA Terhubung dengan KA Berdasarkan Rute");
+                    System.out.println("----------------------------------------------------------------------");
+                }  
             } else {
                 System.out.println("--------------------------------------------------------------");
                 System.out.println("Kode Kereta Tidak Ditemukan, Kereta Gagal Dihapus");
