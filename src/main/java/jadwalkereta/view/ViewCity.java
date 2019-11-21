@@ -27,10 +27,18 @@ public class ViewCity {
     public void menuTambah() {
         System.out.println("#TAMBAH DATA KOTA#");
         System.out.print("Tambah Kota : ");
-        String request = input.nextLine();
-        String kode = request.substring(0,request.indexOf(' '));
-        String nama = request.substring(request.indexOf(' ')+1);
-        ctrCity.TambahCity(kode, nama);
+        //String request = input.nextLine();
+        String inputan2 []= input.nextLine().split(" ", 2);
+        //String input;
+        if(inputan2.length==2){
+            String kode =inputan2[0];
+            String nama =inputan2[1];
+            ctrCity.TambahCity(kode, nama);
+        }else{
+            System.out.println("--------------------------------------------------------------");
+            System.out.println("Format Salah, Format : KODEKOTA NAMAKOTA");
+            System.out.println("--------------------------------------------------------------");
+        }
     }
 
     public void menuDelete() {

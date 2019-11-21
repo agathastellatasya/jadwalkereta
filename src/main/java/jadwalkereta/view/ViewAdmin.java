@@ -81,7 +81,7 @@ public class ViewAdmin {
             // VALIDASI HP
             do {
                 System.out.print("Nomor Handphone : ");
-                hp = input.next();
+                hp = input.nextLine();
 
                 if ((hp.length() > 12 || hp.length() < 11) || !(hp.matches("[0-9_]+"))) {
                     System.out.println("No. hp tidak valid, harus angka dan terdiri dari 11 hingga 12 digit, misal: 085224224224");
@@ -91,22 +91,23 @@ public class ViewAdmin {
             // VALIDASI EMAIL
             do {
                 System.out.print("Email : ");
-                email = input.next();
+                email = input.nextLine();
 
                 if (ctrUser.findEmailInUsers(email) != -99){
-                    if (!email.equals(users.get(ctrUser.findEmailInUsers(email)).getEmail())){
-
-                        System.out.println("Email sudah terdaftar!");
+                    if (email.equals(users.get(ctrUser.findEmailInUsers(email)).getEmail())){
+                        if (!email.equals(u.getEmail())){
+                            System.out.println("Email sudah terdaftar!");
+                        }
                     }
                 }
-            } while ((ctrUser.findEmailInUsers(email) != -99) && !email.equals(users.get(ctrUser.findEmailInUsers(email)).getEmail()));
+            } while ((ctrUser.findEmailInUsers(email) != -99) && email.equals(users.get(ctrUser.findEmailInUsers(email)).getEmail()) && !email.equals(u.getEmail()));
 
             // VALIDASI PASSWORD
             do {
                 System.out.print("Password : ");
-                pass = input.next();
+                pass = input.nextLine();
                 System.out.print("Re-Password : ");
-                repass = input.next();
+                repass = input.nextLine();
 
                 if (!pass.equals(repass)){
                     System.out.println("Password dan Re-Password tidak sama! Silakan coba kembali!");
