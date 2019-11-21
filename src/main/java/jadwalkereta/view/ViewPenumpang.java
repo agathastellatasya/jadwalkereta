@@ -60,9 +60,10 @@ public class ViewPenumpang {
 
         System.out.println("------ UBAH DATA PENGGUNA ------");
         // VALIDASI NAMA
+        input.nextLine();
             do {
                 System.out.print("Nama Lengkap : ");
-                input.nextLine();
+                
                 nama = input.nextLine();
                 if (!nama.matches("^[a-zA-Z\\\\s][a-zA-Z \\\\s]*$")){
                     System.out.println("Nama harus terdiri dari huruf semua!");
@@ -72,7 +73,7 @@ public class ViewPenumpang {
             // VALIDASI HP
             do {
                 System.out.print("Nomor Handphone : ");
-                hp = input.next();
+                hp = input.nextLine();
 
                 if ((hp.length() > 12 || hp.length() < 11) || !(hp.matches("[0-9_]+"))) {
                     System.out.println("No. hp tidak valid, harus angka dan terdiri dari 11 hingga 12 digit, misal: 085224224224");
@@ -82,11 +83,10 @@ public class ViewPenumpang {
             // VALIDASI EMAIL
             do {
                 System.out.print("Email : ");
-                email = input.next();
+                email = input.nextLine();
 
                 if (ctrUser.findEmailInUsers(email) != -99){
                     if (!email.equals(user.getEmail())){
-
                         System.out.println("Email sudah terdaftar!");
                     }
                 }
@@ -95,9 +95,9 @@ public class ViewPenumpang {
             // VALIDASI PASSWORD
             do {
                 System.out.print("Password : ");
-                pass = input.next();
+                pass = input.nextLine();
                 System.out.print("Re-Password : ");
-                repass = input.next();
+                repass = input.nextLine();
 
                 if (!pass.equals(repass)){
                     System.out.println("Password dan Re-Password tidak sama! Silakan coba kembali!");

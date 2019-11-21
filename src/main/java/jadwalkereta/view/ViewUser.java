@@ -9,6 +9,7 @@ import java.util.*;
 public class ViewUser{
     User user = new User();
     ControllerMain ctrMain;
+    Scanner in = new Scanner(System.in);
 
     public ViewUser(ControllerMain ctr, User u){
         ctrMain = ctr;
@@ -20,24 +21,22 @@ public class ViewUser{
     }
 
     public void menuLogin(){
-        Scanner input = new Scanner(System.in);
+        // Scanner input = new Scanner(System.in);
         System.out.println("###### LOGIN ######");
         System.out.print("Email : ");
-        user.setEmail(input.nextLine());
+        user.setEmail(in.nextLine());
         System.out.print("Password : ");
-        user.setPassword(input.nextLine());
+        user.setPassword(in.nextLine());
     }
 
     public void menuRegis(){
         String nik, nama, email, hp, password, repassword;
-        Scanner in = new Scanner(System.in);
         ControllerUser ctrUser = new ControllerUser(ctrMain);
 
         // VALIDASI NIK
         do {
             System.out.print("Nomor KTP : ");
-            nik = in.next();
-
+            nik = in.nextLine();
             if (nik.length() != 16 || !(nik.matches("[0-9_]+"))) {
                 System.out.println("NIK tidak valid, harus berupa 16 digit angka, misal: 1234567891011121");
             }
@@ -51,7 +50,7 @@ public class ViewUser{
         // VALIDASI NAMA
         do {
             System.out.print("Nama Lengkap : ");
-            in.nextLine();
+            // in.nextLine();
             nama = in.nextLine();
             if (!nama.matches("^[a-zA-Z\\\\s][a-zA-Z \\\\s]*$")){
                 System.out.println("Nama harus terdiri dari huruf semua!");
@@ -62,7 +61,7 @@ public class ViewUser{
         // VALIDASI HP
         do {
             System.out.print("Nomor Handphone : ");
-            hp = in.next();
+            hp = in.nextLine();
 
             if ((hp.length() > 12 || hp.length() < 11) || !(hp.matches("[0-9_]+"))) {
                 System.out.println("No. hp tidak valid, harus angka dan terdiri dari 11 hingga 12 digit, misal: 085224224224");
@@ -73,7 +72,7 @@ public class ViewUser{
         // VALIDASI EMAIL
         do {
             System.out.print("Email : ");
-            email = in.next();
+            email = in.nextLine();
 
             if (ctrUser.findEmailInUsers(email) != -99){
                 System.out.println("Email sudah terdaftar!");
@@ -88,9 +87,9 @@ public class ViewUser{
         // VALIDASI PASSWORD
         do {
             System.out.print("Password : ");
-            password = in.next();
+            password = in.nextLine();
             System.out.print("Re-Password : ");
-            repassword = in.next();
+            repassword = in.nextLine();
 
             if (!password.equals(repassword)){
                 System.out.println("Password dan Re-Password tidak sama! Silakan coba kembali!");
