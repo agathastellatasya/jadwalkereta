@@ -79,7 +79,7 @@ public class ControllerCity {
             System.out.println("--------------------------------------------------------------");
         } else {
             System.out.println("--------------------------------------------------------------");
-            System.out.println("Kota Gagal Ditambahkan");
+            System.out.println("Kota Sudah Ada, Gagal Menambahkan");
             System.out.println("--------------------------------------------------------------");
         }
     }
