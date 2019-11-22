@@ -8,6 +8,8 @@ package jadwalkereta.controller;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import jadwalkereta.model.Jalur;
+import jadwalkereta.model.Rute;
 import jadwalkereta.model.Station;
 import jadwalkereta.view.ViewStation;
 
@@ -116,6 +118,43 @@ public class ControllerStation {
     {
         for(int i=0; i<stations.size();i++)
                 System.out.println(i+1+"\t"+stations.get(i).getKode()+"\t\t"+stations.get(i).getNama());
+    }
+
+    //check dependensi Stasiun ke Jalur lewat array Rute
+    public int CheckStationJalur(String kode){
+        int i = 0;
+        int j, k;
+        String Kota = "";
+        int flag = 0;
+        boolean found = false;
+        ArrayList<Rute> rute = ctrMain.getRute();
+        
+        while (flag==0 && i<stations.size())
+        {
+            if(kode.equals(stations.get(i).getKode()))
+            {
+                Kota = stations.get(i).getNama();
+                flag = 1;
+                break;
+            }
+            i++;
+        }
+        
+        if(flag == 1)
+        {
+            for (j=0; j<rute.size(); j++) {
+                for (k=0; k<rute.get(j).getJalur().size(); k++)
+                {
+                    if(Kota.equals(rute.get(j).getJalur().get(k).getStasiunAwal().getNama()) || Kota.equals(rute.get(j).getJalur().get(k).getStasiunAkhir().getNama()) ) {
+                        found = true;
+                        break;
+                    }
+                }   
+            }
+        }
+        
+        if(found) return i;
+        else return -1;
     }
 
 

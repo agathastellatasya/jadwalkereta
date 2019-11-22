@@ -42,15 +42,24 @@ public class ViewStation {
             kode=kode2[1];
             int index = ctrStation.CheckStation(kode);
             if (index >= 0) {
-                ctrStation.DeleteStation(index);
-                System.out.println("--------------------------------------------------------------");
-                System.out.println("Stasiun Berhasil Dihapus");
-                System.out.println("--------------------------------------------------------------");
+                int StasiunJalur  = ctrStation.CheckStationJalur(kode);
+                if(StasiunJalur < 0)
+                {
+                    ctrStation.DeleteStation(index);
+                    System.out.println("--------------------------------------------------------------");
+                    System.out.println("Stasiun Berhasil Dihapus");
+                    System.out.println("--------------------------------------------------------------");
+                }else{
+                    System.out.println("----------------------------------------------------------------------");
+                    System.out.println("Tidak Bisa di Delete, Stasiun Terhubung dengan Jalur Stasiun Rute");
+                    System.out.println("----------------------------------------------------------------------");
+                }
             } else {
                 System.out.println("--------------------------------------------------------------");
-                System.out.println("Stasiun Gagal Dihapus");
+                System.out.println("Stasiun Tidak Ada / Gagal Dihapus");
                 System.out.println("--------------------------------------------------------------");
             }
+               
         }else {
             System.out.println("--------------------------------------------------------------");
             System.out.println("Format Salah, Format : DELETE_KODE STASIUN");

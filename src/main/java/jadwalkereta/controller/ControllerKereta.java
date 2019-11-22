@@ -123,6 +123,7 @@ public class ControllerKereta {
         else return -1;
     }
 
+    // cek dependensi KA ke KA berdasarkan Rute (KARute)
     public int CheckKARute(String kodeKA){
         int i;
         boolean found = false;
@@ -140,7 +141,7 @@ public class ControllerKereta {
 	public void LihatKereta()
     {
         for(int i=0; i<kereta.size();i++)
-            System.out.println(i+1+"\t"+kereta.get(i).getKodeKereta()+"\t\t\t"+kereta.get(i).getNamaKereta()+"\t"+kereta.get(i).getJmlGerbong()+"\t\t"+kereta.get(i).getJmlBisnis()+"\t\t"+kereta.get(i).getJmlPremium());
+            System.out.println(i+1+"\t"+kereta.get(i).getKodeKereta()+"\t"+kereta.get(i).getNamaKereta()+"\t\t\t"+kereta.get(i).getJmlGerbong()+"\t\t"+kereta.get(i).getJmlBisnis()+"\t\t\t"+kereta.get(i).getJmlPremium());
     }
 
 }

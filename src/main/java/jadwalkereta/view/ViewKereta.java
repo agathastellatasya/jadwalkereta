@@ -89,10 +89,10 @@ public class ViewKereta {
     {
         System.out.println("#LIHAT DATA KERETA API#");
         System.out.println("Data Lengkap Kereta Api");
-        System.out.println("--------------------------------------------------------------");
-        System.out.println("No\tKode Kereta\t\tNama Kereta\t\tJumlah Gerbong\t\tJumlah Gerbong Bisnis\t\tJumlah Gerbong Premium");
+        System.out.println("-----------------------------------------------------------------------------------------------------------");
+        System.out.println("No\tKode Kereta\tNama Kereta\tJumlah Gerbong\tJumlah Gerbong Bisnis\tJumlah Gerbong Premium");
 		ctrKereta.LihatKereta();
-        System.out.println("--------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------");
     }
 	
 

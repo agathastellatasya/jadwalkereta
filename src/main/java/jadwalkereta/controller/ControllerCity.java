@@ -133,7 +133,7 @@ public class ControllerCity {
     
 
 
-
+    // cek dependensi Kota ke Rute
     public int CheckRute(String kode){
         int j=0, i=0;
         String nama = "";
