@@ -24,22 +24,22 @@ public class ControllerMain {
     ArrayList<City> cities;
     ArrayList<Rute> rute;
     ArrayList<Kereta> kereta;
-    ArrayList<TimeRute> timerute;
+    //ArrayList<TimeRute> timerute;
     //ArrayList<KARute> karute;
-//    ArrayList<Jadwal> jadwal;
+    ArrayList<Jadwal> jadwal;
   
     // Menambahkan parameter ArrayList<Station> s pada konstruktor
-    public ControllerMain(ArrayList<User> u, ArrayList<Station> s, ArrayList<City> c, ArrayList<Rute> r, ArrayList<Time> t, ArrayList<Kereta> k, ArrayList<TimeRute> tr)  {
+    public ControllerMain(ArrayList<User> u, ArrayList<Station> s, ArrayList<City> c, ArrayList<Rute> r, ArrayList<Time> t, ArrayList<Kereta> k, ArrayList<Jadwal> j)  {
         viewMain = new ViewMain();
         users = u;
         stations = s;
 	    cities =c;
         rute = r;
         times = t;
-        timerute = tr;
+        //timerute = tr;
         kereta = k;
 //        karute = kr;
-//		jadwal = j;
+	jadwal = j;
     }
 
     public ArrayList<User> getUsers() { return users; }
@@ -48,7 +48,8 @@ public class ControllerMain {
     public ArrayList<City> getCities(){ return cities; }
     public ArrayList<Rute> getRute(){ return rute; }
     public ArrayList<Kereta> getKereta(){ return kereta; }
-    public ArrayList<TimeRute> getTimeRute(){ return timerute; }
+    public ArrayList<Jadwal> getJadwal(){ return jadwal; }
+//    public ArrayList<TimeRute> getTimeRute(){ return timerute; }
 //    public ArrayList<KARute> getKARute(){ return karute; }
 //	public ArrayList<Jadwal> getJadwal(){ return jadwal; }
 

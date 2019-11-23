@@ -94,17 +94,17 @@ public class ControllerAdmin {
                     ctrKARute.ControlMenuKARute();
                     break;
                     } 
-//				case 9:{
-//                    ControllerJadwal ctrJadwal = new ControllerJadwal(this);
-//                    ctrJadwal.ControlMenuJadwal();
-//                    break;
-//                    } 	
+		case 9:{
+                    ControllerJadwal ctrJadwal = new ControllerJadwal(this);
+                    ctrJadwal.ControlMenuJadwal();
+                    break;
+                    } 	
 					
-				case 12:{
-							ControllerKereta ctrKereta = new ControllerKereta(this);
-							ctrKereta.ControlMenuKereta();
-							break;
-						}
+                case 12:{
+                    ControllerKereta ctrKereta = new ControllerKereta(this);
+                    ctrKereta.ControlMenuKereta();
+                    break;
+                        }
                 default:
                     System.out.println("Inputan Salah!");
                     System.out.println();

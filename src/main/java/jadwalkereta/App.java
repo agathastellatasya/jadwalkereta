@@ -102,31 +102,18 @@ public final class App {
         karute.add(new KARute(KA1));
         karute.add(new KARute(KA2));
         karute.add(new KARute(KA3));
+        timerute.add(new TimeRute("TM10",2,15));
+        timerute.add(new TimeRute("TM20",4,45));
+        timerute.add(new TimeRute("TM30",7,15));
+        timerute.add(new TimeRute("TM40",9,45));
         //karute.add(new KARute("KAI18801"));
         Rute R5 = new Rute("JKT-SBY", 2000000, 1000000, "Jakarta", "Surabaya", jalur,timerute,karute);
         rute.add(R5);
-
-        ///////////////////////////////////////////////////////////////////////////////////
-        
-//        KARute KR1 = new KARute(1, "JKT-BDG", "KAI18801");
-//        KARute KR2 = new KARute(1, "JKT-BDG", "KAI19801");
-//        KARute KR3 = new KARute(2, "SMG-SBY", "KAI18802");
-//        KARute KR4 = new KARute(2, "SMG-SBY", "KAI18803");
-        
-
-//        karute.add(KR1);
-//        karute.add(KR2);
-//        karute.add(KR3);
-//        karute.add(KR4);
-
-      
-        ///////////////////////////////////////////////////////////
-
-        // ------------------------------------------------
+        ArrayList<Jadwal> jadwal = new ArrayList<Jadwal>();
         
         // Tambah Parameter Station
 
-        ControllerMain ctrMain = new ControllerMain(users, stations, cities, rute, times, kereta, timerute);
+        ControllerMain ctrMain = new ControllerMain(users, stations, cities, rute, times, kereta, jadwal);
         ctrMain.run();
     }
 }
