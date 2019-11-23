@@ -1,39 +1,17 @@
 package jadwalkereta.model;
 
 public class KARute {
-    protected int kode;
-    protected String kodeRute;
-    protected String kodeKA;
-
-    public KARute(int kode, String kodeRute, String kodeKA) {
-        this.kode = kode;
-        this.kodeRute = kodeRute;
-        this.kodeKA = kodeKA;
+    Kereta kdKereta;
+    public KARute(Kereta kdKereta) {
+        this.kdKereta = kdKereta;
     }
 
-    public KARute() {
+    public Kereta getKdKereta() {
+        return this.kdKereta;
     }
 
-    public void setKode(int kode) {
-        this.kode = kode;
+    public void setKdKereta(Kereta kdKereta) {
+        this.kdKereta = kdKereta;
     }
 
-    public void setKodeRute(String kodeRute) {
-        this.kodeRute = kodeRute;
-    }
-
-    public void setKodeKA(String kodeKA) {
-        this.kodeKA = kodeKA;
-    }
-    public int getKode() {
-        return kode;
-    }
-
-    public String getKodeRute() {
-        return kodeRute;
-    }
-
-    public String getKodeKA() {
-        return kodeKA;
-    }
-}
+ }

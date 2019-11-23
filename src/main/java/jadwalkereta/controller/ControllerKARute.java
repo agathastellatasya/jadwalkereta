@@ -10,27 +10,30 @@ import jadwalkereta.model.City;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import jadwalkereta.model.Kereta;
 import jadwalkereta.model.Rute;
-import jadwalkereta.view.ViewKereta;
+import jadwalkereta.model.Kereta;
 import jadwalkereta.model.KARute;
 import jadwalkereta.view.ViewKARute;
 
 public class ControllerKARute {
-    ArrayList<KARute> karute;
+    ArrayList<Rute> rute;
     ControllerMain ctrMain;
     ControllerAdmin ctrAdmin;
+    ControllerKereta ctrKereta;
+    ArrayList<Kereta> kereta;
     ViewKARute viewKARute;
     Scanner input = new Scanner(System.in);
 
     public ControllerKARute(ControllerAdmin admin) {
         ctrAdmin = admin;
+        ctrKereta = new ControllerKereta(admin);
         ctrMain = ctrAdmin.getControllerMain();
-        karute = ctrMain.getKARute();
+        rute = ctrMain.getRute();
+        kereta = ctrMain.getKereta();
     }
 
     public void ControlMenuKARute() {
-        if(viewKARute == null) viewKARute = new ViewKARute(this);
+        if (viewKARute == null) viewKARute = new ViewKARute(this);
         viewKARute.menuKARute();
 
         switch (viewKARute.getPilihan()) {
@@ -44,19 +47,17 @@ public class ControllerKARute {
             ControlMenuKARute();
             break;
         }
-        case 3:{
-            viewKARute.menuDelete();
+        case 3: {
+            viewKARute.menuHapus();
+            ControlMenuKARute();
+            break;
+        }
+        case 4: {
             ControlMenuKARute();
             break;
         }
         case 99:
             ctrAdmin.ControlMenuAdmin();
-            try{
-                this.finalize();
-            }
-            catch(Throwable ex){
-                ex.printStackTrace();
-            }
             break;
         default:
             System.out.println("Inputan Salah!");
@@ -65,108 +66,58 @@ public class ControllerKARute {
         }
     }
 
-    public void TambahKARute(int kode, String kodeRute, String kodeKA){
-            karute.add(new KARute(kode, kodeRute, kodeKA));
-            System.out.println("--------------------------------------------------------------");
-            System.out.println("KA berdasarkan Rute Berhasil Ditambahkan");
-            System.out.println("--------------------------------------------------------------");
-        
-    }
-    
-    public void DeleteKA(String kr){
-        int i;
-        //System.out.println(karute.size());
-        for (i=karute.size()-1; i>=0 ; i--) {
-            if (kr.equals(karute.get(i).getKodeRute())) {
-                karute.remove(i);
-                //System.out.println(i+kr);
-            }
-            //System.out.println(i+kr);
-        }
-    }
-
-    public int checkKAsama(String kodeRute, String kodeKA)
+    public int CheckRute(String kode)
     {
-        int i;
-        boolean found = false;
-        for (i=0; i < karute.size(); i++) {
-            if (kodeRute.equals(karute.get(i).getKodeRute()) && kodeKA.equals(karute.get(i).getKodeKA())) {
-                found = true;
-                break;
-            }
+        for(int i=0;i<rute.size();i++){
+            if(rute.get(i).getKodeRute().equals(kode)) return i;
         }
-        if(found) return i;
-        else return -1;
+        System.out.println("Rute Tidak Ditemukan");
+        return -1;
     }
 
-    public int getKode()
-    {
-        int lastindex = karute.size() - 1;
-        int kode = karute.get(lastindex).getKode() + 1;
-        return kode;
-    }
-
-    public int checkRuteSama(String kodeRute)
-    {
-        int i;
-        boolean found = false;
-        for (i=0; i < karute.size(); i++) {
-            if (kodeRute.equals(karute.get(i).getKodeRute())) {
-                found = true;
-                break;
+    public boolean TambahKARute(String kdKereta, int index){
+        int indexKereta=ctrKereta.CheckKereta(kdKereta);
+        ArrayList<KARute> karute = rute.get(index).getKARute();
+//        int indexKArute=CheckKARute(kdKereta, index);
+        if(ctrKereta.CheckKereta(kdKereta) >= 0){
+            if(kereta.get(indexKereta).getKodeKereta().equals(kdKereta)){
+                System.out.println("Kereta Sudah Ada pada Rute");
+                return false;
+            }
+            else {
+                karute.add(new KARute(kereta.get(indexKereta)));
+                return true;
             }
         }
-        if(found) return i;
-        else return -1;
+        else {
+            System.out.println("Kereta tidak ada dalam daftar Kereta");
+            return false;
+        }
     }
 
-    public int CheckRute(String kodeRute){
-        int i;
-        boolean found = false;
-        ArrayList<Rute> rute = ctrMain.getRute();
-        for (i=0; i < rute.size(); i++) {
-            if (kodeRute.equals(rute.get(i).getKodeRute())) {
-                found = true;
-                break;
-            }
-        }
-        if(found) return i;
-        else return -1;
-    }
-
-    public int CheckKA(String kodeKereta){
-        int i;
-        boolean found = false;
-        ArrayList<Kereta> kereta = ctrMain.getKereta();
-        for (i=0; i < kereta.size(); i++) {
-            if (kodeKereta.equals(kereta.get(i).getKodeKereta())) {
-                found = true;
-                break;
-            }
-        }
-        if(found) return i;
-        else return -1;
-    }
-	
-	public void LihatKARute(String kodeRute)
-    {
-        int j=0;
-        for(int i=0; i<karute.size();i++)
+    public void LihatKARute(String kode) {
+        int i = CheckRute(kode);
+        if(i>=0)
         {
-            if(kodeRute.equals(karute.get(i).getKodeRute()))
-            {
-                if(j==0)
-                {
-                    System.out.println("1"+"\t\t"+"KR"+String.format("%02d", karute.get(i).getKode())+"\t\t"+karute.get(i).getKodeRute()+"\t\t"+karute.get(i).getKodeKA());
-                    j++;
-                }else {
-                    System.out.println("\t\t\t\t\t\t"+karute.get(i).getKodeKA());
-                }
+            String sjalur = "        -";
+            int menit = 0;
+            for (int j = 0; j < rute.get(i).getKARute().size(); j++) {
+                KARute temp_karute = rute.get(i).getKARute().get(j);
+                if (j == 0) {
+                    sjalur = "";
+                    sjalur = sjalur + "- " + temp_karute.getKdKereta().getKodeKereta() + "\n";
+                } else
+                    sjalur = sjalur + "\t\t\t\t\t- " + temp_karute.getKdKereta().getKodeKereta() + "\n";
             }
+            //sjalur = sjalur.substring(0, 9) + "\t\t" + menit + " menit" + sjalur.substring(9);
+            System.out.println(i + 1 + "\t" + "KR" + String.format("%02d", i + 1) + "\t\t" + rute.get(i).getKodeRute()
+                    + "\t\t" + sjalur);
         }
-           
+
+        else System.out.println("Kode Rute Tidak Ditemukan");
     }
 
-	
-
+    public void HapusKARute(int index){
+        rute.get(index).setKARute(new ArrayList<KARute>());
+    }
 }

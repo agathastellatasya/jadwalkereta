@@ -51,7 +51,7 @@ public final class App {
 	    ArrayList<City> cities = new ArrayList<City>();
         ArrayList<Rute> rute = new ArrayList<Rute>();
 		ArrayList<Kereta> kereta = new ArrayList<Kereta>();
-		ArrayList<TimeRute> timerute = new ArrayList<TimeRute>();
+		
 
         //rute.add(new Rute("JKT-BAL",1,2,"Jakarta","Bali"));
         
@@ -94,24 +94,30 @@ public final class App {
         // Contoh penambahan Jalur Langsung pada rute
 
         ArrayList<Jalur> jalur = new ArrayList<>();
+        ArrayList<KARute> karute = new ArrayList<KARute>();
+        ArrayList<TimeRute> timerute = new ArrayList<TimeRute>();
         jalur.add(new Jalur(jkt,bdg, 200)); //jkt, bdg, smg, dan sby adalah variabel tipe station yang sudah di deklarasi diatas
         jalur.add(new Jalur(bdg,smg, 200));
-        jalur.add(new Jalur(smg,sby, 200));      
-        Rute R5 = new Rute("JKT-SBY", 2000000, 1000000, "Jakarta", "Surabaya", jalur);
+        jalur.add(new Jalur(smg,sby, 200));
+        karute.add(new KARute(KA1));
+        karute.add(new KARute(KA2));
+        karute.add(new KARute(KA3));
+        //karute.add(new KARute("KAI18801"));
+        Rute R5 = new Rute("JKT-SBY", 2000000, 1000000, "Jakarta", "Surabaya", jalur,timerute,karute);
         rute.add(R5);
 
         ///////////////////////////////////////////////////////////////////////////////////
-        ArrayList<KARute> karute = new ArrayList<KARute>();
-        KARute KR1 = new KARute(1, "JKT-BDG", "KAI18801");
-        KARute KR2 = new KARute(1, "JKT-BDG", "KAI19801");
-        KARute KR3 = new KARute(2, "SMG-SBY", "KAI18802");
-        KARute KR4 = new KARute(2, "SMG-SBY", "KAI18803");
+        
+//        KARute KR1 = new KARute(1, "JKT-BDG", "KAI18801");
+//        KARute KR2 = new KARute(1, "JKT-BDG", "KAI19801");
+//        KARute KR3 = new KARute(2, "SMG-SBY", "KAI18802");
+//        KARute KR4 = new KARute(2, "SMG-SBY", "KAI18803");
         
 
-        karute.add(KR1);
-        karute.add(KR2);
-        karute.add(KR3);
-        karute.add(KR4);
+//        karute.add(KR1);
+//        karute.add(KR2);
+//        karute.add(KR3);
+//        karute.add(KR4);
 
       
         ///////////////////////////////////////////////////////////
@@ -120,7 +126,7 @@ public final class App {
         
         // Tambah Parameter Station
 
-        ControllerMain ctrMain = new ControllerMain(users, stations, cities, rute, times, kereta, timerute, karute);
+        ControllerMain ctrMain = new ControllerMain(users, stations, cities, rute, times, kereta, timerute);
         ctrMain.run();
     }
 }

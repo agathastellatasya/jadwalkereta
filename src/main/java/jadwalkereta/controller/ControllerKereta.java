@@ -124,19 +124,19 @@ public class ControllerKereta {
     }
 
     // cek dependensi KA ke KA berdasarkan Rute (KARute)
-    public int CheckKARute(String kodeKA){
-        int i;
-        boolean found = false;
-        ArrayList<KARute> karute = ctrMain.getKARute();
-        for (i=0; i < karute.size(); i++) {
-            if (kodeKA.equals(karute.get(i).getKodeKA())) {
-                found = true;
-                break;
-            }
-        }
-        if(found) return i;
-        else return -1;
-    }
+//    public int CheckKARute(String kodeKA){
+//        int i;
+//        boolean found = false;
+//        ArrayList<KARute> karute = ctrMain.getKARute();
+//        for (i=0; i < karute.size(); i++) {
+//            if (kodeKA.equals(karute.get(i).getKodeKA())) {
+//                found = true;
+//                break;
+//            }
+//        }
+//        if(found) return i;
+//        else return -1;
+//    }
 	
 	public void LihatKereta()
     {

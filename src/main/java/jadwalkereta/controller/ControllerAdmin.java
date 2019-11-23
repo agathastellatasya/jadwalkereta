@@ -6,6 +6,7 @@
 package jadwalkereta.controller;
 
 import jadwalkereta.model.City;
+import jadwalkereta.model.Jalur;
 import jadwalkereta.model.Kereta;
 import jadwalkereta.model.Rute;
 import jadwalkereta.model.User;
@@ -31,6 +32,7 @@ public class ControllerAdmin {
     ArrayList<Rute> rute;
     ArrayList<Kereta> kereta;
     ArrayList<KARute> karute;
+//    ArrayList<Jadwal> jadwal;
     
     public ControllerAdmin(ControllerMain ctr) {
         ctrMain = ctr;
@@ -92,6 +94,12 @@ public class ControllerAdmin {
                     ctrKARute.ControlMenuKARute();
                     break;
                     } 
+//				case 9:{
+//                    ControllerJadwal ctrJadwal = new ControllerJadwal(this);
+//                    ctrJadwal.ControlMenuJadwal();
+//                    break;
+//                    } 	
+					
 				case 12:{
 							ControllerKereta ctrKereta = new ControllerKereta(this);
 							ctrKereta.ControlMenuKereta();

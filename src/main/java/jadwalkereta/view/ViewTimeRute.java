@@ -21,93 +21,100 @@ public class ViewTimeRute {
         System.out.println("99. Menu Utama");
         System.out.print("Pilih Menu : ");
         pilihan = Integer.valueOf(input.nextLine());
-		//input.nextLine();
+        // input.nextLine();
     }
 
     public void menuTambah() {
-        System.out.println("#TAMBAH WAKTU PADA RUTE#");
-		System.out.print("Kode Rute : ");
-		String kode=input.nextLine();
-		int indexKodeRute = ctrTimeRute.CheckRute(kode);
-        int indexKodeTime;
-        int indexKodeWaktu;
-		//System.out.println(indexKodeRute + " " + kode);
-        String kodeTime;
-        String jamMenit;
-		if(indexKodeRute>=0){
-			int i=1;
-			do {
-				System.out.print("Time" + i + ": ");
-				kodeTime=input.nextLine();
-				indexKodeTime = ctrTimeRute.CheckTimeRute(kodeTime);
-                                indexKodeWaktu = ctrTimeRute.CheckWaktuRute(kode,kodeTime);
-				if(indexKodeTime >= 0 && indexKodeWaktu <0) {
-					ctrTimeRute.TambahTimeRute(kode,kodeTime);
-					i++;
-				}
-                                else {
-                                    System.out.println("--------------------------------------------------------------");
-                                    System.out.println("Kode Waktu Tidak Ditemukan atau Sudah Pernah di Input");
-                                    System.out.println("--------------------------------------------------------------");
-                                }
-				//System.out.println(indexKodeTime );
-			}
-			while (!kodeTime.equals("99"));
-		}
-		else {
-			System.out.println("--------------------------------------------------------------");
-            System.out.println("Rute Tidak Ditemukan");
-            System.out.println("--------------------------------------------------------------");
-		}
+        String KodeRute = "";
+        int index = -1;
+        do{
+            System.out.print("Kode Rute: ");
+            KodeRute = input.nextLine();
+            index = ctrTimeRute.CheckRute(KodeRute);
+        }while(index<0);
+
+        int i = 1;
+        String kdKereta;
+        do {
+            System.out.print("WaktuRute "+i+": ");
+            kdKereta = input.nextLine();
+            if(!kdKereta.equals("99")){
+                if(!ctrTimeRute.TambahTimeRute(kdKereta,index)) i--;
+            }
+            i++;
+        }while(!kdKereta.equals("99"));
     }
 
-	
-	public void menuDelete() {
-        System.out.println("#DELETE WAKTU PADA RUTE#");
-        System.out.print("Delete Waktu Pada Kode Rute : ");
-        String kode2 []= input.nextLine().split("_", 2);
-        String kode;
-        if(kode2.length==2){
-            kode=kode2[1];	
-            //input.nextLine();
-            int index = ctrTimeRute.CheckRute(kode);
-            if (index >= 0) {
-                ctrTimeRute.DeleteTimeRute(kode);
-                System.out.println("--------------------------------------------------------------");
-                System.out.println("Waktu Pada Rute Berhasil Dihapus");
-                System.out.println("--------------------------------------------------------------");
-            } else {
-                System.out.println("--------------------------------------------------------------");
-                System.out.println("Waktu Pada Rute Gagal Dihapus");
-                System.out.println("--------------------------------------------------------------");
-            }
-        }
-        else {
-                System.out.println("--------------------------------------------------------------");
-                System.out.println("Format Salah, Format : DELETE_KODERUTE");
-                System.out.println("--------------------------------------------------------------");
-        }
-    }
-	
-	public void menuLihat()
-    {
+    // public void menuDelete() {
+    //     System.out.println("#DELETE DATA JALUR#");
+    //     System.out.print("Delete TimeRute : ");
+    //     String kode = input.nextLine().split("_", 2)[1];
+    //     // input.nextLine();
+    //     int index = ctrTimeRute.CheckTimeRute(kode);
+    //     if (index >= 0) {
+    //         ctrTimeRute.DeleteTimeRute(index);
+    //         System.out.println("--------------------------------------------------------------");
+    //         System.out.println("TimeRute Berhasil Dihapus");
+    //         System.out.println("--------------------------------------------------------------");
+    //     } else {
+    //         System.out.println("--------------------------------------------------------------");
+    //         System.out.println("TimeRute Gagal Dihapus");
+    //         System.out.println("--------------------------------------------------------------");
+    //     }
+    // }
+
+    public void menuLihat() {
         System.out.println("#LIHAT WAKTU BERDASARKAN RUTE#");
-        System.out.println("Kode Rute :");
-		String kode=input.nextLine();
-		int index = ctrTimeRute.CheckRute(kode);
-		if(index >= 0){
-			System.out.println("--------------------------------------------------------------");
-			System.out.println("No\tKode Waktu Rute\tKode Rute\tWaktu Tersedia Rute");
-			ctrTimeRute.LihatRute(kode);
-			System.out.println("--------------------------------------------------------------");		
-		}
-		else {
-			System.out.println("--------------------------------------------------------------");
-            System.out.println("Kode Rute Tidak Ditemukan");
-            System.out.println("--------------------------------------------------------------");
-		}
-        
+        System.out.print("Kode Rute: ");
+        String kode = input.nextLine();
+        System.out.println("No\tKode Waktu Rute\tKode Rute\tWaktu Tersedia Rute");
+        ctrTimeRute.LihatTimeRute(kode);
+        System.out.println("--------------------------------------------------------------------------");
+
     }
+
+    public void menuHapus() {
+        System.out.println("#HAPUS WAKTU RUTE#");
+        String KodeRute = "";
+        int index = -1;
+        do {
+            System.out.print("Kode Rute: ");
+            KodeRute = input.nextLine();
+            index = ctrTimeRute.CheckRute(KodeRute);
+        } while (index < 0 || KodeRute.equals("-1"));
+        if(index<0) System.out.println("Rute Tidak Ditemukan");
+        else{
+            ctrTimeRute.HapusTimeRute(index);
+            System.out.println("--------------------------------------------------------------");
+            System.out.println("Waktu Rute Berhasil Dihapus");
+            System.out.println("--------------------------------------------------------------");
+        }
+    }
+
+    // public void menuEdit() {
+    //     System.out.println("#EDIT DATA TimeRute#");
+    //     System.out.print("Edit TimeRute : ");
+    //     String kode = input.nextLine().split("_", 2)[1];
+    //     int index = ctrTimeRute.CheckTimeRute(kode);
+
+    //     if (index >= 0) {
+    //         ctrTimeRute.DeleteTimeRute(index);
+    //         System.out.print("Kota Berangkat : ");
+    //         String kotaBerangkat = input.nextLine();
+    //         System.out.print("Kota Tujuan : ");
+    //         String kotaTujuan = input.nextLine();
+    //         System.out.print("Harga Tiket Bisnis : ");
+    //         long hargaBisnis = input.nextLong();
+    //         System.out.print("Harga Tiket Premium : ");
+    //         long hargaPremium = input.nextLong();
+    //         input.nextLine();
+    //         ctrTimeRute.TambahTimeRute(kotaBerangkat, kotaTujuan, hargaBisnis, hargaPremium);
+    //     } else {
+    //         System.out.println("--------------------------------------------------------------");
+    //         System.out.println("TimeRute Gagal Ditambahkan");
+    //         System.out.println("--------------------------------------------------------------");
+    //     }
+    // }
 
     public int getPilihan() {
         return pilihan;

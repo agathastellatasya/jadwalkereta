@@ -61,5 +61,18 @@ public class ControllerTime {
         System.out.println(times.size() + "\t" + times.get(times.size()-1).getKode() + "\t" + String.format("%02d", times.get(times.size()-1).getJam())
                 + "." + String.format("%02d", times.get(times.size()-1).getMenit()));
     }
+	
+	public int CheckWaktu(String kdWaktu){
+        int i;
+        boolean found = false;
+        for (i=0; i < times.size(); i++) {
+            if (kdWaktu.equals(times.get(i).getKode())) {
+                found = true;
+                break;
+            }
+        }
+        if(found) return i;
+        else return -1;
+    }
 
 }

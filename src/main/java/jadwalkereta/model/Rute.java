@@ -9,26 +9,31 @@ public class Rute {
     protected long hargaPremium;
     protected String kotaBerangkat; 
     protected String kotaTujuan;
-    ArrayList<Jalur> jalur; //Tambah ini, tambahin arraylist time sama kereta kalo mau nempelnya di rute
+    ArrayList<Jalur> jalur;
+    ArrayList<TimeRute> timerute;
+    ArrayList<KARute> karute;
 	//protected ArrayList<Kota> kota = new ArrayList<Kota>();
 
     public Rute(String kodeRute, long hargaBisnis, long hargaPremium, String kotaBerangkat, String kotaTujuan) {
         this.kodeRute = kodeRute;
         this.hargaBisnis = hargaBisnis;
-	    this.hargaPremium = hargaPremium;
+	this.hargaPremium = hargaPremium;
         this.kotaBerangkat = kotaBerangkat;
         this.kotaTujuan = kotaTujuan;
         jalur = new ArrayList<Jalur>();
+        timerute = new ArrayList<TimeRute>();
+        karute = new ArrayList<KARute>();
     }
 
-    //Buat Konstruktor seperti ini buat, tambahin parameter time sama kereta
-    public Rute(String kodeRute, long hargaBisnis, long hargaPremium, String kotaBerangkat, String kotaTujuan, ArrayList<Jalur> jalur) {
+    public Rute(String kodeRute, long hargaBisnis, long hargaPremium, String kotaBerangkat, String kotaTujuan, ArrayList<Jalur> jalur, ArrayList<TimeRute> timerute, ArrayList<KARute> karute) {
         this.kodeRute = kodeRute;
         this.hargaBisnis = hargaBisnis;
         this.hargaPremium = hargaPremium;
         this.kotaBerangkat = kotaBerangkat;
         this.kotaTujuan = kotaTujuan;
         this.jalur = jalur;
+        this.timerute = timerute;
+        this.karute = karute;
     }
 
     public Rute() {
@@ -77,7 +82,23 @@ public class Rute {
     public void setJalur(ArrayList<Jalur> jalur) {
         this.jalur = jalur;
     }
+    
+    public ArrayList<TimeRute> getTimeRute() {
+        return this.timerute;
+    }
+
+    public void setTimeRute(ArrayList<TimeRute> timerute) {
+        this.timerute = timerute;
+    }
 	
+    public ArrayList<KARute> getKARute() {
+        return this.karute;
+    }
+
+    public void setKARute(ArrayList<KARute> karute) {
+        this.karute = karute;
+    }
+    
     public long getHargaPremium() {
         return hargaPremium;
     }
