@@ -9,7 +9,7 @@ public class Rute {
     protected long hargaPremium;
     protected String kotaBerangkat; 
     protected String kotaTujuan;
-    ArrayList<Jalur> jalur;
+    ArrayList<Jalur> jalur; //Tambah ini, tambahin arraylist time sama kereta kalo mau nempelnya di rute
 	//protected ArrayList<Kota> kota = new ArrayList<Kota>();
 
     public Rute(String kodeRute, long hargaBisnis, long hargaPremium, String kotaBerangkat, String kotaTujuan) {
@@ -21,6 +21,7 @@ public class Rute {
         jalur = new ArrayList<Jalur>();
     }
 
+    //Buat Konstruktor seperti ini buat, tambahin parameter time sama kereta
     public Rute(String kodeRute, long hargaBisnis, long hargaPremium, String kotaBerangkat, String kotaTujuan, ArrayList<Jalur> jalur) {
         this.kodeRute = kodeRute;
         this.hargaBisnis = hargaBisnis;

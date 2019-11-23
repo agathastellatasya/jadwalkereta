@@ -84,12 +84,23 @@ public final class App {
         Rute R2 = new Rute("BDG-JKT", 400000, 300000, "Bandung", "Jakarta" );
         Rute R3 = new Rute("SMG-SBY", 300000, 200000, "Semarang", "Surabaya" );
         Rute R4 = new Rute("SBY-SMG", 300000, 200000, "Surabaya", "Semarang" );
-
         rute.add(R1);
         rute.add(R2);
         rute.add(R3);
         rute.add(R4);
 
+
+        /////////////////////////////////////////////////////////////////////////////////
+        // Contoh penambahan Jalur Langsung pada rute
+
+        ArrayList<Jalur> jalur = new ArrayList<>();
+        jalur.add(new Jalur(jkt,bdg, 200)); //jkt, bdg, smg, dan sby adalah variabel tipe station yang sudah di deklarasi diatas
+        jalur.add(new Jalur(bdg,smg, 200));
+        jalur.add(new Jalur(smg,sby, 200));      
+        Rute R5 = new Rute("JKT-SBY", 2000000, 1000000, "Jakarta", "Surabaya", jalur);
+        rute.add(R5);
+
+        ///////////////////////////////////////////////////////////////////////////////////
         ArrayList<KARute> karute = new ArrayList<KARute>();
         KARute KR1 = new KARute(1, "JKT-BDG", "KAI18801");
         KARute KR2 = new KARute(1, "JKT-BDG", "KAI19801");
