@@ -40,6 +40,7 @@ public class ViewPenumpang {
         System.out.println("1. \t Booking Tiket");
         System.out.println("2. \t Kelola Profile");
         System.out.println("3. \t History Pembelian");
+        System.out.println("4. \t Cari Jadwal");
         System.out.println("0. \t Logout");
         System.out.println();
         System.out.print("Pilih Menu : ");

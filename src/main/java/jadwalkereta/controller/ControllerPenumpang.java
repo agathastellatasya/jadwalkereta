@@ -23,6 +23,10 @@ public class ControllerPenumpang {
         user = u;
         users = ctrMain.getUsers();
     }
+
+    public ControllerMain getControllerMain() {
+        return ctrMain;
+    }
     
     public void ControlMenuPenumpang(){
         Scanner in = new Scanner(System.in);
@@ -48,6 +52,13 @@ public class ControllerPenumpang {
 
                 case 3:{
                     System.out.println("Pilihan 3");
+                    // viewPenumpang.menuPenumpang();
+                    break;
+                }
+
+                case 4: {
+                    ControllerCariJadwal ctrCariJadwal = new ControllerCariJadwal(this);
+                    ctrCariJadwal.ControlMenuCariJadwal();
                     // viewPenumpang.menuPenumpang();
                     break;
                 }
