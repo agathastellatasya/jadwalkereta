@@ -140,7 +140,7 @@ public class ControllerJadwal {
             String kode = mjadwal.getKode();
             String tanggal = mjadwal.getTanggal().getHari()+"-"+mjadwal.getTanggal().getBulan()+"-"+mjadwal.getTanggal().getTahun();
             String waktuBerangkat =  String.format("%02d", mjadwal.getJamBerangkat())+"."+ String.format("%02d", mjadwal.getMenitBerangkat());
-            String waktuSampai = String.format("%02d", mjadwal.getJamBerangkat()) + "."+ String.format("%02d", mjadwal.getMenitBerangkat());
+            String waktuSampai = String.format("%02d", mjadwal.getJamSampai()) + "."+ String.format("%02d", mjadwal.getMenitSampai());
             String kotaBerangkat = mjadwal.getKotaBerangkat();
             String kotaTujuan = mjadwal.getKotaTujuan();
             String keretaapi = mjadwal.getKereta().getKdKereta().getKodeKereta();
