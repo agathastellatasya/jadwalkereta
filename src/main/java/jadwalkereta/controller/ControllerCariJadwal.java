@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 import jadwalkereta.model.Jadwal;
 import jadwalkereta.model.Jalur;
-import jadwalkereta.model.KARute;
+//import jadwalkereta.model.KARute;
 import jadwalkereta.model.Rute;
 import jadwalkereta.model.Tanggal;
 import jadwalkereta.model.TimeRute;
@@ -58,8 +58,8 @@ public class ControllerCariJadwal {
                         + String.format("%02d", mjadwal.getMenitSampai());
                 String kotaBerangkat = mjadwal.getKotaBerangkat();
                 String kotaTujuan = mjadwal.getKotaTujuan();
-                String keretaapi = mjadwal.getKereta().getKdKereta().getKodeKereta();
-                int kursi = mjadwal.getKereta().getKdKereta().countBangkuKosong();
+                String keretaapi = mjadwal.getKereta().getKodeKereta();
+                int kursi = mjadwal.getKereta().countBangkuKosong();
                 System.out.print(kode);
                 System.out.print("\t" + stanggal);
                 System.out.print("\t" + waktuBerangkat);

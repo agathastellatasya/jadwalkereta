@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 import jadwalkereta.model.Jadwal;
 import jadwalkereta.model.Jalur;
-import jadwalkereta.model.KARute;
+import jadwalkereta.model.Kereta;
 import jadwalkereta.model.Rute;
 import jadwalkereta.model.Tanggal;
 import jadwalkereta.model.TimeRute;
@@ -58,17 +58,17 @@ public class ControllerJadwal {
         for(int i=0;i<ListRute.size();i++)
         {
             Rute rute = ListRute.get(i);
-            if(rute.getTimeRute().size()>0 && rute.getKARute().size()>0)
+            if(rute.getTime().size()>0 && rute.getKereta().size()>0)
             {
                 String kotaBerangkat = rute.getKotaBerangkat();
                 String kotaTujuan = rute.getKotaTujuan();
                 int j = 0;
-                for(j=0;j<rute.getKARute().size();j++)
+                for(j=0;j<rute.getKereta().size();j++)
                 {
-                    int jamBerangkat = rute.getTimeRute().get(j).getJam();
-                    int menitBerangkat = rute.getTimeRute().get(j).getJam();
-                    int[] sampai = rute.getTimeRute().get(j).addTime(rute.getDuration());
-                    KARute kereta = rute.getKARute().get(j);
+                    int jamBerangkat = rute.getTime().get(j).getJam();
+                    int menitBerangkat = rute.getTime().get(j).getMenit();
+                    int[] sampai = rute.getTime().get(j).addTime(rute.getDuration());
+                    Kereta kereta = rute.getKereta().get(j);
                     jadwal.add(new Jadwal("JW"+count, tanggal, jamBerangkat, menitBerangkat, sampai[0], sampai[1], kotaBerangkat, kotaTujuan, kereta));
                     count++;
                 }
@@ -143,8 +143,8 @@ public class ControllerJadwal {
             String waktuSampai = String.format("%02d", mjadwal.getJamSampai()) + "."+ String.format("%02d", mjadwal.getMenitSampai());
             String kotaBerangkat = mjadwal.getKotaBerangkat();
             String kotaTujuan = mjadwal.getKotaTujuan();
-            String keretaapi = mjadwal.getKereta().getKdKereta().getKodeKereta();
-            int kursi = mjadwal.getKereta().getKdKereta().countBangkuKosong();
+            String keretaapi = mjadwal.getKereta().getKodeKereta();
+            int kursi = mjadwal.getKereta().countBangkuKosong();
             System.out.print(kode);
             System.out.print("\t"+tanggal);
             System.out.print("\t" + waktuBerangkat);

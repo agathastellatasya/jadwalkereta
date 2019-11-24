@@ -94,20 +94,20 @@ public final class App {
         // Contoh penambahan Jalur Langsung pada rute
 
         ArrayList<Jalur> jalur = new ArrayList<>();
-        ArrayList<KARute> karute = new ArrayList<KARute>();
+        //ArrayList<KARute> karute = new ArrayList<KARute>();
         ArrayList<TimeRute> timerute = new ArrayList<TimeRute>();
         jalur.add(new Jalur(jkt,bdg, 200)); //jkt, bdg, smg, dan sby adalah variabel tipe station yang sudah di deklarasi diatas
         jalur.add(new Jalur(bdg,smg, 200));
         jalur.add(new Jalur(smg,sby, 200));
-        karute.add(new KARute(KA1));
-        karute.add(new KARute(KA2));
-        karute.add(new KARute(KA3));
-        timerute.add(new TimeRute("TM10",2,15));
-        timerute.add(new TimeRute("TM20",4,45));
-        timerute.add(new TimeRute("TM30",7,15));
-        timerute.add(new TimeRute("TM40",9,45));
+        //karute.add(new KARute(KA1));
+        //karute.add(new KARute(KA2));
+        //karute.add(new KARute(KA3));
+//        timerute.add(new TimeRute("TM10",2,15));
+//        timerute.add(new TimeRute("TM20",4,45));
+//        timerute.add(new TimeRute("TM30",7,15));
+//        timerute.add(new TimeRute("TM40",9,45));
         //karute.add(new KARute("KAI18801"));
-        Rute R5 = new Rute("JKT-SBY", 2000000, 1000000, "Jakarta", "Surabaya", jalur,timerute,karute);
+        Rute R5 = new Rute("JKT-SBY", 2000000, 1000000, "Jakarta", "Surabaya", jalur,times,kereta);
         rute.add(R5);
         ArrayList<Jadwal> jadwal = new ArrayList<Jadwal>();
         

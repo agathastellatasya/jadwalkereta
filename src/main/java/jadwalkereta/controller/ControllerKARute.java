@@ -12,7 +12,6 @@ import java.util.Scanner;
 
 import jadwalkereta.model.Rute;
 import jadwalkereta.model.Kereta;
-import jadwalkereta.model.KARute;
 import jadwalkereta.view.ViewKARute;
 
 public class ControllerKARute {
@@ -77,18 +76,21 @@ public class ControllerKARute {
 
     public boolean TambahKARute(String kdKereta, int index){
         int indexKereta=ctrKereta.CheckKereta(kdKereta);
-        ArrayList<KARute> karute = rute.get(index).getKARute();
-        
-        if(ctrKereta.CheckKereta(kdKereta) >= 0){
-            for (int j = 0; j < rute.get(index).getKARute().size(); j++) {
-                Kereta kereta2 = rute.get(index).getKARute().get(j).getKdKereta();
-                if(kereta2.getKodeKereta().equals(kdKereta)){
-                    System.out.println("Kereta Sudah Ada pada Rute");
-                    return false;
-                }
+        int indexKodeKereta=-1;
+        ArrayList<Kereta> kereta2 = rute.get(index).getKereta();
+        for (int i=0; i < kereta2.size(); i++) {
+            if(kereta2.get(i).getKodeKereta().equals(kdKereta)){
+                indexKodeKereta=i;
             }
-            karute.add(new KARute(kereta.get(indexKereta)));
+        }
+        if(indexKereta>=0 && indexKodeKereta<0){
+            Kereta kereta1 = kereta.get(indexKereta);
+            rute.get(index).getKereta().add(kereta1);
             return true;
+        }
+        else if(indexKereta>=0 && indexKodeKereta>=0){
+            System.out.println("Kereta Sudah Ada pada Rute");
+            return false;
         }
         else {
             System.out.println("Kereta tidak ada dalam daftar Kereta");
@@ -102,13 +104,13 @@ public class ControllerKARute {
         {
             String sjalur = "        -";
             int menit = 0;
-            for (int j = 0; j < rute.get(i).getKARute().size(); j++) {
-                KARute temp_karute = rute.get(i).getKARute().get(j);
+            for (int j = 0; j < rute.get(i).getKereta().size(); j++) {
+                Kereta temp_kereta = rute.get(i).getKereta().get(j);
                 if (j == 0) {
                     sjalur = "";
-                    sjalur = sjalur + "- " + temp_karute.getKdKereta().getKodeKereta() + "\n";
+                    sjalur = sjalur + "- " + temp_kereta.getKodeKereta() + "\n";
                 } else
-                    sjalur = sjalur + "\t\t\t\t\t- " + temp_karute.getKdKereta().getKodeKereta() + "\n";
+                    sjalur = sjalur + "\t\t\t\t\t- " + temp_kereta.getKodeKereta() + "\n";
             }
             //sjalur = sjalur.substring(0, 9) + "\t\t" + menit + " menit" + sjalur.substring(9);
             System.out.println(i + 1 + "\t" + "KR" + String.format("%02d", i + 1) + "\t\t" + rute.get(i).getKodeRute()
@@ -119,6 +121,6 @@ public class ControllerKARute {
     }
 
     public void HapusKARute(int index){
-        rute.get(index).setKARute(new ArrayList<KARute>());
+        rute.get(index).setKereta(new ArrayList<Kereta>());
     }
 }

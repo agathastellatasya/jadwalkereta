@@ -4,14 +4,14 @@ public class Jadwal {
     protected String kode;
     String kotaBerangkat;
     String kotaTujuan;
-    KARute kereta;
+    Kereta kereta;
     Tanggal tanggal;
     int jamBerangkat;
     int menitBerangkat;
     int jamSampai;
     int menitSampai;
 
-    public Jadwal(String kode, Tanggal tanggal, int jamBerangkat, int menitBerangkat, int jamSampai, int menitSampai, String kotaBerangkat, String kotaTujuan, KARute kereta) {
+    public Jadwal(String kode, Tanggal tanggal, int jamBerangkat, int menitBerangkat, int jamSampai, int menitSampai, String kotaBerangkat, String kotaTujuan, Kereta kereta) {
         this.kode = kode;
         this.tanggal = tanggal;
         this.jamBerangkat = jamBerangkat;
@@ -47,11 +47,11 @@ public class Jadwal {
         this.kotaTujuan = kotaTujuan;
     }
 
-    public KARute getKereta() {
+    public Kereta getKereta() {
         return this.kereta;
     }
 
-    public void setKereta(KARute kereta) {
+    public void setKereta(Kereta kereta) {
         this.kereta = kereta;
     }
 

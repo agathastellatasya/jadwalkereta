@@ -7,7 +7,7 @@ package jadwalkereta.controller;
 
 //import jadwalkereta.model.Kota;
 import jadwalkereta.model.City;
-import jadwalkereta.model.KARute;
+//import jadwalkereta.model.KARute;
 
 import java.util.ArrayList;
 import java.util.Scanner;

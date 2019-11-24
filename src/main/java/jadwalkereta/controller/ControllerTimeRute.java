@@ -80,31 +80,22 @@ public class ControllerTimeRute {
         int indexTime=ctrTime.CheckWaktu(kdWaktu);
         int i;
         int indexKodeWaktu=-1;
-        int jam=88;
-        int menit=88;
-        ArrayList<TimeRute> timerute = rute.get(index).getTimeRute();
-        for (i=0; i < timerute.size(); i++) {
-            if(timerute.get(i).getKdWaktu().equals(kdWaktu)){
+        ArrayList<Time> times2 = rute.get(index).getTime();
+        for (i=0; i < times2.size(); i++) {
+            if(times2.get(i).getKode().equals(kdWaktu)){
                 indexKodeWaktu=i;
             }
         }
 //        int indexKArute=CheckTimeRute(kdKereta, index);
-        if(indexTime >= 0){
-            if(indexKodeWaktu>=0){
+        if(indexTime >= 0 && indexKodeWaktu<0){
+            Time time1 = times.get(indexTime); 
+            rute.get(index).getTime().add(time1);
+            //times.add(new TimeRute(kdWaktu,jam,menit));
+            return true;
+        }
+        else if(indexTime >= 0 && indexKodeWaktu>=0){
                 System.out.println("Waktu Sudah Ada pada Rute");
-                return false;
-            }    
-            else {
-                for (i=0; i < times.size(); i++) {
-                    if (kdWaktu.equals(times.get(i).getKode())) {
-                        jam = times.get(i).getJam();
-                        menit = times.get(i).getMenit();
-                        break;
-                    }
-                }
-                timerute.add(new TimeRute(kdWaktu,jam,menit));
-                return true;
-            }
+                return false;  
         }
         else {
             System.out.println("Kode Waktu tidak ada dalam daftar Waktu");
@@ -118,8 +109,8 @@ public class ControllerTimeRute {
         {
             String sjalur = "        -";
             int menit = 0;
-            for (int j = 0; j < rute.get(i).getTimeRute().size(); j++) {
-                TimeRute temp_timerute = rute.get(i).getTimeRute().get(j);
+            for (int j = 0; j < rute.get(i).getTime().size(); j++) {
+                Time temp_timerute = rute.get(i).getTime().get(j);
                 if (j == 0) {
                     sjalur = "";
                     sjalur = sjalur + "- " + String.format("%02d",temp_timerute.getJam()) + "." + String.format("%02d",temp_timerute.getMenit()) + "\n";
@@ -135,6 +126,6 @@ public class ControllerTimeRute {
     }
 
     public void HapusTimeRute(int index){
-        rute.get(index).setTimeRute(new ArrayList<TimeRute>());
+        rute.get(index).setTime(new ArrayList<Time>());
     }
 }

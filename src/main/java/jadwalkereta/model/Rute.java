@@ -10,8 +10,8 @@ public class Rute {
     protected String kotaBerangkat; 
     protected String kotaTujuan;
     ArrayList<Jalur> jalur;
-    ArrayList<TimeRute> timerute;
-    ArrayList<KARute> karute;
+    ArrayList<Time> times;
+    ArrayList<Kereta> kereta;
 	//protected ArrayList<Kota> kota = new ArrayList<Kota>();
 
     public Rute(String kodeRute, long hargaBisnis, long hargaPremium, String kotaBerangkat, String kotaTujuan) {
@@ -21,19 +21,19 @@ public class Rute {
         this.kotaBerangkat = kotaBerangkat;
         this.kotaTujuan = kotaTujuan;
         jalur = new ArrayList<Jalur>();
-        timerute = new ArrayList<TimeRute>();
-        karute = new ArrayList<KARute>();
+        times = new ArrayList<Time>();
+        kereta = new ArrayList<Kereta>();
     }
 
-    public Rute(String kodeRute, long hargaBisnis, long hargaPremium, String kotaBerangkat, String kotaTujuan, ArrayList<Jalur> jalur, ArrayList<TimeRute> timerute, ArrayList<KARute> karute) {
+    public Rute(String kodeRute, long hargaBisnis, long hargaPremium, String kotaBerangkat, String kotaTujuan, ArrayList<Jalur> jalur, ArrayList<Time> times, ArrayList<Kereta> kereta) {
         this.kodeRute = kodeRute;
         this.hargaBisnis = hargaBisnis;
         this.hargaPremium = hargaPremium;
         this.kotaBerangkat = kotaBerangkat;
         this.kotaTujuan = kotaTujuan;
         this.jalur = jalur;
-        this.timerute = timerute;
-        this.karute = karute;
+        this.times = times;
+        this.kereta = kereta;
     }
 
     public Rute() {
@@ -83,20 +83,20 @@ public class Rute {
         this.jalur = jalur;
     }
     
-    public ArrayList<TimeRute> getTimeRute() {
-        return this.timerute;
+    public ArrayList<Time> getTime() {
+        return this.times;
     }
 
-    public void setTimeRute(ArrayList<TimeRute> timerute) {
-        this.timerute = timerute;
+    public void setTime(ArrayList<Time> times) {
+        this.times = times;
     }
 	
-    public ArrayList<KARute> getKARute() {
-        return this.karute;
+    public ArrayList<Kereta> getKereta() {
+        return this.kereta;
     }
 
-    public void setKARute(ArrayList<KARute> karute) {
-        this.karute = karute;
+    public void setKereta(ArrayList<Kereta> kereta) {
+        this.kereta = kereta;
     }
     
     public long getHargaPremium() {

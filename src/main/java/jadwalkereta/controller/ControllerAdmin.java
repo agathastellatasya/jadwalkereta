@@ -12,7 +12,7 @@ import jadwalkereta.model.Rute;
 import jadwalkereta.model.User;
 import jadwalkereta.model.Station;
 import jadwalkereta.view.ViewAdmin;
-import jadwalkereta.model.KARute;
+
 
 import java.util.*;
 
@@ -31,7 +31,6 @@ public class ControllerAdmin {
     ArrayList<City> cities;
     ArrayList<Rute> rute;
     ArrayList<Kereta> kereta;
-    ArrayList<KARute> karute;
 //    ArrayList<Jadwal> jadwal;
     
     public ControllerAdmin(ControllerMain ctr) {
