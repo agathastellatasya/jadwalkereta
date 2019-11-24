@@ -12,6 +12,7 @@ import jadwalkereta.model.Jadwal;
 import jadwalkereta.model.Jalur;
 import jadwalkereta.model.KARute;
 import jadwalkereta.model.Rute;
+import jadwalkereta.model.Tanggal;
 import jadwalkereta.model.TimeRute;
 import jadwalkereta.view.ViewJadwal;
 
@@ -51,48 +52,111 @@ public class ControllerJadwal {
     }
 
     public void GenerateJadwal(){
-        //ArrayList<TimeRute> timerute = ctrMain.getTimeRute();
-        //ArrayList<KARute> karute = ctrMain.getKARute();
-        int i,j,k,jam,menit;
-	String kdKereta,kdWaktu,koderute,kotaBerangkat,kotaTujuan = "";
-        ArrayList<Rute> rute = ctrMain.getRute();
-        for (i=0; i < rute.size(); i++) {
-            koderute = rute.get(i).getKodeRute();
-            kotaBerangkat = rute.get(i).getKotaBerangkat();
-            kotaTujuan = rute.get(i).getKotaTujuan();
-            ArrayList<KARute> karute = rute.get(i).getKARute();
-            ArrayList<TimeRute> timerute = rute.get(i).getTimeRute();
-            ArrayList<Jalur> jalur = rute.get(i).getJalur();
-            int wktTempuh = 0;
-            for (int l = 0; l < jalur.size(); l++) {
-                Jalur temp_jalur = jalur.get(l);
-                wktTempuh += temp_jalur.getMenit();
-            }
-            //cek apakah timerute > karute
-            if(karute.size()>=timerute.size()) {
-                for(j=0; j < timerute.size(); j++){
-                    jam = timerute.get(j).getJam();
-                    menit = timerute.get(j).getMenit();
-                    kdWaktu = String.format("%02d", jam) +"."+ String.format("%02d", menit);
-                    kdKereta = karute.get(j).getKdKereta().getKodeKereta();
-                    System.out.println(koderute + "\t" + kotaBerangkat + "\t" + kotaTujuan + "\t" + kdWaktu + "\t" + kdKereta + "\t" + wktTempuh);
+        int count = 1;
+        Tanggal tanggal = new Tanggal(29, 12, 2019);
+        ArrayList<Rute> ListRute = ctrMain.getRute();
+        for(int i=0;i<ListRute.size();i++)
+        {
+            Rute rute = ListRute.get(i);
+            if(rute.getTimeRute().size()>0 && rute.getKARute().size()>0)
+            {
+                String kotaBerangkat = rute.getKotaBerangkat();
+                String kotaTujuan = rute.getKotaTujuan();
+                int j = 0;
+                for(j=0;j<rute.getKARute().size();j++)
+                {
+                    int jamBerangkat = rute.getTimeRute().get(j).getJam();
+                    int menitBerangkat = rute.getTimeRute().get(j).getJam();
+                    int[] sampai = rute.getTimeRute().get(j).addTime(rute.getDuration());
+                    KARute kereta = rute.getKARute().get(j);
+                    jadwal.add(new Jadwal("JW"+count, tanggal, jamBerangkat, menitBerangkat, sampai[0], sampai[1], kotaBerangkat, kotaTujuan, kereta));
+                    count++;
                 }
-            }
-            else {
-                for(j=0; j < timerute.size(); j++){
-                    k=j%karute.size();
-                    jam = timerute.get(j).getJam();
-                    menit = timerute.get(j).getMenit();
-                    kdWaktu = String.format("%02d", jam) +"."+ String.format("%02d", menit);
-                    kdKereta = karute.get(k).getKdKereta().getKodeKereta();
-                    System.out.println(koderute + "\t" + kotaBerangkat + "\t" + kotaTujuan + "\t" + kdWaktu + "\t" + kdKereta + "\t" + wktTempuh);
-                }
+                // perlu ditambahin untuk kereta yang bisa balik lagi
+                // int k = 0;
+                // if(rute.getTimeRute().size()>rute.getKARute().size())
+                // {
+                //     for(;j<rute.getTimeRute().size();j++)
+                //     {
+                //         if(rute.getTimeRute().get(j).isGreaterThan(jadwal.get())){
+
+                //             int jamBerangkat = rute.getTimeRute().get(j).getJam();
+                //             int menitBerangkat = rute.getTimeRute().get(j).getJam();
+                //             int[] sampai = rute.getTimeRute().get(j).addTime(rute.getDuration());
+                //             KARute kereta = rute.getKARute().get(k);
+                //             jadwal.add(new Jadwal("JW" + count, tanggal, jamBerangkat, menitBerangkat, sampai[0],
+                //                     sampai[1], kotaBerangkat, kotaTujuan, kereta));
+                //             count++;
+                //             k++;
+                //         }
+                //     }
+                // }
             }
         }
+        // ArrayList<TimeRute> timerute = ctrMain.getTimeRute();
+        // ArrayList<KARute> karute = ctrMain.getKARute();
+        // int i,j,k,jam,menit;
+	    // String kdKereta,kdWaktu,koderute,kotaBerangkat,kotaTujuan = "";
+        // ArrayList<Rute> rute = ctrMain.getRute();
+        // for (i=0; i < rute.size(); i++) {
+        //     koderute = rute.get(i).getKodeRute();
+        //     kotaBerangkat = rute.get(i).getKotaBerangkat();
+        //     kotaTujuan = rute.get(i).getKotaTujuan();
+        //     ArrayList<KARute> karute = rute.get(i).getKARute();
+        //     ArrayList<TimeRute> timerute = rute.get(i).getTimeRute();
+        //     ArrayList<Jalur> jalur = rute.get(i).getJalur();
+        //     int wktTempuh = 0;
+        //     for (int l = 0; l < jalur.size(); l++) {
+        //         Jalur temp_jalur = jalur.get(l);
+        //         wktTempuh += temp_jalur.getMenit();
+        //     }
+        //     //cek apakah timerute > karute
+        //     if(karute.size()>=timerute.size()) {
+        //         for(j=0; j < timerute.size(); j++){
+        //             jam = timerute.get(j).getJam();
+        //             menit = timerute.get(j).getMenit();
+        //             kdWaktu = String.format("%02d", jam) +"."+ String.format("%02d", menit);
+        //             kdKereta = karute.get(j).getKdKereta().getKodeKereta();
+        //             System.out.println(koderute + "\t" + kotaBerangkat + "\t" + kotaTujuan + "\t" + kdWaktu + "\t" + kdKereta + "\t" + wktTempuh);
+        //         }
+        //     }
+        //     else {
+        //         for(j=0; j < timerute.size(); j++){
+        //             k=j%karute.size();
+        //             jam = timerute.get(j).getJam();
+        //             menit = timerute.get(j).getMenit();
+        //             kdWaktu = String.format("%02d", jam) +"."+ String.format("%02d", menit);
+        //             kdKereta = karute.get(k).getKdKereta().getKodeKereta();
+        //             System.out.println(koderute + "\t" + kotaBerangkat + "\t" + kotaTujuan + "\t" + kdWaktu + "\t" + kdKereta + "\t" + wktTempuh);
+        //         }
+        //     }
+        // }
     }
 
     public void LihatJadwal(){
-        System.out.println("test");
+        for(int i=0;i<jadwal.size();i++)
+        {
+            Jadwal mjadwal = jadwal.get(i);
+            String kode = mjadwal.getKode();
+            String tanggal = mjadwal.getTanggal().getHari()+"-"+mjadwal.getTanggal().getBulan()+"-"+mjadwal.getTanggal().getTahun();
+            String waktuBerangkat =  String.format("%02d", mjadwal.getJamBerangkat())+"."+ String.format("%02d", mjadwal.getMenitBerangkat());
+            String waktuSampai = String.format("%02d", mjadwal.getJamBerangkat()) + "."+ String.format("%02d", mjadwal.getMenitBerangkat());
+            String kotaBerangkat = mjadwal.getKotaBerangkat();
+            String kotaTujuan = mjadwal.getKotaTujuan();
+            String keretaapi = mjadwal.getKereta().getKdKereta().getKodeKereta();
+            int kursi = mjadwal.getKereta().getKdKereta().countBangkuKosong();
+            System.out.print(kode);
+            System.out.print("\t"+tanggal);
+            System.out.print("\t" + waktuBerangkat);
+            System.out.print("\t" + waktuSampai);
+            System.out.print("\t" + kotaBerangkat);
+            System.out.print("\t" + kotaTujuan);
+            System.out.print("\t" + keretaapi);
+            if(kursi > 0) System.out.print("\tSisa Kursi " + kursi);
+            else 
+                System.out.print("\tFull");
+            System.out.println();
+        }
     }
 
 }

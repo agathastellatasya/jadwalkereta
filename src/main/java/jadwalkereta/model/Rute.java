@@ -17,7 +17,7 @@ public class Rute {
     public Rute(String kodeRute, long hargaBisnis, long hargaPremium, String kotaBerangkat, String kotaTujuan) {
         this.kodeRute = kodeRute;
         this.hargaBisnis = hargaBisnis;
-	this.hargaPremium = hargaPremium;
+	    this.hargaPremium = hargaPremium;
         this.kotaBerangkat = kotaBerangkat;
         this.kotaTujuan = kotaTujuan;
         jalur = new ArrayList<Jalur>();
@@ -101,6 +101,14 @@ public class Rute {
     
     public long getHargaPremium() {
         return hargaPremium;
+    }
+
+    public int getDuration(){
+        int duration = 0;
+        for(int i = 0; i<jalur.size();i++)
+            duration += jalur.get(i).getMenit();
+        
+        return duration;
     }
 
     

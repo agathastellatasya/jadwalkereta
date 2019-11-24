@@ -34,7 +34,7 @@ public class ViewJadwal {
     }
 
     public void menuLihatJadwal(){
-        System.out.println("No\tKode\tWaktu");
+        //System.out.println("No\tKode\tWaktu");
         ctrJadwal.LihatJadwal();
     }
 

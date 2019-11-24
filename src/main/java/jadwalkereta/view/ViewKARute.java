@@ -67,7 +67,7 @@ public class ViewKARute {
         System.out.println("#LIHAT STASIUN BERDASARKAN RUTE#");
         System.out.print("Kode Rute: ");
         String kode = input.nextLine();
-        System.out.println("No\tKode KARute\tKode Rute\tKARute Yang Dilewati\tMenit");
+        System.out.println("No\tKode KARute\tKode Rute\tKARute Yang Dilewati");
         ctrKARute.LihatKARute(kode);
         System.out.println("--------------------------------------------------------------------------");
 
