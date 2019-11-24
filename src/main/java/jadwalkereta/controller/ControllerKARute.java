@@ -78,16 +78,17 @@ public class ControllerKARute {
     public boolean TambahKARute(String kdKereta, int index){
         int indexKereta=ctrKereta.CheckKereta(kdKereta);
         ArrayList<KARute> karute = rute.get(index).getKARute();
-//        int indexKArute=CheckKARute(kdKereta, index);
+        
         if(ctrKereta.CheckKereta(kdKereta) >= 0){
-            if(kereta.get(indexKereta).getKodeKereta().equals(kdKereta)){
-                System.out.println("Kereta Sudah Ada pada Rute");
-                return false;
+            for (int j = 0; j < rute.get(index).getKARute().size(); j++) {
+                Kereta kereta2 = rute.get(index).getKARute().get(j).getKdKereta();
+                if(kereta2.getKodeKereta().equals(kdKereta)){
+                    System.out.println("Kereta Sudah Ada pada Rute");
+                    return false;
+                }
             }
-            else {
-                karute.add(new KARute(kereta.get(indexKereta)));
-                return true;
-            }
+            karute.add(new KARute(kereta.get(indexKereta)));
+            return true;
         }
         else {
             System.out.println("Kereta tidak ada dalam daftar Kereta");
