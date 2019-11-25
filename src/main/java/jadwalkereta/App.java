@@ -23,11 +23,11 @@ public final class App {
         // ---------------- SETUP DATA DUMMY --------------
         ArrayList<User> users = new ArrayList<User>();
 
-        User admin = new User("1234567812345678", "Admin", "08986703456","admin", "admin", 1);
-        User penumpang = new User("1234567812345679", "Test", "08986703450","test", "test", 2);
-
-        users.add(admin);
-        users.add(penumpang);
+//        User admin = new User("1234567812345678", "Admin", "08986703456","admin", "admin", 1);
+//        User penumpang = new User("1234567812345679", "Test", "08986703450","test", "test", 2);
+//
+//        users.add(admin);
+//        users.add(penumpang);
 
         // Tambahan Adri
 

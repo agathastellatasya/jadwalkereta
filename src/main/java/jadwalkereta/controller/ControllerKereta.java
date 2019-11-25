@@ -21,6 +21,7 @@ import java.io.*;
 public class ControllerKereta {
     ArrayList<Kereta> kereta;
     ControllerMain ctrMain;
+    ControllerUtil ctrUtil = new ControllerUtil();
     ControllerAdmin ctrAdmin;
     ViewKereta viewKereta;
     Scanner input = new Scanner(System.in);
@@ -28,7 +29,7 @@ public class ControllerKereta {
     public ControllerKereta(ControllerAdmin admin) {
         ctrAdmin = admin;
         ctrMain = ctrAdmin.getControllerMain();
-        kereta = ctrMain.getKereta();
+        kereta = ctrUtil.getKereta();
     }
 
     public void ControlMenuKereta(){
@@ -68,7 +69,7 @@ public class ControllerKereta {
     }
 
     public void TambahKereta(String kodeKereta, String namaKereta, String jmlA, String jmlB, String jmlC){
-        kereta = ctrMain.getKereta();
+        kereta = ctrUtil.getKereta();
         int index = CheckKereta(kodeKereta);
         //System.out.println(kotaB);
         //System.out.println(kotaT);
@@ -100,17 +101,17 @@ public class ControllerKereta {
             System.out.println("Kode Kereta sudah ada, Kereta Gagal Ditambahkan");
             System.out.println("--------------------------------------------------------------");
         }
-        ctrMain.WriteJSONKereta();
+        ctrUtil.WriteJSONKereta();
     }
     
     public void DeleteKereta(int index){
-        kereta = ctrMain.getKereta();
+        kereta = ctrUtil.getKereta();
         kereta.remove(index);
-        ctrMain.WriteJSONKereta();
+        ctrUtil.WriteJSONKereta();
     }
 
     public int CheckKereta(String kodeKereta){
-        kereta = ctrMain.getKereta();
+        kereta = ctrUtil.getKereta();
         int i;
         boolean found = false;
         for (i=0; i < kereta.size(); i++) {
@@ -140,7 +141,7 @@ public class ControllerKereta {
 	
 	public void LihatKereta()
     {
-        kereta = ctrMain.getKereta();
+        kereta = ctrUtil.getKereta();
         for(int i=0; i<kereta.size();i++)
             System.out.println(i+1+"\t"+kereta.get(i).getKodeKereta()+"\t"+kereta.get(i).getNamaKereta()+"\t\t\t"+kereta.get(i).getJmlGerbong()+"\t\t"+kereta.get(i).getJmlBisnis()+"\t\t\t"+kereta.get(i).getJmlPremium());
     }

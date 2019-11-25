@@ -18,6 +18,7 @@ public class ControllerBooking {
     //ArrayList<Booking> booking;
     ArrayList<Jadwal> jadwal;
     ControllerMain ctrMain;
+    ControllerUtil ctrUtil = new ControllerUtil();
     ControllerKereta ctrKereta;
     ViewBooking viewBooking;
     ControllerPenumpang ctrPenumpang;
@@ -26,7 +27,7 @@ public class ControllerBooking {
     public ControllerBooking(ControllerPenumpang penumpang) {
         ctrPenumpang  = penumpang;
         ctrMain = penumpang.getControllerMain();
-        jadwal = ctrMain.getJadwal();
+        jadwal = ctrUtil.getJadwal();
         
     }
 

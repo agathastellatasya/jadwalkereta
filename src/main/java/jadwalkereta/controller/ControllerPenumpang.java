@@ -16,13 +16,14 @@ import java.io.*;
  */
 public class ControllerPenumpang {
     private ControllerMain ctrMain;
+    ControllerUtil ctrUtil = new ControllerUtil();
     private User user;
     private ArrayList<User> users;
 
     public ControllerPenumpang(ControllerMain ctr, User u) {
         ctrMain = ctr;
         user = u;
-        users = ctrMain.getUsers();
+        users = ctrUtil.getUsers();
     }
 
     public ControllerMain getControllerMain() {

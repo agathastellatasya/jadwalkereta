@@ -22,6 +22,7 @@ public class ControllerStation {
 
     ArrayList<Station> stations;
     ControllerMain ctrMain;
+    ControllerUtil ctrUtil = new ControllerUtil();
     ControllerAdmin ctrAdmin;
     ViewStation viewStation;
     Scanner input = new Scanner(System.in);
@@ -29,7 +30,7 @@ public class ControllerStation {
     public ControllerStation(ControllerAdmin admin){
         ctrAdmin = admin;
         ctrMain = ctrAdmin.getControllerMain();
-        stations = ctrMain.getStations();
+        stations = ctrUtil.getStations();
     }
 
     public void ControlMenuStation(){
@@ -69,7 +70,7 @@ public class ControllerStation {
     }
 
     public void TambahStation(String kode, String nama){
-        stations = ctrMain.getStations();
+        stations = ctrUtil.getStations();
         int index = CheckStation(kode);
         if (index<0) {
             stations.add(new Station(kode, nama));
@@ -81,18 +82,18 @@ public class ControllerStation {
             System.out.println("Stasiun Gagal Ditambahkan");
             System.out.println("--------------------------------------------------------------");
         }
-        ctrMain.WriteJSONStation();
+        ctrUtil.WriteJSONStation();
     }
 
     public void DeleteStation(int index)
     {
-        stations = ctrMain.getStations();
+        stations = ctrUtil.getStations();
         stations.remove(index);
-        ctrMain.WriteJSONStation();
+        ctrUtil.WriteJSONStation();
     }
 
     public int CheckStation(String kode){
-        stations = ctrMain.getStations();
+        stations = ctrUtil.getStations();
         int i = 0;
         boolean found = false;
         for (; i < stations.size(); i++) {
@@ -106,7 +107,7 @@ public class ControllerStation {
     }
 
     public int CheckStationByName(String nama){
-        stations = ctrMain.getStations();
+        stations = ctrUtil.getStations();
         int i = 0;
         boolean found = false;
         for (; i < stations.size(); i++) {
@@ -123,20 +124,20 @@ public class ControllerStation {
 
     public void LihatStation()
     {
-        stations = ctrMain.getStations();
+        stations = ctrUtil.getStations();
         for(int i=0; i<stations.size();i++)
                 System.out.println(i+1+"\t"+stations.get(i).getKode()+"\t\t"+stations.get(i).getNama());
     }
 
     //check dependensi Stasiun ke Jalur lewat array Rute
     public int CheckStationJalur(String kode){
-        stations = ctrMain.getStations();
+        stations = ctrUtil.getStations();
         int i = 0;
         int j, k;
         String Kota = "";
         int flag = 0;
         boolean found = false;
-        ArrayList<Rute> rute = ctrMain.getRute();
+        ArrayList<Rute> rute = ctrUtil.getRute();
         
         while (flag==0 && i<stations.size())
         {

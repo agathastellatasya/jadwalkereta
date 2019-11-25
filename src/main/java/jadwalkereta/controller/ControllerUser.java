@@ -8,16 +8,17 @@ import java.io.*;
 
 public class ControllerUser{
     ControllerMain ctrMain;
+    ControllerUtil ctrUtil = new ControllerUtil();
     ArrayList<User> users;
     User user = new User();
 
     public ControllerUser(ControllerMain ctr){
         ctrMain = ctr;
-        users = ctrMain.getUsers();
+        users = ctrUtil.getUsers();
     }
 
     public int findNikInUsers(String nik){
-        users = ctrMain.getUsers();
+        users = ctrUtil.getUsers();
         boolean found = false;
         int i = 0;
         int hasil = -99;
@@ -34,7 +35,7 @@ public class ControllerUser{
     }
 
     public int findEmailInUsers(String email){
-        users = ctrMain.getUsers();
+        users = ctrUtil.getUsers();
         boolean found = false;
         int i = 0;
         int hasil = -99;
@@ -52,7 +53,7 @@ public class ControllerUser{
     }
 
     public int successLogin(User u){
-        users = ctrMain.getUsers();
+        users = ctrUtil.getUsers();
         boolean found = false;
         int i = 0;
         int hasil = -99;
@@ -72,7 +73,7 @@ public class ControllerUser{
     }
 
     public void login(){
-        users = ctrMain.getUsers();
+        users = ctrUtil.getUsers();
         ViewUser viewUser = new ViewUser(ctrMain, user);
         viewUser.menuLogin();
         if (successLogin(viewUser.getUser()) != -99){
@@ -99,22 +100,22 @@ public class ControllerUser{
     }
 
     public void register(){
-        users = ctrMain.getUsers();
+        users = ctrUtil.getUsers();
         ViewUser viewUser = new ViewUser(ctrMain,user);
         viewUser.menuRegis();
         users.add(viewUser.getUser());
         System.out.println("Anda sudah berhasil didaftarkan!");
         System.out.println();
-        ctrMain.WriteJSONUser();
+        ctrUtil.WriteJSONUser();
         ctrMain.run();
     }
 
     public void editUser(String nik, String nama, String hp, String email, String pass){
-        users = ctrMain.getUsers();
+        users = ctrUtil.getUsers();
         users.get(findNikInUsers(nik)).setNama(nama);
         users.get(findNikInUsers(nik)).setHp(hp);
         users.get(findNikInUsers(nik)).setEmail(email);
         users.get(findNikInUsers(nik)).setPassword(pass);
-        ctrMain.WriteJSONUser();
+        ctrUtil.WriteJSONUser();
     }
 }

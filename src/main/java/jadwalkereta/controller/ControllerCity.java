@@ -21,6 +21,7 @@ public class ControllerCity {
 
     ArrayList<City> cities;
     ControllerMain ctrMain;
+    ControllerUtil ctrUtil = new ControllerUtil();
     ControllerAdmin ctrAdmin;
     ViewCity viewCity;
     Scanner input = new Scanner(System.in);
@@ -28,7 +29,7 @@ public class ControllerCity {
     public ControllerCity(ControllerAdmin admin) {
         ctrAdmin = admin;
         ctrMain = ctrAdmin.getControllerMain();
-        cities = ctrMain.getCities();
+        cities = ctrUtil.getCities();
     }
 
     public void ControlMenuCity() {
@@ -67,7 +68,7 @@ public class ControllerCity {
     }
 
     public void TambahCity(String kode, String nama){
-        cities = ctrMain.getCities();
+        cities = ctrUtil.getCities();
         int index = CheckCity(kode);
         if (index<0) {
             cities.add(new City(kode, nama));
@@ -79,18 +80,18 @@ public class ControllerCity {
             System.out.println("Kota Sudah Ada, Gagal Menambahkan");
             System.out.println("--------------------------------------------------------------");
         }
-        ctrMain.WriteJSONCity();
+        ctrUtil.WriteJSONCity();
     }
 
     public void DeleteCity(int index)
     {
-        cities = ctrMain.getCities();
+        cities = ctrUtil.getCities();
         cities.remove(index);
-        ctrMain.WriteJSONCity();
+        ctrUtil.WriteJSONCity();
     }
 
     public int CheckCity(String kode){
-        cities = ctrMain.getCities();
+        cities = ctrUtil.getCities();
         int i = 0;
         boolean found = false;
         for (; i < cities.size(); i++) {
@@ -126,7 +127,7 @@ public class ControllerCity {
 
     public void LihatCity()
     {
-        cities = ctrMain.getCities();
+        cities = ctrUtil.getCities();
         for(int i=0; i<cities.size();i++)
                 System.out.println(i+1+"\t"+cities.get(i).getKode()+"\t\t"+cities.get(i).getNama());
     }
@@ -140,7 +141,7 @@ public class ControllerCity {
         String nama = "";
         boolean found = false;
         int flag = 0;
-        ArrayList<Rute> rute = ctrMain.getRute();
+        ArrayList<Rute> rute = ctrUtil.getRute();
 
         while (i < cities.size() && flag==0)
         {

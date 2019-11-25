@@ -20,6 +20,7 @@ public class ControllerTimeRute {
     ArrayList<Rute> rute;
     ControllerMain ctrMain;
     ControllerAdmin ctrAdmin;
+    ControllerUtil ctrUtil = new ControllerUtil();
     ControllerTime ctrTime;
     ArrayList<Time> times;
     ViewTimeRute viewTimeRute;
@@ -29,8 +30,8 @@ public class ControllerTimeRute {
         ctrAdmin = admin;
         ctrTime = new ControllerTime(admin);
         ctrMain = ctrAdmin.getControllerMain();
-        rute = ctrMain.getRute();
-        times = ctrMain.getTimes();
+        rute = ctrUtil.getRute();
+        times = ctrUtil.getTimes();
         
     }
 
@@ -70,7 +71,7 @@ public class ControllerTimeRute {
 
     public int CheckRute(String kode)
     {
-        rute = ctrMain.getRute();
+        rute = ctrUtil.getRute();
         for(int i=0;i<rute.size();i++){
             if(rute.get(i).getKodeRute().equals(kode)) return i;
         }
@@ -79,7 +80,7 @@ public class ControllerTimeRute {
     }
 
     public boolean TambahTimeRute(String kdWaktu, int index){
-        rute = ctrMain.getRute();
+        rute = ctrUtil.getRute();
         int indexTime=ctrTime.CheckWaktu(kdWaktu);
         int i;
         int indexKodeWaktu=-1;
@@ -94,7 +95,7 @@ public class ControllerTimeRute {
             Time time1 = times.get(indexTime); 
             rute.get(index).getTime().add(time1);
             //times.add(new TimeRute(kdWaktu,jam,menit));
-            ctrMain.WriteJSONRute();
+            ctrUtil.WriteJSONRute();
             return true;
         }
         else if(indexTime >= 0 && indexKodeWaktu>=0){
@@ -108,7 +109,7 @@ public class ControllerTimeRute {
     }
 
     public void LihatTimeRute(String kode) {
-        rute = ctrMain.getRute();
+        rute = ctrUtil.getRute();
         int i = CheckRute(kode);
         if(i>=0)
         {
@@ -131,8 +132,8 @@ public class ControllerTimeRute {
     }
 
     public void HapusTimeRute(int index){
-        rute = ctrMain.getRute();
+        rute = ctrUtil.getRute();
         rute.get(index).setTime(new ArrayList<Time>());
-        ctrMain.WriteJSONRute();
+        ctrUtil.WriteJSONRute();
     }
 }

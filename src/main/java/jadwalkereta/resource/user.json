@@ -14,5 +14,13 @@
     "hp": "08986703450",
     "password": "test",
     "role": 2
+  },
+  {
+    "email": "fiqri@gmail.com",
+    "nama": "fiqri ashiddiqi",
+    "nik": "7894561231234567",
+    "hp": "085224808799",
+    "password": "1234",
+    "role": 2
   }
 ]

@@ -17,6 +17,7 @@ import jadwalkereta.view.ViewRute;
 public class ControllerRute {
     public ArrayList<Rute> rute;
     ControllerMain ctrMain;
+    ControllerUtil ctrUtil = new ControllerUtil();
     ControllerAdmin ctrAdmin;
     ViewRute viewRute;
     Scanner input = new Scanner(System.in);
@@ -24,7 +25,7 @@ public class ControllerRute {
     public ControllerRute(ControllerAdmin admin){
         ctrAdmin = admin;
         ctrMain = ctrAdmin.getControllerMain();
-        rute = ctrMain.getRute();
+        rute = ctrUtil.getRute();
     }
 
     public ControllerMain getControllerMain(){ return ctrMain; }
@@ -72,7 +73,7 @@ public class ControllerRute {
     }
 
     public void TambahRute(String kotaBerangkat, String kotaTujuan, long hargaBisnis, long hargaPremium){
-        rute = ctrMain.getRute();
+        rute = ctrUtil.getRute();
         int kotaB = CheckKotaB(kotaBerangkat);
 		int kotaT = CheckKotaB(kotaTujuan);
         //System.out.println(kotaB);
@@ -92,20 +93,20 @@ public class ControllerRute {
     }
     
     public String BuatRute(int kotaB, int kotaT){
-        ArrayList<City> kotaA = ctrMain.getCities();
+        ArrayList<City> kotaA = ctrUtil.getCities();
         String kotaBerangkat = kotaA.get(kotaB).getKode();
         String kotaTujuan = kotaA.get(kotaT).getKode();
         return (kotaBerangkat + "-" + kotaTujuan);
     }
 
     public void DeleteRute(int index){
-        rute = ctrMain.getRute();
+        rute = ctrUtil.getRute();
         rute.remove(index);
-        ctrMain.WriteJSONRute();
+        ctrUtil.WriteJSONRute();
     }
 
     public int CheckRute(String kodeRute){
-        rute = ctrMain.getRute();
+        rute = ctrUtil.getRute();
         int i;
         boolean found = false;
         for (i=0; i < rute.size(); i++) {
@@ -122,7 +123,7 @@ public class ControllerRute {
         int i;
         boolean found = false;
         //ArrayList<Kota> kotaA = Kota.getKota() ;
-        ArrayList<City> kotaA = ctrMain.getCities();
+        ArrayList<City> kotaA = ctrUtil.getCities();
         for (i=0; i < kotaA.size(); i++) {
             if (kotaB.equals(kotaA.get(i).getNama())) {
                 found = true;
@@ -135,7 +136,7 @@ public class ControllerRute {
 	
 	public void LihatRute()
     {
-        rute = ctrMain.getRute();
+        rute = ctrUtil.getRute();
         for(int i=0; i<rute.size();i++)
             System.out.println(i+1+"\t"+rute.get(i).getKotaBerangkat()+" "+"\t\t"+rute.get(i).getKotaTujuan()+" \t"+rute.get(i).getKodeRute()+"\t\t"+rute.get(i).getHargaBisnis()+"\t"+rute.get(i).getHargaPremium());
     }

@@ -25,6 +25,7 @@ public class ControllerJadwal {
 
     ArrayList<Jadwal> jadwal;
     ControllerMain ctrMain;
+    ControllerUtil ctrUtil = new ControllerUtil();
     ControllerAdmin ctrAdmin;
     ViewJadwal viewJadwal;
     Scanner input = new Scanner(System.in);
@@ -32,7 +33,7 @@ public class ControllerJadwal {
     public ControllerJadwal(ControllerAdmin admin) {
         ctrAdmin = admin;
         ctrMain = ctrAdmin.getControllerMain();
-        jadwal = ctrMain.getJadwal();
+        jadwal = ctrUtil.getJadwal();
     }
 
     public void ControlMenuJadwal(){
@@ -55,7 +56,7 @@ public class ControllerJadwal {
     public void GenerateJadwal(){
         int count = 1;
         Tanggal tanggal = new Tanggal(29, 12, 2019);
-        ArrayList<Rute> ListRute = ctrMain.getRute();
+        ArrayList<Rute> ListRute = ctrUtil.getRute();
         for(int i=0;i<ListRute.size();i++)
         {
             Rute rute = ListRute.get(i);
@@ -137,7 +138,7 @@ public class ControllerJadwal {
     }
 
     public void LihatJadwal(){
-        jadwal = ctrMain.getJadwal();
+        jadwal = ctrUtil.getJadwal();
         for(int i=0;i<jadwal.size();i++)
         {
             Jadwal mjadwal = jadwal.get(i);

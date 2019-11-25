@@ -21,13 +21,14 @@ public class ControllerTime {
     ArrayList<Time> times;
     ControllerMain ctrMain;
     ControllerAdmin ctrAdmin;
+    ControllerUtil ctrUtil = new ControllerUtil();
     ViewTime viewTime;
     Scanner input = new Scanner(System.in);
 
     public ControllerTime(ControllerAdmin admin) {
         ctrAdmin = admin;
         ctrMain = ctrAdmin.getControllerMain();
-        times = ctrMain.getTimes();
+        times = ctrUtil.getTimes();
     }
 
     public void ControlMenuTime(){
@@ -48,17 +49,17 @@ public class ControllerTime {
     }
 
     public void GenerateWaktu(){
-        times = ctrMain.getTimes();
+        times = ctrUtil.getTimes();
         for (int i = 0, k = 1; i < 24; i++) {
             for (int j = 0; j < 60; j += 15, k++) {
                 times.add(new Time("TM" + k, i,j));
             }
         }
-        ctrMain.WriteJSONTime();
+        ctrUtil.WriteJSONTime();
     }
 
     public void LihatWaktu(){
-        times = ctrMain.getTimes();
+        times = ctrUtil.getTimes();
         for(int i=0;i<10;i++)
             System.out.println(i+1+"\t"+times.get(i).getKode()+"\t"+ String.format("%02d", times.get(i).getJam())+"."+ String.format("%02d", times.get(i).getMenit()));
         System.out.println(".......................");
@@ -67,7 +68,7 @@ public class ControllerTime {
     }
 	
 	public int CheckWaktu(String kdWaktu){
-        times = ctrMain.getTimes();
+        times = ctrUtil.getTimes();
         int i;
         boolean found = false;
         for (i=0; i < times.size(); i++) {

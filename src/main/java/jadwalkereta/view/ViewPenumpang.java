@@ -8,6 +8,7 @@ package jadwalkereta.view;
 import jadwalkereta.model.User;
 import jadwalkereta.controller.ControllerMain;
 import jadwalkereta.controller.ControllerUser;
+import jadwalkereta.controller.ControllerUtil;
 
 import java.util.*;
 
@@ -18,6 +19,7 @@ import java.util.*;
 public class ViewPenumpang {
     private User user;
     ControllerMain ctrMain;
+    ControllerUtil ctrUtil = new ControllerUtil();
     ArrayList<User> users;
     private int pilihan;
     Scanner input = new Scanner(System.in);
@@ -25,7 +27,7 @@ public class ViewPenumpang {
     public ViewPenumpang(ControllerMain ctr, User u){
         user = u;
         ctrMain = ctr;
-        users =ctrMain.getUsers();
+        users =ctrUtil.getUsers();
     }
 
     public int getPilihan(){

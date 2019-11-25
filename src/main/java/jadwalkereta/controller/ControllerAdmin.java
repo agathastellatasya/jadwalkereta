@@ -23,6 +23,7 @@ import java.io.*;
  */
 public class ControllerAdmin {
     ControllerMain ctrMain;
+    ControllerUtil ctrUtil;
     ControllerStation ctrStation;
     ControllerTime ctrTime;
     ControllerJalur ctrJalur;

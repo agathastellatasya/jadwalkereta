@@ -25,6 +25,7 @@ public class ControllerCariJadwal  {
 
     ArrayList<Jadwal> jadwal;
     ControllerMain ctrMain;
+    ControllerUtil ctrUtil = new ControllerUtil();
     ControllerPenumpang ctrPenumpang;
     ViewCariJadwal viewCariJadwal;
     Scanner input = new Scanner(System.in);
@@ -32,7 +33,7 @@ public class ControllerCariJadwal  {
     public ControllerCariJadwal(ControllerPenumpang penumpang){
         ctrPenumpang = penumpang;
         ctrMain = ctrPenumpang.getControllerMain();
-        jadwal = ctrMain.getJadwal();
+        jadwal = ctrUtil.getJadwal();
     }
 
     public void ControlMenuCariJadwal(){
@@ -43,7 +44,7 @@ public class ControllerCariJadwal  {
     }
 
     public void cariJadwal(String keberangkatan, String tujuan, String mtanggal){
-        jadwal = ctrMain.getJadwal();
+        jadwal = ctrUtil.getJadwal();
         for(int i=0;i<jadwal.size();i++)
         {
             Tanggal tanggal = jadwal.get(i).getTanggal();

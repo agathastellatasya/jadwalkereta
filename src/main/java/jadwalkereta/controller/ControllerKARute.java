@@ -18,6 +18,7 @@ public class ControllerKARute {
     ArrayList<Rute> rute;
     ControllerMain ctrMain;
     ControllerAdmin ctrAdmin;
+    ControllerUtil ctrUtil;
     ControllerKereta ctrKereta;
     ArrayList<Kereta> kereta;
     ViewKARute viewKARute;
@@ -27,8 +28,8 @@ public class ControllerKARute {
         ctrAdmin = admin;
         ctrKereta = new ControllerKereta(admin);
         ctrMain = ctrAdmin.getControllerMain();
-        rute = ctrMain.getRute();
-        kereta = ctrMain.getKereta();
+        rute = ctrUtil.getRute();
+        kereta = ctrUtil.getKereta();
     }
 
     public void ControlMenuKARute(){
@@ -67,7 +68,7 @@ public class ControllerKARute {
 
     public int CheckRute(String kode)
     {
-        rute = ctrMain.getRute();
+        rute = ctrUtil.getRute();
         for(int i=0;i<rute.size();i++){
             if(rute.get(i).getKodeRute().equals(kode)) return i;
         }
@@ -76,7 +77,7 @@ public class ControllerKARute {
     }
 
     public boolean TambahKARute(String kdKereta, int index){
-        rute = ctrMain.getRute();
+        rute = ctrUtil.getRute();
         int indexKereta=ctrKereta.CheckKereta(kdKereta);
         int indexKodeKereta=-1;
         ArrayList<Kereta> kereta2 = rute.get(index).getKereta();
@@ -101,7 +102,7 @@ public class ControllerKARute {
     }
 
     public void LihatKARute(String kode) {
-        rute = ctrMain.getRute();
+        rute = ctrUtil.getRute();
         int i = CheckRute(kode);
         if(i>=0)
         {
@@ -124,8 +125,8 @@ public class ControllerKARute {
     }
 
     public void HapusKARute(int index){
-        rute = ctrMain.getRute();
+        rute = ctrUtil.getRute();
         rute.get(index).setKereta(new ArrayList<Kereta>());
-        ctrMain.WriteJSONRute();
+        ctrUtil.WriteJSONRute();
     }
 }
