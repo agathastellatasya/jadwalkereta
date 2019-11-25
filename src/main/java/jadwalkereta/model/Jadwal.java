@@ -10,8 +10,11 @@ public class Jadwal {
     int menitBerangkat;
     int jamSampai;
     int menitSampai;
+    long hargaB;
+    long hargaP;
 
-    public Jadwal(String kode, Tanggal tanggal, int jamBerangkat, int menitBerangkat, int jamSampai, int menitSampai, String kotaBerangkat, String kotaTujuan, Kereta kereta) {
+
+    public Jadwal(String kode, Tanggal tanggal, int jamBerangkat, int menitBerangkat, int jamSampai, int menitSampai, String kotaBerangkat, String kotaTujuan, Kereta kereta, long hargaB, long hargaP) {
         this.kode = kode;
         this.tanggal = tanggal;
         this.jamBerangkat = jamBerangkat;
@@ -21,6 +24,8 @@ public class Jadwal {
         this.kotaBerangkat = kotaBerangkat;
         this.kotaTujuan = kotaTujuan;
         this.kereta = kereta;
+        this.hargaB=hargaB;
+        this.hargaP=hargaP;
     }
 
     public String getKode() {
@@ -93,6 +98,22 @@ public class Jadwal {
 
     public void setMenitSampai(int menitSampai) {
         this.menitSampai = menitSampai;
+    }
+
+    public long getHargaB() {
+        return this.hargaB;
+    }
+
+    public void setHargaB(long hargaB) {
+        this.hargaB = hargaB;
+    }
+
+    public long getHargaP() {
+        return this.hargaP;
+    }
+
+    public void setHargaP(long hargaP) {
+        this.hargaP = hargaP;
     }
 
 

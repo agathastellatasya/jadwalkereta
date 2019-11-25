@@ -69,7 +69,9 @@ public class ControllerJadwal {
                     int menitBerangkat = rute.getTime().get(j).getMenit();
                     int[] sampai = rute.getTime().get(j).addTime(rute.getDuration());
                     Kereta kereta = rute.getKereta().get(j);
-                    jadwal.add(new Jadwal("JW"+count, tanggal, jamBerangkat, menitBerangkat, sampai[0], sampai[1], kotaBerangkat, kotaTujuan, kereta));
+                    long hargaB = rute.getHargaBisnis();
+                    long hargaP = rute.getHargaPremium();
+                    jadwal.add(new Jadwal("JW"+count, tanggal, jamBerangkat, menitBerangkat, sampai[0], sampai[1], kotaBerangkat, kotaTujuan, kereta, hargaB, hargaP));
                     count++;
                 }
                 // perlu ditambahin untuk kereta yang bisa balik lagi

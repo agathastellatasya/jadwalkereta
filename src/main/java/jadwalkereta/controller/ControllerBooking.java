@@ -1,0 +1,254 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package jadwalkereta.controller;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import jadwalkereta.model.*;
+import jadwalkereta.view.*;
+import jadwalkereta.controller.*;
+
+
+public class ControllerBooking {
+    ArrayList<Booking> booking = new  ArrayList<Booking>();
+    //ArrayList<Booking> booking;
+    ArrayList<Jadwal> jadwal;
+    ControllerMain ctrMain;
+    ControllerKereta ctrKereta;
+    ViewBooking viewBooking;
+    ControllerPenumpang ctrPenumpang;
+    Scanner input = new Scanner(System.in);
+
+    public ControllerBooking(ControllerPenumpang penumpang) {
+        ctrPenumpang  = penumpang;
+        ctrMain = penumpang.getControllerMain();
+        jadwal = ctrMain.getJadwal();
+        
+    }
+
+    
+
+    public void ControlMenuBooking() {
+        if (viewBooking == null) viewBooking = new ViewBooking(this);
+        viewBooking.book();
+        viewBooking.menuBooking();
+        switch(viewBooking.getPilihan()){
+            case 1: {
+                viewBooking.menuPembayaran();
+                ctrPenumpang.ControlMenuPenumpang();
+                break;
+            }
+            /*case 2: {
+                viewBooking.menuDetail();
+                ControlMenuBooking();
+                break;
+            }*/
+            case 99:{
+                ctrPenumpang.ControlMenuPenumpang();
+                break;
+            }
+        }
+    }
+
+    public String getAlphaString(int n) 
+    { 
+  
+        // chose a Character random from this String 
+        String AlphaString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        //String NumString  = "0123456789"; 
+  
+        // create StringBuffer size of AlphaNumericString 
+        StringBuilder sb = new StringBuilder(n); 
+  
+        for (int i = 0; i < n; i++) { 
+  
+            // generate a random number between 
+            // 0 to AlphaNumericString variable length 
+            int index = (int)(AlphaString.length() * Math.random()); 
+            //int index2 = (int)(NumString.length() * Math.random()); 
+  
+            // add Character one by one in end of sb 
+            sb.append(AlphaString.charAt(index)); 
+        } 
+        return sb.toString(); 
+    } 
+
+    static String getNumString(int n) 
+    { 
+  
+        // chose a Character random from this String 
+        //String AlphaString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String NumString  = "0123456789"; 
+  
+        // create StringBuffer size of AlphaNumericString 
+        StringBuilder sb = new StringBuilder(n); 
+  
+        for (int i = 0; i < n; i++) { 
+  
+            // generate a random number between 
+            // 0 to AlphaNumericString variable length 
+            //int index = (int)(AlphaString.length() * Math.random()); 
+            int index2 = (int)(NumString.length() * Math.random()); 
+  
+            // add Character one by one in end of sb 
+            sb.append(NumString.charAt(index2)); 
+        } 
+        return sb.toString(); 
+    } 
+
+    public String GenerateKode()
+    {
+        String kode = getAlphaString(3)+getNumString(3);
+        return kode;
+    }  
+
+    public Long PesanKursi(String kdjadwal, String kdkelas, int kdGerbong, int kdKursi)
+    {
+        //ArrayList<Kereta> kereta = ctrMain.getKereta();
+        int i;
+        long harga = 0;
+        for(i=0; i<jadwal.size(); i++)
+        {
+            if(kdjadwal.equals(jadwal.get(i).getKode()))
+            {
+                if(kdkelas.equals("B"))
+                {
+                    jadwal.get(i).getKereta().setBangkuBisnis(kdGerbong-1, kdKursi-1, 1);
+                    harga = harga + jadwal.get(i).getHargaB();
+
+                }else{
+                    jadwal.get(i).getKereta().setBangkuPremium(kdGerbong-1, kdKursi-1, 1);
+                    harga = harga + jadwal.get(i).getHargaP();
+                }
+            }
+        }
+        return harga;
+    }
+
+
+
+
+   public String booked(String kdjadwal, String kdpesan, String[] penumpang, String[] kursi, long harga)
+   {
+        String user = ctrPenumpang.getUser().getEmail();
+        int paid = 0;
+
+        //System.out.println(kdjadwal+"-"+ paid+"-"+ kdpesan+"-"+ harga+"-"+ user+"-"+ penumpang+"-"+ kursi);
+        //long harga = 0;
+        //String kdpesan = "";
+        
+
+        Booking B1 = new Booking(kdjadwal, paid, kdpesan, penumpang, kursi, harga, user);
+        booking.add(B1);
+        System.out.println(booking.size());
+        return kdpesan;
+       
+   }
+
+   public Long detailHarga(String kode)
+   {
+       long harga =0;
+       for(int i=0; i<booking.size(); i++)
+       {
+        //System.out.println(booking.get(i).getKdPesan());
+        //System.out.println(booking.get(i).getHarga());
+        if(kode.equals(booking.get(i).getKdPesan()))
+        {
+            harga = booking.get(i).getHarga();
+        }
+       }
+       return harga;
+       
+   }
+
+   public void detailPenumpang(String kode)
+   {
+       for(int i=0; i<booking.size(); i++)
+       {
+        if(kode.equals(booking.get(i).getKdPesan()))
+        {
+            for(int j=0; j<booking.get(i).getPenumpang().length; j++)
+            {
+                System.out.println("penumpang "+(j+1)+ ": " +booking.get(i).getPenumpang()[j]);
+            }
+        }
+       }
+       
+   }
+
+   public void bayar(String kode)
+   {
+        for(int i=0; i<booking.size(); i++)
+        {
+            if(kode.equals(booking.get(i).getKdPesan()))
+            {
+                booking.get(i).setIsPaid(1);
+            }
+        }
+   }
+
+   
+
+
+    public void lihatKursi(String kode)
+    {
+        int i,j,k;
+        for(i=0; i<jadwal.size(); i++)
+        {
+            if(kode.equals(jadwal.get(i).getKode()))
+            {
+                for(j=0; j<jadwal.get(i).getKereta().getJmlBisnis(); j++)
+                {
+                    System.out.println("Gerbong Business "+(j+1));
+                    for(k=0; k<10; k++)
+                    {
+                        int init = jadwal.get(i).getKereta().getBangkuBisnis(j, k);
+                        if (init==0)
+                        {
+                            char status = 'E';
+                            System.out.print("B"+(j+1)+"-"+(k+1)+"/"+status+"\t");
+                        }else
+                        {
+                            char status = 'F';
+                            System.out.print("B"+(j+1)+"-"+(k+1)+"/"+status+"\t");
+                        }
+                    }
+                    System.out.println();
+                }
+
+
+                for(j=0; j<jadwal.get(i).getKereta().getJmlPremium(); j++)
+                {
+                    System.out.println("Gerbong Premium "+(j+1));
+                    for(k=0; k<20; k++)
+                    {
+                        int init = jadwal.get(i).getKereta().getBangkuPremium(j, k);
+                        if (init==0)
+                        {
+                            char status = 'E';
+                            System.out.print("P"+(j+1)+"-"+(k+1)+"/"+status+"\t");
+                        }else
+                        {
+                            char status = 'F';
+                            System.out.print("P"+(j+1)+"-"+(k+1)+"/"+status+"\t");
+                        }
+
+                        if(k==9)
+                        {
+                            System.out.println();
+                        }
+                    }
+                    
+                    System.out.println();
+                }
+            }
+            
+        }
+        
+    }
+}
+    
