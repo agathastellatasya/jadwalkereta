@@ -27,28 +27,38 @@ public class ViewKereta {
     }
 
     public void menuTambah() {
-		String[] strarray = new String[5];
+	String[] strarray = new String[5];
         System.out.println("#TAMBAH DATA KERETA API#");
         System.out.print("Tambah Kereta : ");
-        String tambah = input.nextLine();
-		String regex = "\'([^\"]*)\'|(\\S+)";
-		Matcher m = Pattern.compile(regex).matcher(tambah);
-		int i=0;
-		while (m.find()) {
-			if (m.group(1) != null) {
-				strarray[i] = m.group(1);
-			} else {
-				strarray[i] = m.group(2);
-			}
-			i++;
-		}
-		String kodeKereta = strarray[0];
-		String namaKereta = strarray[1];
-        String jmlA = strarray[2];
-		String jmlB = strarray[3];
-		String jmlC = strarray[4];
-		//input.nextLine();
-        ctrKereta.TambahKereta(kodeKereta, namaKereta, jmlA, jmlB, jmlC);
+        String tambah;
+	do {
+            tambah = input.nextLine();
+            String regex = "\'([^\"]*)\'|(\\S+)";
+            Matcher m = Pattern.compile(regex).matcher(tambah);
+            int i=0;
+            while (m.find()) {
+                    if (m.group(1) != null) {
+                            strarray[i] = m.group(1);
+                    } else {
+                            strarray[i] = m.group(2);
+                    }
+                    i++;
+            }
+            if(i==5){
+                String kodeKereta = strarray[0];
+                String namaKereta = strarray[1];
+                String jmlA = strarray[2];
+                String jmlB = strarray[3];
+                String jmlC = strarray[4];
+                ctrKereta.TambahKereta(kodeKereta, namaKereta, jmlA, jmlB, jmlC);
+            }
+            else {
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("Format Salah");
+                System.out.println("--------------------------------------------------------------");
+                tambah="99";
+            }
+        } while(!tambah.equals("99"));
     }
 
 	

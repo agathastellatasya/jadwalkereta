@@ -18,7 +18,7 @@ public class ControllerKARute {
     ArrayList<Rute> rute;
     ControllerMain ctrMain;
     ControllerAdmin ctrAdmin;
-    ControllerUtil ctrUtil;
+    ControllerUtil ctrUtil = new ControllerUtil();;
     ControllerKereta ctrKereta;
     ArrayList<Kereta> kereta;
     ViewKARute viewKARute;
@@ -75,24 +75,53 @@ public class ControllerKARute {
         System.out.println("Rute Tidak Ditemukan");
         return -1;
     }
+	
+	public int CheckKeretaRute(String kode, int index)
+    {
+        String kB = rute.get(index).getKotaBerangkat();
+        String kT = rute.get(index).getKotaTujuan();
+        int k=-1;
+        String kotaBerangkat, kotaTujuan;
+        for(int i=0;i<rute.size();i++){
+            for(int j=0;j<rute.get(i).getKereta().size();j++){
+                kotaBerangkat = rute.get(i).getKotaBerangkat();
+                kotaTujuan = rute.get(i).getKotaTujuan();
+                //System.out.println(rute.get(i).getKereta().get(j).getKodeKereta());
+                if(!kB.equals(kotaTujuan) || !kT.equals(kotaBerangkat)){
+                    if(rute.get(i).getKereta().get(j).getKodeKereta().equals(kode))
+                    k=i;
+                }
+            }
+        }
+        //System.out.println("Kereta Sudah ada pada Rute lain");
+        return k;
+    }
 
     public boolean TambahKARute(String kdKereta, int index){
         rute = ctrUtil.getRute();
+		kereta = ctrUtil.getKereta();
         int indexKereta=ctrKereta.CheckKereta(kdKereta);
         int indexKodeKereta=-1;
+		int indexKeretaRute=CheckKeretaRute(kdKereta, index);
         ArrayList<Kereta> kereta2 = rute.get(index).getKereta();
         for (int i=0; i < kereta2.size(); i++) {
             if(kereta2.get(i).getKodeKereta().equals(kdKereta)){
                 indexKodeKereta=i;
             }
         }
-        if(indexKereta>=0 && indexKodeKereta<0){
+        if(indexKereta>=0 && indexKodeKereta<0 && indexKeretaRute<0){
             Kereta kereta1 = kereta.get(indexKereta);
             rute.get(index).getKereta().add(kereta1);
+			ctrUtil.WriteJSONRute();
+			System.out.println("Kereta berhasil ditambahkan");
             return true;
         }
         else if(indexKereta>=0 && indexKodeKereta>=0){
-            System.out.println("Kereta Sudah Ada pada Rute");
+            System.out.println("Kereta Sudah Ada pada Rute, kereta gagal ditambahkan");
+            return false;
+        }
+        else if(indexKereta>=0 && indexKeretaRute>=0){
+            System.out.println("Kereta Sudah Ada pada Rute Lain, kereta gagal ditambahkan");
             return false;
         }
         else {
