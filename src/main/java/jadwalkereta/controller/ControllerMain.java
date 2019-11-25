@@ -45,6 +45,30 @@ public class ControllerMain {
 	jadwal = j;
     }
 
+    public void TulisJSON() {
+        List<Rute> ruteList = rute;
+        ArrayList<Rute> test = new ArrayList<Rute>(rute);
+        test.remove(0);
+        List<Rute> ruteList2 = new ArrayList<Rute>(test);
+
+        Gson gson = new Gson();
+        JsonElement element = gson.toJsonTree(ruteList, new TypeToken<List<Rute>>() {
+        }.getType());
+        JsonElement element2 = gson.toJsonTree(ruteList2, new TypeToken<List<Rute>>() {
+        }.getType());
+
+        if (!element.isJsonArray()) {
+            // fail appropriately
+            // throw new SomeException();
+        }
+
+        JsonArray jsonArray = element.getAsJsonArray();
+        JsonArray jsonArray2 = element2.getAsJsonArray();
+        System.out.println(jsonArray.toString() + "\n");
+        System.out.println(jsonArray2.toString());
+        System.out.println(jsonArray.toString().equals(jsonArray2.toString()));
+    }
+
     public ArrayList<User> getUsers() { return users; }
     public ArrayList<Station> getStations() { return stations; }
     public ArrayList<Time> getTimes() { return times; }
