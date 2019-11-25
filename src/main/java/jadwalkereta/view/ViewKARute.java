@@ -14,10 +14,10 @@ public class ViewKARute {
     }
 
     public void menuKARute() {
-        System.out.println("#KELOLA STASIUN BERDASARKAN RUTE#");
-        System.out.println("1.  Tambah KARute Stasiun Pada Rute");
-        System.out.println("2.  Lihat KARute Stasiun Pada Rute");
-        System.out.println("3.  Delete KARute Stasiun Pada Rute");
+        System.out.println("#KELOLA KERETA BERDASARKAN RUTE#");
+        System.out.println("1.  Tambah Kereta Pada Rute");
+        System.out.println("2.  Lihat Kereta Pada Rute");
+        System.out.println("3.  Delete Kereta Pada Rute");
         System.out.println("99. Menu Utama");
         System.out.print("Pilih Menu : ");
         pilihan = Integer.valueOf(input.nextLine());
@@ -36,7 +36,7 @@ public class ViewKARute {
         int i = 1;
         String kdKereta;
         do {
-            System.out.print("KARute "+i+": ");
+            System.out.print("Kereta "+i+": ");
             kdKereta = input.nextLine();
             if(!kdKereta.equals("99")){
                 if(!ctrKARute.TambahKARute(kdKereta,index)) i--;
@@ -64,17 +64,17 @@ public class ViewKARute {
     // }
 
     public void menuLihat() {
-        System.out.println("#LIHAT STASIUN BERDASARKAN RUTE#");
+        System.out.println("#LIHAT KERETA BERDASARKAN RUTE#");
         System.out.print("Kode Rute: ");
         String kode = input.nextLine();
-        System.out.println("No\tKode KARute\tKode Rute\tKARute Yang Dilewati");
+        System.out.println("No\tKode Kereta Rute\tKode Rute\tKereta Tersedia Pada Rute");
         ctrKARute.LihatKARute(kode);
         System.out.println("--------------------------------------------------------------------------");
 
     }
 
     public void menuHapus() {
-        System.out.println("#HAPUS RUTE STASIUN#");
+        System.out.println("#HAPUS KERETA BERDASARKAN RUTE#");
         String KodeRute = "";
         int index = -1;
         do {
@@ -86,7 +86,7 @@ public class ViewKARute {
         else{
             ctrKARute.HapusKARute(index);
             System.out.println("--------------------------------------------------------------");
-            System.out.println("KARute Berhasil Dihapus");
+            System.out.println("Kereta Berhasil Dihapus");
             System.out.println("--------------------------------------------------------------");
         }
     }

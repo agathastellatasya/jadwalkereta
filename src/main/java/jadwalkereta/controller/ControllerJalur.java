@@ -142,7 +142,7 @@ public class ControllerJalur {
                             + temp_jalur.getStasiunAkhir().getKode() + "\n";
             }
             sjalur = sjalur.substring(0, 9) + "\t\t" + menit + " menit" + sjalur.substring(9);
-            System.out.println(i + 1 + "\t" + "JL" + String.format("%02d", i + 1) + "\t\t" + rute.get(i).getKodeRute()
+            System.out.println( 1 + "\t" + "JL" + String.format("%02d", i + 1) + "\t\t" + rute.get(i).getKodeRute()
                     + "\t\t" + sjalur);
         }
 

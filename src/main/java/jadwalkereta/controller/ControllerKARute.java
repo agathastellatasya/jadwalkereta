@@ -114,11 +114,11 @@ public class ControllerKARute {
                     sjalur = "";
                     sjalur = sjalur + "- " + temp_kereta.getKodeKereta() + "\n";
                 } else
-                    sjalur = sjalur + "\t\t\t\t\t- " + temp_kereta.getKodeKereta() + "\n";
+                    sjalur = sjalur + "\t\t\t\t\t\t\t- " + temp_kereta.getKodeKereta() + "\n";
             }
             //sjalur = sjalur.substring(0, 9) + "\t\t" + menit + " menit" + sjalur.substring(9);
-            System.out.println(i + 1 + "\t" + "KR" + String.format("%02d", i + 1) + "\t\t" + rute.get(i).getKodeRute()
-                    + "\t\t" + sjalur);
+            System.out.println(1 + "\t" + "KR" + String.format("%02d", i + 1) + "\t\t\t" + rute.get(i).getKodeRute()
+                    + "\t\t\t" + sjalur);
         }
 
         else System.out.println("Kode Rute Tidak Ditemukan");

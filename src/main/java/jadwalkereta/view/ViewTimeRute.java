@@ -67,7 +67,7 @@ public class ViewTimeRute {
         System.out.println("#LIHAT WAKTU BERDASARKAN RUTE#");
         System.out.print("Kode Rute: ");
         String kode = input.nextLine();
-        System.out.println("No\tKode Waktu Rute\tKode Rute\tWaktu Tersedia Rute");
+        System.out.println("No\tKode Waktu Rute\t\tKode Rute\tWaktu Tersedia Rute");
         ctrTimeRute.LihatTimeRute(kode);
         System.out.println("--------------------------------------------------------------------------");
 
