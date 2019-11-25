@@ -28,6 +28,10 @@ public class ControllerPenumpang {
     public ControllerMain getControllerMain() {
         return ctrMain;
     }
+    public User getUser()
+    {
+        return user;
+    }
     
     public void ControlMenuPenumpang(){
         Scanner in = new Scanner(System.in);
@@ -40,8 +44,8 @@ public class ControllerPenumpang {
                 case 0: break;
                 
                 case 1: {
-                    System.out.println("Pilihan 1");
-                    // viewPenumpang.menuPenumpang();
+                    ControllerBooking ctrBooking = new ControllerBooking(this);
+                    ctrBooking.ControlMenuBooking();
                     break;
                 }
 
