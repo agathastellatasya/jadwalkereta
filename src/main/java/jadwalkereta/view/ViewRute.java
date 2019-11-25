@@ -3,6 +3,7 @@ package jadwalkereta.view;
 import jadwalkereta.controller.*;
 
 import java.util.Scanner;
+import java.io.*;
 
 public class ViewRute {
     private int pilihan;
@@ -25,7 +26,8 @@ public class ViewRute {
 		//input.nextLine();
     }
 
-    public void menuTambah() {
+    public void menuTambah(){
+        ctrRute.getControllerMain().ReadJSONRute();
         System.out.println("#TAMBAH DATA RUTE#");
         System.out.print("Tambah Rute : ");
         String kotaBerangkat = input.next();
@@ -34,11 +36,15 @@ public class ViewRute {
 		long hargaPremium = input.nextLong();
 		input.nextLine();
         ctrRute.TambahRute(kotaBerangkat, kotaTujuan, hargaBisnis, hargaPremium);
+        ctrRute.getControllerMain().WriteJSONRute();
+        System.out.println(ctrRute.getControllerMain().getRute().size());
+        System.out.println(ctrRute.rute.size());
 		
     }
 
 	
-	public void menuDelete() {
+	public void menuDelete(){
+        ctrRute.getControllerMain().ReadJSONRute();
         System.out.println("#DELETE DATA RUTE#");
         System.out.print("Delete Rute : ");
         String kode2 []= input.nextLine().split("_", 2);
@@ -65,6 +71,7 @@ public class ViewRute {
 	
 	public void menuLihat()
     {
+        ctrRute.getControllerMain().ReadJSONRute();
         System.out.println("#LIHAT DATA KOTA#");
         System.out.println("Data Lengkap Rute");
         System.out.println("-------------------------------------------------------------------------------------");
@@ -74,7 +81,8 @@ public class ViewRute {
     }
 	
 
-    public void menuEdit() {
+    public void menuEdit()
+    {
         System.out.println("#EDIT DATA RUTE#");
         System.out.print("Edit Rute : ");
         String kode2 []= input.nextLine().split("_", 2);

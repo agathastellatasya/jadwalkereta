@@ -1,17 +1,18 @@
-{
-    "users":
-    [
-        {  "password":"admin",
-            "role":1,
-            "email":"admin"
-        },
-        {
-            "nik":"1234567891234567",
-            "password":"test",
-            "role":2,
-            "nama":"hihi",
-            "nomor handphone":"085224808795",
-            "email":"hi@fa"
-        }
-    ]
-}
+[
+  {
+    "email": "admin",
+    "nama": "Admin",
+    "nik": "1234567812345678",
+    "hp": "08986703456",
+    "password": "admin",
+    "role": 1
+  },
+  {
+    "email": "test",
+    "nama": "Test",
+    "nik": "1234567812345679",
+    "hp": "08986703450",
+    "password": "test",
+    "role": 2
+  }
+]

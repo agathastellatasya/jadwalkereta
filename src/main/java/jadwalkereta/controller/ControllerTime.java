@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import jadwalkereta.model.Time;
 import jadwalkereta.view.ViewTime;
+import java.io.*;
 
 /**
  *
@@ -29,7 +30,7 @@ public class ControllerTime {
         times = ctrMain.getTimes();
     }
 
-    public void ControlMenuTime() {
+    public void ControlMenuTime(){
         if(viewTime == null) viewTime = new ViewTime(this);
         if(times.size()<=0) viewTime.menuGenerateWaktu();
         viewTime.menuTime();
@@ -47,14 +48,17 @@ public class ControllerTime {
     }
 
     public void GenerateWaktu(){
+        times = ctrMain.getTimes();
         for (int i = 0, k = 1; i < 24; i++) {
             for (int j = 0; j < 60; j += 15, k++) {
                 times.add(new Time("TM" + k, i,j));
             }
         }
+        ctrMain.WriteJSONTime();
     }
 
     public void LihatWaktu(){
+        times = ctrMain.getTimes();
         for(int i=0;i<10;i++)
             System.out.println(i+1+"\t"+times.get(i).getKode()+"\t"+ String.format("%02d", times.get(i).getJam())+"."+ String.format("%02d", times.get(i).getMenit()));
         System.out.println(".......................");
@@ -63,6 +67,7 @@ public class ControllerTime {
     }
 	
 	public int CheckWaktu(String kdWaktu){
+        times = ctrMain.getTimes();
         int i;
         boolean found = false;
         for (i=0; i < times.size(); i++) {

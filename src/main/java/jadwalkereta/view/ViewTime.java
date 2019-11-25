@@ -1,7 +1,7 @@
 package jadwalkereta.view;
 
 import jadwalkereta.controller.*;
-
+import java.io.*;
 import java.util.Scanner;
 
 public class ViewTime {
@@ -13,7 +13,7 @@ public class ViewTime {
         this.ctrTime = ctr;
     }
 
-    public void menuTime() {
+    public void menuTime(){
         System.out.println("#GENERATE DATA WAKTU#");
         System.out.println("1. Lihat Data Waktu");
         System.out.println("99. Menu Utama");

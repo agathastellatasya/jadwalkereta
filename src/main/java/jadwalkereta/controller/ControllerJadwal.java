@@ -15,6 +15,7 @@ import jadwalkereta.model.Rute;
 import jadwalkereta.model.Tanggal;
 import jadwalkereta.model.TimeRute;
 import jadwalkereta.view.ViewJadwal;
+import java.io.*;
 
 /**
  *
@@ -34,7 +35,7 @@ public class ControllerJadwal {
         jadwal = ctrMain.getJadwal();
     }
 
-    public void ControlMenuJadwal() {
+    public void ControlMenuJadwal(){
         if(viewJadwal == null) viewJadwal = new ViewJadwal(this);
         if(jadwal.size()<=0) viewJadwal.menuGenerateJadwal();
         viewJadwal.menuJadwal();
@@ -134,6 +135,7 @@ public class ControllerJadwal {
     }
 
     public void LihatJadwal(){
+        jadwal = ctrMain.getJadwal();
         for(int i=0;i<jadwal.size();i++)
         {
             Jadwal mjadwal = jadwal.get(i);

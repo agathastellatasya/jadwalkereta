@@ -1,0 +1,22 @@
+[
+  {
+    "kode": "SJK",
+    "nama": "Jakarta"
+  },
+  {
+    "kode": "SBD",
+    "nama": "Bandung"
+  },
+  {
+    "kode": "SBY",
+    "nama": "Surabaya"
+  },
+  {
+    "kode": "SBL",
+    "nama": "Bali"
+  },
+  {
+    "kode": "SMG",
+    "nama": "Semarang"
+  }
+]

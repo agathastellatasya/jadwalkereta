@@ -7,12 +7,13 @@ package jadwalkereta.controller;
 
 import jadwalkereta.view.ViewMain;
 import jadwalkereta.model.*;
+import jadwalkereta.model.ConfigDirektori;
 
 import java.util.*;
 
 import com.google.gson.*;
 import com.google.gson.reflect.*;
-
+import java.io.*;
 
 /**
  *
@@ -42,46 +43,212 @@ public class ControllerMain {
         //timerute = tr;
         kereta = k;
 //        karute = kr;
-	jadwal = j;
+	    jadwal = j;
     }
 
-    public void TulisJSON() {
-        List<Rute> ruteList = rute;
-        ArrayList<Rute> test = new ArrayList<Rute>(rute);
-        test.remove(0);
-        List<Rute> ruteList2 = new ArrayList<Rute>(test);
+    public ControllerMain(){
+        viewMain = new ViewMain();
+        users = new ArrayList<User>();
+        stations = new ArrayList<Station>();
+        cities = new ArrayList<City>();
+        times = new ArrayList<Time>();
+        rute = new ArrayList<Rute>();
+        kereta = new ArrayList<Kereta>();
+        jadwal = new ArrayList<Jadwal>();
+    }
 
-        Gson gson = new Gson();
-        JsonElement element = gson.toJsonTree(ruteList, new TypeToken<List<Rute>>() {
-        }.getType());
-        JsonElement element2 = gson.toJsonTree(ruteList2, new TypeToken<List<Rute>>() {
-        }.getType());
-
-        if (!element.isJsonArray()) {
-            // fail appropriately
-            // throw new SomeException();
+    public void WriteJSONRute(){
+        try
+        {
+            List<Rute> List = rute;
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            Writer writer = new FileWriter(ConfigDirektori.RUTE);
+            gson.toJson(List, writer);
+            writer.close();
         }
-
-        JsonArray jsonArray = element.getAsJsonArray();
-        JsonArray jsonArray2 = element2.getAsJsonArray();
-        System.out.println(jsonArray.toString() + "\n");
-        System.out.println(jsonArray2.toString());
-        System.out.println(jsonArray.toString().equals(jsonArray2.toString()));
+        catch(IOException e){}
     }
 
-    public ArrayList<User> getUsers() { return users; }
-    public ArrayList<Station> getStations() { return stations; }
-    public ArrayList<Time> getTimes() { return times; }
-    public ArrayList<City> getCities(){ return cities; }
-    public ArrayList<Rute> getRute(){ return rute; }
-    public ArrayList<Kereta> getKereta(){ return kereta; }
-    public ArrayList<Jadwal> getJadwal(){ return jadwal; }
-//    public ArrayList<TimeRute> getTimeRute(){ return timerute; }
-//    public ArrayList<KARute> getKARute(){ return karute; }
-//	public ArrayList<Jadwal> getJadwal(){ return jadwal; }
+    public void WriteJSONStation(){
+        try
+        {
+            List<Station> List = stations;
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            Writer writer = new FileWriter(ConfigDirektori.STATION);
+            gson.toJson(List, writer);
+            writer.close();
+        }
+        catch(IOException e){}
+    }
+
+    public void WriteJSONKereta(){
+        try
+        {
+            List<Kereta> List = kereta;
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            Writer writer = new FileWriter(ConfigDirektori.KERETA);
+            gson.toJson(List, writer);
+            writer.close();
+        }
+        catch(IOException e){}
+    }
+
+    public void WriteJSONCity(){
+        try
+        {
+            List<City> List = cities;
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            Writer writer = new FileWriter(ConfigDirektori.CITY);
+            gson.toJson(List, writer);
+            writer.close();
+        }
+        catch(IOException e){}
+    }
+
+    public void WriteJSONJadwal(){
+        try
+        {
+            List<Jadwal> List = jadwal;
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            Writer writer = new FileWriter(ConfigDirektori.JADWAL);
+            gson.toJson(List, writer);
+            writer.close();
+        }
+        catch(IOException e){}
+    }
+    
+    public void WriteJSONUser(){
+        try
+        {
+            List<User> List = users;
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            Writer writer = new FileWriter(ConfigDirektori.USER);
+            gson.toJson(List, writer);
+            writer.close();
+        }
+        catch(IOException e){}
+    }
+
+    public void WriteJSONTime(){
+        try
+        {
+            List<Time> List = times;
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            Writer writer = new FileWriter(ConfigDirektori.TIME);
+            gson.toJson(List, writer);
+            writer.close();
+        }
+        catch(IOException e){}
+    }
+
+    public void ReadJSONCity(){
+        try
+        {
+            Gson gson = new Gson();
+            Reader reader = new FileReader(ConfigDirektori.CITY);
+            cities = (ArrayList) gson.fromJson(reader, new TypeToken<List<City>>() {
+            }.getType());
+            reader.close();
+        }
+        catch(IOException e){}
+    }
+
+    public void ReadJSONRute(){
+        try
+        {
+            Gson gson = new Gson();
+            Reader reader = new FileReader(ConfigDirektori.RUTE);
+            rute = (ArrayList) gson.fromJson(reader, new TypeToken<List<Rute>>() {
+            }.getType());
+            reader.close();
+        }
+        catch(IOException e){}
+    }
+
+    public void ReadJSONKereta(){
+        try
+        {
+            Gson gson = new Gson();
+            Reader reader = new FileReader(ConfigDirektori.KERETA);
+            kereta = (ArrayList) gson.fromJson(reader, new TypeToken<List<Kereta>>() {
+            }.getType());
+            reader.close();
+        }
+        catch(IOException e){}
+    }
+
+    public void ReadJSONJadwal(){
+        try
+        {
+            Gson gson = new Gson();
+            Reader reader = new FileReader(ConfigDirektori.JADWAL);
+            jadwal = (ArrayList) gson.fromJson(reader, new TypeToken<List<Jadwal>>() {
+            }.getType());
+            reader.close();
+        }
+        catch(IOException e){}
+    }
+
+    public void ReadJSONStation(){
+        try
+        {
+            Gson gson = new Gson();
+            Reader reader = new FileReader(ConfigDirektori.STATION);
+            stations = (ArrayList) gson.fromJson(reader, new TypeToken<List<Station>>() {
+            }.getType());
+            reader.close();
+        }
+        catch(IOException e){}
+    }
+
+    public void ReadJSONTime(){
+        try
+        {
+            Gson gson = new Gson();
+            Reader reader = new FileReader(ConfigDirektori.TIME);
+            times = (ArrayList) gson.fromJson(reader, new TypeToken<List<Time>>() {
+            }.getType());
+            reader.close();
+        }
+        catch(IOException e){}
+    }
+
+    public void ReadJSONUser(){
+        try {
+            Gson gson = new Gson();
+            Reader reader = new FileReader(ConfigDirektori.USER);
+            users = (ArrayList) gson.fromJson(reader, new TypeToken<List<User>>() {
+            }.getType());
+            reader.close();
+        }
+        catch (IOException e) {}
+    }
+    
+
+        // ReadJSONJadwal();
+        // ReadJSONKereta();
+        // ReadJSONUser();
+        // ReadJSONTime();
+        // ReadJSONStation();
+
+    public ArrayList<User> getUsers() {  ReadJSONUser(); return users; }
+    public ArrayList<Station> getStations() { ReadJSONStation(); return stations; }
+    public ArrayList<Time> getTimes() { ReadJSONTime(); return times; }
+    public ArrayList<City> getCities() { ReadJSONCity(); return cities; }
+    public ArrayList<Rute> getRute() { ReadJSONRute(); return rute; }
+    public ArrayList<Kereta> getKereta() { ReadJSONKereta(); return kereta; }
+    public ArrayList<Jadwal> getJadwal() { ReadJSONJadwal(); return jadwal; }
 
     
-    public void run() {
+    public void run(){
+        ReadJSONJadwal();
+        ReadJSONKereta();
+        ReadJSONUser();
+        ReadJSONTime();
+        ReadJSONStation();
+        ReadJSONRute();
+        ReadJSONCity();
+
         Scanner in = new Scanner(System.in);
         viewMain.menuMain();
         

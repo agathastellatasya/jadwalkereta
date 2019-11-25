@@ -11,6 +11,7 @@ import java.util.Scanner;
 import jadwalkereta.model.City;
 import jadwalkereta.model.Rute;
 import jadwalkereta.view.ViewCity;
+import java.io.*;
 
 /**
  *
@@ -57,12 +58,6 @@ public class ControllerCity {
         }
         case 99:
             ctrAdmin.ControlMenuAdmin();
-            try{
-                this.finalize();
-            }
-            catch(Throwable ex){
-                ex.printStackTrace();
-            }
             break;
         default:
             System.out.println("Inputan Salah!");
@@ -72,6 +67,7 @@ public class ControllerCity {
     }
 
     public void TambahCity(String kode, String nama){
+        cities = ctrMain.getCities();
         int index = CheckCity(kode);
         if (index<0) {
             cities.add(new City(kode, nama));
@@ -83,14 +79,18 @@ public class ControllerCity {
             System.out.println("Kota Sudah Ada, Gagal Menambahkan");
             System.out.println("--------------------------------------------------------------");
         }
+        ctrMain.WriteJSONCity();
     }
 
     public void DeleteCity(int index)
     {
+        cities = ctrMain.getCities();
         cities.remove(index);
+        ctrMain.WriteJSONCity();
     }
 
     public int CheckCity(String kode){
+        cities = ctrMain.getCities();
         int i = 0;
         boolean found = false;
         for (; i < cities.size(); i++) {
@@ -103,29 +103,30 @@ public class ControllerCity {
         else return -1;
     }
 
-    public void ViewEditCity(){
-        System.out.println("#EDIT DATA KOTA#");
-        System.out.print("Edit Kota : ");
-        String kode = input.next().split("_",2)[1];
-        int index = CheckCity(kode);
+    // public void ViewEditCity(){
+    //     System.out.println("#EDIT DATA KOTA#");
+    //     System.out.print("Edit Kota : ");
+    //     String kode = input.next().split("_",2)[1];
+    //     int index = CheckCity(kode);
             
-        if(index>=0){
-            DeleteCity(index);
-            System.out.print("Kode Kota : ");
-            kode = input.next();
-            System.out.print("Nama Kota : ");
-            String nama = input.next();
-            TambahCity(kode, nama);
-        }
-        else{
-            System.out.println("--------------------------------------------------------------");
-            System.out.println("Kota Gagal Ditambahkan");
-            System.out.println("--------------------------------------------------------------");
-        }
-    }
+    //     if(index>=0){
+    //         DeleteCity(index);
+    //         System.out.print("Kode Kota : ");
+    //         kode = input.next();
+    //         System.out.print("Nama Kota : ");
+    //         String nama = input.next();
+    //         TambahCity(kode, nama);
+    //     }
+    //     else{
+    //         System.out.println("--------------------------------------------------------------");
+    //         System.out.println("Kota Gagal Ditambahkan");
+    //         System.out.println("--------------------------------------------------------------");
+    //     }
+    // }
 
     public void LihatCity()
     {
+        cities = ctrMain.getCities();
         for(int i=0; i<cities.size();i++)
                 System.out.println(i+1+"\t"+cities.get(i).getKode()+"\t\t"+cities.get(i).getNama());
     }

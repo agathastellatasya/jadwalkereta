@@ -1,7 +1,7 @@
 package jadwalkereta;
 
 import java.util.*;
-
+import java.io.*;
 import jadwalkereta.controller.*;
 import jadwalkereta.model.*;
 
@@ -18,7 +18,7 @@ public final class App {
     /**
      * @param args The arguments of the program.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         // ---------------- SETUP DATA DUMMY --------------
         ArrayList<User> users = new ArrayList<User>();
@@ -114,7 +114,7 @@ public final class App {
         
         // Tambah Parameter Station
 
-        ControllerMain ctrMain = new ControllerMain(users, stations, cities, rute, times, kereta, jadwal);
+        ControllerMain ctrMain = new ControllerMain();
         ctrMain.run();
     }
 }

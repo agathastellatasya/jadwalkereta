@@ -9,25 +9,27 @@ package jadwalkereta.controller;
 import jadwalkereta.model.City;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.io.*;
 import jadwalkereta.model.Rute;
 import jadwalkereta.view.ViewRute;
 
 
 public class ControllerRute {
-    ArrayList<Rute> rute;
+    public ArrayList<Rute> rute;
     ControllerMain ctrMain;
     ControllerAdmin ctrAdmin;
     ViewRute viewRute;
     Scanner input = new Scanner(System.in);
 
-    public ControllerRute(ControllerAdmin admin) {
+    public ControllerRute(ControllerAdmin admin){
         ctrAdmin = admin;
         ctrMain = ctrAdmin.getControllerMain();
         rute = ctrMain.getRute();
     }
 
-    public void ControlMenuRute() {
+    public ControllerMain getControllerMain(){ return ctrMain; }
+
+    public void ControlMenuRute(){
         if(viewRute == null) viewRute = new ViewRute(this);
         viewRute.menuRute();
 
@@ -70,6 +72,7 @@ public class ControllerRute {
     }
 
     public void TambahRute(String kotaBerangkat, String kotaTujuan, long hargaBisnis, long hargaPremium){
+        rute = ctrMain.getRute();
         int kotaB = CheckKotaB(kotaBerangkat);
 		int kotaT = CheckKotaB(kotaTujuan);
         //System.out.println(kotaB);
@@ -96,10 +99,13 @@ public class ControllerRute {
     }
 
     public void DeleteRute(int index){
-		rute.remove(index);
+        rute = ctrMain.getRute();
+        rute.remove(index);
+        ctrMain.WriteJSONRute();
     }
 
     public int CheckRute(String kodeRute){
+        rute = ctrMain.getRute();
         int i;
         boolean found = false;
         for (i=0; i < rute.size(); i++) {
@@ -129,6 +135,7 @@ public class ControllerRute {
 	
 	public void LihatRute()
     {
+        rute = ctrMain.getRute();
         for(int i=0; i<rute.size();i++)
             System.out.println(i+1+"\t"+rute.get(i).getKotaBerangkat()+" "+"\t\t"+rute.get(i).getKotaTujuan()+" \t"+rute.get(i).getKodeRute()+"\t\t"+rute.get(i).getHargaBisnis()+"\t"+rute.get(i).getHargaPremium());
     }

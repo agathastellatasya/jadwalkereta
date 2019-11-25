@@ -15,6 +15,7 @@ import java.util.Scanner;
 
 import jadwalkereta.model.Kereta;
 import jadwalkereta.view.ViewKereta;
+import java.io.*;
 
 
 public class ControllerKereta {
@@ -30,7 +31,7 @@ public class ControllerKereta {
         kereta = ctrMain.getKereta();
     }
 
-    public void ControlMenuKereta() {
+    public void ControlMenuKereta(){
         if(viewKereta == null) viewKereta = new ViewKereta(this);
         viewKereta.menuKereta();
 
@@ -58,12 +59,6 @@ public class ControllerKereta {
         }
         case 99:
             ctrAdmin.ControlMenuAdmin();
-            try{
-                this.finalize();
-            }
-            catch(Throwable ex){
-                ex.printStackTrace();
-            }
             break;
         default:
             System.out.println("Inputan Salah!");
@@ -73,6 +68,7 @@ public class ControllerKereta {
     }
 
     public void TambahKereta(String kodeKereta, String namaKereta, String jmlA, String jmlB, String jmlC){
+        kereta = ctrMain.getKereta();
         int index = CheckKereta(kodeKereta);
         //System.out.println(kotaB);
         //System.out.println(kotaT);
@@ -104,13 +100,17 @@ public class ControllerKereta {
             System.out.println("Kode Kereta sudah ada, Kereta Gagal Ditambahkan");
             System.out.println("--------------------------------------------------------------");
         }
+        ctrMain.WriteJSONKereta();
     }
     
     public void DeleteKereta(int index){
-		kereta.remove(index);
+        kereta = ctrMain.getKereta();
+        kereta.remove(index);
+        ctrMain.WriteJSONKereta();
     }
 
     public int CheckKereta(String kodeKereta){
+        kereta = ctrMain.getKereta();
         int i;
         boolean found = false;
         for (i=0; i < kereta.size(); i++) {
@@ -140,6 +140,7 @@ public class ControllerKereta {
 	
 	public void LihatKereta()
     {
+        kereta = ctrMain.getKereta();
         for(int i=0; i<kereta.size();i++)
             System.out.println(i+1+"\t"+kereta.get(i).getKodeKereta()+"\t"+kereta.get(i).getNamaKereta()+"\t\t\t"+kereta.get(i).getJmlGerbong()+"\t\t"+kereta.get(i).getJmlBisnis()+"\t\t\t"+kereta.get(i).getJmlPremium());
     }

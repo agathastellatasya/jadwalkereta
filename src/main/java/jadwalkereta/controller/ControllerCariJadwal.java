@@ -11,6 +11,7 @@ import java.util.Scanner;
 import jadwalkereta.model.Jadwal;
 import jadwalkereta.model.Jalur;
 //import jadwalkereta.model.KARute;
+import java.io.*;
 import jadwalkereta.model.Rute;
 import jadwalkereta.model.Tanggal;
 import jadwalkereta.model.TimeRute;
@@ -20,7 +21,7 @@ import jadwalkereta.view.ViewCariJadwal;
  *
  * @author ASUS
  */
-public class ControllerCariJadwal {
+public class ControllerCariJadwal  {
 
     ArrayList<Jadwal> jadwal;
     ControllerMain ctrMain;
@@ -28,13 +29,13 @@ public class ControllerCariJadwal {
     ViewCariJadwal viewCariJadwal;
     Scanner input = new Scanner(System.in);
 
-    public ControllerCariJadwal(ControllerPenumpang penumpang) {
+    public ControllerCariJadwal(ControllerPenumpang penumpang){
         ctrPenumpang = penumpang;
         ctrMain = ctrPenumpang.getControllerMain();
         jadwal = ctrMain.getJadwal();
     }
 
-    public void ControlMenuCariJadwal() {
+    public void ControlMenuCariJadwal(){
         if (viewCariJadwal == null)
             viewCariJadwal = new ViewCariJadwal(this);
         viewCariJadwal.menuCariJadwal();
@@ -42,6 +43,7 @@ public class ControllerCariJadwal {
     }
 
     public void cariJadwal(String keberangkatan, String tujuan, String mtanggal){
+        jadwal = ctrMain.getJadwal();
         for(int i=0;i<jadwal.size();i++)
         {
             Tanggal tanggal = jadwal.get(i).getTanggal();
@@ -74,7 +76,7 @@ public class ControllerCariJadwal {
                 System.out.println();
             }
         }
-
     }
+   
 
 }

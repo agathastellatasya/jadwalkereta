@@ -15,6 +15,7 @@ import jadwalkereta.view.ViewAdmin;
 
 
 import java.util.*;
+import java.io.*;
 
 /**
  *
@@ -33,14 +34,14 @@ public class ControllerAdmin {
     ArrayList<Kereta> kereta;
 //    ArrayList<Jadwal> jadwal;
     
-    public ControllerAdmin(ControllerMain ctr) {
+    public ControllerAdmin(ControllerMain ctr){
         ctrMain = ctr;
         viewAdmin = new ViewAdmin(ctr);
     }
 
     public ControllerMain getControllerMain(){ return ctrMain; }
     
-    public void ControlMenuAdmin() {
+    public void ControlMenuAdmin(){
         do {
             viewAdmin.menuAdmin();
             System.out.println();

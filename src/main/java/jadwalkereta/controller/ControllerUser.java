@@ -4,6 +4,7 @@ import jadwalkereta.model.User;
 import jadwalkereta.view.ViewUser;
 
 import java.util.*;
+import java.io.*;
 
 public class ControllerUser{
     ControllerMain ctrMain;
@@ -16,6 +17,7 @@ public class ControllerUser{
     }
 
     public int findNikInUsers(String nik){
+        users = ctrMain.getUsers();
         boolean found = false;
         int i = 0;
         int hasil = -99;
@@ -32,6 +34,7 @@ public class ControllerUser{
     }
 
     public int findEmailInUsers(String email){
+        users = ctrMain.getUsers();
         boolean found = false;
         int i = 0;
         int hasil = -99;
@@ -49,6 +52,7 @@ public class ControllerUser{
     }
 
     public int successLogin(User u){
+        users = ctrMain.getUsers();
         boolean found = false;
         int i = 0;
         int hasil = -99;
@@ -68,6 +72,7 @@ public class ControllerUser{
     }
 
     public void login(){
+        users = ctrMain.getUsers();
         ViewUser viewUser = new ViewUser(ctrMain, user);
         viewUser.menuLogin();
         if (successLogin(viewUser.getUser()) != -99){
@@ -94,18 +99,22 @@ public class ControllerUser{
     }
 
     public void register(){
+        users = ctrMain.getUsers();
         ViewUser viewUser = new ViewUser(ctrMain,user);
         viewUser.menuRegis();
         users.add(viewUser.getUser());
         System.out.println("Anda sudah berhasil didaftarkan!");
         System.out.println();
+        ctrMain.WriteJSONUser();
         ctrMain.run();
     }
 
     public void editUser(String nik, String nama, String hp, String email, String pass){
+        users = ctrMain.getUsers();
         users.get(findNikInUsers(nik)).setNama(nama);
         users.get(findNikInUsers(nik)).setHp(hp);
         users.get(findNikInUsers(nik)).setEmail(email);
         users.get(findNikInUsers(nik)).setPassword(pass);
+        ctrMain.WriteJSONUser();
     }
 }

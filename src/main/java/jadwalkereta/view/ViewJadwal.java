@@ -1,7 +1,7 @@
 package jadwalkereta.view;
 
 import jadwalkereta.controller.*;
-
+import java.io.*;
 import java.util.Scanner;
 
 public class ViewJadwal {
@@ -21,7 +21,7 @@ public class ViewJadwal {
         pilihan = input.nextInt();
     }
 
-    public void menuGenerateJadwal() {
+    public void menuGenerateJadwal(){
         System.out.print("Apakah anda yakin untuk generate waktu (Y/N)? ");
         String pilihan  = input.next();
         if(pilihan.equals("Y") || pilihan.equals("y")){

@@ -14,6 +14,7 @@ import jadwalkereta.model.Rute;
 import jadwalkereta.model.Station;
 import jadwalkereta.model.Jalur;
 import jadwalkereta.view.ViewJalur;
+import java.io.*;
 
 public class ControllerJalur {
     ArrayList<Rute> rute;
@@ -24,7 +25,7 @@ public class ControllerJalur {
     ViewJalur viewJalur;
     Scanner input = new Scanner(System.in);
 
-    public ControllerJalur(ControllerAdmin admin) {
+    public ControllerJalur(ControllerAdmin admin){
         ctrAdmin = admin;
         ctrStation = new ControllerStation(admin);
         ctrMain = ctrAdmin.getControllerMain();
@@ -32,7 +33,7 @@ public class ControllerJalur {
         stations = ctrMain.getStations();
     }
 
-    public void ControlMenuJalur() {
+    public void ControlMenuJalur(){
         if (viewJalur == null) viewJalur = new ViewJalur(this);
         viewJalur.menuJalur();
 
@@ -68,6 +69,7 @@ public class ControllerJalur {
 
     public int CheckRute(String kode)
     {
+        rute = ctrMain.getRute();
         for(int i=0;i<rute.size();i++){
             if(rute.get(i).getKodeRute().equals(kode)) return i;
         }
@@ -76,6 +78,7 @@ public class ControllerJalur {
     }
 
     public boolean TambahJalur(String stasiunAwal, String stasiunAkhir, int menit, int index){
+        rute = ctrMain.getRute();
         ArrayList<Jalur> jalur = rute.get(index).getJalur();
         if(ctrStation.CheckStationByName(stasiunAwal) >= 0 && ctrStation.CheckStationByName(stasiunAkhir) >= 0)
         {
@@ -83,11 +86,13 @@ public class ControllerJalur {
             int indexakhir = ctrStation.CheckStationByName(stasiunAkhir);
             if(jalur.size() == 0){
                 jalur.add(new Jalur(stations.get(indexawal), stations.get(indexakhir), menit));
+                ctrMain.WriteJSONRute();
                 return true;
             }
                 
             else if(stations.get(indexawal).equals(jalur.get(jalur.size() - 1).getStasiunAkhir())){
                 jalur.add(new Jalur(stations.get(indexawal), stations.get(indexakhir), menit));
+                ctrMain.WriteJSONRute();
                 return true;
             }
             else
@@ -118,6 +123,7 @@ public class ControllerJalur {
 
 
     public void LihatJalur(String kode) {
+        rute = ctrMain.getRute();
         int i = CheckRute(kode);
         if(i>=0)
         {
@@ -143,10 +149,13 @@ public class ControllerJalur {
     }
 
     public void HapusJalur(int index){
+        rute = ctrMain.getRute();
         rute.get(index).setJalur(new ArrayList<Jalur>());
+        ctrMain.WriteJSONRute();
     }
 
     public void LihatRute() {
+        rute = ctrMain.getRute();
         for (int i = 0; i < rute.size(); i++)
             System.out.println(i + 1 + "\t" + rute.get(i).getKotaBerangkat() + "\t\t\t" + rute.get(i).getKotaTujuan()
                     + "\t" + rute.get(i).getKodeRute() + "\t\t" + rute.get(i).getHargaBisnis() + "\t\t"
