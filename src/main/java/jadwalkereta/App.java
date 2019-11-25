@@ -107,7 +107,8 @@ public final class App {
 //        timerute.add(new TimeRute("TM30",7,15));
 //        timerute.add(new TimeRute("TM40",9,45));
         //karute.add(new KARute("KAI18801"));
-        Rute R5 = new Rute("JKT-SBY", 2000000, 1000000, "Jakarta", "Surabaya", jalur,times,kereta);
+        ArrayList<Kereta> newKereta = new ArrayList<>(kereta);
+        Rute R5 = new Rute("JKT-SBY", 2000000, 1000000, "Jakarta", "Surabaya", jalur,times,newKereta);
         rute.add(R5);
         ArrayList<Jadwal> jadwal = new ArrayList<Jadwal>();
         
