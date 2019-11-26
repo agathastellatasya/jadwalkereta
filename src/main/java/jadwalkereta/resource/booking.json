@@ -29,7 +29,7 @@
     "kdJadwal": "JW1",
     "user": "test",
     "kdpesan": "PMF791",
-    "ispaid": 1,
+    "ispaid": 0,
     "harga": 2000000,
     "penumpang": [
       "salma"
@@ -42,7 +42,7 @@
     "kdJadwal": "JW1",
     "user": "test",
     "kdpesan": "MJN992",
-    "ispaid": 1,
+    "ispaid": 0,
     "harga": 2000000,
     "penumpang": [
       "salma"
@@ -50,58 +50,5 @@
     "kursi": [
       "B1-3"
     ]
-  },
-  {
-    "kdJadwal": "JW2",
-    "user": "test",
-    "kdpesan": "GOG142",
-    "ispaid": 1,
-    "harga": 2000000,
-    "penumpang": [
-      "salma"
-    ],
-    "kursi": [
-      "B1-1"
-    ]
-  },
-  {
-    "kdJadwal": "JW146",
-    "user": "test",
-    "kdpesan": "UKG938",
-    "ispaid": 0,
-    "harga": 2000000,
-    "penumpang": [
-      "salma"
-    ],
-    "kursi": [
-      "B1-1"
-    ]
-  },
-  {
-    "kdJadwal": "JW146",
-    "user": "test",
-    "kdpesan": "LZK485",
-    "ispaid": 0,
-    "harga": 0,
-    "penumpang": [],
-    "kursi": []
-  },
-  {
-    "kdJadwal": "JW146",
-    "user": "test",
-    "kdpesan": "QIR403",
-    "ispaid": 0,
-    "harga": 0,
-    "penumpang": [],
-    "kursi": []
-  },
-  {
-    "kdJadwal": "JW146",
-    "user": "test",
-    "kdpesan": "LUV471",
-    "ispaid": 0,
-    "harga": 0,
-    "penumpang": [],
-    "kursi": []
   }
 ]

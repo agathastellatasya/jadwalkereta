@@ -28,7 +28,7 @@ public class ViewRute {
     }
 
     public void menuTambah(){
-        ctrUtil.ReadJSONRute();
+        
         System.out.println("#TAMBAH DATA RUTE#");
         System.out.print("Tambah Rute : ");
         String kotaBerangkat = input.next();
@@ -37,9 +37,9 @@ public class ViewRute {
 		long hargaPremium = input.nextLong();
 		input.nextLine();
         ctrRute.TambahRute(kotaBerangkat, kotaTujuan, hargaBisnis, hargaPremium);
-        ctrUtil.WriteJSONRute();
-        System.out.println(ctrUtil.getRute().size());
-        System.out.println(ctrRute.rute.size());
+        //ctrUtil.WriteJSONRute();
+        //System.out.println(ctrUtil.getRute().size());
+        //System.out.println(ctrRute.rute.size());
 		
     }
 

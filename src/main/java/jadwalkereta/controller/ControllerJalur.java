@@ -74,7 +74,7 @@ public class ControllerJalur {
         for(int i=0;i<rute.size();i++){
             if(rute.get(i).getKodeRute().equals(kode)) return i;
         }
-        System.out.println("Rute Tidak Ditemukan");
+        //System.out.println("Rute Tidak Ditemukan");
         return -1;
     }
 
@@ -146,7 +146,11 @@ public class ControllerJalur {
                     + "\t\t" + sjalur);
         }
 
-        else System.out.println("Kode Rute Tidak Ditemukan");
+        else{
+            System.out.println("");
+            System.out.println("Kode Rute Tidak Ditemukan");
+            System.out.println("");
+        } 
     }
 
     public void HapusJalur(int index){

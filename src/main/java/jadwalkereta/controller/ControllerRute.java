@@ -73,6 +73,7 @@ public class ControllerRute {
     }
 
     public void TambahRute(String kotaBerangkat, String kotaTujuan, long hargaBisnis, long hargaPremium){
+        ctrUtil.ReadJSONRute();
         rute = ctrUtil.getRute();
         int kotaB = CheckKotaB(kotaBerangkat);
 		int kotaT = CheckKotaB(kotaTujuan);
@@ -81,6 +82,7 @@ public class ControllerRute {
         if(kotaB>=0 && kotaT>=0){
             String kodeRute = BuatRute(kotaB,kotaT);
             rute.add(new Rute(kodeRute, hargaBisnis, hargaPremium, kotaBerangkat, kotaTujuan));
+            ctrUtil.WriteJSONRute();
             System.out.println("--------------------------------------------------------------");
             System.out.println("Rute Berhasil Ditambahkan");
             System.out.println("--------------------------------------------------------------");
@@ -90,6 +92,7 @@ public class ControllerRute {
             System.out.println("Rute Gagal Ditambahkan");
             System.out.println("--------------------------------------------------------------");
         }
+
     }
     
     public String BuatRute(int kotaB, int kotaT){

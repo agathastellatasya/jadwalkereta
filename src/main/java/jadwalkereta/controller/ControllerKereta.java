@@ -91,9 +91,9 @@ public class ControllerKereta {
 			}
 			else {
 				System.out.println("--------------------------------------------------------------");
-				System.out.println("Format Salah");
+				System.out.println("Format Input Salah");
 				System.out.println("--------------------------------------------------------------");
-				viewKereta.menuTambah();
+				//viewKereta.menuTambah();
 			}
         }    
         else {

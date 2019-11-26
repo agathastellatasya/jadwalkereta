@@ -121,7 +121,7 @@ public class ControllerTimeRute {
                     sjalur = "";
                     sjalur = sjalur + "- " + String.format("%02d",temp_timerute.getJam()) + "." + String.format("%02d",temp_timerute.getMenit()) + "\n";
                 } else
-                    sjalur = sjalur + "\t\t\t\t\t- " + String.format("%02d",temp_timerute.getJam()) + "." + String.format("%02d",temp_timerute.getMenit()) + "\n";
+                    sjalur = sjalur + "\t\t\t\t\t\t- " + String.format("%02d",temp_timerute.getJam()) + "." + String.format("%02d",temp_timerute.getMenit()) + "\n";
             }
             //sjalur = sjalur.substring(0, 9) + "\t\t" + menit + " menit" + sjalur.substring(9);
             System.out.println(1 + "\t" + "KR" + String.format("%02d", i + 1) + "\t\t\t" + rute.get(i).getKodeRute()

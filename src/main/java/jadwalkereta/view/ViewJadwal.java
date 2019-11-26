@@ -14,15 +14,16 @@ public class ViewJadwal {
     }
 
     public void menuJadwal() {
-        System.out.println("#GENERATE DATA WAKTU#");
-        System.out.println("1. Lihat Data Waktu");
+        System.out.println("#GENERATE JADWAL#");
+        System.out.println("1. Generate Jadwal");
+        System.out.println("2. Lihat Jadwal");
         System.out.println("99. Menu Utama");
         System.out.print("Pilihan : ");
         pilihan = input.nextInt();
     }
 
     public void menuGenerateJadwal(){
-        System.out.print("Apakah anda yakin untuk generate waktu (Y/N)? ");
+        System.out.print("Apakah anda yakin untuk generate Jadwal (Y/N)? ");
         String pilihan  = input.next();
         if(pilihan.equals("Y") || pilihan.equals("y")){
             ctrJadwal.GenerateJadwal();
@@ -30,7 +31,7 @@ public class ViewJadwal {
         else{
             ctrJadwal.ControlMenuJadwal();
         }
-        System.out.println("Generate Waktu Berhasil!"); 
+        System.out.println("Generate Jadwal Berhasil!"); 
     }
 
     public void menuLihatJadwal(){

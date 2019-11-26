@@ -45,10 +45,15 @@ public class ControllerJadwal {
 
     public void ControlMenuJadwal(){
         if(viewJadwal == null) viewJadwal = new ViewJadwal(this);
-        if(jadwal.size()<=0) viewJadwal.menuGenerateJadwal();
+        //viewJadwal.menuGenerateJadwal();
         viewJadwal.menuJadwal();
         switch(viewJadwal.getPilihan()){
             case 1: {
+                viewJadwal.menuGenerateJadwal();
+                ControlMenuJadwal();
+                break;
+            }
+            case 2: {
                 viewJadwal.menuLihatJadwal();
                 ControlMenuJadwal();
                 break;

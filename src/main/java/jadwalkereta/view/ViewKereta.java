@@ -51,12 +51,17 @@ public class ViewKereta {
                 String jmlB = strarray[3];
                 String jmlC = strarray[4];
                 ctrKereta.TambahKereta(kodeKereta, namaKereta, jmlA, jmlB, jmlC);
+                tambah="99";
             }
-            else {
+            else if(i<5 && !tambah.equals("99")) {
                 System.out.println("--------------------------------------------------------------");
                 System.out.println("Format Salah");
                 System.out.println("--------------------------------------------------------------");
                 tambah="99";
+            }
+            else{
+                tambah="99";
+                System.out.println("");
             }
         } while(!tambah.equals("99"));
     }

@@ -31,6 +31,7 @@ public class ViewJalur {
             System.out.print("Kode Rute: ");
             KodeRute = input.nextLine();
             index = ctrJalur.CheckRute(KodeRute);
+            if(index<0) System.out.println("Rute Tidak Ditemukan");
         }while(index<0);
 
         int i = 1;
@@ -72,6 +73,7 @@ public class ViewJalur {
         System.out.print("Kode Rute: ");
         String kode = input.nextLine();
         System.out.println("No\tKode Jalur\tKode Rute\tJalur Yang Dilewati\tMenit");
+        System.out.println("--------------------------------------------------------------------------");
         ctrJalur.LihatJalur(kode);
         System.out.println("--------------------------------------------------------------------------");
 
@@ -85,14 +87,15 @@ public class ViewJalur {
             System.out.print("Kode Rute: ");
             KodeRute = input.nextLine();
             index = ctrJalur.CheckRute(KodeRute);
+            if(index<0) System.out.println("Rute Tidak Ditemukan");
         } while (index < 0 || KodeRute.equals("-1"));
-        if(index<0) System.out.println("Rute Tidak Ditemukan");
-        else{
+        //if(index<0) System.out.println("Rute Tidak Ditemukan");
+        
             ctrJalur.HapusJalur(index);
             System.out.println("--------------------------------------------------------------");
             System.out.println("Jalur Berhasil Dihapus");
             System.out.println("--------------------------------------------------------------");
-        }
+        
     }
 
     // public void menuEdit() {
