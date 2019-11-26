@@ -95,7 +95,6 @@ public final class App {
 
         ArrayList<Jalur> jalur = new ArrayList<>();
         //ArrayList<KARute> karute = new ArrayList<KARute>();
-        ArrayList<TimeRute> timerute = new ArrayList<TimeRute>();
         jalur.add(new Jalur(jkt,bdg, 200)); //jkt, bdg, smg, dan sby adalah variabel tipe station yang sudah di deklarasi diatas
         jalur.add(new Jalur(bdg,smg, 200));
         jalur.add(new Jalur(smg,sby, 200));
