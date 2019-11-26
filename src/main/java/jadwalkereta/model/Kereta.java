@@ -49,7 +49,7 @@ public class Kereta {
         }
         for(int i=0;i<bangkupremium.length;i++)
         {
-            for(int j=0;j<10;j++){
+            for(int j=0;j<20;j++){
                 if(bangkupremium[i][j]==0) jumlah++;
             }
         }

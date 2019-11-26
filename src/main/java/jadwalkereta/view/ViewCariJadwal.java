@@ -21,6 +21,10 @@ public class ViewCariJadwal {
         String tujuan = input.next();
         System.out.print("Tanggal: ");
         String tanggal = input.next();
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("Kode Jadwal\tTanggal\t\tWaktu Keberangkatan\tKeberangkatan\tTujuan\t\tWaktu Tiba\tKAI\t\tStatus");
         ctrCariJadwal.cariJadwal(keberangkatan, tujuan, tanggal);
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println();
     }
 }

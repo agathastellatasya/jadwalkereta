@@ -31,8 +31,9 @@ public class ViewBooking {
     
     public void menuBooking() {
         System.out.println("#MENU BOOKING TIKET#");
-        System.out.println("1. Pembayaran");
-        System.out.println("2. Detail");
+        System.out.println("1. Cari Jadwal");
+        System.out.println("2. Booking");
+        System.out.println("3. Pembayaran");
         System.out.println("99. Menu Utama");
         System.out.print("Pilihan : ");
         pilihan = input.nextInt();
@@ -50,8 +51,16 @@ public class ViewBooking {
         String orang;
         for(i=0; i<jml; i++)
         {
-            System.out.print("penumpang "+(i+1)+": ");
-            orang = input.next();
+            do {
+                System.out.print("penumpang "+(i+1)+": ");
+                
+                orang = input.next();
+                if (!orang.matches("^[a-zA-Z\\\\s][a-zA-Z \\\\s]*$")){
+                    System.out.println("Nama harus terdiri dari huruf semua!");
+                }
+            } while (!orang.matches("^[a-zA-Z\\\\s][a-zA-Z \\\\s]*$"));
+            
+            
             penumpang[i] = orang;
         }
         System.out.println();
@@ -59,21 +68,33 @@ public class ViewBooking {
         ctrBooking.lihatKursi(kode);
         System.out.println("---------------------------------------------------------");
         System.out.println("Pilih Kursi (Dengan Tanda E/Empty) : ");
-        String kursi;
+        String kursi, kdKelas;
+        int kdKursi, kdGerbong, status;
         String[] bangku = new String[jml];
         long harga, sum=0;
         for(i=0; i<jml; i++)
         {
             System.out.print("Kursi "+(i+1)+": ");
             kursi = input.next();
-            String kdKelas = Character.toString( kursi.charAt(0));
-            //System.out.println(kdKelas);
-            int kdGerbong = Integer.valueOf(kursi.charAt(1)+"") ;
-            int kdkursi = Integer.valueOf(kursi.charAt(3)+"");
-            harga = ctrBooking.PesanKursi(kode, kdKelas, kdGerbong, kdkursi);
+            kdKelas = Character.toString( kursi.charAt(0));
+            kdGerbong = Integer.valueOf(kursi.charAt(1)+"") ;
+            kdKursi = Integer.valueOf(kursi.charAt(3) + "");
+            status = ctrBooking.CekStatus(kode, kdKelas, kdGerbong, kdKursi);
+            while (status >= 0)
+            {
+                System.out.println("Kursi sudah dipesan, silahkan pilih kursi bertanda E");
+                System.out.print("Kursi "+(i+1)+": ");
+                kursi = input.next();
+                kdKelas = Character.toString( kursi.charAt(0));
+                kdGerbong = Integer.valueOf(kursi.charAt(1)+"") ;
+                kdKursi = Integer.valueOf(kursi.charAt(3) + "");
+                status = ctrBooking.CekStatus(kode, kdKelas, kdGerbong, kdKursi);
+            }
+            ctrBooking.PesanKursi(kode, kdKelas, kdGerbong, kdKursi);
+            harga = ctrBooking.HitungHarga(kode, kdKelas);
             sum = sum+harga;
             bangku[i]=kursi;
-            //System.out.println(sum);
+           
         }
         System.out.println();
         System.out.println("---------------------------------------------------------");

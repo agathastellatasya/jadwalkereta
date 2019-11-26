@@ -26,13 +26,13 @@ public class ControllerCariJadwal  {
     ArrayList<Jadwal> jadwal;
     ControllerMain ctrMain;
     ControllerUtil ctrUtil = new ControllerUtil();
-    ControllerPenumpang ctrPenumpang;
+    ControllerBooking ctrBooking;
     ViewCariJadwal viewCariJadwal;
     Scanner input = new Scanner(System.in);
 
-    public ControllerCariJadwal(ControllerPenumpang penumpang){
-        ctrPenumpang = penumpang;
-        ctrMain = ctrPenumpang.getControllerMain();
+    public ControllerCariJadwal(ControllerBooking booking){
+        ctrBooking = booking;
+        //ctrMain = ctrPenumpang.getControllerMain();
         jadwal = ctrUtil.getJadwal();
     }
 
@@ -40,7 +40,7 @@ public class ControllerCariJadwal  {
         if (viewCariJadwal == null)
             viewCariJadwal = new ViewCariJadwal(this);
         viewCariJadwal.menuCariJadwal();
-        ctrPenumpang.ControlMenuPenumpang();
+        ctrBooking.ControlMenuBooking();
     }
 
     public void cariJadwal(String keberangkatan, String tujuan, String mtanggal){
@@ -64,12 +64,12 @@ public class ControllerCariJadwal  {
                 String keretaapi = mjadwal.getKereta().getKodeKereta();
                 int kursi = mjadwal.getKereta().countBangkuKosong();
                 System.out.print(kode);
-                System.out.print("\t" + stanggal);
+                System.out.print("\t\t" + stanggal);
                 System.out.print("\t" + waktuBerangkat);
+                System.out.print(" \t\t\t" + kotaBerangkat);
+                System.out.print("\t\t" + kotaTujuan);
                 System.out.print("\t" + waktuSampai);
-                System.out.print("\t" + kotaBerangkat);
-                System.out.print("\t" + kotaTujuan);
-                System.out.print("\t" + keretaapi);
+                System.out.print("\t\t" + keretaapi);
                 if (kursi > 0)
                     System.out.print("\tSisa Kursi " + kursi);
                 else

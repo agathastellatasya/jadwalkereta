@@ -36,19 +36,24 @@ public class ControllerBooking {
 
     public void ControlMenuBooking() {
         if (viewBooking == null) viewBooking = new ViewBooking(this);
-        viewBooking.book();
         viewBooking.menuBooking();
         switch(viewBooking.getPilihan()){
             case 1: {
+                ControllerCariJadwal ctrCariJadwal = new ControllerCariJadwal(this);
+                ctrCariJadwal.ControlMenuCariJadwal();
+                viewBooking.menuBooking();
+            }
+            case 3: {
                 viewBooking.menuPembayaran();
-                ctrPenumpang.ControlMenuPenumpang();
+                viewBooking.menuBooking();
                 break;
             }
-            /*case 2: {
-                viewBooking.menuDetail();
-                ControlMenuBooking();
+            case 2: {
+                viewBooking.book();
+                viewBooking.menuBooking();
                 break;
-            }*/
+            }
+
             case 99:{
                 ctrPenumpang.ControlMenuPenumpang();
                 break;
@@ -108,30 +113,81 @@ public class ControllerBooking {
         return kode;
     }  
 
-    public Long PesanKursi(String kdjadwal, String kdkelas, int kdGerbong, int kdKursi)
+    public void PesanKursi(String kdjadwal, String kdkelas, int kdGerbong, int kdKursi)
     {
-        //jadwal = ctrUtil.getJadwal();
-        //ArrayList<Kereta> kereta = ctrMain.getKereta();
+            int i;
+            //long harga = 0;
+            for(i=0; i<jadwal.size(); i++)
+            {
+                if(kdjadwal.equals(jadwal.get(i).getKode()))
+                {
+                    if(kdkelas.equals("B"))
+                    {
+                        
+                        jadwal.get(i).getKereta().setBangkuBisnis(kdGerbong-1, kdKursi-1, 1);
+                        //harga = harga + jadwal.get(i).getHargaB();
+    
+                    }else{
+                        jadwal.get(i).getKereta().setBangkuPremium(kdGerbong-1, kdKursi-1, 1);
+                        //harga = harga + jadwal.get(i).getHargaP();
+                    }
+                    ctrUtil.WriteJSONJadwal();
+                }
+            }
+            //return harga;
+        
+    }
+
+        public long HitungHarga(String kdjadwal, String kdkelas) {
+            int i;
+            long harga = 0;
+            for(i=0; i<jadwal.size(); i++)
+            {
+                if(kdjadwal.equals(jadwal.get(i).getKode()))
+                {
+                    if(kdkelas.equals("B"))
+                    {
+                        
+                        //jadwal.get(i).getKereta().setBangkuBisnis(kdGerbong-1, kdKursi-1, 1);
+                        harga = harga + jadwal.get(i).getHargaB();
+    
+                    }else{
+                        //jadwal.get(i).getKereta().setBangkuPremium(kdGerbong-1, kdKursi-1, 1);
+                        harga = harga + jadwal.get(i).getHargaP();
+                    }
+                }
+            }
+            return harga;
+        }
+
+
+    public int CekStatus(String kdjadwal, String kdkelas, int kdGerbong, int kdKursi){
+        jadwal = ctrUtil.getJadwal();
         int i;
-        long harga = 0;
-        for(i=0; i<jadwal.size(); i++)
-        {
+        boolean found = false;
+        for (i=0; i < jadwal.size(); i++) {
             if(kdjadwal.equals(jadwal.get(i).getKode()))
             {
                 if(kdkelas.equals("B"))
                 {
-                    jadwal.get(i).getKereta().setBangkuBisnis(kdGerbong-1, kdKursi-1, 1);
-                    harga = harga + jadwal.get(i).getHargaB();
-
+                    //System.out.println(kdGerbong+" "+kdKursi);
+                    //System.out.println(jadwal.get(i).getKereta().getBangkuBisnis(kdGerbong-1, kdKursi-1));
+                    if((jadwal.get(i).getKereta().getBangkuBisnis(kdGerbong-1, kdKursi-1))==1)
+                    {
+                        found = true;
+                        break;
+                    }
                 }else{
-                    jadwal.get(i).getKereta().setBangkuPremium(kdGerbong-1, kdKursi-1, 1);
-                    harga = harga + jadwal.get(i).getHargaP();
+                    if((jadwal.get(i).getKereta().getBangkuPremium(kdGerbong, kdKursi))==1)
+                    {
+                        found = true;
+                        break;
+                    }
                 }
-                ctrUtil.WriteJSONJadwal();
             }
         }
-        return harga;
-
+        if(found) return i;
+        else return -1;
     }
 
 
