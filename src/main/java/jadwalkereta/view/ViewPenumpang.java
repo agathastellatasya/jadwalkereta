@@ -118,4 +118,19 @@ public class ViewPenumpang {
             System.out.println("Email : " + user.getEmail());
             System.out.println("Password : " + user.getPassword());
     }
+
+    public void History()
+    {
+        System.out.println("==============Riwayat Transaksi================");
+        System.out.println("Kode\t\tTanggal\t\t\tStatus");
+        for(int i=0;i<user.getTransaksi().size();i++)
+        {
+            System.out.print(user.getTransaksi().get(i).getKodebooking()+"\t\t");
+            System.out.print(user.getTransaksi().get(i).getTanggal()+"\t\t");
+            System.out.print(user.getTransaksi().get(i).getKeterangan());
+            System.out.println();
+        }
+        System.out.println("==============================================");
+        
+    }
 }

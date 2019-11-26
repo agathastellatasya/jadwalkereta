@@ -35,6 +35,11 @@ public class ControllerPenumpang {
     {
         return user;
     }
+
+    public void setUser(User muser)
+    {
+        user = muser;
+    }
     
     public void ControlMenuPenumpang(){
         Scanner in = new Scanner(System.in);
@@ -60,8 +65,7 @@ public class ControllerPenumpang {
                 }
 
                 case 3:{
-                    System.out.println("Pilihan 3");
-                    // viewPenumpang.menuPenumpang();
+                    viewPenumpang.History();
                     break;
                 }
 

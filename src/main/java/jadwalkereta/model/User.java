@@ -23,6 +23,8 @@ package jadwalkereta.model;
  *
  * @author ASUS
  */
+import java.util.ArrayList;
+
 public class User {
     protected String email;
     protected String nama;
@@ -30,6 +32,7 @@ public class User {
     protected String hp;
     protected String password;
     protected int role;
+    ArrayList<Transaksi> transaksi;
     
     public User() {
         this.nik = " ";
@@ -38,6 +41,7 @@ public class User {
         this.email = " ";
         this.password = " ";
         this.role = 2;
+        transaksi = new ArrayList<Transaksi>();
     }
     
     // public User (String email, String password){
@@ -62,6 +66,17 @@ public class User {
         this.email = email;
         this.password = password;
         this.role = role;
+        transaksi = new ArrayList<Transaksi>();
+    }
+
+    public void setTransaksi(ArrayList<Transaksi> transaksi)
+    {
+        this.transaksi = transaksi;
+    }
+
+    public ArrayList<Transaksi> getTransaksi()
+    {
+        return transaksi;
     }
     
     public void setEmail(String email) {

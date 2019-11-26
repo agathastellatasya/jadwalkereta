@@ -11,6 +11,8 @@ import java.util.Scanner;
 import jadwalkereta.model.*;
 import jadwalkereta.view.*;
 import jadwalkereta.controller.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class ControllerBooking {
@@ -58,7 +60,6 @@ public class ControllerBooking {
                 //viewBooking.menuBooking();
                 break;
             }
-           
 
             case 99:{
                 ctrPenumpang.ControlMenuPenumpang();
@@ -201,7 +202,12 @@ public class ControllerBooking {
 
    public String booked(String kdjadwal, String kdpesan, String[] penumpang, String[] kursi, long harga)
    {
-        String user = ctrPenumpang.getUser().getEmail();
+        User user = ctrPenumpang.getUser(); 
+        ArrayList<User> users = ctrUtil.getUsers();
+        ControllerUser ctrUser = new ControllerUser(ctrMain);
+        int index = ctrUser.findEmailInUsers(user.getEmail());
+        String tanggal = new SimpleDateFormat("dd-MM-YYYY").format(new Date());
+        
         int paid = 0;
 
         //System.out.println(kdjadwal+"-"+ paid+"-"+ kdpesan+"-"+ harga+"-"+ user+"-"+ penumpang+"-"+ kursi);
@@ -209,13 +215,15 @@ public class ControllerBooking {
         //String kdpesan = "";
         
 
-        Booking B1 = new Booking(kdjadwal, paid, kdpesan, penumpang, kursi, harga, user);
+        Booking B1 = new Booking(kdjadwal, paid, kdpesan, penumpang, kursi, harga, user.getEmail());
         booking.add(B1);
+        user.getTransaksi().add(new Transaksi(kdpesan, tanggal, "BOOKED"));
+        users.set(index, user);
+        ctrPenumpang.setUser(user);
+        ctrUtil.WriteJSONUser();
         ctrUtil.WriteJSONBooking();
         //System.out.println(booking.size());
         return kdpesan;
-        
-       
    }
 
    public Long detailHarga(String kode)
@@ -255,6 +263,18 @@ public class ControllerBooking {
         {
             if(kode.equals(booking.get(i).getKdPesan()))
             {
+                if(booking.get(i).getIsPaid()==0)
+                {
+                    User user = ctrPenumpang.getUser(); 
+                    ArrayList<User> users = ctrUtil.getUsers();
+                    ControllerUser ctrUser = new ControllerUser(ctrMain);
+                    int index = ctrUser.findEmailInUsers(user.getEmail());
+                    String tanggal = new SimpleDateFormat("dd-MM-YYYY").format(new Date());
+                    user.getTransaksi().add(new Transaksi(kode, tanggal, "PAID"));
+                    users.set(index, user);
+                    ctrPenumpang.setUser(user);
+                    ctrUtil.WriteJSONUser();
+                }
                 booking.get(i).setIsPaid(1);
             }
         }
