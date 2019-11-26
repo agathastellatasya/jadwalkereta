@@ -121,28 +121,38 @@ public class ViewBooking {
 
     public void menuPembayaran()
     {
-        System.out.println("#PEMBAYARAN TIKET KERETA API#");
         System.out.println();
+        System.out.println("#PEMBAYARAN TIKET KERETA API#");
         System.out.print("Kode Booking : ");
         String kodebooking = input.next();
-        System.out.println("Kode Rekening : 80325567189");
-        long hargatotal = ctrBooking.detailHarga(kodebooking);
-        System.out.println("Total Pembayaran : " + hargatotal);
-        System.out.print("Apakah data pembayaran sudah benar (Y/N)?");
-        String pilihan  = input.next();
-        if(pilihan.equals("Y") || pilihan.equals("y")){
-            System.out.println();
+        int bayar = ctrBooking.Cekbayar(kodebooking);
+        if(bayar>=0)
+        {
             System.out.println("---------------------------------------------------------");
-            System.out.println("Pembayaran Berhasil");
-            System.out.println("Kode Tiket anda : "+kodebooking);
-            ctrBooking.detailPenumpang(kodebooking);
-            ctrBooking.bayar(kodebooking);
+            System.out.println("Kode Booking Telah Dibayar");
             System.out.println("---------------------------------------------------------");
             System.out.println();
+        }else{
+            System.out.println("Kode Rekening : 80325567189");
+            long hargatotal = ctrBooking.detailHarga(kodebooking);
+            System.out.println("Total Pembayaran : " + hargatotal);
+            System.out.print("Apakah data pembayaran sudah benar (Y/N)?");
+            String pilihan  = input.next();
+            if(pilihan.equals("Y") || pilihan.equals("y")){
+                System.out.println();
+                System.out.println("---------------------------------------------------------");
+                System.out.println("Pembayaran Berhasil");
+                System.out.println("Kode Tiket anda : "+kodebooking);
+                ctrBooking.detailPenumpang(kodebooking);
+                ctrBooking.bayar(kodebooking);
+                System.out.println("---------------------------------------------------------");
+                System.out.println();
+            }
+            else{
+                menuBooking();
+            }
         }
-        else{
-            menuBooking();
-        }
+        
     }
     
 }

@@ -261,6 +261,23 @@ public class ControllerBooking {
         ctrUtil.WriteJSONBooking();
    }
 
+   public int Cekbayar(String kode){
+    int i;
+    boolean found = false;
+    for (i=0; i < booking.size(); i++) {
+        if (kode.equals(booking.get(i).getKdPesan())) {
+            if(booking.get(i).getIsPaid()==1)
+            {
+                found = true;
+                break;
+            }
+        }
+    }
+    if(found) return i;
+    else return -1;
+}
+
+  
    
 
 

@@ -29,7 +29,7 @@
     "kdJadwal": "JW1",
     "user": "test",
     "kdpesan": "PMF791",
-    "ispaid": 0,
+    "ispaid": 1,
     "harga": 2000000,
     "penumpang": [
       "salma"
@@ -42,7 +42,7 @@
     "kdJadwal": "JW1",
     "user": "test",
     "kdpesan": "MJN992",
-    "ispaid": 0,
+    "ispaid": 1,
     "harga": 2000000,
     "penumpang": [
       "salma"
