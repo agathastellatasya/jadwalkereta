@@ -17,6 +17,7 @@ import jadwalkereta.model.Kereta;
 import jadwalkereta.model.Rute;
 import jadwalkereta.model.Station;
 import jadwalkereta.model.Time;
+import jadwalkereta.model.Booking;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -45,22 +46,24 @@ public class ControllerUtil {
     ArrayList<Rute> rute;
     ArrayList<Kereta> kereta;
     ArrayList<Jadwal> jadwal;
+    ArrayList<Booking> booking;
 //    User user = new User();
 //    Jalur jalur = new Jalur();
 //    Rute rute = new Rute();
 //    Station station = new Station();
     
-    public ControllerUtil(ArrayList<User> u, ArrayList<Station> s, ArrayList<City> c, ArrayList<Rute> r, ArrayList<Time> t, ArrayList<Kereta> k, ArrayList<Jadwal> j)  {
+    public ControllerUtil(ArrayList<User> u, ArrayList<Station> s, ArrayList<City> c, ArrayList<Rute> r, ArrayList<Time> t, ArrayList<Kereta> k, ArrayList<Jadwal> j, ArrayList<Booking> b)  {
         //viewMain = new ViewMain();
         users = u;
         stations = s;
-	cities =c;
+	    cities =c;
         rute = r;
         times = t;
         //timerute = tr;
         kereta = k;
 //        karute = kr;
-	jadwal = j;
+        jadwal = j;
+        booking = b;
     }
 
     public ControllerUtil() {
@@ -71,6 +74,7 @@ public class ControllerUtil {
         rute = new ArrayList<Rute>();
         kereta = new ArrayList<Kereta>();
         jadwal = new ArrayList<Jadwal>();
+        booking = new ArrayList<Booking>();
     }
     
     public ArrayList<User> getUsers() {  
@@ -100,6 +104,10 @@ public class ControllerUtil {
     public ArrayList<Jadwal> getJadwal() { 
         ReadJSONJadwal(); 
         return jadwal; 
+    }
+    public ArrayList<Booking> getBooking() { 
+        ReadJSONBooking(); 
+        return booking; 
     }
     
     public void WriteJSONRute(){
@@ -185,6 +193,17 @@ public class ControllerUtil {
         }
         catch(IOException e){}
     }
+    public void WriteJSONBooking(){
+        try
+        {
+            List<Booking> List = booking;
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            Writer writer = new FileWriter(ConfigDirektori.BOOKING);
+            gson.toJson(List, writer);
+            writer.close();
+        }
+        catch(IOException e){}
+    }
 
     public void ReadJSONCity(){
         try
@@ -263,6 +282,16 @@ public class ControllerUtil {
             Gson gson = new Gson();
             Reader reader = new FileReader(ConfigDirektori.USER);
             users = (ArrayList) gson.fromJson(reader, new TypeToken<List<User>>() {
+            }.getType());
+            reader.close();
+        }
+        catch (IOException e) {}
+    }
+    public void ReadJSONBooking(){
+        try {
+            Gson gson = new Gson();
+            Reader reader = new FileReader(ConfigDirektori.BOOKING);
+            booking = (ArrayList) gson.fromJson(reader, new TypeToken<List<Booking>>() {
             }.getType());
             reader.close();
         }

@@ -1,0 +1,54 @@
+[
+  {
+    "kdJadwal": "JW1",
+    "user": "test",
+    "kdpesan": "HPJ027",
+    "ispaid": 1,
+    "harga": 2000000,
+    "penumpang": [
+      "SALMA"
+    ],
+    "kursi": [
+      "B1-1"
+    ]
+  },
+  {
+    "kdJadwal": "JW1",
+    "user": "test",
+    "kdpesan": "LOK510",
+    "ispaid": 0,
+    "harga": 2000000,
+    "penumpang": [
+      "salma"
+    ],
+    "kursi": [
+      "B1-2"
+    ]
+  },
+  {
+    "kdJadwal": "JW1",
+    "user": "test",
+    "kdpesan": "PMF791",
+    "ispaid": 0,
+    "harga": 2000000,
+    "penumpang": [
+      "salma"
+    ],
+    "kursi": [
+      "B1-1"
+    ]
+  },
+  {
+    "kdJadwal": "JW1",
+    "user": "test",
+    "kdpesan": "MJN992",
+    "ispaid": 0,
+    "harga": 2000000,
+    "penumpang": [
+      "salma"
+    ],
+    "kursi": [
+      "B1-3"
+    ]
+  }
+]

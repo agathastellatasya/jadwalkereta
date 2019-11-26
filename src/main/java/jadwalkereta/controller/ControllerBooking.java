@@ -14,8 +14,8 @@ import jadwalkereta.controller.*;
 
 
 public class ControllerBooking {
-    ArrayList<Booking> booking = new  ArrayList<Booking>();
-    //ArrayList<Booking> booking;
+    //ArrayList<Booking> booking = new  ArrayList<Booking>();
+    ArrayList<Booking> booking;
     ArrayList<Jadwal> jadwal;
     ControllerMain ctrMain;
     ControllerUtil ctrUtil = new ControllerUtil();
@@ -28,6 +28,7 @@ public class ControllerBooking {
         ctrPenumpang  = penumpang;
         ctrMain = penumpang.getControllerMain();
         jadwal = ctrUtil.getJadwal();
+        booking = ctrUtil.getBooking();
         
     }
 
@@ -109,6 +110,7 @@ public class ControllerBooking {
 
     public Long PesanKursi(String kdjadwal, String kdkelas, int kdGerbong, int kdKursi)
     {
+        //jadwal = ctrUtil.getJadwal();
         //ArrayList<Kereta> kereta = ctrMain.getKereta();
         int i;
         long harga = 0;
@@ -125,9 +127,11 @@ public class ControllerBooking {
                     jadwal.get(i).getKereta().setBangkuPremium(kdGerbong-1, kdKursi-1, 1);
                     harga = harga + jadwal.get(i).getHargaP();
                 }
+                ctrUtil.WriteJSONJadwal();
             }
         }
         return harga;
+
     }
 
 
@@ -145,8 +149,10 @@ public class ControllerBooking {
 
         Booking B1 = new Booking(kdjadwal, paid, kdpesan, penumpang, kursi, harga, user);
         booking.add(B1);
-        System.out.println(booking.size());
+        ctrUtil.WriteJSONBooking();
+        //System.out.println(booking.size());
         return kdpesan;
+        
        
    }
 
@@ -190,6 +196,7 @@ public class ControllerBooking {
                 booking.get(i).setIsPaid(1);
             }
         }
+        ctrUtil.WriteJSONBooking();
    }
 
    
