@@ -36,7 +36,7 @@ public class ViewLaporan {
         System.out.print("Masukkan Tanggal Pencarian: ");
         String tanggal = input.nextLine();
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("No\tTanggal\tPendapatan");
+        System.out.println("No\tTanggal\t\tKAI\t\tPendapatan");
         ctrLaporan.MenuHarian(tanggal);
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
         System.out.println();
@@ -47,8 +47,8 @@ public class ViewLaporan {
         System.out.print("Masukkan Bulan Pencarian: ");
         String bulan = input.nextLine();
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("No\tBulan\tPendapatan");
-        ctrLaporan.MenuHarian(bulan);
+        System.out.println("No\tTanggal\t\tPendapatan");
+        ctrLaporan.MenuBulanan(bulan);
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
         System.out.println();
     }
@@ -58,8 +58,8 @@ public class ViewLaporan {
         System.out.print("Masukkan Tahun Pencarian: ");
         String tahun = input.nextLine();
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("No\tTahun\tPendapatan");
-        ctrLaporan.MenuHarian(tahun);
+        System.out.println("No\tBulan\tPendapatan");
+        ctrLaporan.MenuTahunan(tahun);
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
         System.out.println();
     }
