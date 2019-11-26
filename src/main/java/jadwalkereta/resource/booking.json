@@ -103,5 +103,65 @@
     "kursi": [
       "B1-1"
     ]
+  },
+  {
+    "kdJadwal": "JW12",
+    "tanggal": "29-11-2019",
+    "kdKereta": "KAI19801",
+    "user": "test",
+    "kdpesan": "PMS561",
+    "ispaid": 1,
+    "harga": 2000000,
+    "penumpang": [
+      "salma"
+    ],
+    "kursi": [
+      "B1-2"
+    ]
+  },
+  {
+    "kdJadwal": "JW18",
+    "tanggal": "30-11-2019",
+    "kdKereta": "KAI18802",
+    "user": "test",
+    "kdpesan": "ZXD898",
+    "ispaid": 1,
+    "harga": 2000000,
+    "penumpang": [
+      "Rio"
+    ],
+    "kursi": [
+      "B1-1"
+    ]
+  },
+  {
+    "kdJadwal": "JW21",
+    "tanggal": "1-12-2019",
+    "kdKereta": "KAI18801",
+    "user": "test",
+    "kdpesan": "RMM998",
+    "ispaid": 1,
+    "harga": 1000000,
+    "penumpang": [
+      "Karmila"
+    ],
+    "kursi": [
+      "P4-1"
+    ]
+  },
+  {
+    "kdJadwal": "JW23",
+    "tanggal": "1-12-2019",
+    "kdKereta": "KAI18802",
+    "user": "test",
+    "kdpesan": "BXX999",
+    "ispaid": 1,
+    "harga": 1000000,
+    "penumpang": [
+      "Dewi"
+    ],
+    "kursi": [
+      "P4-1"
+    ]
   }
 ]

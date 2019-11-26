@@ -185,7 +185,7 @@ public class ControllerBooking {
                         break;
                     }
                 }else{
-                    if((jadwal.get(i).getKereta().getBangkuPremium(kdGerbong, kdKursi))==1)
+                    if((jadwal.get(i).getKereta().getBangkuPremium(kdGerbong-1, kdKursi-1))==1)
                     {
                         found = true;
                         break;

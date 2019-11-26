@@ -17,6 +17,7 @@ import java.io.*;
 public class ControllerPenumpang {
     private ControllerMain ctrMain;
     ControllerUtil ctrUtil = new ControllerUtil();
+    ControllerBooking ctrBooking;
     private User user;
     private ArrayList<User> users;
     ViewPenumpang viewPenumpang;
@@ -51,8 +52,9 @@ public class ControllerPenumpang {
             switch (viewPenumpang.getPilihan()){
                 
                 case 1: {
+                    if(ctrBooking==null) ctrBooking =  new ControllerBooking(this);
                     //System.out.println("masuk sini");
-                    ControllerBooking ctrBooking = new ControllerBooking(this);
+                    
                     
                     ctrBooking.ControlMenuBooking();
                     break;

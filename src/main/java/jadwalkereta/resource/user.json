@@ -25,6 +25,46 @@
         "kodebooking": "EWU948",
         "tanggal": "26-11-2019",
         "keterangan": "PAID"
+      },
+      {
+        "kodebooking": "PMS561",
+        "tanggal": "26-11-2019",
+        "keterangan": "BOOKED"
+      },
+      {
+        "kodebooking": "PMS561",
+        "tanggal": "26-11-2019",
+        "keterangan": "PAID"
+      },
+      {
+        "kodebooking": "ZXD898",
+        "tanggal": "26-11-2019",
+        "keterangan": "BOOKED"
+      },
+      {
+        "kodebooking": "ZXD898",
+        "tanggal": "26-11-2019",
+        "keterangan": "PAID"
+      },
+      {
+        "kodebooking": "RMM998",
+        "tanggal": "26-11-2019",
+        "keterangan": "BOOKED"
+      },
+      {
+        "kodebooking": "RMM998",
+        "tanggal": "26-11-2019",
+        "keterangan": "PAID"
+      },
+      {
+        "kodebooking": "BXX999",
+        "tanggal": "26-11-2019",
+        "keterangan": "BOOKED"
+      },
+      {
+        "kodebooking": "BXX999",
+        "tanggal": "26-11-2019",
+        "keterangan": "PAID"
       }
     ]
   },
