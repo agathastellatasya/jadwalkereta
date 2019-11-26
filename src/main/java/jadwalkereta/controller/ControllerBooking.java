@@ -209,13 +209,21 @@ public class ControllerBooking {
         String tanggal = new SimpleDateFormat("dd-MM-YYYY").format(new Date());
         
         int paid = 0;
+        String kdKereta = "";
+        String stanggal = "";
+        for(int i=0; i<jadwal.size(); i++)
+        {
+            if(kdjadwal.equals(jadwal.get(i).getKode()))
+            {
+                Tanggal tanggalkereta = jadwal.get(i).getTanggal();
+                stanggal = tanggalkereta.getHari()+"-"+tanggalkereta.getBulan()+"-"+tanggalkereta.getTahun();
+                kdKereta = jadwal.get(i).getKereta().getKodeKereta();
 
-        //System.out.println(kdjadwal+"-"+ paid+"-"+ kdpesan+"-"+ harga+"-"+ user+"-"+ penumpang+"-"+ kursi);
-        //long harga = 0;
-        //String kdpesan = "";
-        
+            }
+        }
+       
 
-        Booking B1 = new Booking(kdjadwal, paid, kdpesan, penumpang, kursi, harga, user.getEmail());
+        Booking B1 = new Booking(kdjadwal, paid, kdpesan, penumpang, kursi, harga, user.getEmail(), stanggal, kdKereta);
         booking.add(B1);
         user.getTransaksi().add(new Transaksi(kdpesan, tanggal, "BOOKED"));
         users.set(index, user);

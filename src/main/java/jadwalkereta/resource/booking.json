@@ -1,54 +1,107 @@
 [
   {
-    "kdJadwal": "JW1",
+    "kdJadwal": "JW11",
+    "tanggal": "29-11-2019",
+    "kdKereta": "KAI18801",
     "user": "test",
-    "kdpesan": "HPJ027",
+    "kdpesan": "RXY135",
     "ispaid": 1,
     "harga": 2000000,
     "penumpang": [
-      "SALMA"
+      "HUnsi",
+      "saudsf"
+    ],
+    "kursi": [
+      "P1-2",
+      "P1-12"
+    ]
+  },
+  {
+    "kdJadwal": "JW6",
+    "tanggal": "28-11-2019",
+    "kdKereta": "KAI18801",
+    "user": "test",
+    "kdpesan": "INW356",
+    "ispaid": 1,
+    "harga": 1000000,
+    "penumpang": [
+      "salma"
+    ],
+    "kursi": [
+      "P2-1"
+    ]
+  },
+  {
+    "kdJadwal": "JW6",
+    "tanggal": "28-11-2019",
+    "kdKereta": "KAI18801",
+    "user": "test",
+    "kdpesan": "FLW995",
+    "ispaid": 0,
+    "harga": 2000000,
+    "penumpang": [
+      "triana",
+      "dewi"
+    ],
+    "kursi": [
+      "P2-2",
+      "P2-3"
+    ]
+  },
+  {
+    "kdJadwal": "JW146",
+    "tanggal": "26-12-2019",
+    "kdKereta": "KAI18801",
+    "user": "test",
+    "kdpesan": "YHB048",
+    "ispaid": 1,
+    "harga": 2000000,
+    "penumpang": [
+      "lorenzo"
     ],
     "kursi": [
       "B1-1"
     ]
   },
   {
-    "kdJadwal": "JW1",
+    "kdJadwal": "JW8",
+    "tanggal": "28-11-2019",
+    "kdKereta": "KAI18802",
     "user": "test",
-    "kdpesan": "LOK510",
-    "ispaid": 0,
+    "kdpesan": "PZH225",
+    "ispaid": 1,
     "harga": 2000000,
     "penumpang": [
-      "salma"
-    ],
-    "kursi": [
-      "B1-2"
-    ]
-  },
-  {
-    "kdJadwal": "JW1",
-    "user": "test",
-    "kdpesan": "PMF791",
-    "ispaid": 0,
-    "harga": 2000000,
-    "penumpang": [
-      "salma"
+      "Puteri"
     ],
     "kursi": [
       "B1-1"
     ]
   },
   {
-    "kdJadwal": "JW1",
+    "kdJadwal": "JW56",
+    "tanggal": "8-12-2019",
+    "kdKereta": "KAI18801",
     "user": "test",
-    "kdpesan": "MJN992",
+    "kdpesan": "UIQ460",
     "ispaid": 0,
+    "harga": 0,
+    "penumpang": [],
+    "kursi": []
+  },
+  {
+    "kdJadwal": "JW12",
+    "tanggal": "29-11-2019",
+    "kdKereta": "KAI19801",
+    "user": "test",
+    "kdpesan": "EWU948",
+    "ispaid": 1,
     "harga": 2000000,
     "penumpang": [
-      "salma"
+      "Lisa"
     ],
     "kursi": [
-      "B1-3"
+      "B1-1"
     ]
   }
 ]
