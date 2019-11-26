@@ -27,4 +27,4 @@ buildNumber.properties
 .vscode/
 ./target
 
-./src/main/java/model/ConfigDirektori.java
+src/main/java/jadwalkereta/model/ConfigDirektori.java
