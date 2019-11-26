@@ -18,7 +18,6 @@ import jadwalkereta.model.Jalur;
 import jadwalkereta.model.Kereta;
 import jadwalkereta.model.Rute;
 import jadwalkereta.model.Tanggal;
-import jadwalkereta.model.TimeRute;
 import jadwalkereta.view.ViewJadwal;
 import java.io.*;
 import java.util.Optional;
