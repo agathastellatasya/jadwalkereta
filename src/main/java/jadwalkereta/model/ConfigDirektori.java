@@ -10,7 +10,7 @@ package jadwalkereta.model;
  * @author ASUS
  */
 public class ConfigDirektori {
-    public static final String MAIN = "E:\\tubesAlpro\\V22\\jadwalkereta\\src\\main\\java\\jadwalkereta\\resource\\";
+    public static final String MAIN = "D:\\Kuliah\\Alpro\\tubes\\tubes14\\jadwalkereta\\src\\main\\java\\jadwalkereta\\resource\\";
     public static final String USER = MAIN + "user.json";
     public static final String STATION = MAIN + "station.json";
     public static final String RUTE = MAIN + "rute.json";

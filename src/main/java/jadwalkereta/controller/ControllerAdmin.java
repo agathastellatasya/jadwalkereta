@@ -99,9 +99,14 @@ public class ControllerAdmin {
                     ControllerJadwal ctrJadwal = new ControllerJadwal(this);
                     ctrJadwal.ControlMenuJadwal();
                     break;
-                    } 	
+                    } 
+                case 10:{
+                    ControllerLaporan ctrLaporan = new ControllerLaporan(this);
+                    ctrLaporan.ControlMenuLaporan();
+                    break;
+                    } 
 					
-                case 12:{
+                case 11:{
                     ControllerKereta ctrKereta = new ControllerKereta(this);
                     ctrKereta.ControlMenuKereta();
                     break;

@@ -35,10 +35,10 @@ public class ViewLaporan {
         System.out.println("#LAPORAN HARIAN PEMASUKAN#");
         System.out.print("Masukkan Tanggal Pencarian: ");
         String tanggal = input.nextLine();
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("No\tTanggal\tPendapatan");
+        System.out.println("----------------------------------------------------------------------------------------");
+        System.out.println("No\tTanggal\t\tKAI\t\tJumlah Pendapatan");
         ctrLaporan.MenuHarian(tanggal);
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------");
         System.out.println();
     }
 
@@ -46,10 +46,10 @@ public class ViewLaporan {
         System.out.println("#LAPORAN BULANAN PEMASUKAN#");
         System.out.print("Masukkan Bulan Pencarian: ");
         String bulan = input.nextLine();
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("No\tBulan\tPendapatan");
-        ctrLaporan.MenuHarian(bulan);
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------");
+        System.out.println("No\tBulan\t\tKAI\t\tJumlah Pendapatan");
+        ctrLaporan.MenuBulanan(bulan);
+        System.out.println("----------------------------------------------------------------------------------------");
         System.out.println();
     }
 
@@ -57,10 +57,10 @@ public class ViewLaporan {
         System.out.println("#LAPORAN TAHUNAN PEMASUKAN#");
         System.out.print("Masukkan Tahun Pencarian: ");
         String tahun = input.nextLine();
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("No\tTahun\tPendapatan");
-        ctrLaporan.MenuHarian(tahun);
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------");
+        System.out.println("No\tTahun\t\tKAI\t\tJumlah Pendapatan");
+        ctrLaporan.MenuTahunan(tahun);
+        System.out.println("----------------------------------------------------------------------------------------");
         System.out.println();
     }
 
