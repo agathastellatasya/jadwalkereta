@@ -5,7 +5,8 @@
     "nik": "1234567812345678",
     "hp": "08986703456",
     "password": "admin",
-    "role": 1
+    "role": 1,
+    "transaksi": []
   },
   {
     "email": "test",
@@ -13,7 +14,19 @@
     "nik": "1234567812345679",
     "hp": "08986703450",
     "password": "test",
-    "role": 2
+    "role": 2,
+    "transaksi": [
+      {
+        "kodebooking": "EWU948",
+        "tanggal": "26-11-2019",
+        "keterangan": "BOOKED"
+      },
+      {
+        "kodebooking": "EWU948",
+        "tanggal": "26-11-2019",
+        "keterangan": "PAID"
+      }
+    ]
   },
   {
     "email": "fiqri@gmail.com",
@@ -21,6 +34,7 @@
     "nik": "7894561231234567",
     "hp": "085224808799",
     "password": "1234",
-    "role": 2
+    "role": 2,
+    "transaksi": []
   }
 ]

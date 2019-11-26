@@ -110,12 +110,14 @@ public class ControllerUser{
         ctrMain.run();
     }
 
-    public void editUser(String nik, String nama, String hp, String email, String pass){
+    public User editUser(String nik, String nama, String hp, String email, String pass){
         users = ctrUtil.getUsers();
-        users.get(findNikInUsers(nik)).setNama(nama);
-        users.get(findNikInUsers(nik)).setHp(hp);
-        users.get(findNikInUsers(nik)).setEmail(email);
-        users.get(findNikInUsers(nik)).setPassword(pass);
+        int index = findNikInUsers(nik);
+        users.get(index).setNama(nama);
+        users.get(index).setHp(hp);
+        users.get(index).setEmail(email);
+        users.get(index).setPassword(pass);
         ctrUtil.WriteJSONUser();
+        return users.get(index);
     }
 }

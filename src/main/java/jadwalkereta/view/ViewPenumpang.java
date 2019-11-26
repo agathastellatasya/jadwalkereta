@@ -49,7 +49,7 @@ public class ViewPenumpang {
         pilihan = input.nextInt();
     }
 
-    public void kelolaProfile(){
+    public User kelolaProfile(){
         String nama, hp, email, pass, repass;
         ControllerUser ctrUser = new ControllerUser(ctrMain);
 
@@ -108,8 +108,8 @@ public class ViewPenumpang {
             } while (!pass.equals(repass));
 
             // UPDATE DATA
-            ctrUser.editUser(user.getNik(), nama, hp, email, pass);
-
+            user  = ctrUser.editUser(user.getNik(), nama, hp, email, pass);
+            
             System.out.println();
             System.out.println("DATA BERHASIL DIUPDATE, BERIKUT DATA TERBARU:");
             System.out.println("Nomor KTP : " + user.getNik());
@@ -117,6 +117,9 @@ public class ViewPenumpang {
             System.out.println("Nomor Handphone : " + user.getHp());
             System.out.println("Email : " + user.getEmail());
             System.out.println("Password : " + user.getPassword());
+
+            return ctrUser.editUser(user.getNik(), nama, hp, email, pass);
+
     }
 
     public void History()

@@ -59,7 +59,7 @@ public class ControllerPenumpang {
                 }
 
                 case 2: {
-                    viewPenumpang.kelolaProfile();
+                    user = viewPenumpang.kelolaProfile();
                     // viewPenumpang.menuPenumpang();
                     break;
                 }
