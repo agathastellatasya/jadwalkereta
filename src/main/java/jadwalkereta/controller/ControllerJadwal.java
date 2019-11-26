@@ -18,9 +18,9 @@ import jadwalkereta.model.Jalur;
 import jadwalkereta.model.Kereta;
 import jadwalkereta.model.Rute;
 import jadwalkereta.model.Tanggal;
-import jadwalkereta.model.TimeRute;
 import jadwalkereta.view.ViewJadwal;
 import java.io.*;
+import java.util.Optional;
 
 /**
  *
@@ -92,8 +92,19 @@ public class ControllerJadwal {
 //                                                    System.out.println(rute.get(i).getTime().get(j).getJam());
     						int jamBerangkat = rute.get(i).getTime().get(j).getJam();
     						int menitBerangkat = rute.get(i).getTime().get(j).getMenit();
-    						int[] sampai = rute.get(i).getTime().get(j).addTime(rute.get(i).getDuration());
+    						int[] sampai = rute.get(i).getTime().get(j).addTime(rute.get(i).getDuration()); 
     						Kereta kereta = rute.get(i).getKereta().get(j);
+                                                final Tanggal tgal = tanggal;
+                                                Optional<Jadwal> keretaBelomSampai = jadwal.stream()
+                                                        .filter(x -> x.getKotaTujuan().equals(kotaBerangkat))
+                                                        .filter(x -> x.getKereta().getKodeKereta().equals(kereta.getKodeKereta()))
+                                                        .filter(x -> x.getTanggal().equals(tgal))
+                                                        .filter(x -> x.getJamSampai() <= sampai[0] || x.getMenitSampai() <= sampai[0])
+                                                        .reduce((__, curr) -> curr);
+                                                if (keretaBelomSampai.isPresent()){
+                                                    tanggal = new Tanggal(tanggal.getHari() + 1, tanggal.getBulan(), tanggal.getTahun());
+                                                }
+                                                
     						long hargaB = rute.get(i).getHargaBisnis();
     						long hargaP = rute.get(i).getHargaPremium();
     						jadwal.add(new Jadwal("JW"+count, tanggal, jamBerangkat, menitBerangkat, sampai[0], sampai[1], kotaBerangkat, kotaTujuan, kereta, hargaB, hargaP));
@@ -134,11 +145,11 @@ public class ControllerJadwal {
             String keretaapi = mjadwal.getKereta().getKodeKereta();
             int kursi = mjadwal.getKereta().countBangkuKosong();
             System.out.print(kode);
-            System.out.print("\t"+tanggal);
+            System.out.print("\t\t"+tanggal);
             System.out.print("\t" + waktuBerangkat);
-            System.out.print("\t" + waktuSampai);
-            System.out.print("\t" + kotaBerangkat);
-            System.out.print("\t" + kotaTujuan);
+            System.out.print("\t\t" + kotaBerangkat);
+            System.out.print("\t\t" + kotaTujuan);
+            System.out.print("\t\t" + waktuSampai);
             System.out.print("\t" + keretaapi);
             if(kursi > 0) System.out.print("\tSisa Kursi " + kursi);
             else 

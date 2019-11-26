@@ -43,7 +43,7 @@ public class Time {
         return retval;
     }
 
-    public boolean isGreaterThan(TimeRute time){
+    public boolean isGreaterThan(Time time){
         if(jam > time.getJam()) return false;
         else{
             if(menit > time.getMenit()) return false;
