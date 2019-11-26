@@ -5,7 +5,41 @@
     "hargaPremium": 300000,
     "kotaBerangkat": "Jakarta",
     "kotaTujuan": "Bandung",
-    "jalur": [],
+    "jalur": [
+      {
+        "stasiunAwal": {
+          "kode": "GBR",
+          "nama": "Gambir"
+        },
+        "stasiunAkhir": {
+          "kode": "JTN",
+          "nama": "Jatinegara"
+        },
+        "menit": 100
+      },
+      {
+        "stasiunAwal": {
+          "kode": "JTN",
+          "nama": "Jatinegara"
+        },
+        "stasiunAkhir": {
+          "kode": "BKS",
+          "nama": "Bekasi"
+        },
+        "menit": 20
+      },
+      {
+        "stasiunAwal": {
+          "kode": "BKS",
+          "nama": "Bekasi"
+        },
+        "stasiunAkhir": {
+          "kode": "SBD",
+          "nama": "Bandung"
+        },
+        "menit": 10
+      }
+    ],
     "times": [],
     "kereta": []
   },
