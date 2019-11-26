@@ -23,6 +23,7 @@ public class ControllerBooking {
     ViewBooking viewBooking;
     ControllerPenumpang ctrPenumpang;
     Scanner input = new Scanner(System.in);
+    ControllerCariJadwal ctrCariJadwal ;
 
     public ControllerBooking(ControllerPenumpang penumpang) {
         ctrPenumpang  = penumpang;
@@ -39,20 +40,25 @@ public class ControllerBooking {
         viewBooking.menuBooking();
         switch(viewBooking.getPilihan()){
             case 1: {
-                ControllerCariJadwal ctrCariJadwal = new ControllerCariJadwal(this);
+                if (ctrCariJadwal == null) ctrCariJadwal = new ControllerCariJadwal(this);
                 ctrCariJadwal.ControlMenuCariJadwal();
-                viewBooking.menuBooking();
-            }
-            case 3: {
-                viewBooking.menuPembayaran();
-                viewBooking.menuBooking();
-                break;
+                ControlMenuBooking();
+                //viewBooking.menuBooking();
             }
             case 2: {
                 viewBooking.book();
-                viewBooking.menuBooking();
+                //viewBooking.menuBooking();
+                ControlMenuBooking();
                 break;
             }
+
+            case 3: {
+                viewBooking.menuPembayaran();
+                ControlMenuBooking();
+                //viewBooking.menuBooking();
+                break;
+            }
+           
 
             case 99:{
                 ctrPenumpang.ControlMenuPenumpang();
