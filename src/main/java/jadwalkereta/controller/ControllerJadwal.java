@@ -7,7 +7,12 @@ package jadwalkereta.controller;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import jadwalkereta.model.Jadwal;
 import jadwalkereta.model.Jalur;
 import jadwalkereta.model.Kereta;
@@ -24,6 +29,7 @@ import java.io.*;
 public class ControllerJadwal {
 
     ArrayList<Jadwal> jadwal;
+	ArrayList<Rute> rute;
     ControllerMain ctrMain;
     ControllerUtil ctrUtil = new ControllerUtil();
     ControllerAdmin ctrAdmin;
@@ -34,6 +40,7 @@ public class ControllerJadwal {
         ctrAdmin = admin;
         ctrMain = ctrAdmin.getControllerMain();
         jadwal = ctrUtil.getJadwal();
+		rute = ctrUtil.getRute();
     }
 
     public void ControlMenuJadwal(){
@@ -55,86 +62,57 @@ public class ControllerJadwal {
 
     public void GenerateJadwal(){
         int count = 1;
-        Tanggal tanggal = new Tanggal(29, 12, 2019);
-        ArrayList<Rute> ListRute = ctrUtil.getRute();
-        for(int i=0;i<ListRute.size();i++)
-        {
-            Rute rute = ListRute.get(i);
-            if(rute.getTime().size()>0 && rute.getKereta().size()>0)
-            {
-                String kotaBerangkat = rute.getKotaBerangkat();
-                String kotaTujuan = rute.getKotaTujuan();
-                int j = 0;
-                for(j=0;j<rute.getKereta().size();j++)
-                {
-                    int jamBerangkat = rute.getTime().get(j).getJam();
-                    int menitBerangkat = rute.getTime().get(j).getMenit();
-                    int[] sampai = rute.getTime().get(j).addTime(rute.getDuration());
-                    Kereta kereta = rute.getKereta().get(j);
-                    long hargaB = rute.getHargaBisnis();
-                    long hargaP = rute.getHargaPremium();
-                    jadwal.add(new Jadwal("JW"+count, tanggal, jamBerangkat, menitBerangkat, sampai[0], sampai[1], kotaBerangkat, kotaTujuan, kereta, hargaB, hargaP));
-                    count++;
-                }
-                // perlu ditambahin untuk kereta yang bisa balik lagi
-                // int k = 0;
-                // if(rute.getTimeRute().size()>rute.getKARute().size())
-                // {
-                //     for(;j<rute.getTimeRute().size();j++)
-                //     {
-                //         if(rute.getTimeRute().get(j).isGreaterThan(jadwal.get())){
-
-                //             int jamBerangkat = rute.getTimeRute().get(j).getJam();
-                //             int menitBerangkat = rute.getTimeRute().get(j).getJam();
-                //             int[] sampai = rute.getTimeRute().get(j).addTime(rute.getDuration());
-                //             KARute kereta = rute.getKARute().get(k);
-                //             jadwal.add(new Jadwal("JW" + count, tanggal, jamBerangkat, menitBerangkat, sampai[0],
-                //                     sampai[1], kotaBerangkat, kotaTujuan, kereta));
-                //             count++;
-                //             k++;
-                //         }
-                //     }
-                // }
-            }
-        }
-        // ArrayList<TimeRute> timerute = ctrMain.getTimeRute();
-        // ArrayList<KARute> karute = ctrMain.getKARute();
-        // int i,j,k,jam,menit;
-	    // String kdKereta,kdWaktu,koderute,kotaBerangkat,kotaTujuan = "";
-        // ArrayList<Rute> rute = ctrMain.getRute();
-        // for (i=0; i < rute.size(); i++) {
-        //     koderute = rute.get(i).getKodeRute();
-        //     kotaBerangkat = rute.get(i).getKotaBerangkat();
-        //     kotaTujuan = rute.get(i).getKotaTujuan();
-        //     ArrayList<KARute> karute = rute.get(i).getKARute();
-        //     ArrayList<TimeRute> timerute = rute.get(i).getTimeRute();
-        //     ArrayList<Jalur> jalur = rute.get(i).getJalur();
-        //     int wktTempuh = 0;
-        //     for (int l = 0; l < jalur.size(); l++) {
-        //         Jalur temp_jalur = jalur.get(l);
-        //         wktTempuh += temp_jalur.getMenit();
-        //     }
-        //     //cek apakah timerute > karute
-        //     if(karute.size()>=timerute.size()) {
-        //         for(j=0; j < timerute.size(); j++){
-        //             jam = timerute.get(j).getJam();
-        //             menit = timerute.get(j).getMenit();
-        //             kdWaktu = String.format("%02d", jam) +"."+ String.format("%02d", menit);
-        //             kdKereta = karute.get(j).getKdKereta().getKodeKereta();
-        //             System.out.println(koderute + "\t" + kotaBerangkat + "\t" + kotaTujuan + "\t" + kdWaktu + "\t" + kdKereta + "\t" + wktTempuh);
-        //         }
-        //     }
-        //     else {
-        //         for(j=0; j < timerute.size(); j++){
-        //             k=j%karute.size();
-        //             jam = timerute.get(j).getJam();
-        //             menit = timerute.get(j).getMenit();
-        //             kdWaktu = String.format("%02d", jam) +"."+ String.format("%02d", menit);
-        //             kdKereta = karute.get(k).getKdKereta().getKodeKereta();
-        //             System.out.println(koderute + "\t" + kotaBerangkat + "\t" + kotaTujuan + "\t" + kdWaktu + "\t" + kdKereta + "\t" + wktTempuh);
-        //         }
-        //     }
-        // }
+        Tanggal tanggal;
+        Date currentDate = new Date();
+        int tgl,bln,thn;
+        LocalDateTime localDateTime = currentDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        //ArrayList<Rute> ListRute = ctrUtil.getRute();
+        for(int k=0; k<=30; k++){
+            localDateTime = localDateTime.plusDays(1);
+            bln = localDateTime.getMonthValue();
+            tgl = localDateTime.getDayOfMonth();
+            thn = localDateTime.getYear();
+            tanggal = new Tanggal(tgl, bln, thn);
+			for(int i=0;i<rute.size();i++)
+			{
+				if(rute.get(i).getTime().size()>0 && rute.get(i).getKereta().size()>0)
+				{
+					String kotaBerangkat = rute.get(i).getKotaBerangkat();
+					String kotaTujuan = rute.get(i).getKotaTujuan();
+                                        
+					int j = 0;
+                                        if(rute.get(i).getTime().size() <= rute.get(i).getKereta().size()) {
+                                            for(j=0;j<rute.get(i).getTime().size();j++)
+                                            {
+//                                                    System.out.println(rute.get(i).getTime().get(j).getJam());
+    						int jamBerangkat = rute.get(i).getTime().get(j).getJam();
+    						int menitBerangkat = rute.get(i).getTime().get(j).getMenit();
+    						int[] sampai = rute.get(i).getTime().get(j).addTime(rute.get(i).getDuration());
+    						Kereta kereta = rute.get(i).getKereta().get(j);
+    						long hargaB = rute.get(i).getHargaBisnis();
+    						long hargaP = rute.get(i).getHargaPremium();
+    						jadwal.add(new Jadwal("JW"+count, tanggal, jamBerangkat, menitBerangkat, sampai[0], sampai[1], kotaBerangkat, kotaTujuan, kereta, hargaB, hargaP));
+    						count++;
+                                            }
+                                        }
+                                        else {
+                                            for(j=0;j<rute.get(i).getKereta().size();j++)
+                                            {
+//                                                    System.out.println(rute.get(i).getTime().get(j).getJam());
+    						int jamBerangkat = rute.get(i).getTime().get(j).getJam();
+    						int menitBerangkat = rute.get(i).getTime().get(j).getMenit();
+    						int[] sampai = rute.get(i).getTime().get(j).addTime(rute.get(i).getDuration());
+    						Kereta kereta = rute.get(i).getKereta().get(j);
+    						long hargaB = rute.get(i).getHargaBisnis();
+    						long hargaP = rute.get(i).getHargaPremium();
+    						jadwal.add(new Jadwal("JW"+count, tanggal, jamBerangkat, menitBerangkat, sampai[0], sampai[1], kotaBerangkat, kotaTujuan, kereta, hargaB, hargaP));
+    						count++;
+                                            }
+                                        }
+                                        ctrUtil.WriteJSONJadwal();
+				}
+			}
+		}
     }
 
     public void LihatJadwal(){

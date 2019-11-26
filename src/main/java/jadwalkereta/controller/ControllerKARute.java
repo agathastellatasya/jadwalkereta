@@ -6,6 +6,13 @@
 package jadwalkereta.controller;
 
 //import jadwalkereta.model.Kota;
+//import java.time.LocalDate;
+//import java.text.DateFormat;
+//import java.text.SimpleDateFormat;
+//import java.time.LocalDateTime;
+//import java.time.ZoneId;
+//import java.time.format.DateTimeFormatter;
+//import java.util.Date;
 import jadwalkereta.model.City;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -18,7 +25,7 @@ public class ControllerKARute {
     ArrayList<Rute> rute;
     ControllerMain ctrMain;
     ControllerAdmin ctrAdmin;
-    ControllerUtil ctrUtil = new ControllerUtil();;
+    ControllerUtil ctrUtil = new ControllerUtil();
     ControllerKereta ctrKereta;
     ArrayList<Kereta> kereta;
     ViewKARute viewKARute;

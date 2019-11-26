@@ -1,1 +1,482 @@
-[]
+[
+  {
+    "kode": "TM1",
+    "jam": 0,
+    "menit": 0
+  },
+  {
+    "kode": "TM2",
+    "jam": 0,
+    "menit": 15
+  },
+  {
+    "kode": "TM3",
+    "jam": 0,
+    "menit": 30
+  },
+  {
+    "kode": "TM4",
+    "jam": 0,
+    "menit": 45
+  },
+  {
+    "kode": "TM5",
+    "jam": 1,
+    "menit": 0
+  },
+  {
+    "kode": "TM6",
+    "jam": 1,
+    "menit": 15
+  },
+  {
+    "kode": "TM7",
+    "jam": 1,
+    "menit": 30
+  },
+  {
+    "kode": "TM8",
+    "jam": 1,
+    "menit": 45
+  },
+  {
+    "kode": "TM9",
+    "jam": 2,
+    "menit": 0
+  },
+  {
+    "kode": "TM10",
+    "jam": 2,
+    "menit": 15
+  },
+  {
+    "kode": "TM11",
+    "jam": 2,
+    "menit": 30
+  },
+  {
+    "kode": "TM12",
+    "jam": 2,
+    "menit": 45
+  },
+  {
+    "kode": "TM13",
+    "jam": 3,
+    "menit": 0
+  },
+  {
+    "kode": "TM14",
+    "jam": 3,
+    "menit": 15
+  },
+  {
+    "kode": "TM15",
+    "jam": 3,
+    "menit": 30
+  },
+  {
+    "kode": "TM16",
+    "jam": 3,
+    "menit": 45
+  },
+  {
+    "kode": "TM17",
+    "jam": 4,
+    "menit": 0
+  },
+  {
+    "kode": "TM18",
+    "jam": 4,
+    "menit": 15
+  },
+  {
+    "kode": "TM19",
+    "jam": 4,
+    "menit": 30
+  },
+  {
+    "kode": "TM20",
+    "jam": 4,
+    "menit": 45
+  },
+  {
+    "kode": "TM21",
+    "jam": 5,
+    "menit": 0
+  },
+  {
+    "kode": "TM22",
+    "jam": 5,
+    "menit": 15
+  },
+  {
+    "kode": "TM23",
+    "jam": 5,
+    "menit": 30
+  },
+  {
+    "kode": "TM24",
+    "jam": 5,
+    "menit": 45
+  },
+  {
+    "kode": "TM25",
+    "jam": 6,
+    "menit": 0
+  },
+  {
+    "kode": "TM26",
+    "jam": 6,
+    "menit": 15
+  },
+  {
+    "kode": "TM27",
+    "jam": 6,
+    "menit": 30
+  },
+  {
+    "kode": "TM28",
+    "jam": 6,
+    "menit": 45
+  },
+  {
+    "kode": "TM29",
+    "jam": 7,
+    "menit": 0
+  },
+  {
+    "kode": "TM30",
+    "jam": 7,
+    "menit": 15
+  },
+  {
+    "kode": "TM31",
+    "jam": 7,
+    "menit": 30
+  },
+  {
+    "kode": "TM32",
+    "jam": 7,
+    "menit": 45
+  },
+  {
+    "kode": "TM33",
+    "jam": 8,
+    "menit": 0
+  },
+  {
+    "kode": "TM34",
+    "jam": 8,
+    "menit": 15
+  },
+  {
+    "kode": "TM35",
+    "jam": 8,
+    "menit": 30
+  },
+  {
+    "kode": "TM36",
+    "jam": 8,
+    "menit": 45
+  },
+  {
+    "kode": "TM37",
+    "jam": 9,
+    "menit": 0
+  },
+  {
+    "kode": "TM38",
+    "jam": 9,
+    "menit": 15
+  },
+  {
+    "kode": "TM39",
+    "jam": 9,
+    "menit": 30
+  },
+  {
+    "kode": "TM40",
+    "jam": 9,
+    "menit": 45
+  },
+  {
+    "kode": "TM41",
+    "jam": 10,
+    "menit": 0
+  },
+  {
+    "kode": "TM42",
+    "jam": 10,
+    "menit": 15
+  },
+  {
+    "kode": "TM43",
+    "jam": 10,
+    "menit": 30
+  },
+  {
+    "kode": "TM44",
+    "jam": 10,
+    "menit": 45
+  },
+  {
+    "kode": "TM45",
+    "jam": 11,
+    "menit": 0
+  },
+  {
+    "kode": "TM46",
+    "jam": 11,
+    "menit": 15
+  },
+  {
+    "kode": "TM47",
+    "jam": 11,
+    "menit": 30
+  },
+  {
+    "kode": "TM48",
+    "jam": 11,
+    "menit": 45
+  },
+  {
+    "kode": "TM49",
+    "jam": 12,
+    "menit": 0
+  },
+  {
+    "kode": "TM50",
+    "jam": 12,
+    "menit": 15
+  },
+  {
+    "kode": "TM51",
+    "jam": 12,
+    "menit": 30
+  },
+  {
+    "kode": "TM52",
+    "jam": 12,
+    "menit": 45
+  },
+  {
+    "kode": "TM53",
+    "jam": 13,
+    "menit": 0
+  },
+  {
+    "kode": "TM54",
+    "jam": 13,
+    "menit": 15
+  },
+  {
+    "kode": "TM55",
+    "jam": 13,
+    "menit": 30
+  },
+  {
+    "kode": "TM56",
+    "jam": 13,
+    "menit": 45
+  },
+  {
+    "kode": "TM57",
+    "jam": 14,
+    "menit": 0
+  },
+  {
+    "kode": "TM58",
+    "jam": 14,
+    "menit": 15
+  },
+  {
+    "kode": "TM59",
+    "jam": 14,
+    "menit": 30
+  },
+  {
+    "kode": "TM60",
+    "jam": 14,
+    "menit": 45
+  },
+  {
+    "kode": "TM61",
+    "jam": 15,
+    "menit": 0
+  },
+  {
+    "kode": "TM62",
+    "jam": 15,
+    "menit": 15
+  },
+  {
+    "kode": "TM63",
+    "jam": 15,
+    "menit": 30
+  },
+  {
+    "kode": "TM64",
+    "jam": 15,
+    "menit": 45
+  },
+  {
+    "kode": "TM65",
+    "jam": 16,
+    "menit": 0
+  },
+  {
+    "kode": "TM66",
+    "jam": 16,
+    "menit": 15
+  },
+  {
+    "kode": "TM67",
+    "jam": 16,
+    "menit": 30
+  },
+  {
+    "kode": "TM68",
+    "jam": 16,
+    "menit": 45
+  },
+  {
+    "kode": "TM69",
+    "jam": 17,
+    "menit": 0
+  },
+  {
+    "kode": "TM70",
+    "jam": 17,
+    "menit": 15
+  },
+  {
+    "kode": "TM71",
+    "jam": 17,
+    "menit": 30
+  },
+  {
+    "kode": "TM72",
+    "jam": 17,
+    "menit": 45
+  },
+  {
+    "kode": "TM73",
+    "jam": 18,
+    "menit": 0
+  },
+  {
+    "kode": "TM74",
+    "jam": 18,
+    "menit": 15
+  },
+  {
+    "kode": "TM75",
+    "jam": 18,
+    "menit": 30
+  },
+  {
+    "kode": "TM76",
+    "jam": 18,
+    "menit": 45
+  },
+  {
+    "kode": "TM77",
+    "jam": 19,
+    "menit": 0
+  },
+  {
+    "kode": "TM78",
+    "jam": 19,
+    "menit": 15
+  },
+  {
+    "kode": "TM79",
+    "jam": 19,
+    "menit": 30
+  },
+  {
+    "kode": "TM80",
+    "jam": 19,
+    "menit": 45
+  },
+  {
+    "kode": "TM81",
+    "jam": 20,
+    "menit": 0
+  },
+  {
+    "kode": "TM82",
+    "jam": 20,
+    "menit": 15
+  },
+  {
+    "kode": "TM83",
+    "jam": 20,
+    "menit": 30
+  },
+  {
+    "kode": "TM84",
+    "jam": 20,
+    "menit": 45
+  },
+  {
+    "kode": "TM85",
+    "jam": 21,
+    "menit": 0
+  },
+  {
+    "kode": "TM86",
+    "jam": 21,
+    "menit": 15
+  },
+  {
+    "kode": "TM87",
+    "jam": 21,
+    "menit": 30
+  },
+  {
+    "kode": "TM88",
+    "jam": 21,
+    "menit": 45
+  },
+  {
+    "kode": "TM89",
+    "jam": 22,
+    "menit": 0
+  },
+  {
+    "kode": "TM90",
+    "jam": 22,
+    "menit": 15
+  },
+  {
+    "kode": "TM91",
+    "jam": 22,
+    "menit": 30
+  },
+  {
+    "kode": "TM92",
+    "jam": 22,
+    "menit": 45
+  },
+  {
+    "kode": "TM93",
+    "jam": 23,
+    "menit": 0
+  },
+  {
+    "kode": "TM94",
+    "jam": 23,
+    "menit": 15
+  },
+  {
+    "kode": "TM95",
+    "jam": 23,
+    "menit": 30
+  },
+  {
+    "kode": "TM96",
+    "jam": 23,
+    "menit": 45
+  }
+]

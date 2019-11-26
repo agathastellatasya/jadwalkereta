@@ -80,7 +80,23 @@
         "menit": 200
       }
     ],
-    "times": [],
+    "times": [
+      {
+        "kode": "TM10",
+        "jam": 2,
+        "menit": 15
+      },
+      {
+        "kode": "TM20",
+        "jam": 4,
+        "menit": 45
+      },
+      {
+        "kode": "TM30",
+        "jam": 7,
+        "menit": 15
+      }
+    ],
     "kereta": [
       {
         "kodeKereta": "KAI18801",
@@ -583,7 +599,23 @@
     "kotaBerangkat": "Surabaya",
     "kotaTujuan": "Jakarta",
     "jalur": [],
-    "times": [],
+    "times": [
+      {
+        "kode": "TM10",
+        "jam": 2,
+        "menit": 15
+      },
+      {
+        "kode": "TM20",
+        "jam": 4,
+        "menit": 45
+      },
+      {
+        "kode": "TM30",
+        "jam": 7,
+        "menit": 15
+      }
+    ],
     "kereta": [
       {
         "kodeKereta": "KAI18803",
