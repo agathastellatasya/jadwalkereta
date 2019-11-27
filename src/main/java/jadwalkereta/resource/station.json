@@ -1,22 +1,31 @@
 [
+  {},
   {
-    "kode": "SJK",
-    "nama": "Jakarta"
+    "kode": "GMR",
+    "nama": "Gambir"
   },
   {
-    "kode": "SBD",
+    "kode": "JTR",
+    "nama": "Jatinegara"
+  },
+  {
+    "kode": "BKS",
+    "nama": "Bekasi"
+  },
+  {
+    "kode": "CKR",
+    "nama": "Cikarang"
+  },
+  {
+    "kode": "KRW",
+    "nama": "Karawang"
+  },
+  {
+    "kode": "CMH",
+    "nama": "Cimahi"
+  },
+  {
+    "kode": "BDN",
     "nama": "Bandung"
-  },
-  {
-    "kode": "SBY",
-    "nama": "Surabaya"
-  },
-  {
-    "kode": "SBL",
-    "nama": "Bali"
-  },
-  {
-    "kode": "SMG",
-    "nama": "Semarang"
   }
 ]

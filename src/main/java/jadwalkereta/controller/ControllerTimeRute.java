@@ -12,7 +12,6 @@ import java.util.Scanner;
 
 import jadwalkereta.model.Rute;
 import jadwalkereta.model.Time;
-import jadwalkereta.model.TimeRute;
 import jadwalkereta.view.ViewTimeRute;
 import java.io.*;
 

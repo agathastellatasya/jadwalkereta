@@ -1,100 +1,93 @@
 [
   {
     "kodeRute": "JKT-BDG",
-    "hargaBisnis": 400000,
-    "hargaPremium": 300000,
+    "hargaBisnis": 300000,
+    "hargaPremium": 250000,
     "kotaBerangkat": "Jakarta",
     "kotaTujuan": "Bandung",
-    "jalur": [],
-    "times": [],
-    "kereta": []
-  },
-  {
-    "kodeRute": "BDG-JKT",
-    "hargaBisnis": 400000,
-    "hargaPremium": 300000,
-    "kotaBerangkat": "Bandung",
-    "kotaTujuan": "Jakarta",
-    "jalur": [],
-    "times": [],
-    "kereta": []
-  },
-  {
-    "kodeRute": "SMG-SBY",
-    "hargaBisnis": 300000,
-    "hargaPremium": 200000,
-    "kotaBerangkat": "Semarang",
-    "kotaTujuan": "Surabaya",
-    "jalur": [],
-    "times": [],
-    "kereta": []
-  },
-  {
-    "kodeRute": "SBY-SMG",
-    "hargaBisnis": 300000,
-    "hargaPremium": 200000,
-    "kotaBerangkat": "Surabaya",
-    "kotaTujuan": "Semarang",
-    "jalur": [],
-    "times": [],
-    "kereta": []
-  },
-  {
-    "kodeRute": "JKT-SBY",
-    "hargaBisnis": 2000000,
-    "hargaPremium": 1000000,
-    "kotaBerangkat": "Jakarta",
-    "kotaTujuan": "Surabaya",
     "jalur": [
       {
         "stasiunAwal": {
-          "kode": "SJK",
-          "nama": "Jakarta"
+          "kode": "GMR",
+          "nama": "Gambir"
         },
         "stasiunAkhir": {
-          "kode": "SBD",
-          "nama": "Bandung"
+          "kode": "JTR",
+          "nama": "Jatinegara"
         },
-        "menit": 200
+        "menit": 20
       },
       {
         "stasiunAwal": {
-          "kode": "SBD",
-          "nama": "Bandung"
+          "kode": "JTR",
+          "nama": "Jatinegara"
         },
         "stasiunAkhir": {
-          "kode": "SMG",
-          "nama": "Semarang"
+          "kode": "BKS",
+          "nama": "Bekasi"
         },
-        "menit": 200
+        "menit": 40
       },
       {
         "stasiunAwal": {
-          "kode": "SMG",
-          "nama": "Semarang"
+          "kode": "BKS",
+          "nama": "Bekasi"
         },
         "stasiunAkhir": {
-          "kode": "SBY",
-          "nama": "Surabaya"
+          "kode": "CKR",
+          "nama": "Cikarang"
         },
-        "menit": 200
+        "menit": 40
+      },
+      {
+        "stasiunAwal": {
+          "kode": "CKR",
+          "nama": "Cikarang"
+        },
+        "stasiunAkhir": {
+          "kode": "KRW",
+          "nama": "Karawang"
+        },
+        "menit": 50
+      },
+      {
+        "stasiunAwal": {
+          "kode": "KRW",
+          "nama": "Karawang"
+        },
+        "stasiunAkhir": {
+          "kode": "CMH",
+          "nama": "Cimahi"
+        },
+        "menit": 60
+      },
+      {
+        "stasiunAwal": {
+          "kode": "CMH",
+          "nama": "Cimahi"
+        },
+        "stasiunAkhir": {
+          "kode": "BDN",
+          "nama": "Bandung"
+        },
+        "menit": 30
       }
     ],
     "times": [
       {
-        "kode": "TM10",
-        "jam": 2,
-        "menit": 15
+        "kode": "TM1",
+        "jam": 0,
+        "menit": 0
       },
       {
-        "kode": "TM20",
-        "jam": 4,
-        "menit": 45
+        "kode": "TM3",
+        "jam": 0,
+        "menit": 30
       },
       {
-        "kode": "TM30",
-        "jam": 7,
-        "menit": 15
+        "kode": "TM5",
+        "jam": 1,
+        "menit": 0
       }
     ],
     "kereta": [
@@ -345,133 +338,10 @@
         ]
       },
       {
-        "kodeKereta": "KAI18802",
+        "kodeKereta": "KAI20801",
         "jmlGerbong": 6,
         "jmlBisnis": 2,
-        "namaKereta": "Kereta2",
-        "jmlPremium": 4,
-        "bangkubisnis": [
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
-        ],
-        "bangkupremium": [
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
-        ]
-      },
-      {
-        "kodeKereta": "KAI18803",
-        "jmlGerbong": 6,
-        "jmlBisnis": 2,
-        "namaKereta": "Kereta2",
+        "namaKereta": "Kereta3",
         "jmlPremium": 4,
         "bangkubisnis": [
           [
@@ -593,35 +463,97 @@
     ]
   },
   {
-    "kodeRute": "SBY-JKT",
-    "hargaBisnis": 1,
-    "hargaPremium": 2,
-    "kotaBerangkat": "Surabaya",
+    "kodeRute": "BDG-JKT",
+    "hargaBisnis": 300000,
+    "hargaPremium": 250000,
+    "kotaBerangkat": "Bandung",
     "kotaTujuan": "Jakarta",
-    "jalur": [],
+    "jalur": [
+      {
+        "stasiunAwal": {
+          "kode": "BDN",
+          "nama": "Bandung"
+        },
+        "stasiunAkhir": {
+          "kode": "CMH",
+          "nama": "Cimahi"
+        },
+        "menit": 30
+      },
+      {
+        "stasiunAwal": {
+          "kode": "CMH",
+          "nama": "Cimahi"
+        },
+        "stasiunAkhir": {
+          "kode": "KRW",
+          "nama": "Karawang"
+        },
+        "menit": 60
+      },
+      {
+        "stasiunAwal": {
+          "kode": "KRW",
+          "nama": "Karawang"
+        },
+        "stasiunAkhir": {
+          "kode": "CKR",
+          "nama": "Cikarang"
+        },
+        "menit": 50
+      },
+      {
+        "stasiunAwal": {
+          "kode": "CKR",
+          "nama": "Cikarang"
+        },
+        "stasiunAkhir": {
+          "kode": "BKS",
+          "nama": "Bekasi"
+        },
+        "menit": 40
+      },
+      {
+        "stasiunAwal": {
+          "kode": "BKS",
+          "nama": "Bekasi"
+        },
+        "stasiunAkhir": {
+          "kode": "JTR",
+          "nama": "Jatinegara"
+        },
+        "menit": 40
+      },
+      {
+        "stasiunAwal": {
+          "kode": "JTR",
+          "nama": "Jatinegara"
+        },
+        "stasiunAkhir": {
+          "kode": "GMR",
+          "nama": "Gambir"
+        },
+        "menit": 20
+      }
+    ],
     "times": [
       {
-        "kode": "TM10",
-        "jam": 2,
+        "kode": "TM6",
+        "jam": 1,
         "menit": 15
       },
       {
-        "kode": "TM20",
-        "jam": 4,
+        "kode": "TM8",
+        "jam": 1,
         "menit": 45
-      },
-      {
-        "kode": "TM30",
-        "jam": 7,
-        "menit": 15
       }
     ],
     "kereta": [
       {
-        "kodeKereta": "KAI18803",
+        "kodeKereta": "KAI18801",
         "jmlGerbong": 6,
         "jmlBisnis": 2,
-        "namaKereta": "Kereta2",
+        "namaKereta": "Kereta1",
         "jmlPremium": 4,
         "bangkubisnis": [
           [
@@ -741,10 +673,10 @@
         ]
       },
       {
-        "kodeKereta": "KAI18801",
+        "kodeKereta": "KAI20801",
         "jmlGerbong": 6,
         "jmlBisnis": 2,
-        "namaKereta": "Kereta1",
+        "namaKereta": "Kereta3",
         "jmlPremium": 4,
         "bangkubisnis": [
           [

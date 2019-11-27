@@ -36,7 +36,8 @@ public class ViewJadwal {
 
     public void menuLihatJadwal(){
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("Kode Jadwal\tTanggal\t\tWaktu Keberangkatan\tKeberangkatan\tTujuan\t\tWaktu Tiba\tKAI\t\tStatus");
+        System.out.println("Kode\t\tTanggal\t\tWaktu\t\tKeberangkatan\tTujuan\t\tWaktu \tKAI\t\tStatus");
+        System.out.println("Jadwal\t\t\t\tKeberangkatan\t\t\t\t\t Tiba");
         //System.out.println("No\tKode\tWaktu");
         ctrJadwal.LihatJadwal();
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");

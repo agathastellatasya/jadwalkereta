@@ -24,7 +24,8 @@ public class ViewJalur {
         // input.nextLine();
     }
 
-    public void menuTambah() {
+    public void menuTambah(ControllerUtil ctrUtil) {
+        ctrJalur.setRute(ctrUtil.getRute());
         String KodeRute = "";
         int index = -1;
         do{
@@ -48,6 +49,7 @@ public class ViewJalur {
             }
             i++;
         }while(!injalur.equals("99"));
+        ctrUtil.WriteJSONRute();
     }
 
     // public void menuDelete() {

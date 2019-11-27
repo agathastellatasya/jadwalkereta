@@ -34,13 +34,18 @@ public class ControllerJalur {
         stations = ctrUtil.getStations();
     }
 
+    public void setRute(ArrayList<Rute> mrute)
+    {
+        rute = mrute;
+    }
+
     public void ControlMenuJalur(){
         if (viewJalur == null) viewJalur = new ViewJalur(this);
         viewJalur.menuJalur();
 
         switch (viewJalur.getPilihan()) {
         case 1: {
-            viewJalur.menuTambah();
+            viewJalur.menuTambah(ctrUtil);
             ControlMenuJalur();
             break;
         }
@@ -79,7 +84,6 @@ public class ControllerJalur {
     }
 
     public boolean TambahJalur(String stasiunAwal, String stasiunAkhir, int menit, int index){
-        rute = ctrUtil.getRute();
         ArrayList<Jalur> jalur = rute.get(index).getJalur();
         if(ctrStation.CheckStationByName(stasiunAwal) >= 0 && ctrStation.CheckStationByName(stasiunAkhir) >= 0)
         {
@@ -87,13 +91,11 @@ public class ControllerJalur {
             int indexakhir = ctrStation.CheckStationByName(stasiunAkhir);
             if(jalur.size() == 0){
                 jalur.add(new Jalur(stations.get(indexawal), stations.get(indexakhir), menit));
-                ctrUtil.WriteJSONRute();
                 return true;
             }
                 
             else if(stations.get(indexawal).equals(jalur.get(jalur.size() - 1).getStasiunAkhir())){
                 jalur.add(new Jalur(stations.get(indexawal), stations.get(indexakhir), menit));
-                ctrUtil.WriteJSONRute();
                 return true;
             }
             else
