@@ -21,6 +21,9 @@ import jadwalkereta.model.Tanggal;
 import jadwalkereta.view.ViewJadwal;
 import java.io.*;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  *
@@ -86,55 +89,103 @@ public class ControllerJadwal {
 					String kotaTujuan = rute.get(i).getKotaTujuan();
                                         
 					int j = 0;
-                                        if(rute.get(i).getTime().size() <= rute.get(i).getKereta().size()) {
+//                                        if(rute.get(i).getTime().size() <= rute.get(i).getKereta().size()) {
                                             for(j=0;j<rute.get(i).getTime().size();j++)
                                             {
 //                                                    System.out.println(rute.get(i).getTime().get(j).getJam());
     						int jamBerangkat = rute.get(i).getTime().get(j).getJam();
     						int menitBerangkat = rute.get(i).getTime().get(j).getMenit();
     						int[] sampai = rute.get(i).getTime().get(j).addTime(rute.get(i).getDuration()); 
-    						Kereta kereta = rute.get(i).getKereta().get(j);
-                                                final Tanggal tgal = tanggal;
-                                                Optional<Jadwal> keretaBelomSampai = jadwal.stream()
-                                                        .filter(x -> x.getKotaTujuan().equals(kotaBerangkat))
-                                                        .filter(x -> x.getKereta().getKodeKereta().equals(kereta.getKodeKereta()))
-                                                        .filter(x -> x.getTanggal().equals(tgal))
-                                                        .filter(x -> x.getJamSampai() <= sampai[0] || x.getMenitSampai() <= sampai[0])
-                                                        .reduce((__, curr) -> curr);
-                                                if (keretaBelomSampai.isPresent()){
-                                                    tanggal = new Tanggal(tanggal.getHari() + 1, tanggal.getBulan(), tanggal.getTahun());
+//    						Kereta kereta = rute.get(i).getKereta().get(j);
+//                                                final Tanggal tgal = tanggal;
+//                                                Optional<Jadwal> keretaBelomSampai = jadwal.stream()
+//                                                    .filter(x -> x.getKotaTujuan().equals(kotaBerangkat))
+//                                                    .filter(x -> x.getKereta().getKodeKereta().equals(kereta.getKodeKereta()))
+//                                                    .filter(x -> x.getTanggal().equals(tgal))
+//                                                    .filter(x -> x.getJamSampai() <= sampai[0] || x.getMenitSampai() <= sampai[0])
+//                                                    .reduce((__, curr) -> curr);
+//                                                if (keretaBelomSampai.isPresent()){
+//                                                    tanggal = new Tanggal(tanggal.getHari() + 1, tanggal.getBulan(), tanggal.getTahun());
+//                                                }
+
+                                                
+                                                
+                                                int maxDays = localDateTime.getMonth().length(localDateTime.getYear() % 4 == 0);
+                                                if (tanggal.getHari() > maxDays){
+                                                    tanggal = new Tanggal(1, tanggal.getBulan() + 1, tanggal.getTahun());
+                                                    localDateTime = localDateTime.plusMonths(1);
+                                                    localDateTime = localDateTime.withDayOfMonth(1);
+                                                }
+                                                
+                                                Kereta kereta = null;
+                                                
+                                                for(int l=0;l<rute.get(i).getKereta().size();l++){
+                                                    Kereta krt = rute.get(i).getKereta().get(l);
+                                                    final Tanggal tgal = tanggal;
+                                                    
+                                                    Optional<Jadwal> jadwalOpt = jadwal.stream()
+                                                            .filter(x -> x.getTanggal().equals(tgal))
+                                                            .filter(x -> x.getKereta().equals(krt))
+                                                            .reduce((__, curr) -> curr);
+                                                    if(!jadwalOpt.isPresent()){
+                                                        kereta = krt;
+                                                        break;
+                                                    } else {
+                                                        int duration = rute.get(i).getDuration();
+                                                        int jamDuration = duration / 60;
+                                                        int menitDuration = duration % 60;
+                                                        Jadwal jadwalKereta = jadwalOpt.get();
+                                                        int jamKosongKereta = jadwalKereta.getJamBerangkat() + jamDuration;
+                                                        int menitKosongKereta = jadwalKereta.getMenitBerangkat() + menitDuration;
+                                                        if(jamKosongKereta <= jamBerangkat || (jamKosongKereta == jamBerangkat && menitKosongKereta <= menitBerangkat)){
+                                                            kereta = krt;
+                                                            break;
+                                                        }
+                                                    }
                                                 }
                                                 
     						long hargaB = rute.get(i).getHargaBisnis();
     						long hargaP = rute.get(i).getHargaPremium();
-    						jadwal.add(new Jadwal(GetCodeJW(count), tanggal, jamBerangkat, menitBerangkat, sampai[0], sampai[1], kotaBerangkat, kotaTujuan, kereta, hargaB, hargaP));
-    						count++;
-                                            }
-                                        }
-                                        else {
-                                            for(j=0;j<rute.get(i).getKereta().size();j++)
-                                            {
-//                                                    System.out.println(rute.get(i).getTime().get(j).getJam());
-    						int jamBerangkat = rute.get(i).getTime().get(j).getJam();
-    						int menitBerangkat = rute.get(i).getTime().get(j).getMenit();
-    						int[] sampai = rute.get(i).getTime().get(j).addTime(rute.get(i).getDuration());
-    						Kereta kereta = rute.get(i).getKereta().get(j);
-                                                 final Tanggal tgal = tanggal;
-                                                Optional<Jadwal> keretaBelomSampai = jadwal.stream()
-                                                        .filter(x -> x.getKotaTujuan().equals(kotaBerangkat))
-                                                        .filter(x -> x.getKereta().getKodeKereta().equals(kereta.getKodeKereta()))
-                                                        .filter(x -> x.getTanggal().equals(tgal))
-                                                        .filter(x -> x.getJamSampai() <= sampai[0] || x.getMenitSampai() <= sampai[0])
-                                                        .reduce((__, curr) -> curr);
-                                                if (keretaBelomSampai.isPresent()){
-                                                    tanggal = new Tanggal(tanggal.getHari() + 1, tanggal.getBulan(), tanggal.getTahun());
+                                                
+                                                int lastCode = jadwal.size();
+                                                if (lastCode > 0){
+                                                    lastCode = Integer.valueOf(jadwal.get(jadwal.size() - 1).getKode().substring("JW".length()));
                                                 }
-    						long hargaB = rute.get(i).getHargaBisnis();
-    						long hargaP = rute.get(i).getHargaPremium();
-    						jadwal.add(new Jadwal(GetCodeJW(count), tanggal, jamBerangkat, menitBerangkat, sampai[0], sampai[1], kotaBerangkat, kotaTujuan, kereta, hargaB, hargaP));
+                                                if(kereta != null){
+                                                    Jadwal jadwalKereta = new Jadwal(GetCodeJW(lastCode + 1), tanggal, jamBerangkat, menitBerangkat, sampai[0], sampai[1], kotaBerangkat, kotaTujuan, kereta, hargaB, hargaP);
+                                                    jadwal.add(jadwalKereta);
+                                                }
     						count++;
                                             }
-                                        }
+//                                        }
+//                                        else {
+//                                            for(j=0;j<rute.get(i).getKereta().size();j++)
+//                                            {
+////                                                    System.out.println(rute.get(i).getTime().get(j).getJam());
+//    						int jamBerangkat = rute.get(i).getTime().get(j).getJam();
+//    						int menitBerangkat = rute.get(i).getTime().get(j).getMenit();
+//    						int[] sampai = rute.get(i).getTime().get(j).addTime(rute.get(i).getDuration());
+//    						Kereta kereta = rute.get(i).getKereta().get(j);
+//                                                 final Tanggal tgal = tanggal;
+//                                                Optional<Jadwal> keretaBelomSampai = jadwal.stream()
+//                                                        .filter(x -> x.getKotaTujuan().equals(kotaBerangkat))
+//                                                        .filter(x -> x.getKereta().getKodeKereta().equals(kereta.getKodeKereta()))
+//                                                        .filter(x -> x.getTanggal().equals(tgal))
+//                                                        .filter(x -> x.getJamSampai() <= sampai[0] || x.getMenitSampai() <= sampai[0])
+//                                                        .reduce((__, curr) -> curr);
+//                                                if (keretaBelomSampai.isPresent()){
+//                                                    tanggal = new Tanggal(tanggal.getHari() + 1, tanggal.getBulan(), tanggal.getTahun());
+//                                                }
+//    						long hargaB = rute.get(i).getHargaBisnis();
+//    						long hargaP = rute.get(i).getHargaPremium();
+//                                                int lastCode = jadwal.size();
+//                                                if (lastCode > 0){
+//                                                    lastCode = Integer.valueOf(jadwal.get(jadwal.size() - 1).getKode().substring("JW".length()));
+//                                                }
+//    						jadwal.add(new Jadwal(GetCodeJW(lastCode + 1), tanggal, jamBerangkat, menitBerangkat, sampai[0], sampai[1], kotaBerangkat, kotaTujuan, kereta, hargaB, hargaP));
+//    						count++;
+//                                            }
+//                                        }
                                         ctrUtil.WriteJSONJadwal();
 				}
 			}

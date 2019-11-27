@@ -100,4 +100,8 @@ public class Kereta {
     public int getJmlPremium() {
         return jmlPremium;
     }
+    
+    public boolean equals(Kereta kereta){
+        return this.kodeKereta == kereta.getKodeKereta();
+    }
 }

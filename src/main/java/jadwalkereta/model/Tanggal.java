@@ -50,4 +50,8 @@ public class Tanggal{
             }
         }
     }
+    
+    public boolean equals(Tanggal tanggal){
+        return this.Hari == tanggal.getHari() && this.Bulan == tanggal.getBulan() && this.Tahun == tanggal.getTahun();
+    }
 }
