@@ -120,10 +120,9 @@ public class ControllerBooking {
         return kode;
     }  
 
-    public void PesanKursi(String kdjadwal, String kdkelas, int kdGerbong, int kdKursi)
+    public void FillKursi(String kdjadwal, String kdkelas, int kdGerbong, int kdKursi)
     {
             int i;
-            //long harga = 0;
             for(i=0; i<jadwal.size(); i++)
             {
                 if(kdjadwal.equals(jadwal.get(i).getKode()))
@@ -132,18 +131,39 @@ public class ControllerBooking {
                     {
                         
                         jadwal.get(i).getKereta().setBangkuBisnis(kdGerbong-1, kdKursi-1, 1);
-                        //harga = harga + jadwal.get(i).getHargaB();
+                  
     
                     }else{
                         jadwal.get(i).getKereta().setBangkuPremium(kdGerbong-1, kdKursi-1, 1);
-                        //harga = harga + jadwal.get(i).getHargaP();
+                        
                     }
                     ctrUtil.WriteJSONJadwal();
                 }
-            }
-            //return harga;
-        
+            }  
     }
+
+        public void PesanKursi(String kode)
+        {
+            booking = ctrUtil.getBooking();
+            int i, kdGerbong, kdKursi, j;
+            String kursi, kdjadwal;
+            String kdKelas = "";
+            for(i=0; i<booking.size(); i++)
+            {
+                if(kode.equals(booking.get(i).getKdPesan()))
+                {
+                   kdjadwal = booking.get(i).getKdJadwal();
+                   for(j=0; j<booking.get(i).getKursi().length; j++)
+                   {
+                    kursi = booking.get(i).getKursi()[j];
+                    kdKelas = Character.toString( kursi.charAt(0));
+                    kdGerbong = Integer.valueOf(kursi.charAt(1)+"") ;
+                    kdKursi = Integer.valueOf(kursi.charAt(3) + "");
+                    FillKursi(kdjadwal, kdKelas, kdGerbong, kdKursi);
+                   }
+                }
+            }
+        }
 
         public long HitungHarga(String kdjadwal, String kdkelas) {
             int i;
@@ -166,6 +186,60 @@ public class ControllerBooking {
             }
             return harga;
         }
+
+    public int ValidasiBayar(String kode, String norek, long harga)
+    {
+        booking = ctrUtil.getBooking();
+        int i;
+        boolean found = false;
+        for(i=0; i<booking.size(); i++)
+        {
+            if(kode.equals(booking.get(i).getKdPesan()))
+            {
+                if(norek.equals("80325567189") && harga==booking.get(i).getHarga())
+                {
+                    found=true;
+                    break;
+                }
+            }
+        }
+        if(found) return i;
+        else return -1;
+    }
+
+    public int CekKursi(String kode)
+    {
+        booking = ctrUtil.getBooking();
+        int i, kdGerbong, kdKursi, status;
+        int j =0, flag =0;
+        String kursi, kdjadwal;
+        String kdKelas = "";
+        boolean found = false;
+        for(i=0; i<booking.size(); i++)
+        {
+            if(kode.equals(booking.get(i).getKdPesan()))
+            {
+               kdjadwal = booking.get(i).getKdJadwal();
+               while(j<booking.get(i).getKursi().length && flag!=1)
+               {
+                kursi = booking.get(i).getKursi()[j];
+                kdKelas = Character.toString( kursi.charAt(0));
+                kdGerbong = Integer.valueOf(kursi.charAt(1)+"") ;
+                kdKursi = Integer.valueOf(kursi.charAt(3) + "");
+                status = CekStatus(kdjadwal, kdKelas, kdGerbong, kdKursi);
+                if (status>=0)
+                {
+                    flag =1;
+                    found = true;
+                }
+                j++;
+               }
+               
+            }
+        }
+        if(found) return i;
+        else return -1;
+    }
 
 
     public int CekStatus(String kdjadwal, String kdkelas, int kdGerbong, int kdKursi){
@@ -290,20 +364,34 @@ public class ControllerBooking {
    }
 
    public int Cekbayar(String kode){
-    int i;
-    boolean found = false;
-    for (i=0; i < booking.size(); i++) {
-        if (kode.equals(booking.get(i).getKdPesan())) {
-            if(booking.get(i).getIsPaid()==1)
-            {
-                found = true;
-                break;
+        int i;
+        boolean found = false;
+        for (i=0; i < booking.size(); i++) {
+            if (kode.equals(booking.get(i).getKdPesan())) {
+                if(booking.get(i).getIsPaid()==1)
+                {
+                    found = true;
+                    break;
+                }
             }
         }
+        if(found) return i;
+        else return -1;
     }
-    if(found) return i;
-    else return -1;
-}
+
+    public int cekjadwal(String kode){
+        int i;
+        boolean found = false;
+        for (i=0; i < jadwal.size(); i++) {
+            if (kode.equals(jadwal.get(i).getKode())) {
+                    found = true;
+                    break;
+            }
+        }
+        if(found) return i;
+        else return -1;
+    }
+
 
   
    

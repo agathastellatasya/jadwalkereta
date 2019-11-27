@@ -40,72 +40,89 @@ public class ViewBooking {
     }
 
     public void book(){
-        int i;
+        int i, jadwal;
+        String kode;
         System.out.println("#BOOKING TIKET#");
+       do{
         System.out.print("Kode Jadwal: ");
-        String kode = input.next();
+        kode = input.next();
+        jadwal = ctrBooking.cekjadwal(kode);
+        if(jadwal < 0)
+        {
+            System.out.println("Kode Jadwal tidak ada");
+        }
+       }while(jadwal <0);
         System.out.print("Jumlah: ");
         int jml = input.nextInt();
-        System.out.println("---------------------------------------------------------");
-        String[] penumpang = new String[jml];
-        String orang;
-        for(i=0; i<jml; i++)
+        if(jml> 0)
         {
-            do {
-                System.out.print("penumpang "+(i+1)+": ");
-                
-                orang = input.next();
-                if (!orang.matches("^[a-zA-Z\\\\s][a-zA-Z \\\\s]*$")){
-                    System.out.println("Nama harus terdiri dari huruf semua!");
-                }
-            } while (!orang.matches("^[a-zA-Z\\\\s][a-zA-Z \\\\s]*$"));
-            
-            
-            penumpang[i] = orang;
-        }
-        System.out.println();
-        System.out.println("---------------------------------------------------------");
-        ctrBooking.lihatKursi(kode);
-        System.out.println("---------------------------------------------------------");
-        System.out.println("Pilih Kursi (Dengan Tanda E/Empty) : ");
-        String kursi, kdKelas;
-        int kdKursi, kdGerbong, status;
-        String[] bangku = new String[jml];
-        long harga, sum=0;
-        for(i=0; i<jml; i++)
-        {
-            System.out.print("Kursi "+(i+1)+": ");
-            kursi = input.next();
-            kdKelas = Character.toString( kursi.charAt(0));
-            kdGerbong = Integer.valueOf(kursi.charAt(1)+"") ;
-            kdKursi = Integer.valueOf(kursi.charAt(3) + "");
-            status = ctrBooking.CekStatus(kode, kdKelas, kdGerbong, kdKursi);
-            while (status >= 0)
+            System.out.println("---------------------------------------------------------");
+            String[] penumpang = new String[jml];
+            String orang;
+            for(i=0; i<jml; i++)
             {
-                System.out.println("Kursi sudah dipesan, silahkan pilih kursi bertanda E");
+                do {
+                    System.out.print("penumpang "+(i+1)+": ");
+                    
+                    orang = input.next();
+                    if (!orang.matches("^[a-zA-Z\\\\s][a-zA-Z \\\\s]*$")){
+                        System.out.println("Nama harus terdiri dari huruf semua!");
+                    }
+                } while (!orang.matches("^[a-zA-Z\\\\s][a-zA-Z \\\\s]*$"));
+                
+                
+                penumpang[i] = orang;
+            }
+            System.out.println();
+            System.out.println("---------------------------------------------------------");
+            ctrBooking.lihatKursi(kode);
+            System.out.println("---------------------------------------------------------");
+            System.out.println("Pilih Kursi (Dengan Tanda E/Empty) : ");
+            String kursi, kdKelas;
+            int kdKursi, kdGerbong, status;
+            String[] bangku = new String[jml];
+            long harga, sum=0;
+            for(i=0; i<jml; i++)
+            {
                 System.out.print("Kursi "+(i+1)+": ");
                 kursi = input.next();
                 kdKelas = Character.toString( kursi.charAt(0));
                 kdGerbong = Integer.valueOf(kursi.charAt(1)+"") ;
                 kdKursi = Integer.valueOf(kursi.charAt(3) + "");
                 status = ctrBooking.CekStatus(kode, kdKelas, kdGerbong, kdKursi);
+                while (status >= 0)
+                {
+                    System.out.println("Kursi sudah dipesan, silahkan pilih kursi bertanda E");
+                    System.out.print("Kursi "+(i+1)+": ");
+                    kursi = input.next();
+                    kdKelas = Character.toString( kursi.charAt(0));
+                    kdGerbong = Integer.valueOf(kursi.charAt(1)+"") ;
+                    kdKursi = Integer.valueOf(kursi.charAt(3) + "");
+                    status = ctrBooking.CekStatus(kode, kdKelas, kdGerbong, kdKursi);
+                }
+                //ctrBooking.PesanKursi(kode, kdKelas, kdGerbong, kdKursi);
+                harga = ctrBooking.HitungHarga(kode, kdKelas);
+                sum = sum+harga;
+                bangku[i]=kursi;
+               
             }
-            ctrBooking.PesanKursi(kode, kdKelas, kdGerbong, kdKursi);
-            harga = ctrBooking.HitungHarga(kode, kdKelas);
-            sum = sum+harga;
-            bangku[i]=kursi;
-           
+            System.out.println();
+            System.out.println("---------------------------------------------------------");
+            String kdpesan = ctrBooking.GenerateKode();
+            System.out.println("Total Pembayaran : "+sum);
+            System.out.println("Nomor Rekening : 80325567189");
+            System.out.println("Kode Booking : " + kdpesan);
+            System.out.println("---------------------------------------------------------");
+            
+            
+            String kodeBooking = ctrBooking.booked(kode, kdpesan, penumpang, bangku, sum);
+        }else{
+            System.out.println("---------------------------------------------------------");
+            System.out.println("Keluar dari menu Booking");
+            System.out.println("---------------------------------------------------------");
+            System.out.println();   
         }
-        System.out.println();
-        System.out.println("---------------------------------------------------------");
-        String kdpesan = ctrBooking.GenerateKode();
-        System.out.println("Total Pembayaran : "+sum);
-        System.out.println("Kode Rekening : 80325567189");
-        System.out.println("Kode Booking : " + kdpesan);
-        System.out.println("---------------------------------------------------------");
-        
-        
-        String kodeBooking = ctrBooking.booked(kode, kdpesan, penumpang, bangku, sum);
+
         //System.out.println(kodeBooking);
 
 
@@ -121,10 +138,26 @@ public class ViewBooking {
 
     public void menuPembayaran()
     {
+        String norek;
+        //long norek;
         System.out.println();
         System.out.println("#PEMBAYARAN TIKET KERETA API#");
         System.out.print("Kode Booking : ");
         String kodebooking = input.next();
+       
+
+        do {
+            System.out.print("Nomor Rekening : ");
+            norek = input.next();
+            //snorek = Long.toString(norek);
+
+            if (!norek.matches("[0-9_]+")) {
+                System.out.println("Tidak valid, nomor rekening harus angka");
+            }
+        } while (!norek.matches("[0-9_]+"));
+
+        System.out.print("Total Pembayaran : ");
+        Long harga = input.nextLong();
         int bayar = ctrBooking.Cekbayar(kodebooking);
         if(bayar>=0)
         {
@@ -133,20 +166,38 @@ public class ViewBooking {
             System.out.println("---------------------------------------------------------");
             System.out.println();
         }else{
-            System.out.println("Kode Rekening : 80325567189");
-            long hargatotal = ctrBooking.detailHarga(kodebooking);
-            System.out.println("Total Pembayaran : " + hargatotal);
+            //System.out.println("Kode Rekening : 80325567189");
+            //long hargatotal = ctrBooking.detailHarga(kodebooking);
+            //System.out.println("Total Pembayaran : " + hargatotal);
             System.out.print("Apakah data pembayaran sudah benar (Y/N)?");
             String pilihan  = input.next();
             if(pilihan.equals("Y") || pilihan.equals("y")){
-                System.out.println();
-                System.out.println("---------------------------------------------------------");
-                System.out.println("Pembayaran Berhasil");
-                System.out.println("Kode Tiket anda : "+kodebooking);
-                ctrBooking.detailPenumpang(kodebooking);
-                ctrBooking.bayar(kodebooking);
-                System.out.println("---------------------------------------------------------");
-                System.out.println();
+                int valid = ctrBooking.ValidasiBayar(kodebooking, norek, harga);
+                if(valid>=0)
+                {
+                    int status = ctrBooking.CekKursi(kodebooking);
+                    if(status<0)
+                    {
+                        ctrBooking.PesanKursi(kodebooking);
+                        System.out.println();
+                        System.out.println("---------------------------------------------------------");
+                        System.out.println("Pembayaran Berhasil!!");
+                        System.out.println("Kode Tiket anda : "+kodebooking);
+                        ctrBooking.detailPenumpang(kodebooking);
+                        ctrBooking.bayar(kodebooking);
+                        System.out.println("---------------------------------------------------------");
+                        System.out.println();
+                    }else{
+                        System.out.println("---------------------------------------------------------");
+                        System.out.println("Kursi Not Available, silahkan lakukan pemesanan ulang");
+                        System.out.println("---------------------------------------------------------");
+                    }
+
+                }else{
+                    System.out.println("---------------------------------------------------------");
+                    System.out.println("Data Salah, silahkan melakukan pembayaran Ulang");
+                    System.out.println("---------------------------------------------------------");
+                }
             }
             else{
                 menuBooking();

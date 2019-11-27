@@ -93,6 +93,15 @@ public class Booking{
         this.penumpang=penumpang;
     }
 
+    public String[] getKursi()
+    {
+        return this.kursi;
+    }
+    public void setKursi(String[] kursi)
+    {
+        this.kursi=kursi;
+    }
+
     public void setTanggal(String t)
     {
         this.tanggal=t;
