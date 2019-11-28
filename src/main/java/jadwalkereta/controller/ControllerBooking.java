@@ -162,10 +162,16 @@ public class ControllerBooking {
                    for(j=0; j<booking.get(i).getKursi().length; j++)
                    {
                     kursi = booking.get(i).getKursi()[j];
-                    kdKelas = Character.toString( kursi.charAt(0));
-                    kdGerbong = Integer.valueOf(kursi.charAt(1)+"") ;
-                    kdKursi = Integer.valueOf(kursi.charAt(3) + "");
-                    FillKursi(kdjadwal, kdKelas, kdGerbong, kdKursi);
+                    String kursip [] = kursi.split("-");
+                    //System.out.println(kursip.length);
+                    if (kursip.length==2){
+                        kdKelas = Character.toString(kursi.charAt(0));
+                        String nomerGerbong = kursip[0].replaceAll("[\\D]", ""); 
+                        kdGerbong = Integer.valueOf(nomerGerbong);
+                        String nokursi = kursip[1].replaceAll("[\\D]", "");
+                        kdKursi = Integer.valueOf(nokursi);
+                        FillKursi(kdjadwal, kdKelas, kdGerbong, kdKursi);
+                    }
                    }
                 }
             }
@@ -230,16 +236,16 @@ public class ControllerBooking {
                {
                     kursi = booking.get(i).getKursi()[j];
                     String kursip [] = kursi.split("-");
-                    System.out.println(kursip.length);
+                    //System.out.println(kursip.length);
                     if (kursip.length==2){
                         kdKelas = Character.toString(kursi.charAt(0));
                         String nomerGerbong = kursip[0].replaceAll("[\\D]", ""); 
                         kdGerbong = Integer.valueOf(nomerGerbong);
                         String nokursi = kursip[1].replaceAll("[\\D]", "");
                         kdKursi = Integer.valueOf(nokursi);
-                        System.out.println(kdKelas);
-                        System.out.println(kdGerbong);
-                        System.out.println(kdKursi);
+                        //System.out.println(kdKelas);
+                       // System.out.println(kdGerbong);
+                       // System.out.println(kdKursi);
                         status = CekStatus(kdjadwal, kdKelas, kdGerbong, kdKursi);
                         if (status>=0){
                             flag =1;
