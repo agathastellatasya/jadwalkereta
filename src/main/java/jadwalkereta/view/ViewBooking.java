@@ -170,7 +170,7 @@ public class ViewBooking {
             //snorek = Long.toString(norek);
 
             if (!kodebooking.matches("[0-9_]+")) {
-                System.out.println("Tidak valid, nomor rekening harus angka");
+                System.out.println("Tidak valid, kode bayar harus angka");
             }
         } while (!kodebooking.matches("[0-9_]+"));
 

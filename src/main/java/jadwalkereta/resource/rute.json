@@ -25,9 +25,9 @@
         "menit": 0
       },
       {
-        "kode": "TM18",
-        "jam": 4,
-        "menit": 15
+        "kode": "TM28",
+        "jam": 6,
+        "menit": 45
       }
     ],
     "kereta": [
@@ -285,29 +285,17 @@
     "hargaPremium": 250000,
     "kotaBerangkat": "Bandung",
     "kotaTujuan": "Jakarta",
-    "jalur": [
-      {
-        "stasiunAwal": {
-          "kode": "BDN",
-          "nama": "Bandung"
-        },
-        "stasiunAkhir": {
-          "kode": "GMR",
-          "nama": "Gambir"
-        },
-        "menit": 120
-      }
-    ],
+    "jalur": [],
     "times": [
       {
-        "kode": "TM1",
+        "kode": "TM2",
         "jam": 0,
-        "menit": 0
+        "menit": 15
       },
       {
-        "kode": "TM3",
-        "jam": 0,
-        "menit": 30
+        "kode": "TM16",
+        "jam": 3,
+        "menit": 45
       }
     ],
     "kereta": [
@@ -435,10 +423,133 @@
         ]
       },
       {
-        "kodeKereta": "KAI19801",
+        "kodeKereta": "KAI18802",
         "jmlGerbong": 6,
         "jmlBisnis": 2,
-        "namaKereta": "Kereta2",
+        "namaKereta": "Kereta4",
+        "jmlPremium": 4,
+        "bangkubisnis": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "bangkupremium": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "kodeKereta": "KAI18803",
+        "jmlGerbong": 6,
+        "jmlBisnis": 2,
+        "namaKereta": "Kereta5",
         "jmlPremium": 4,
         "bangkubisnis": [
           [

@@ -124,16 +124,17 @@ public class ViewPenumpang {
 
     public void History()
     {
-        System.out.println("==============Riwayat Transaksi================");
-        System.out.println("Kode\t\tTanggal\t\t\tStatus");
+        System.out.println("==============================Riwayat Transaksi==============================");
+        System.out.println("Kode Bayar\t\tTanggal\t\t\tStatus\t\tKode Booking");
         for(int i=0;i<user.getTransaksi().size();i++)
         {
-            System.out.print(user.getTransaksi().get(i).getKodebooking()+"\t\t");
+            System.out.print(user.getTransaksi().get(i).getKodebayar()+"\t\t");
             System.out.print(user.getTransaksi().get(i).getTanggal()+"\t\t");
-            System.out.print(user.getTransaksi().get(i).getKeterangan());
+            System.out.print(user.getTransaksi().get(i).getKeterangan()+"\t\t");
+            System.out.print(user.getTransaksi().get(i).getKodebooking());
             System.out.println();
         }
-        System.out.println("==============================================");
+        System.out.println("============================================================================");
         
     }
 }

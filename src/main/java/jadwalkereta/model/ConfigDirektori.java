@@ -11,7 +11,7 @@ package jadwalkereta.model;
  */
 public class ConfigDirektori {
     //fiqri
-    public static final String MAIN = "D:\\Kuliah Pasca\\Alpro\\TubesAlpro19\\src\\main\\java\\jadwalkereta\\resource\\";
+    //public static final String MAIN = "D:\\Kuliah Pasca\\Alpro\\TubesAlpro19\\src\\main\\java\\jadwalkereta\\resource\\";
     //adri
     //public static final String MAIN = "E:\\Tubes Alpro\\TUBES CLONE\\jadwalkereta\\src\\main\\java\\jadwalkereta\\resource\\";
     //tasya
@@ -19,7 +19,7 @@ public class ConfigDirektori {
 
     //salma
 
-    //public static final String MAIN = "E:\\tubesAlpro\\V27\\jadwalkereta\\src\\main\\java\\jadwalkereta\\resource\\";
+    public static final String MAIN = "E:\\tubesAlpro\\V30\\jadwalkereta\\src\\main\\java\\jadwalkereta\\resource\\";
 
     //public static final String MAIN = "E:\\tubesAlpro\\V28\\jadwalkereta\\src\\main\\java\\jadwalkereta\\resource\\";
     //husni
