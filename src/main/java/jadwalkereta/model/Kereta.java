@@ -102,6 +102,6 @@ public class Kereta {
     }
     
     public boolean equals(Kereta kereta){
-        return this.kodeKereta == kereta.getKodeKereta();
+        return this.kodeKereta.equals(kereta.getKodeKereta());
     }
 }

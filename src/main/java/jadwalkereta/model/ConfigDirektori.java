@@ -29,7 +29,7 @@ public class ConfigDirektori {
 
     public static final String USER = MAIN + "user.json";
     public static final String STATION = MAIN + "station.json";
-    public static final String RUTE = MAIN + "rute.json";
+    public static final String RUTE = MAIN + "rute3.json";
     public static final String CITY = MAIN + "city.json";
     public static final String TIME = MAIN + "time.json";
     public static final String JADWAL = MAIN + "jadwal.json";

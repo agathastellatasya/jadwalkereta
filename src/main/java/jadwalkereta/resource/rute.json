@@ -25,9 +25,9 @@
         "menit": 0
       },
       {
-        "kode": "TM3",
-        "jam": 0,
-        "menit": 30
+        "kode": "TM18",
+        "jam": 4,
+        "menit": 15
       }
     ],
     "kereta": [
@@ -276,129 +276,6 @@
             0
           ]
         ]
-      },
-      {
-        "kodeKereta": "KAI20801",
-        "jmlGerbong": 6,
-        "jmlBisnis": 2,
-        "namaKereta": "Kereta3",
-        "jmlPremium": 4,
-        "bangkubisnis": [
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
-        ],
-        "bangkupremium": [
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
-        ]
       }
     ]
   },
@@ -408,17 +285,24 @@
     "hargaPremium": 250000,
     "kotaBerangkat": "Bandung",
     "kotaTujuan": "Jakarta",
-    "jalur": [],
+    "jalur": [
+      {
+        "stasiunAwal": {
+          "kode": "BDN",
+          "nama": "Bandung"
+        },
+        "stasiunAkhir": {
+          "kode": "GMR",
+          "nama": "Gambir"
+        },
+        "menit": 120
+      }
+    ],
     "times": [
       {
         "kode": "TM1",
         "jam": 0,
         "menit": 0
-      },
-      {
-        "kode": "TM2",
-        "jam": 0,
-        "menit": 15
       },
       {
         "kode": "TM3",

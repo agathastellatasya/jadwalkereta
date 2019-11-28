@@ -97,10 +97,10 @@ public class ControllerJadwal {
         if(selisihHari<0) selisihHari=0;
         long k=30-selisihHari;
         long m;
-        System.out.println(localDateTime);
-        System.out.println(JadwalTime);
-        System.out.println(localDate);
-        System.out.println(selisihHari);
+//        System.out.println(localDateTime);
+//        System.out.println(JadwalTime);
+//        System.out.println(localDate);
+//        System.out.println(selisihHari);
         //System.out.println(JadwalTime);
         if(k>0){
         //ArrayList<Rute> ListRute = ctrUtil.getRute();
@@ -109,7 +109,6 @@ public class ControllerJadwal {
             bln = localDateTime.getMonthValue();
             tgl = localDateTime.getDayOfMonth();
             thn = localDateTime.getYear();
-            tanggal = new Tanggal(tgl, bln, thn);
 			for(int i=0;i<rute.size();i++)
 			{
 				if(rute.get(i).getTime().size()>0 && rute.get(i).getKereta().size()>0)
@@ -121,6 +120,7 @@ public class ControllerJadwal {
 //                                        if(rute.get(i).getTime().size() <= rute.get(i).getKereta().size()) {
                                             for(j=0;j<rute.get(i).getTime().size();j++)
                                             {
+                                                tanggal = new Tanggal(tgl, bln, thn);
 //                                                    System.out.println(rute.get(i).getTime().get(j).getJam());
     						int jamBerangkat = rute.get(i).getTime().get(j).getJam();
     						int menitBerangkat = rute.get(i).getTime().get(j).getMenit();
@@ -137,40 +137,13 @@ public class ControllerJadwal {
 //                                                    tanggal = new Tanggal(tanggal.getHari() + 1, tanggal.getBulan(), tanggal.getTahun());
 //                                                }
 
-                                                
+                                                Kereta kereta = getKeretaAvailable(rute.get(i), tanggal, jamBerangkat, menitBerangkat, sampai[0], sampai[1]);
                                                 
                                                 int maxDays = localDateTime.getMonth().length(localDateTime.getYear() % 4 == 0);
                                                 if (tanggal.getHari() > maxDays){
                                                     tanggal = new Tanggal(1, tanggal.getBulan() + 1, tanggal.getTahun());
                                                     localDateTime = localDateTime.plusMonths(1);
                                                     localDateTime = localDateTime.withDayOfMonth(1);
-                                                }
-                                                
-                                                Kereta kereta = null;
-                                                
-                                                for(int l=0;l<rute.get(i).getKereta().size();l++){
-                                                    Kereta krt = rute.get(i).getKereta().get(l);
-                                                    final Tanggal tgal = tanggal;
-                                                    
-                                                    Optional<Jadwal> jadwalOpt = jadwal.stream()
-                                                            .filter(x -> x.getTanggal().equals(tgal))
-                                                            .filter(x -> x.getKereta().equals(krt))
-                                                            .reduce((__, curr) -> curr);
-                                                    if(!jadwalOpt.isPresent()){
-                                                        kereta = krt;
-                                                        break;
-                                                    } else {
-                                                        int duration = rute.get(i).getDuration();
-                                                        int jamDuration = duration / 60;
-                                                        int menitDuration = duration % 60;
-                                                        Jadwal jadwalKereta = jadwalOpt.get();
-                                                        int jamKosongKereta = jadwalKereta.getJamBerangkat() + jamDuration;
-                                                        int menitKosongKereta = jadwalKereta.getMenitBerangkat() + menitDuration;
-                                                        if(jamKosongKereta <= jamBerangkat || (jamKosongKereta == jamBerangkat && menitKosongKereta <= menitBerangkat)){
-                                                            kereta = krt;
-                                                            break;
-                                                        }
-                                                    }
                                                 }
                                                 
     						long hargaB = rute.get(i).getHargaBisnis();
@@ -258,5 +231,78 @@ public class ControllerJadwal {
         code = code + count;
         return code;
     }
+    
+    private Kereta getKeretaAvailable(Rute rute, Tanggal tanggal, int jamBerangkat, int menitBerangkat, int jamSampai, int menitSampai){
+        Kereta kereta = null;
+        for(int l=0;l<rute.getKereta().size();l++){
+            kereta = rute.getKereta().get(l);
+            final Tanggal tgal = tanggal;
+            final Kereta krt = kereta;
+            boolean jadwalOpt = jadwal.stream()
+                .filter(x -> x.getTanggal().equals(tgal))
+                .filter(x -> x.getKereta().equals(krt))
+//                .filter(x -> x.getKotaTujuan().equals(rute.getKotaBerangkat()) || x.getKotaBerangkat().equals(rute.getKotaBerangkat()))
+                .anyMatch(x -> {
+                    if (x.getKotaTujuan().equals(rute.getKotaTujuan()) && x.getKotaBerangkat().equals(rute.getKotaBerangkat())){
+                        int jamDuration = x.getJamSampai() - x.getJamBerangkat();
+                        int menitDuration = x.getMenitSampai() - x.getMenitBerangkat();
 
+                        int jamKeretaBalik = x.getJamSampai()+ jamDuration;
+                        int menitKeretaBalik = x.getMenitSampai()+ menitDuration;
+                        
+                        return jamKeretaBalik > jamBerangkat || (jamKeretaBalik == jamBerangkat && menitKeretaBalik > menitBerangkat);
+//                        int jamDuration = rute.getDuration() / 60;
+//                        int menitDuration = rute.getDuration() % 60;
+//
+//                        int jamKeretaBalik = x.getJamSampai()+ jamDuration;
+//                        int menitKeretaBalik = x.getMenitSampai()+ menitDuration;
+//
+//                        return jamKeretaBalik > jamBerangkat || (jamKeretaBalik == jamBerangkat && menitKeretaBalik > menitBerangkat);
+//                        return x.getJamSampai() >= jamBerangkat || x.getMenitSampai() >= menitBerangkat;
+                    } else if (x.getKotaTujuan().equals(rute.getKotaBerangkat())){
+                        return x.getJamSampai() > jamBerangkat || (x.getJamSampai() == jamBerangkat && x.getMenitSampai() > menitBerangkat);
+                    }
+                    return true;
+//                    return x.getJamSampai() > jamBerangkat || (x.getJamSampai() == jamBerangkat && x.getMenitSampai() > menitBerangkat);
+//                    int jamDuration = rute.getDuration() / 60;
+//                    int menitDuration = rute.getDuration() % 60;
+//                    
+//                    int jamKeretaBalik = x.getJamSampai()+ jamDuration;
+//                    int menitKeretaBalik = x.getMenitSampai()+ menitDuration;
+//                    
+//                    return jamKeretaBalik > jamBerangkat || (jamKeretaBalik == jamBerangkat && menitKeretaBalik > menitBerangkat);
+//                    return x.getJamSampai() >= jamBerangkat || x.getMenitSampai() >= menitBerangkat;
+                });
+//                .filter(x -> x.getJamSampai() <= jamSampai || x.getMenitSampai() <= menitSampai)
+//                .reduce((__, curr) -> curr);
+            if(!jadwalOpt){
+                return kereta;
+//                kereta = krt;
+            }
+            
+//            String kotaBerangkat = rute.getKotaBerangkat();
+//            Optional<Jadwal> keretaBelomSampai = jadwal.stream()
+//                .filter(x -> x.getTanggal().equals(tgal))
+//                .filter(x -> x.getKotaTujuan().equals(kotaBerangkat))
+//                .filter(x -> x.getKereta().getKodeKereta().equals(krt.getKodeKereta()))
+//                .filter(x -> x.getJamSampai() <= jamSampai || x.getMenitSampai() <= menitSampai)
+//                .reduce((__, curr) -> curr);
+//            if (keretaBelomSampai.isPresent()){
+//                tanggal = new Tanggal(tanggal.getHari() + 1, tanggal.getBulan(), tanggal.getTahun());
+//            }
+//            int duration = rute.getDuration();
+//            int jamDuration = duration / 60;
+//            int menitDuration = duration % 60;
+//            Jadwal jadwalKereta = jadwalOpt.get();
+//            int jamKosongKereta = jadwalKereta.getJamBerangkat() + jamDuration;
+//            int menitKosongKereta = jadwalKereta.getMenitBerangkat() + menitDuration;
+//            if(jamKosongKereta <= jamBerangkat || (jamKosongKereta == jamBerangkat && menitKosongKereta <= menitBerangkat)){
+////                    kereta = krt;
+//                return kereta;
+//            }
+        }
+        int hari = tanggal.getHari() + 1;
+        tanggal.setHari(hari);
+        return rute.getKereta().get(0);
+    }
 }
