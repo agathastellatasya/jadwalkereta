@@ -1,167 +1,138 @@
 [
   {
-    "kdJadwal": "JW11",
+    "kdJadwal": "JW00001",
     "tanggal": "29-11-2019",
     "kdKereta": "KAI18801",
     "user": "test",
-    "kdpesan": "RXY135",
-    "ispaid": 1,
-    "harga": 2000000,
-    "penumpang": [
-      "HUnsi",
-      "saudsf"
-    ],
-    "kursi": [
-      "P1-2",
-      "P1-12"
-    ]
-  },
-  {
-    "kdJadwal": "JW6",
-    "tanggal": "28-11-2019",
-    "kdKereta": "KAI18801",
-    "user": "test",
-    "kdpesan": "INW356",
-    "ispaid": 1,
-    "harga": 1000000,
-    "penumpang": [
-      "salma"
-    ],
-    "kursi": [
-      "P2-1"
-    ]
-  },
-  {
-    "kdJadwal": "JW6",
-    "tanggal": "28-11-2019",
-    "kdKereta": "KAI18801",
-    "user": "test",
-    "kdpesan": "FLW995",
+    "kdpesan": "60288745",
+    "kdBooking": "",
     "ispaid": 0,
-    "harga": 2000000,
+    "harga": 550000,
     "penumpang": [
-      "triana",
-      "dewi"
+      "Salma",
+      "Husni"
     ],
     "kursi": [
-      "P2-2",
-      "P2-3"
+      "B1-2",
+      "P4-2"
     ]
   },
   {
-    "kdJadwal": "JW146",
-    "tanggal": "26-12-2019",
+    "kdJadwal": "JW00001",
+    "tanggal": "29-11-2019",
     "kdKereta": "KAI18801",
     "user": "test",
-    "kdpesan": "YHB048",
+    "kdpesan": "69910714",
+    "kdBooking": "",
     "ispaid": 1,
-    "harga": 2000000,
+    "harga": 550000,
     "penumpang": [
-      "lorenzo"
+      "hh",
+      "jj"
     ],
     "kursi": [
-      "B1-1"
+      "B1-1",
+      "P3-3"
     ]
   },
   {
-    "kdJadwal": "JW8",
-    "tanggal": "28-11-2019",
-    "kdKereta": "KAI18802",
-    "user": "test",
-    "kdpesan": "PZH225",
-    "ispaid": 1,
-    "harga": 2000000,
-    "penumpang": [
-      "Puteri"
-    ],
-    "kursi": [
-      "B1-1"
-    ]
-  },
-  {
-    "kdJadwal": "JW56",
-    "tanggal": "8-12-2019",
+    "kdJadwal": "JW00001",
+    "tanggal": "29-11-2019",
     "kdKereta": "KAI18801",
     "user": "test",
-    "kdpesan": "UIQ460",
+    "kdpesan": "98937667",
+    "kdBooking": "",
+    "ispaid": 1,
+    "harga": 500000,
+    "penumpang": [
+      "aadfg",
+      "awer"
+    ],
+    "kursi": [
+      "P2-12",
+      "P2-13"
+    ]
+  },
+  {
+    "kdJadwal": "JW00001",
+    "tanggal": "29-11-2019",
+    "kdKereta": "KAI18801",
+    "user": "test",
+    "kdpesan": "60302072",
+    "kdBooking": "CLM775",
+    "ispaid": 1,
+    "harga": 600000,
+    "penumpang": [
+      "ask",
+      "dsa"
+    ],
+    "kursi": [
+      "B1-5",
+      "B1-6"
+    ]
+  },
+  {
+    "kdJadwal": "JW00001",
+    "tanggal": "29-11-2019",
+    "kdKereta": "KAI18801",
+    "user": "test",
+    "kdpesan": "02899382",
+    "kdBooking": "WPV591",
+    "ispaid": 1,
+    "harga": 600000,
+    "penumpang": [
+      "asdf",
+      "gsder"
+    ],
+    "kursi": [
+      "B1-3",
+      "B1-4"
+    ]
+  },
+  {
+    "kdJadwal": "JW00001",
+    "tanggal": "29-11-2019",
+    "kdKereta": "KAI18801",
+    "user": "test",
+    "kdpesan": "53740938",
+    "kdBooking": "SLO472",
+    "ispaid": 1,
+    "harga": 250000,
+    "penumpang": [
+      "KASD"
+    ],
+    "kursi": [
+      "P2-2"
+    ]
+  },
+  {
+    "kdJadwal": "JW00001",
+    "tanggal": "29-11-2019",
+    "kdKereta": "KAI18801",
+    "user": "test",
+    "kdpesan": "19174905",
     "ispaid": 0,
-    "harga": 0,
-    "penumpang": [],
-    "kursi": []
+    "harga": 250000,
+    "penumpang": [
+      "affgh"
+    ],
+    "kursi": [
+      "P2-11"
+    ]
   },
   {
-    "kdJadwal": "JW12",
+    "kdJadwal": "JW00001",
     "tanggal": "29-11-2019",
-    "kdKereta": "KAI19801",
-    "user": "test",
-    "kdpesan": "EWU948",
-    "ispaid": 1,
-    "harga": 2000000,
-    "penumpang": [
-      "Lisa"
-    ],
-    "kursi": [
-      "B1-1"
-    ]
-  },
-  {
-    "kdJadwal": "JW12",
-    "tanggal": "29-11-2019",
-    "kdKereta": "KAI19801",
-    "user": "test",
-    "kdpesan": "PMS561",
-    "ispaid": 1,
-    "harga": 2000000,
-    "penumpang": [
-      "salma"
-    ],
-    "kursi": [
-      "B1-2"
-    ]
-  },
-  {
-    "kdJadwal": "JW18",
-    "tanggal": "30-11-2019",
-    "kdKereta": "KAI18802",
-    "user": "test",
-    "kdpesan": "ZXD898",
-    "ispaid": 1,
-    "harga": 2000000,
-    "penumpang": [
-      "Rio"
-    ],
-    "kursi": [
-      "B1-1"
-    ]
-  },
-  {
-    "kdJadwal": "JW21",
-    "tanggal": "1-12-2019",
     "kdKereta": "KAI18801",
     "user": "test",
-    "kdpesan": "RMM998",
-    "ispaid": 1,
-    "harga": 1000000,
+    "kdpesan": "93601998",
+    "ispaid": 0,
+    "harga": 250000,
     "penumpang": [
-      "Karmila"
+      "asdf"
     ],
     "kursi": [
-      "P4-1"
-    ]
-  },
-  {
-    "kdJadwal": "JW23",
-    "tanggal": "1-12-2019",
-    "kdKereta": "KAI18802",
-    "user": "test",
-    "kdpesan": "BXX999",
-    "ispaid": 1,
-    "harga": 1000000,
-    "penumpang": [
-      "Dewi"
-    ],
-    "kursi": [
-      "P4-1"
+      "P3-1"
     ]
   }
 ]

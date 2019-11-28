@@ -10,6 +10,7 @@ import java.util.Scanner;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -24,6 +25,7 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.time.temporal.ChronoUnit;
 
 /**
  *
@@ -73,9 +75,36 @@ public class ControllerJadwal {
         Tanggal tanggal;
         Date currentDate = new Date();
         int tgl,bln,thn;
-        LocalDateTime localDateTime = currentDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        LocalDate localDate = LocalDate.now();
+        LocalDate JadwalTime = LocalDate.now();
+        LocalDate localDateTime;
+        if(jadwal.size()>0) {
+            int tgl_j = jadwal.get(jadwal.size() - 1).getTanggal().getHari();
+            int bln_j = jadwal.get(jadwal.size() - 1).getTanggal().getBulan();
+            int thn_j = jadwal.get(jadwal.size() - 1).getTanggal().getTahun();
+            JadwalTime = LocalDate.of(thn_j,bln_j,tgl_j);
+        }
+        
+        if(JadwalTime.isAfter(localDate)){
+            localDateTime=JadwalTime;
+        }
+        else{
+            localDateTime=localDate;
+        }
+        
+        long selisihHari = ChronoUnit.DAYS.between(localDate,JadwalTime);
+        
+        if(selisihHari<0) selisihHari=0;
+        long k=30-selisihHari;
+        long m;
+        System.out.println(localDateTime);
+        System.out.println(JadwalTime);
+        System.out.println(localDate);
+        System.out.println(selisihHari);
+        //System.out.println(JadwalTime);
+        if(k>0){
         //ArrayList<Rute> ListRute = ctrUtil.getRute();
-        for(int k=0; k<=30; k++){
+        for(m=0; m<k; m++){
             localDateTime = localDateTime.plusDays(1);
             bln = localDateTime.getMonthValue();
             tgl = localDateTime.getDayOfMonth();
@@ -190,6 +219,7 @@ public class ControllerJadwal {
 				}
 			}
 		}
+        }
     }
 
     public void LihatJadwal(){

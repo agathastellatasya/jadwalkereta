@@ -30,6 +30,7 @@ public class ViewUser{
     }
 
     public void menuRegis(){
+        System.out.println("###### REGISTRASI ######");
         String nik, nama, email, hp, password, repassword;
         ControllerUser ctrUser = new ControllerUser(ctrMain);
 

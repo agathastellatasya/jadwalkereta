@@ -28,9 +28,16 @@ public class ViewStation {
         System.out.println("#TAMBAH DATA STASIUN#");
         System.out.print("Tambah Stasiun : ");
         String request = input.nextLine();
-        String kode = request.substring(0,request.indexOf(' '));
-        String nama = request.substring(request.indexOf(' ')+1);
-        ctrStation.TambahStation(kode, nama);
+        if(request.split(" ").length!=2)
+        {
+            System.out.println("Inputan Salah, masukkan Kode dan NamaKota");
+            System.out.println();
+        }else{
+            String kode = request.substring(0,request.indexOf(' '));
+            String nama = request.substring(request.indexOf(' ')+1);
+            ctrStation.TambahStation(kode, nama);
+        }
+        
     }
 
     public void menuDelete() {

@@ -23,6 +23,7 @@ public class ViewJadwal {
     }
 
     public void menuGenerateJadwal(){
+        System.out.println("#GENERATE JADWAL#");
         System.out.print("Apakah anda yakin untuk generate Jadwal (Y/N)? ");
         String pilihan  = input.next();
         if(pilihan.equals("Y") || pilihan.equals("y")){
@@ -31,10 +32,13 @@ public class ViewJadwal {
         else{
             ctrJadwal.ControlMenuJadwal();
         }
+        System.out.println("--------------------------------------------------------------------------");
         System.out.println("Generate Jadwal Berhasil!"); 
+        System.out.println("--------------------------------------------------------------------------");
     }
 
     public void menuLihatJadwal(){
+        System.out.println("#LIHAT JADWAL KERETA API#");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
         System.out.println("Kode\t\tTanggal\t\tWaktu\t\tKeberangkatan\tTujuan\t\tWaktu \tKAI\t\tStatus");
         System.out.println("Jadwal\t\t\t\tKeberangkatan\t\t\t\t\t Tiba");

@@ -116,6 +116,12 @@ public class ControllerBooking {
 
     public String GenerateKode()
     {
+        String kode = getNumString(8);
+        return kode;
+    }  
+    
+    public String GenerateKdBooking()
+    {
         String kode = getAlphaString(3)+getNumString(3);
         return kode;
     }  
@@ -156,10 +162,16 @@ public class ControllerBooking {
                    for(j=0; j<booking.get(i).getKursi().length; j++)
                    {
                     kursi = booking.get(i).getKursi()[j];
-                    kdKelas = Character.toString( kursi.charAt(0));
-                    kdGerbong = Integer.valueOf(kursi.charAt(1)+"") ;
-                    kdKursi = Integer.valueOf(kursi.charAt(3) + "");
-                    FillKursi(kdjadwal, kdKelas, kdGerbong, kdKursi);
+                    String kursip [] = kursi.split("-");
+                    //System.out.println(kursip.length);
+                    if (kursip.length==2){
+                        kdKelas = Character.toString(kursi.charAt(0));
+                        String nomerGerbong = kursip[0].replaceAll("[\\D]", ""); 
+                        kdGerbong = Integer.valueOf(nomerGerbong);
+                        String nokursi = kursip[1].replaceAll("[\\D]", "");
+                        kdKursi = Integer.valueOf(nokursi);
+                        FillKursi(kdjadwal, kdKelas, kdGerbong, kdKursi);
+                    }
                    }
                 }
             }
@@ -187,7 +199,7 @@ public class ControllerBooking {
             return harga;
         }
 
-    public int ValidasiBayar(String kode, String norek, long harga)
+    public int ValidasiBayar(String kode, long harga)
     {
         booking = ctrUtil.getBooking();
         int i;
@@ -196,7 +208,7 @@ public class ControllerBooking {
         {
             if(kode.equals(booking.get(i).getKdPesan()))
             {
-                if(norek.equals("80325567189") && harga==booking.get(i).getHarga())
+                if(harga==booking.get(i).getHarga())
                 {
                     found=true;
                     break;
@@ -222,17 +234,28 @@ public class ControllerBooking {
                kdjadwal = booking.get(i).getKdJadwal();
                while(j<booking.get(i).getKursi().length && flag!=1)
                {
-                kursi = booking.get(i).getKursi()[j];
-                kdKelas = Character.toString( kursi.charAt(0));
-                kdGerbong = Integer.valueOf(kursi.charAt(1)+"") ;
-                kdKursi = Integer.valueOf(kursi.charAt(3) + "");
-                status = CekStatus(kdjadwal, kdKelas, kdGerbong, kdKursi);
-                if (status>=0)
-                {
-                    flag =1;
-                    found = true;
-                }
-                j++;
+                    kursi = booking.get(i).getKursi()[j];
+                    String kursip [] = kursi.split("-");
+                    //System.out.println(kursip.length);
+                    if (kursip.length==2){
+                        kdKelas = Character.toString(kursi.charAt(0));
+                        String nomerGerbong = kursip[0].replaceAll("[\\D]", ""); 
+                        kdGerbong = Integer.valueOf(nomerGerbong);
+                        String nokursi = kursip[1].replaceAll("[\\D]", "");
+                        kdKursi = Integer.valueOf(nokursi);
+                        //System.out.println(kdKelas);
+                       // System.out.println(kdGerbong);
+                       // System.out.println(kdKursi);
+                        status = CekStatus(kdjadwal, kdKelas, kdGerbong, kdKursi);
+                        if (status>=0){
+                            flag =1;
+                            found = true;
+                        }
+                    }
+//                kdKelas = Character.toString( kursi.charAt(0));
+//                kdGerbong = Integer.valueOf(kursi.charAt(1)+"") ;
+//                kdKursi = Integer.valueOf(kursi.charAt(3) + "");
+                    j++;
                }
                
             }
@@ -334,6 +357,7 @@ public class ControllerBooking {
             {
                 System.out.println("penumpang "+(j+1)+ ": " +booking.get(i).getPenumpang()[j]);
             }
+            System.out.println("Kode Booking "+ ": " +booking.get(i).getKdBooking());
         }
        }
        
@@ -357,7 +381,9 @@ public class ControllerBooking {
                     ctrPenumpang.setUser(user);
                     ctrUtil.WriteJSONUser();
                 }
+                String kdBooking = GenerateKdBooking();
                 booking.get(i).setIsPaid(1);
+                booking.get(i).setKdBooking(kdBooking);
             }
         }
         ctrUtil.WriteJSONBooking();

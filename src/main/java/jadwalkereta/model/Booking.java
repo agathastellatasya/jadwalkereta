@@ -6,6 +6,7 @@ public class Booking{
     String kdKereta;
     String user;
     String kdpesan;
+    String kdBooking;
     int ispaid;
     long harga;
     String[] penumpang;
@@ -45,6 +46,10 @@ public class Booking{
     {
         this.kdJadwal=kdJadwal;
     }
+    public void setKdBooking(String kdBooking)
+    {
+        this.kdBooking=kdBooking;
+    }
     public void setHarga(long harga)
     {
         this.harga=harga;
@@ -62,6 +67,12 @@ public class Booking{
     {
         return this.kdJadwal;
     }
+    
+    public String getKdBooking()
+    {
+        return this.kdBooking;
+    }
+    
     public long getHarga()
     {
         return this.harga;
