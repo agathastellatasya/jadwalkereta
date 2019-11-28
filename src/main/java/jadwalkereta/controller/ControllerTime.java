@@ -60,11 +60,19 @@ public class ControllerTime {
 
     public void LihatWaktu(){
         times = ctrUtil.getTimes();
-        for(int i=0;i<10;i++)
+        if(times.size()==0)
+        {
+            System.out.println("-----------------------------------------------------------------");
+            System.out.println("Waktu belum di generate!"); 
+            //System.out.println("-----------------------------------------------------------------");
+        }else {
+            for(int i=0;i<10;i++)
             System.out.println(i+1+"\t"+times.get(i).getKode()+"\t"+ String.format("%02d", times.get(i).getJam())+"."+ String.format("%02d", times.get(i).getMenit()));
         System.out.println(".......................");
         System.out.println(times.size() + "\t" + times.get(times.size()-1).getKode() + "\t" + String.format("%02d", times.get(times.size()-1).getJam())
                 + "." + String.format("%02d", times.get(times.size()-1).getMenit()));
+        }
+        
     }
 	
 	public int CheckWaktu(String kdWaktu){

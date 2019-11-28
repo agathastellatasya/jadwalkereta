@@ -27,14 +27,12 @@ public class ViewTime {
         String pilihan  = input.next();
         if(pilihan.equals("Y") || pilihan.equals("y")){
             ctrTime.GenerateWaktu();
+            System.out.println("-----------------------------------------------------------------");
+            System.out.println("Generate Waktu Berhasil!"); 
+            System.out.println("-----------------------------------------------------------------");
+            System.out.println("");
         }
-        else{
-            ctrTime.ControlMenuTime();
-        }
-        System.out.println("-----------------------------------------------------------------");
-        System.out.println("Generate Waktu Berhasil!"); 
-        System.out.println("-----------------------------------------------------------------");
-        System.out.println("");
+       
     }
 
     public void menuLihatWaktu(){
