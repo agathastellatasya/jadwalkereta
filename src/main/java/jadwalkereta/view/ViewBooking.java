@@ -54,6 +54,7 @@ public class ViewBooking {
        }while(jadwal <0);
         System.out.print("Jumlah: ");
         int jml = input.nextInt();
+        input.nextLine();
         if(jml> 0)
         {
             System.out.println("---------------------------------------------------------");
@@ -62,9 +63,9 @@ public class ViewBooking {
             for(i=0; i<jml; i++)
             {
                 do {
+                    //orang = input.nextLine();
                     System.out.print("penumpang "+(i+1)+": ");
-                    
-                    orang = input.next();
+                    orang = input.nextLine();
                     if (!orang.matches("^[a-zA-Z\\\\s][a-zA-Z \\\\s]*$")){
                         System.out.println("Nama harus terdiri dari huruf semua!");
                     }
