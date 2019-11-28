@@ -65,6 +65,81 @@
         "kodebooking": "BXX999",
         "tanggal": "26-11-2019",
         "keterangan": "PAID"
+      },
+      {
+        "kodebooking": "12345679",
+        "tanggal": "28-11-2019",
+        "keterangan": "PAID"
+      },
+      {
+        "kodebooking": "60288745",
+        "tanggal": "28-11-2019",
+        "keterangan": "BOOKED"
+      },
+      {
+        "kodebooking": "60288745",
+        "tanggal": "28-11-2019",
+        "keterangan": "PAID"
+      },
+      {
+        "kodebooking": "69910714",
+        "tanggal": "28-11-2019",
+        "keterangan": "BOOKED"
+      },
+      {
+        "kodebooking": "69910714",
+        "tanggal": "28-11-2019",
+        "keterangan": "PAID"
+      },
+      {
+        "kodebooking": "98937667",
+        "tanggal": "28-11-2019",
+        "keterangan": "BOOKED"
+      },
+      {
+        "kodebooking": "98937667",
+        "tanggal": "28-11-2019",
+        "keterangan": "PAID"
+      },
+      {
+        "kodebooking": "60302072",
+        "tanggal": "28-11-2019",
+        "keterangan": "BOOKED"
+      },
+      {
+        "kodebooking": "60302072",
+        "tanggal": "28-11-2019",
+        "keterangan": "PAID"
+      },
+      {
+        "kodebooking": "02899382",
+        "tanggal": "28-11-2019",
+        "keterangan": "BOOKED"
+      },
+      {
+        "kodebooking": "02899382",
+        "tanggal": "28-11-2019",
+        "keterangan": "PAID"
+      },
+      {
+        "kodebooking": "53740938",
+        "tanggal": "28-11-2019",
+        "keterangan": "BOOKED"
+      },
+      {
+        "kodebooking": "53740938",
+        "tanggal": "28-11-2019",
+        "keterangan": "PAID"
+      },
+      {
+        "kodebooking": "19174905",
+        "tanggal": "28-11-2019",
+        "keterangan": "BOOKED"
+      },
+      {
+        "kodebooking": "93601998",
+        "tanggal": "28-11-2019",
+        "keterangan": "BOOKED"
       }
     ]
   },

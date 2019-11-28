@@ -18,7 +18,7 @@ public class ConfigDirektori {
     //public static final String MAIN = "D:\\Kuliah\\S2\\Algoritma Pemrograman\\Tubes\\jadwalkereta\\src\\main\\java\\jadwalkereta\\resource\\";
 
     //salma
-    public static final String MAIN = "E:\\tubesAlpro\\V27\\jadwalkereta\\src\\main\\java\\jadwalkereta\\resource\\";
+    public static final String MAIN = "D:\\Kuliah\\Alpro\\tubes\\tubes16\\jadwalkereta\\src\\main\\java\\jadwalkereta\\resource\\";
 
 
     public static final String USER = MAIN + "user.json";

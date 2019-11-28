@@ -83,18 +83,26 @@ public class ControllerKereta {
 			int jmlBisnis = Integer.valueOf(strjmlBisnis);
 			String strjmlPremium = jmlC.replaceAll("[\\D]", ""); 
 			int jmlPremium = Integer.valueOf(strjmlPremium);
-			if((x=='G' || x=='g') && (y=='B' || y=='b') && (z=='P' || z=='p') && (jmlGerbong==jmlBisnis+jmlPremium)){
+                        if(jmlGerbong <= 6) {
+                            if((x=='G' || x=='g') && (y=='B' || y=='b') && (z=='P' || z=='p') && (jmlGerbong==jmlBisnis+jmlPremium)){
 				kereta.add(new Kereta(kodeKereta, namaKereta, jmlGerbong, jmlBisnis, jmlPremium));
 				System.out.println("--------------------------------------------------------------");
 				System.out.println("Kereta Berhasil Ditambahkan");
 				System.out.println("--------------------------------------------------------------");
-			}
-			else {
-				System.out.println("--------------------------------------------------------------");
-				System.out.println("Format Input Salah");
-				System.out.println("--------------------------------------------------------------");
-				//viewKereta.menuTambah();
-			}
+                            }
+                            else {
+                                    System.out.println("--------------------------------------------------------------");
+                                    System.out.println("Format Input Salah");
+                                    System.out.println("--------------------------------------------------------------");
+                                    //viewKereta.menuTambah();
+                            }
+                        }
+                        else {
+                            System.out.println("--------------------------------------------------------------");
+                            System.out.println("Jumlah Gerbong Maksimal 6");
+                            System.out.println("--------------------------------------------------------------");
+                        }
+			
         }    
         else {
             System.out.println("--------------------------------------------------------------");
