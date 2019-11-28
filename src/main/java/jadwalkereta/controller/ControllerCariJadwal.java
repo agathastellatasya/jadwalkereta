@@ -67,7 +67,7 @@ public class ControllerCariJadwal  {
                 System.out.print("\t" + waktuBerangkat);
                 System.out.print(" \t\t\t" + kotaBerangkat);
                 System.out.print("\t\t" + kotaTujuan);
-                System.out.print("\t" + waktuSampai);
+                System.out.print("\t\t" + waktuSampai);
                 System.out.print("\t\t" + keretaapi);
                 if (kursi > 0)
                     System.out.print("\tSisa Kursi " + kursi);

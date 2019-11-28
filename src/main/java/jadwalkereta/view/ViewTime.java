@@ -22,6 +22,7 @@ public class ViewTime {
     }
 
     public void menuGenerateWaktu() {
+        System.out.println("#GENERATE DATA WAKTU#");
         System.out.print("Apakah anda yakin untuk generate waktu (Y/N)? ");
         String pilihan  = input.next();
         if(pilihan.equals("Y") || pilihan.equals("y")){
@@ -30,12 +31,19 @@ public class ViewTime {
         else{
             ctrTime.ControlMenuTime();
         }
+        System.out.println("-----------------------------------------------------------------");
         System.out.println("Generate Waktu Berhasil!"); 
+        System.out.println("-----------------------------------------------------------------");
+        System.out.println("");
     }
 
     public void menuLihatWaktu(){
+        System.out.println("#LIHAT DATA WAKTU#");
+        System.out.println("Data Lengkap Waktu");
+        System.out.println("-----------------------------------------------------------------");
         System.out.println("No\tKode\tWaktu");
         ctrTime.LihatWaktu();
+        System.out.println("-----------------------------------------------------------------");
     }
 
     public int getPilihan()

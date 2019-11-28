@@ -26,6 +26,7 @@ public class ViewJalur {
 
     public void menuTambah(ControllerUtil ctrUtil) {
         ctrJalur.setRute(ctrUtil.getRute());
+        System.out.println("#TAMBAH DATA JALUR#");
         String KodeRute = "";
         int index = -1;
         do{
@@ -46,6 +47,7 @@ public class ViewJalur {
                 String stasiunAkhir = injalur.split("\\s+")[1];
                 int menit = Integer.valueOf(injalur.split("\\s+")[2]);
                 if(!ctrJalur.TambahJalur(stasiunAwal, stasiunAkhir, menit, index)) i--;
+		System.out.println("Jalur Berhasil Ditambahkan");
             }
             i++;
         }while(!injalur.equals("99"));

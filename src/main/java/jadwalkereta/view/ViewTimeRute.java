@@ -25,6 +25,7 @@ public class ViewTimeRute {
     }
 
     public void menuTambah() {
+        System.out.println("#TAMBAH DATA WAKTU PADA RUTE#");
         String KodeRute = "";
         int index = -1;
         do{
@@ -43,6 +44,9 @@ public class ViewTimeRute {
             }
             i++;
         }while(!kdKereta.equals("99"));
+        System.out.println("--------------------------------------------------------------");
+        System.out.println("TimeRute Berhasil Ditambahkan");
+        System.out.println("--------------------------------------------------------------");
     }
 
     // public void menuDelete() {
@@ -67,6 +71,7 @@ public class ViewTimeRute {
         System.out.println("#LIHAT WAKTU BERDASARKAN RUTE#");
         System.out.print("Kode Rute: ");
         String kode = input.nextLine();
+        System.out.println("--------------------------------------------------------------------------");
         System.out.println("No\tKode Waktu Rute\t\tKode Rute\tWaktu Tersedia Rute");
         ctrTimeRute.LihatTimeRute(kode);
         System.out.println("--------------------------------------------------------------------------");

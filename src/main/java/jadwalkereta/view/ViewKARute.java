@@ -25,6 +25,7 @@ public class ViewKARute {
     }
 
     public void menuTambah() {
+        System.out.println("#TAMBAH KERETA BERDASARKAN RUTE#");
         String KodeRute = "";
         int index = -1;
         do{
@@ -67,6 +68,7 @@ public class ViewKARute {
         System.out.println("#LIHAT KERETA BERDASARKAN RUTE#");
         System.out.print("Kode Rute: ");
         String kode = input.nextLine();
+        System.out.println("--------------------------------------------------------------------------");
         System.out.println("No\tKode Kereta Rute\tKode Rute\tKereta Tersedia Pada Rute");
         ctrKARute.LihatKARute(kode);
         System.out.println("--------------------------------------------------------------------------");
