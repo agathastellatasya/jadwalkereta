@@ -6,5 +6,13 @@
   {
     "kode": "BDG",
     "nama": "Bandung"
+  },
+  {
+    "kode": "PWK",
+    "nama": "Purwakarta"
+  },
+  {
+    "kode": "PWT",
+    "nama": "Purwokerto"
   }
 ]

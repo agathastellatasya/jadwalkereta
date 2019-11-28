@@ -69,6 +69,11 @@ public class ControllerCity {
 
     public void TambahCity(String kode, String nama){
         cities = ctrUtil.getCities();
+        if(kode.length()>nama.length()){
+            String temp=kode;
+            kode=nama;
+            nama=temp;
+        }
         int index = CheckCity(kode);
         if (index<0) {
             cities.add(new City(kode, nama));
