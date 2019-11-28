@@ -322,7 +322,7 @@ public class ControllerBooking {
 
         Booking B1 = new Booking(kdjadwal, paid, kdpesan, penumpang, kursi, harga, user.getEmail(), stanggal, kdKereta);
         booking.add(B1);
-        user.getTransaksi().add(new Transaksi(kdpesan, tanggal, "BOOKED"));
+        user.getTransaksi().add(new Transaksi(kdpesan, tanggal, "BOOKED", "-"));
         users.set(index, user);
         ctrPenumpang.setUser(user);
         ctrUtil.WriteJSONUser();
@@ -369,21 +369,20 @@ public class ControllerBooking {
         {
             if(kode.equals(booking.get(i).getKdPesan()))
             {
-                if(booking.get(i).getIsPaid()==0)
-                {
+                    String kdBooking = GenerateKdBooking();
+                    booking.get(i).setIsPaid(1);
+                    booking.get(i).setKdBooking(kdBooking);
                     User user = ctrPenumpang.getUser(); 
                     ArrayList<User> users = ctrUtil.getUsers();
                     ControllerUser ctrUser = new ControllerUser(ctrMain);
                     int index = ctrUser.findEmailInUsers(user.getEmail());
                     String tanggal = new SimpleDateFormat("dd-MM-YYYY").format(new Date());
-                    user.getTransaksi().add(new Transaksi(kode, tanggal, "PAID"));
+                    user.getTransaksi().add(new Transaksi(kode, tanggal, "PAID", kdBooking));
                     users.set(index, user);
                     ctrPenumpang.setUser(user);
                     ctrUtil.WriteJSONUser();
-                }
-                String kdBooking = GenerateKdBooking();
-                booking.get(i).setIsPaid(1);
-                booking.get(i).setKdBooking(kdBooking);
+                
+                
             }
         }
         ctrUtil.WriteJSONBooking();
