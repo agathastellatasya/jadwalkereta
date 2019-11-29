@@ -13,7 +13,7 @@ public class ConfigDirektori {
     //fiqri
     //public static final String MAIN = "D:\\Kuliah Pasca\\Alpro\\TubesAlpro19\\src\\main\\java\\jadwalkereta\\resource\\";
     //adri
-    //public static final String MAIN = "E:\\Hampir Fix\\jadwalkereta\\src\\main\\java\\jadwalkereta\\resource\\";
+    public static final String MAIN = "E:\\Hampir Fix\\nochange\\jadwalkereta\\src\\main\\java\\jadwalkereta\\resource\\";
     //tasya
     //public static final String MAIN = "D:\\Kuliah\\S2\\Algoritma Pemrograman\\Tubes\\jadwalkereta\\src\\main\\java\\jadwalkereta\\resource\\";
 
@@ -23,7 +23,7 @@ public class ConfigDirektori {
 
     //public static final String MAIN = "E:\\tubesAlpro\\V28\\jadwalkereta\\src\\main\\java\\jadwalkereta\\resource\\";
     //husni
-    public static final String MAIN = "D:\\Kuliah\\Alpro\\tubes\\tubes18\\jadwalkereta\\src\\main\\java\\jadwalkereta\\resource\\";
+    //public static final String MAIN = "D:\\Kuliah\\Alpro\\tubes\\tubes18\\jadwalkereta\\src\\main\\java\\jadwalkereta\\resource\\";
 
 
 

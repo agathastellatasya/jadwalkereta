@@ -84,7 +84,13 @@ public class ControllerBooking {
         booking = ctrUtil.getBooking();
         int indexbooked = -1;
         for(int i=0;i<booking.size()&&indexbooked<0;i++)
-            if(booking.get(i).getKdBooking().equals(KodePesan)) indexbooked = i;
+        {
+            if (booking.get(i).getKdBooking() != null) {
+                if (booking.get(i).getKdBooking().equals(KodePesan))
+                    indexbooked = i;
+            }
+        }
+            
 
         if(booking.get(indexbooked).getIsPaid()==2) System.out.println("Kode Booking Sudah Tidak Berlaku!");
         else if(indexbooked>=0)
@@ -119,6 +125,7 @@ public class ControllerBooking {
                 ctrPenumpang.setUser(user);
                 ctrUtil.WriteJSONUser();
                 ctrUtil.WriteJSONBooking();
+                ctrUtil.WriteJSONJadwal();
                 System.out.println("Sukses Cancel!");
             }
             else
