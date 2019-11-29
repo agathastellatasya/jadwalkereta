@@ -13,6 +13,7 @@ import jadwalkereta.view.*;
 import jadwalkereta.controller.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.time.LocalDate;
 
 
 public class ControllerBooking {
@@ -64,7 +65,12 @@ public class ControllerBooking {
                 viewBooking.cancel();
                 ControlMenuBooking();
             break;
-        }
+			}
+			case 5: {
+                viewBooking.menuPindah();
+                ControlMenuBooking();
+            break;
+			}
 
             case 99:{
                 ctrPenumpang.ControlMenuPenumpang();
@@ -327,7 +333,7 @@ public class ControllerBooking {
         for (i=0; i < jadwal.size(); i++) {
             if(kdjadwal.equals(jadwal.get(i).getKode()))
             {
-                if(kdkelas.equals("B"))
+                if(kdkelas.equals("B") && kdKursi<=10 && kdKursi>0)
                 {
                     //System.out.println(kdGerbong+" "+kdKursi);
                     //System.out.println(jadwal.get(i).getKereta().getBangkuBisnis(kdGerbong-1, kdKursi-1));
@@ -336,12 +342,21 @@ public class ControllerBooking {
                         found = true;
                         break;
                     }
-                }else{
-                    if((jadwal.get(i).getKereta().getBangkuPremium(kdGerbong-1, kdKursi-1))==1)
+                }
+                else if(kdkelas.equals("P") && kdKursi<=20 && kdKursi>0){
+                    if((jadwal.get(i).getKereta().getBangkuPremium(kdGerbong-1, kdKursi-1))==1 )
                     {
                         found = true;
                         break;
                     }
+                }
+                else if(kdkelas.equals("P") && kdKursi>20) {
+                    found = true;
+                    break;
+                }
+                else if(kdkelas.equals("B") && kdKursi>10) {
+                    found = true;
+                    break;
                 }
             }
         }
@@ -455,6 +470,40 @@ public class ControllerBooking {
         }
         if(found) return i;
         else return -1;
+    }
+	
+    public int CekPindah(String kode){
+        int i,j;
+        boolean found = false;
+        User user = ctrPenumpang.getUser(); 
+        ArrayList<User> users = ctrUtil.getUsers();
+        ControllerUser ctrUser = new ControllerUser(ctrMain);
+        for (i=0; i < users.size(); i++) {
+            for (j=0; j < users.get(i).getTransaksi().size(); j++) {
+                //System.out.println(users.get(i).getTransaksi().get(j).getKodebayar());
+                //System.out.println(kode);
+                if (kode.equals(users.get(i).getTransaksi().get(j).getKodebayar()) ) {
+                    /*String[] xtanggal = users.get(i).getTransaksi().get(j).getTanggal().split("-");
+                    int tgl = Integer.valueOf(xtanggal[0]);
+                    int bulan = Integer.valueOf(xtanggal[1]);
+                    int tahun = Integer.valueOf(xtanggal[2]);
+                    String stanggal = bulan+"-"+tahun;
+                    LocalDate tanggal2 = LocalDate.of(tahun,bulan,tgl);
+                    LocalDate tanggal = LocalDate.now();
+                    if(tanggal2.isAfter(tanggal)){*/
+                        found = true;
+                        break;
+                    //}
+                }
+            }
+        }
+        if(found) return i;
+        else return -1;
+    }
+	
+	public void pindahKursi(int index,String[] kursi){
+        booking.get(index).setKursi(kursi);
+        ctrUtil.WriteJSONBooking();
     }
 
     public int cekjadwal(String kode){

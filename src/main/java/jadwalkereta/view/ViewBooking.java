@@ -9,7 +9,8 @@ import jadwalkereta.model.User;
 import jadwalkereta.controller.ControllerBooking;
 import jadwalkereta.controller.ControllerMain;
 import jadwalkereta.controller.ControllerUser;
-
+import jadwalkereta.controller.ControllerUtil;
+import jadwalkereta.model.Booking;
 import java.util.*;
 
 /**
@@ -17,6 +18,7 @@ import java.util.*;
  * @author ASUS
  */
 public class ViewBooking {
+	ControllerUtil ctrUtil = new ControllerUtil();
     ControllerBooking ctrBooking;
     private int pilihan;
     Scanner input = new Scanner(System.in);
@@ -35,6 +37,7 @@ public class ViewBooking {
         System.out.println("2. Booking");
         System.out.println("3. Pembayaran");
         System.out.println("4. Cancel");
+		System.out.println("5. Pindah Kursi");
         System.out.println("99. Menu Utama");
         System.out.print("Pilihan : ");
         pilihan = input.nextInt();
@@ -226,6 +229,83 @@ public class ViewBooking {
             }
         }
         
+    }
+	
+	public void menuPindah(){
+        ArrayList<User> users;
+        users = ctrUtil.getUsers();
+        String kodebooking;
+        System.out.println();
+        int harga;
+        System.out.println("#PINDAH KURSI#");
+        do {
+            System.out.print("Kode Bayar : ");
+            kodebooking = input.next();
+            if (!kodebooking.matches("[0-9_]+")) {
+                System.out.println("Tidak valid, kode bayar harus angka");
+            }
+        } while (!kodebooking.matches("[0-9_]+"));
+        //int bayar = ctrBooking.Cekbayar(kodebooking);
+        int pindah = ctrBooking.CekPindah(kodebooking);
+        int jml=0;
+        if(pindah>=0){
+            ArrayList<Booking> booking;
+            booking = ctrUtil.getBooking();
+            String kdJadwal=new String();
+            String[] penumpang;
+            int index=0;
+            for (int i=0; i < booking.size(); i++) {
+                if (kodebooking.equals(booking.get(i).getKdPesan()) && booking.get(i).getIsPaid()==0) {
+                    penumpang = booking.get(i).getPenumpang();                   
+                    jml = penumpang.length;
+                    String[] kursiawal = new String[jml];
+                    kdJadwal=booking.get(i).getKdJadwal();
+                    kursiawal=booking.get(i).getKursi();
+                    System.out.println(kdJadwal);
+                    System.out.println("---------------------------------------------------------");
+                    ctrBooking.lihatKursi(kdJadwal);
+                    System.out.println("---------------------------------------------------------");
+                    System.out.println("Pilih Kursi (Dengan Tanda E/Empty) : ");
+                    String kursi, kdKelas, kdKelasAwal;
+                    
+                    int kdKursi, kdGerbong, status;
+                    String[] bangku = new String[jml];
+                    String[] kursip;
+                    int j=0;
+                    do {
+                        System.out.print("Kursi "+(j+1)+": ");
+                        kursi = input.next();
+                        kdKelas = Character.toString(kursi.charAt(0));
+                        kdKelasAwal = Character.toString(kursiawal[j].charAt(0));
+                        kursip = kursi.split("-");
+                        if (kursip.length==2 && kdKelas.equals(kdKelasAwal)){
+                            String nomerGerbong = kursip[0].replaceAll("[\\D]", ""); 
+                            kdGerbong = Integer.valueOf(nomerGerbong);
+                            String nokursi = kursip[1].replaceAll("[\\D]", "");
+                            kdKursi = Integer.valueOf(nokursi);
+                            status = ctrBooking.CekStatus(kdJadwal, kdKelas, kdGerbong, kdKursi);
+                            if(status>=0) System.out.println("Kursi tidak tersedia");
+                            else {
+                                bangku[j]=kursi;
+                                ctrBooking.pindahKursi(i,bangku);
+                                j++;
+                            }
+                        }
+                        else {
+                            System.out.println("Kursi harus berada pada kelas yang sama");
+                            status = 1;
+                        }
+                    }
+                    while(j<jml || status >= 0);    
+                break;
+                }
+                else System.out.println();
+            }  
+            //String kodeBooking = ctrBooking.booked(kdJadwal, kodebooking, penumpang, bangku, sum);
+        }       
+        else{
+            System.out.println("Tidak ditemukan");
+        }
     }
     
 }

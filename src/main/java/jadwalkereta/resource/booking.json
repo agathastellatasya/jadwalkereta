@@ -30,5 +30,37 @@
     "kursi": [
       "B1-1"
     ]
+  },
+  {
+    "kdJadwal": "JW00006",
+    "tanggal": "1-12-2019",
+    "kdKereta": "KAI18801",
+    "user": "test",
+    "kdpesan": "28076198",
+    "ispaid": 0,
+    "harga": 550000,
+    "penumpang": [
+      "Husni",
+      "Mubarak"
+    ],
+    "kursi": [
+      "B1-2",
+      "P1-1"
+    ]
+  },
+  {
+    "kdJadwal": "JW00008",
+    "tanggal": "2-12-2019",
+    "kdKereta": "KAI18801",
+    "user": "test",
+    "kdpesan": "84593063",
+    "ispaid": 0,
+    "harga": 300000,
+    "penumpang": [
+      "asd"
+    ],
+    "kursi": [
+      "B2-1"
+    ]
   }
 ]

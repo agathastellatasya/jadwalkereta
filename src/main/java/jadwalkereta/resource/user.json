@@ -39,6 +39,18 @@
         "kodebooking": "ZTK870",
         "tanggal": "29-11-2019",
         "keterangan": "PAID"
+      },
+      {
+        "kodebayar": "28076198",
+        "kodebooking": "-",
+        "tanggal": "29-11-2019",
+        "keterangan": "BOOKED"
+      },
+      {
+        "kodebayar": "84593063",
+        "kodebooking": "-",
+        "tanggal": "29-11-2019",
+        "keterangan": "BOOKED"
       }
     ]
   },
