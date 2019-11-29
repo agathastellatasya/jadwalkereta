@@ -62,5 +62,39 @@
     "kursi": [
       "B2-1"
     ]
+  },
+  {
+    "kdJadwal": "JW00008",
+    "tanggal": "2-12-2019",
+    "kdKereta": "KAI18801",
+    "user": "test",
+    "kdpesan": "53716594",
+    "ispaid": 0,
+    "harga": 600000,
+    "penumpang": [
+      "kasld",
+      "lasf"
+    ],
+    "kursi": [
+      "B1-1",
+      "B1-1"
+    ]
+  },
+  {
+    "kdJadwal": "JW00008",
+    "tanggal": "2-12-2019",
+    "kdKereta": "KAI18801",
+    "user": "test",
+    "kdpesan": "20906647",
+    "ispaid": 0,
+    "harga": 600000,
+    "penumpang": [
+      "asdw",
+      "asw"
+    ],
+    "kursi": [
+      "B1-1",
+      "B1-2"
+    ]
   }
 ]

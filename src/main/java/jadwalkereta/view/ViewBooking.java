@@ -105,6 +105,12 @@ public class ViewBooking {
                     String nokursi = kursip[1].replaceAll("[\\D]", "");
                     kdKursi = Integer.valueOf(nokursi);
                     status = ctrBooking.CekStatus(kode, kdKelas, kdGerbong, kdKursi);
+                    for(int j=0; j<i;j++){
+                        if(kursi.equals(bangku[j])){
+                            status = 1;
+                        }
+                    }
+                    
                 }
                 else {
                     status = 1;
@@ -121,6 +127,11 @@ public class ViewBooking {
                             String nokursi = kursip[1].replaceAll("[\\D]", "");
                             kdKursi = Integer.valueOf(nokursi);
                             status = ctrBooking.CekStatus(kode, kdKelas, kdGerbong, kdKursi);
+                            for(int j=0; j<i;j++){
+                                if(kursi.equals(bangku[j])){
+                                    status = 1;
+                                }
+                            }
                         }
                         else {
                             status = 1;
@@ -261,7 +272,7 @@ public class ViewBooking {
                     String[] kursiawal = new String[jml];
                     kdJadwal=booking.get(i).getKdJadwal();
                     kursiawal=booking.get(i).getKursi();
-                    System.out.println(kdJadwal);
+                    //System.out.println(kdJadwal);
                     System.out.println("---------------------------------------------------------");
                     ctrBooking.lihatKursi(kdJadwal);
                     System.out.println("---------------------------------------------------------");
@@ -284,6 +295,11 @@ public class ViewBooking {
                             String nokursi = kursip[1].replaceAll("[\\D]", "");
                             kdKursi = Integer.valueOf(nokursi);
                             status = ctrBooking.CekStatus(kdJadwal, kdKelas, kdGerbong, kdKursi);
+                            for(int k=0; k<j;k++){
+                                if(kursi.equals(bangku[k])){
+                                    status = 1;
+                                }
+                            }
                             if(status>=0) System.out.println("Kursi tidak tersedia");
                             else {
                                 bangku[j]=kursi;
@@ -299,7 +315,9 @@ public class ViewBooking {
                     while(j<jml || status >= 0);    
                 break;
                 }
-                else System.out.println();
+                else if (kodebooking.equals(booking.get(i).getKdPesan()) && booking.get(i).getIsPaid()==1) 
+                    System.out.println("Sudah dilakukan pembayaran, Kursi tidak dapat diganti");
+                //else System.out.println();
             }  
             //String kodeBooking = ctrBooking.booked(kdJadwal, kodebooking, penumpang, bangku, sum);
         }       

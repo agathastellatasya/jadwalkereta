@@ -51,6 +51,18 @@
         "kodebooking": "-",
         "tanggal": "29-11-2019",
         "keterangan": "BOOKED"
+      },
+      {
+        "kodebayar": "53716594",
+        "kodebooking": "-",
+        "tanggal": "29-11-2019",
+        "keterangan": "BOOKED"
+      },
+      {
+        "kodebayar": "20906647",
+        "kodebooking": "-",
+        "tanggal": "29-11-2019",
+        "keterangan": "BOOKED"
       }
     ]
   },
