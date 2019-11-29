@@ -140,7 +140,7 @@ public class ControllerKereta {
         ArrayList<Rute> rute = ctrUtil.getRute();
         for (i=0; i < rute.size(); i++) {
             for(int j=0;j<rute.get(i).getKereta().size();j++) {
-                if (kodeKA.equals(rute.get(i).getKereta().get(j))) {
+                if (kodeKA.equals(rute.get(i).getKereta().get(j).getKodeKereta())) {
                     found = true;
                     break;
                 }

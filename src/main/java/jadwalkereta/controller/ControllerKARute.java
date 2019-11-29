@@ -79,7 +79,7 @@ public class ControllerKARute {
         for(int i=0;i<rute.size();i++){
             if(rute.get(i).getKodeRute().equals(kode)) return i;
         }
-        System.out.println("Rute Tidak Ditemukan");
+       // System.out.println("Rute Tidak Ditemukan");
         return -1;
     }
 	

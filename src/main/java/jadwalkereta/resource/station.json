@@ -1,9 +1,5 @@
 [
   {
-    "kode": "GMR",
-    "nama": "Gambir"
-  },
-  {
     "kode": "JTR",
     "nama": "Jatinegara"
   },
@@ -26,5 +22,9 @@
   {
     "kode": "BDN",
     "nama": "Bandung"
+  },
+  {
+    "kode": "GBR",
+    "nama": "Gambir"
   }
 ]
