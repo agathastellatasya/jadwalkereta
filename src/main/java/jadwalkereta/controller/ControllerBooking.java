@@ -482,7 +482,7 @@ public class ControllerBooking {
             for (j=0; j < users.get(i).getTransaksi().size(); j++) {
                 //System.out.println(users.get(i).getTransaksi().get(j).getKodebayar());
                 //System.out.println(kode);
-                if (kode.equals(users.get(i).getTransaksi().get(j).getKodebayar()) ) {
+                if (kode.equals(users.get(i).getTransaksi().get(j).getKodebayar()) && user.getEmail().equals(users.get(i).getEmail())) {
                     /*String[] xtanggal = users.get(i).getTransaksi().get(j).getTanggal().split("-");
                     int tgl = Integer.valueOf(xtanggal[0]);
                     int bulan = Integer.valueOf(xtanggal[1]);
