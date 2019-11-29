@@ -34,9 +34,15 @@ public class ViewBooking {
         System.out.println("1. Cari Jadwal");
         System.out.println("2. Booking");
         System.out.println("3. Pembayaran");
+        System.out.println("4. Cancel");
         System.out.println("99. Menu Utama");
         System.out.print("Pilihan : ");
         pilihan = input.nextInt();
+    }
+
+    public void cancel() {
+        System.out.print("Kode Booking: ");
+        ctrBooking.cancel(input.next());
     }
 
     public void book(){
@@ -121,8 +127,6 @@ public class ViewBooking {
                     sum = sum+harga;
                     bangku[i]=kursi;
                 //ctrBooking.PesanKursi(kode, kdKelas, kdGerbong, kdKursi);
-                
-               
             }
             System.out.println();
             System.out.println("---------------------------------------------------------");

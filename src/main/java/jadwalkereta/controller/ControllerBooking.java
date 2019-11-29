@@ -60,12 +60,67 @@ public class ControllerBooking {
                 //viewBooking.menuBooking();
                 break;
             }
+            case 4: {
+                viewBooking.cancel();
+                ControlMenuBooking();
+            break;
+        }
 
             case 99:{
                 ctrPenumpang.ControlMenuPenumpang();
                 break;
             }
         }
+    }
+
+    public void cancel(String KodePesan){
+        jadwal = ctrUtil.getJadwal();
+        booking = ctrUtil.getBooking();
+        int indexbooked = -1;
+        for(int i=0;i<booking.size()&&indexbooked<0;i++)
+            if(booking.get(i).getKdBooking().equals(KodePesan)) indexbooked = i;
+
+        if(booking.get(indexbooked).getIsPaid()==2) System.out.println("Kode Booking Sudah Tidak Berlaku!");
+        else if(indexbooked>=0)
+        {
+            String KodeJadwal =  booking.get(indexbooked).getKdJadwal();
+            int indexjadwal = -1;
+            for(int i=0;i<jadwal.size()&&indexjadwal<0;i++)
+                if(jadwal.get(i).getKode().equals(KodeJadwal)) indexjadwal = i;
+
+            if(indexjadwal>=0)
+            {
+                String[] kursi = booking.get(indexbooked).getKursi();
+                for(int i = 0; i<kursi.length;i++)
+                {
+                    String kodekursi = ""+kursi[i].charAt(0);
+                    String nomorkursi = kursi[i].substring(1);
+                    int gerbong  = Integer.valueOf(nomorkursi.substring(0, nomorkursi.indexOf('-')));
+                    int tempatduduk = Integer.valueOf(nomorkursi.substring(nomorkursi.indexOf('-')+1));
+                    if(kodekursi.equals("B"))
+                        jadwal.get(indexjadwal).getKereta().setBangkuBisnis(gerbong-1, tempatduduk-1, 0);
+                    else if(kodekursi.equals("P"))
+                        jadwal.get(indexjadwal).getKereta().setBangkuPremium(gerbong-1, tempatduduk-1, 0);
+                }
+                booking.get(indexbooked).setIsPaid(2);
+                User user = ctrPenumpang.getUser(); 
+                ArrayList<User> users = ctrUtil.getUsers();
+                ControllerUser ctrUser = new ControllerUser(ctrMain);
+                int index = ctrUser.findEmailInUsers(user.getEmail());
+                String tanggal = new SimpleDateFormat("dd-MM-YYYY").format(new Date());
+                user.getTransaksi().add(new Transaksi(booking.get(indexbooked).getKdPesan(), tanggal, "CANCELED", booking.get(indexbooked).getKdBooking()));
+                users.set(index, user);
+                ctrPenumpang.setUser(user);
+                ctrUtil.WriteJSONUser();
+                ctrUtil.WriteJSONBooking();
+                System.out.println("Sukses Cancel!");
+            }
+            else
+            {
+                System.out.println("Jadwal Tidak Ditemukan");
+            }
+        }
+        else System.out.println("Kode Pesan Tidak Ditemukan");
     }
 
     public String getAlphaString(int n) 
@@ -381,8 +436,6 @@ public class ControllerBooking {
                     users.set(index, user);
                     ctrPenumpang.setUser(user);
                     ctrUtil.WriteJSONUser();
-                
-                
             }
         }
         ctrUtil.WriteJSONBooking();
